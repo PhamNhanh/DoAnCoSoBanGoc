@@ -1,0 +1,143 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+    header .logo {
+        display: inline-block;
+        font-size: 24px;
+        margin: 0;
+    }
+
+    header nav {
+        display: inline-block;
+        float: right;
+    }
+
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+            header nav ul li {
+                display: inline;
+                margin-left: 20px;
+            }
+
+                header nav ul li a {
+                    color: #fff;
+                    text-decoration: none;
+                }
+
+.search-bar {
+    background-color: #f4f4f4;
+    padding: 20px 0;
+    text-align: center;
+}
+
+    .search-bar form {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .search-bar input[type="text"] {
+        padding: 10px;
+        width: 200px;
+    }
+
+    .search-bar button {
+        padding: 10px 20px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+.job-listings,
+.employers,
+.categories {
+    padding: 20px 0;
+}
+
+    .job-listings h2,
+    .employers h2,
+    .categories h2 {
+        text-align: center;
+    }
+
+    .job-listings ul,
+    .employers ul,
+    .categories ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+        .job-listings ul li,
+        .employers ul li,
+        .categories ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+            .job-listings ul li h3,
+            .employers ul li h3 {
+                margin: 0;
+            }
+
+        .categories ul li {
+            display: inline-block;
+            margin: 10px;
+        }
+
+            .categories ul li a {
+                text-decoration: none;
+                color: #333;
+                padding: 10px 20px;
+                border: 1px solid #333;
+                border-radius: 5px;
+                background-color: #f4f4f4;
+                transition: background-color 0.3s;
+            }
+
+                .categories ul li a:hover {
+                    background-color: #ddd;
+                }
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+    footer nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+        footer nav ul li {
+            display: inline;
+            margin-left: 20px;
+        }
+
+            footer nav ul li a {
+                color: #fff;
+                text-decoration: none;
+            }

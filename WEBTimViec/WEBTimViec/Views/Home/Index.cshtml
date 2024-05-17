@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobPlus</title>
+    <style>
+        h1 a {
+            text-decoration: none; /* Loại bỏ gạch chân */
+            color: inherit; /* Giữ nguyên màu chữ */
+        }
+
+    /*         h1 a:hover {
+                text-decoration: underline; /* Tùy chọn: Thêm gạch chân khi hover */
+            } */
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a asp-controller="Home" asp-action="Index">JobPlus</a></h1>
+            <nav>
+                <ul>
+                    <li><a asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+                    <li><a asp-controller="Job" asp-action="Index">Việc làm</a></li>
+                    <li><a asp-controller="Employer" asp-action="Index">Nhà tuyển dụng</a></li>
+                    <li><a asp-controller="Contact" asp-action="Index">Liên hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="search-bar">
+        <div class="container">
+            <h2>Tìm kiếm công việc mơ ước của bạn</h2>
+            <form action="#" method="get">
+                <input type="text" name="keyword" placeholder="Nhập từ khóa...">
+                <input type="text" name="location" placeholder="Nhập địa điểm...">
+                <button type="submit">Tìm kiếm</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p> 2024 JobPlus. All rights reserved.</p>
+            <nav>
+                <ul>
+                    <li><a asp-controller="Privacy" asp-action="Index">Chính sách bảo mật</a></li>
+                    <li><a asp-controller="Terms" asp-action="Index">Điều khoản sử dụng</a></li>
+                    <li><a asp-controller="Contact" asp-action="Index">Liên hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+
+
+
