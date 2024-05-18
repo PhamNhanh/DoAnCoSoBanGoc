@@ -7,5 +7,6 @@ namespace WEBTimViec.Models
         [Key]
         public int HinhAnhBTD_id { get; set; }
         public string? image_url { get; set; }
+        public BaiTuyenDung? BaiTuyenDung { get; set; }
     }
 }

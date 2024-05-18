@@ -39,32 +39,6 @@ namespace WEBTimViec.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "hinhAnhBTDs",
-                columns: table => new
-                {
-                    HinhAnhBTD_id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    image_url = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_hinhAnhBTDs", x => x.HinhAnhBTD_id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "hinhAnhNTDs",
-                columns: table => new
-                {
-                    HinhAnhNTD_id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    image_url = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_hinhAnhNTDs", x => x.HinhAnhNTD_id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "kinhNghiems",
                 columns: table => new
                 {
@@ -191,8 +165,6 @@ namespace WEBTimViec.Migrations
                     Website = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ThoiGianTao = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ThoiGianCapNhat = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    HinhAnhNTDid = table.Column<int>(type: "int", nullable: false),
-                    ThanhPhoid = table.Column<int>(type: "int", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -212,22 +184,10 @@ namespace WEBTimViec.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUsers_hinhAnhNTDs_HinhAnhNTDid",
-                        column: x => x.HinhAnhNTDid,
-                        principalTable: "hinhAnhNTDs",
-                        principalColumn: "HinhAnhNTD_id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_AspNetUsers_hocVans_HocVanid",
                         column: x => x.HocVanid,
                         principalTable: "hocVans",
                         principalColumn: "HocVan_id");
-                    table.ForeignKey(
-                        name: "FK_AspNetUsers_thanhPhos_ThanhPhoid",
-                        column: x => x.ThanhPhoid,
-                        principalTable: "thanhPhos",
-                        principalColumn: "ThanhPho_id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -255,8 +215,8 @@ namespace WEBTimViec.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
@@ -300,8 +260,8 @@ namespace WEBTimViec.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -330,9 +290,9 @@ namespace WEBTimViec.Migrations
                     KieuCongViec = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ThoiGianDangBai = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ThoiGianCapNhat = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    HinhAnhBTDid = table.Column<int>(type: "int", nullable: true),
-                    ThanhPhoid = table.Column<int>(type: "int", nullable: true),
-                    KinhNghiemid = table.Column<int>(type: "int", nullable: false),
+                    thanhPhoid = table.Column<int>(type: "int", nullable: true),
+                    kinhNghiemid = table.Column<int>(type: "int", nullable: true),
+                    chuyenNganhid = table.Column<int>(type: "int", nullable: true),
                     applicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
@@ -344,21 +304,39 @@ namespace WEBTimViec.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_baiTuyenDungs_hinhAnhBTDs_HinhAnhBTDid",
-                        column: x => x.HinhAnhBTDid,
-                        principalTable: "hinhAnhBTDs",
-                        principalColumn: "HinhAnhBTD_id");
+                        name: "FK_baiTuyenDungs_chuyenNganhs_chuyenNganhid",
+                        column: x => x.chuyenNganhid,
+                        principalTable: "chuyenNganhs",
+                        principalColumn: "ChuyenNganh_id");
                     table.ForeignKey(
-                        name: "FK_baiTuyenDungs_kinhNghiems_KinhNghiemid",
-                        column: x => x.KinhNghiemid,
+                        name: "FK_baiTuyenDungs_kinhNghiems_kinhNghiemid",
+                        column: x => x.kinhNghiemid,
                         principalTable: "kinhNghiems",
-                        principalColumn: "KinhNghiem_id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "KinhNghiem_id");
                     table.ForeignKey(
-                        name: "FK_baiTuyenDungs_thanhPhos_ThanhPhoid",
-                        column: x => x.ThanhPhoid,
+                        name: "FK_baiTuyenDungs_thanhPhos_thanhPhoid",
+                        column: x => x.thanhPhoid,
                         principalTable: "thanhPhos",
                         principalColumn: "ThanhPho_id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "hinhAnhNTDs",
+                columns: table => new
+                {
+                    HinhAnhNTD_id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    image_url = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    applicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_hinhAnhNTDs", x => x.HinhAnhNTD_id);
+                    table.ForeignKey(
+                        name: "FK_hinhAnhNTDs_AspNetUsers_applicationUserId",
+                        column: x => x.applicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -367,7 +345,6 @@ namespace WEBTimViec.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UngVienid = table.Column<int>(type: "int", nullable: true),
                     applicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     ChuyenNganhid = table.Column<int>(type: "int", nullable: true)
                 },
@@ -465,6 +442,25 @@ namespace WEBTimViec.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "hinhAnhBTDs",
+                columns: table => new
+                {
+                    HinhAnhBTD_id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    image_url = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BaiTuyenDung_id = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_hinhAnhBTDs", x => x.HinhAnhBTD_id);
+                    table.ForeignKey(
+                        name: "FK_hinhAnhBTDs_baiTuyenDungs_BaiTuyenDung_id",
+                        column: x => x.BaiTuyenDung_id,
+                        principalTable: "baiTuyenDungs",
+                        principalColumn: "BaiTuyenDung_id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ungTuyens",
                 columns: table => new
                 {
@@ -525,21 +521,11 @@ namespace WEBTimViec.Migrations
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_HinhAnhNTDid",
-                table: "AspNetUsers",
-                column: "HinhAnhNTDid");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_AspNetUsers_HocVanid",
                 table: "AspNetUsers",
                 column: "HocVanid",
                 unique: true,
                 filter: "[HocVanid] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_ThanhPhoid",
-                table: "AspNetUsers",
-                column: "ThanhPhoid");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
@@ -574,19 +560,29 @@ namespace WEBTimViec.Migrations
                 column: "applicationUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_baiTuyenDungs_HinhAnhBTDid",
+                name: "IX_baiTuyenDungs_chuyenNganhid",
                 table: "baiTuyenDungs",
-                column: "HinhAnhBTDid");
+                column: "chuyenNganhid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_baiTuyenDungs_KinhNghiemid",
+                name: "IX_baiTuyenDungs_kinhNghiemid",
                 table: "baiTuyenDungs",
-                column: "KinhNghiemid");
+                column: "kinhNghiemid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_baiTuyenDungs_ThanhPhoid",
+                name: "IX_baiTuyenDungs_thanhPhoid",
                 table: "baiTuyenDungs",
-                column: "ThanhPhoid");
+                column: "thanhPhoid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_hinhAnhBTDs_BaiTuyenDung_id",
+                table: "hinhAnhBTDs",
+                column: "BaiTuyenDung_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_hinhAnhNTDs_applicationUserId",
+                table: "hinhAnhNTDs",
+                column: "applicationUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_hocVans_TruongDaiHocid",
@@ -649,6 +645,12 @@ namespace WEBTimViec.Migrations
                 name: "baiTuyenDung_ViTris");
 
             migrationBuilder.DropTable(
+                name: "hinhAnhBTDs");
+
+            migrationBuilder.DropTable(
+                name: "hinhAnhNTDs");
+
+            migrationBuilder.DropTable(
                 name: "ungTuyens");
 
             migrationBuilder.DropTable(
@@ -667,28 +669,22 @@ namespace WEBTimViec.Migrations
                 name: "baiTuyenDungs");
 
             migrationBuilder.DropTable(
-                name: "chuyenNganhs");
-
-            migrationBuilder.DropTable(
                 name: "kyNangMems");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "hinhAnhBTDs");
+                name: "chuyenNganhs");
 
             migrationBuilder.DropTable(
                 name: "kinhNghiems");
 
             migrationBuilder.DropTable(
-                name: "hinhAnhNTDs");
+                name: "thanhPhos");
 
             migrationBuilder.DropTable(
                 name: "hocVans");
-
-            migrationBuilder.DropTable(
-                name: "thanhPhos");
 
             migrationBuilder.DropTable(
                 name: "truongDaiHocs");

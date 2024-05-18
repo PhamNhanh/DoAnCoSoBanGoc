@@ -4,8 +4,6 @@
     {
         public int Id { get; set; }
 
-        public int? UngVienid { get; set; }
-
         public ApplicationUser? applicationUser { get; set; }
 
 

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using WEBTimViec.Data;
 using WEBTimViec.Models;
@@ -11,8 +13,8 @@ namespace WEBTimViec.Controllers
     {
         private readonly IBaiTuyenDung _baiTuyenDung;
         private readonly IChuyenNganh _chuyenNganh;
-        private readonly IHocVan _hocVan;
-/*        private readonly UserManager<ApplicationUser> _userManager;*/
+        private readonly IThanhPho _thanhPho;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
         private readonly IKinhNghiem _kinhNghiem;
         private readonly IUngTuyen _ungTuyen;
@@ -20,25 +22,96 @@ namespace WEBTimViec.Controllers
         public HomeController(ApplicationDbContext context,
             IBaiTuyenDung baiTuyenDung,
             IChuyenNganh chuyenNganh,
-            IHocVan hocVan,
+            IThanhPho thanhPho,
             IKinhNghiem kinhNghiem,
-/*            UserManager<ApplicationUser> userManager,*/
+            UserManager<ApplicationUser> userManager,
             IUngTuyen ungTuyen)
         {
             _context = context;
             _baiTuyenDung = baiTuyenDung;
             _chuyenNganh = chuyenNganh;
             _kinhNghiem = kinhNghiem;
-            _hocVan = hocVan;
-/*            _userManager = userManager;*/
+            _thanhPho = thanhPho;
+            _userManager = userManager;
             _ungTuyen = ungTuyen;
         }
         public IActionResult Index()
         {
-            /*            var hienthi_NhaTuyenDung = await _userManager.GetUserAsync(User);*/
+/*            var hienthi_NhaTuyenDung = await _userManager.GetUserAsync(User);*/
 
             return View();
         }
+        public async Task<IActionResult> AddBaiTuyenDung()
+        {
+/*            var hocVan = await _hocVan.GetAllAsync();*/
+            var kinhNghiem = await _kinhNghiem.GetAllAsync();
+            var chuyenNganh = await _chuyenNganh.GetAllAsync();
+            var thanhPho = await _thanhPho.GetAllAsync();
+/*            ViewBag.HocVan = new SelectList(hocVan, "HocVan_id", "province_name");*/
+            ViewBag.KinhNghiem = new SelectList(kinhNghiem, "KinhNghiem_id", "NamKinhNghiem");
+            ViewBag.ChuyenNganh = new SelectList(chuyenNganh, "ChuyenNganh_id", "ChuyenNganh_name");
+            ViewBag.ThanhPho = new SelectList(thanhPho, "ThanhPho_id", "ThanhPho_name");
+            return View();
+        }
+        public async Task<IActionResult> Create([Bind("BaiTuyenDung_id,BaiTuyenDung_name,MoTaCongViec,YeuCauKyNang,PhucLoi,KieuCongViec,Luong_min,Luong_max,thanhPhoid,ThoiGianDangBai,ThoiGianCapNhat,kinhNghiemid,chuyenNganhid,applicationUserid")] BaiTuyenDung baiTuyenDung)
+        {
+            /*            if (ModelState.IsValid)*/
+            {
+                var find_company = await _userManager.GetUserAsync(User);
+                if (find_company != null)
+                baiTuyenDung.applicationUser = find_company;
+                baiTuyenDung.TenBaiTuyenDung = baiTuyenDung.TenBaiTuyenDung;
+                baiTuyenDung.ThoiGianDangBai = DateTime.Now;
+                baiTuyenDung.ThoiGianCapNhat = baiTuyenDung.ThoiGianCapNhat;
+                baiTuyenDung.YeuCauKyNang = baiTuyenDung.YeuCauKyNang?.Replace("\r\n", "\n");
+                baiTuyenDung.MoTaCongViec = baiTuyenDung.MoTaCongViec?.Replace("\r\n", "\n");
+                baiTuyenDung.PhucLoi = baiTuyenDung.PhucLoi?.Replace("\r\n", "\n");
+                await _baiTuyenDung.AddAsync(baiTuyenDung);
+                return RedirectToAction(nameof(View));
+            }
+        }
+        [HttpGet]
+        public IActionResult AddThanhPho()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddThanhPho(ThanhPho thanhPho)
+        {
+            if (ModelState.IsValid)
+            {
+                if (string.IsNullOrEmpty(thanhPho.ThanhPho_name))
+            {
+                TempData["ErrorMessage"] = "Vui lòng nhập thông tin đầy đủ";
+                return View(thanhPho);
+            }
 
+            // Nếu không có lỗi, thêm thể loại và hiển thị thông báo thành công
+            await _thanhPho.AddAsync(thanhPho);
+            TempData["SuccessMessage"] = "Đã thêm thể loại thành công";
+                return RedirectToAction("Index", "Home");
+            }
+            return View(thanhPho);
+        }
+        public async Task<IActionResult> IndexThanhPho()
+        {
+            var thanhPho = await _thanhPho.GetAllAsync();
+            if (thanhPho == null)
+            {
+                return RedirectToAction("IndexThanhPho", "Home");
+            }
+            return View(thanhPho);
+        }
+        private async Task<string> SaveImage(IFormFile image)
+        {
+            var savePath = Path.Combine("wwwroot/images", image.FileName); //
+
+            using (var fileStream = new FileStream(savePath, FileMode.Create))
+            {
+                await image.CopyToAsync(fileStream);
+            }
+            return "/images/" + image.FileName; // Trả về đường dẫn tương đối
+        }
+        
     }
 }

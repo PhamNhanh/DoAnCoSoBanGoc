@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\DoAnCoSo\\BanGocDoAn\\WEBTimViec\\WEBTimViec\\WEBTimViec.csproj": {}
+    "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\WEBTimViec.csproj": {}
   },
   "projects": {
-    "C:\\DoAnCoSo\\BanGocDoAn\\WEBTimViec\\WEBTimViec\\WEBTimViec.csproj": {
+    "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\WEBTimViec.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\DoAnCoSo\\BanGocDoAn\\WEBTimViec\\WEBTimViec\\WEBTimViec.csproj",
+        "projectUniqueName": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\WEBTimViec.csproj",
         "projectName": "WEBTimViec",
-        "projectPath": "C:\\DoAnCoSo\\BanGocDoAn\\WEBTimViec\\WEBTimViec\\WEBTimViec.csproj",
+        "projectPath": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\WEBTimViec.csproj",
         "packagesPath": "C:\\Users\\phamh\\.nuget\\packages\\",
-        "outputPath": "C:\\DoAnCoSo\\BanGocDoAn\\WEBTimViec\\WEBTimViec\\obj\\",
+        "outputPath": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\phamh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -55,7 +55,11 @@
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
@@ -70,6 +74,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.4, )"
+            },
+            "Microsoft.Identity.Client": {
+              "target": "Package",
+              "version": "[4.61.0, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",

@@ -7,5 +7,6 @@
         public int BaiTuyenDungid { get; set; }
         public ChuyenNganh? chuyenNganh { get; set; }
         public int ChuyenNganhid { get; set; }
+        
     }
 }

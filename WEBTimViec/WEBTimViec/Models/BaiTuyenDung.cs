@@ -16,16 +16,16 @@ namespace WEBTimViec.Models
         public string? KieuCongViec { get; set; }
         public DateTime? ThoiGianDangBai { get; set; }
         public DateTime? ThoiGianCapNhat { get; set; }
-        public HinhAnhBTD? hinhAnhBTD { get; set; }
-        public int? HinhAnhBTDid { get; set; }
+        public List<HinhAnhBTD>? hinhAnhBTD { get; set; }
         public ThanhPho? thanhPho { get; set; }
-        public int? ThanhPhoid { get; set; }
+        public int? thanhPhoid { get; set; }
         public KinhNghiem? kinhNghiem { get; set; }
-        public int KinhNghiemid { get; set; }
+        public int? kinhNghiemid { get; set; }
         public List<BaiTuyenDung_ViTri>? baiTuyenDung_ViTris { get; set; }
         public List<BaiTuyenDung_ChuyenNganh>? baiTuyenDung_ChuyenNganhs { get; set; }
 
-
+        public ChuyenNganh? chuyenNganh { get; set; }
+        public int? chuyenNganhid { get; set; }
 
 /*        public int? applicationUserid { get; set; }*/
         public ApplicationUser? applicationUser { get; set; }

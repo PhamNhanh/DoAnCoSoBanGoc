@@ -1,0 +1,21 @@
+﻿@model WEBTimViec.Models.ThanhPho
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<body>
+    <h1>Thêm thanh pho</h1>
+
+    <form asp-action="AddThanhPho">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="ThanhPho_name" class="control-label"></label>
+            <input asp-for="ThanhPho_name" class="form-control" />
+            <span asp-validation-for="ThanhPho_name" class="text-danger"></span>
+        </div>
+        <div class="btn-container">
+            <button class="btn" type="submit">Thêm thành phố </button>
+        </div>
+    </form>
+</body>
