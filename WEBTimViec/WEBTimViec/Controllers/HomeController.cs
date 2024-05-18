@@ -70,6 +70,9 @@ namespace WEBTimViec.Controllers
                 return RedirectToAction(nameof(View));
             }
         }
+
+        //Thanh Pho
+
         [HttpGet]
         public IActionResult AddThanhPho()
         {
@@ -89,19 +92,51 @@ namespace WEBTimViec.Controllers
             // Nếu không có lỗi, thêm thể loại và hiển thị thông báo thành công
             await _thanhPho.AddAsync(thanhPho);
             TempData["SuccessMessage"] = "Đã thêm thể loại thành công";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("IndexThanhPho", "Home");
             }
             return View(thanhPho);
         }
         public async Task<IActionResult> IndexThanhPho()
         {
             var thanhPho = await _thanhPho.GetAllAsync();
-            if (thanhPho == null)
-            {
-                return RedirectToAction("IndexThanhPho", "Home");
-            }
             return View(thanhPho);
         }
+
+
+        //Chuyen Nganh
+        [HttpGet]
+        public IActionResult AddChuyenNganh()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddChuyenNganh(ChuyenNganh chuyenNganh)
+        {
+            if (ModelState.IsValid)
+            {
+                if (string.IsNullOrEmpty(chuyenNganh.ChuyenNganh_name))
+                {
+                    TempData["ErrorMessage"] = "Vui lòng nhập thông tin đầy đủ";
+                    return View(chuyenNganh);
+                }
+
+                // Nếu không có lỗi, thêm thể loại và hiển thị thông báo thành công
+                await _chuyenNganh.AddAsync(chuyenNganh);
+                TempData["SuccessMessage"] = "Đã thêm thể loại thành công";
+                return RedirectToAction("IndexChuyenNganh", "Home");
+            }
+            return View(chuyenNganh);
+        }
+        public async Task<IActionResult> IndexChuyenNganh()
+        {
+            var chuyenNganh = await _chuyenNganh.GetAllAsync();
+
+            return View(chuyenNganh);
+        }
+
+
+
+
         private async Task<string> SaveImage(IFormFile image)
         {
             var savePath = Path.Combine("wwwroot/images", image.FileName); //

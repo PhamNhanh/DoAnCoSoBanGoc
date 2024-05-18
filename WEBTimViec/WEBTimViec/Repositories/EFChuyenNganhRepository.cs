@@ -16,6 +16,10 @@ namespace WEBTimViec.Repositories
             {
                 return await _context.chuyenNganhs.ToListAsync();
             }
-    
+        public async Task AddAsync(ChuyenNganh chuyenNganh)
+        {
+            _context.chuyenNganhs.Add(chuyenNganh);
+            await _context.SaveChangesAsync();
+        }
     }
 }
