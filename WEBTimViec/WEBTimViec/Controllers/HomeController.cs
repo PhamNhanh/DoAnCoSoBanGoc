@@ -6,6 +6,7 @@ using System.Diagnostics;
 using WEBTimViec.Data;
 using WEBTimViec.Models;
 using WEBTimViec.Repositories;
+using System.Linq;
 
 namespace WEBTimViec.Controllers
 {
@@ -43,33 +44,21 @@ namespace WEBTimViec.Controllers
         }
         public async Task<IActionResult> AddBaiTuyenDung()
         {
-/*            var hocVan = await _hocVan.GetAllAsync();*/
             var kinhNghiem = await _kinhNghiem.GetAllAsync();
+            var sortedKinhNghiem = kinhNghiem.OrderBy(kn => kn.NamKinhNghiem).ToList();
+
             var chuyenNganh = await _chuyenNganh.GetAllAsync();
+            var sortedChuyenNganh = chuyenNganh.OrderBy(cn => cn.ChuyenNganh_name).ToList();
+
             var thanhPho = await _thanhPho.GetAllAsync();
-/*            ViewBag.HocVan = new SelectList(hocVan, "HocVan_id", "province_name");*/
-            ViewBag.KinhNghiem = new SelectList(kinhNghiem, "KinhNghiem_id", "NamKinhNghiem");
-            ViewBag.ChuyenNganh = new SelectList(chuyenNganh, "ChuyenNganh_id", "ChuyenNganh_name");
-            ViewBag.ThanhPho = new SelectList(thanhPho, "ThanhPho_id", "ThanhPho_name");
+            var sortedThanhPho = thanhPho.OrderBy(tp => tp.ThanhPho_name).ToList();
+
+            ViewBag.KinhNghiem = new SelectList(sortedKinhNghiem, "KinhNghiem_id", "NamKinhNghiem");
+            ViewBag.ChuyenNganh = new SelectList(sortedChuyenNganh, "ChuyenNganh_id", "ChuyenNganh_name");
+            ViewBag.ThanhPho = new SelectList(sortedThanhPho, "ThanhPho_id", "ThanhPho_name");
+
             return View();
         }
-        /*        public async Task<IActionResult> Create([Bind("BaiTuyenDung_id,TenBaiTuyenDung,MoTaCongViec,YeuCauKyNang,PhucLoi,KieuCongViec,Luong_min,Luong_max,thanhPhoid,ThoiGianDangBai,ThoiGianCapNhat,kinhNghiemid,chuyenNganhid,applicationUserid")] BaiTuyenDung baiTuyenDung)
-                {
-                    *//*            if (ModelState.IsValid)*//*
-                    {
-                        var find_company = await _userManager.GetUserAsync(User);
-                        if (find_company != null)
-                        baiTuyenDung.applicationUser = find_company;
-                        baiTuyenDung.TenCongViec = baiTuyenDung.TenCongViec;
-                        baiTuyenDung.ThoiGianDangBai = DateTime.Now;
-                        baiTuyenDung.ThoiGianCapNhat = baiTuyenDung.ThoiGianCapNhat;
-                        baiTuyenDung.YeuCauKyNang = baiTuyenDung.YeuCauKyNang?.Replace("\r\n", "\n");
-                        baiTuyenDung.MoTaCongViec = baiTuyenDung.MoTaCongViec?.Replace("\r\n", "\n");
-                        baiTuyenDung.PhucLoi = baiTuyenDung.PhucLoi?.Replace("\r\n", "\n");
-                        await _baiTuyenDung.AddAsync(baiTuyenDung);
-                        return RedirectToAction(nameof(View));
-                    }
-                }*/
         public async Task<IActionResult> Create([Bind("BaiTuyenDung_id,TenCongViec,MoTaCongViec,YeuCauKyNang,PhucLoi,KieuCongViec,Luong_min,Luong_max,thanhPhoid,ThoiGianDangBai,ThoiGianCapNhat,kinhNghiemid,chuyenNganhid,applicationUserid")] BaiTuyenDung baiTuyenDung)
         {
             if (ModelState.IsValid)
@@ -133,7 +122,8 @@ namespace WEBTimViec.Controllers
         public async Task<IActionResult> IndexThanhPho()
         {
             var thanhPho = await _thanhPho.GetAllAsync();
-            return View(thanhPho);
+            var sortedThanhPho = thanhPho.OrderBy(tp => tp.ThanhPho_name).ToList();
+            return View(sortedThanhPho);
         }
 
 
