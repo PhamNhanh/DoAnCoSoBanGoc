@@ -12,7 +12,7 @@ using WEBTimViec.Data;
 namespace WEBTimViec.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240518134209_identity")]
+    [Migration("20240518160231_identity")]
     partial class identity
     {
         /// <inheritdoc />
@@ -292,7 +292,7 @@ namespace WEBTimViec.Migrations
                     b.Property<string>("PhucLoi")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TenBaiTuyenDung")
+                    b.Property<string>("TenCongViec")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ThoiGianCapNhat")

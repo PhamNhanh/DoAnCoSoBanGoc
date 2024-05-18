@@ -289,7 +289,7 @@ namespace WEBTimViec.Migrations
                     b.Property<string>("PhucLoi")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TenBaiTuyenDung")
+                    b.Property<string>("TenCongViec")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ThoiGianCapNhat")

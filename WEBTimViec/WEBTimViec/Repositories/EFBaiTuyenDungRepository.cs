@@ -15,16 +15,12 @@ namespace WEBTimViec.Repositories
         {
             //bao gồm danh mục, nếu không có sẽ ko ra danh mục
             var applicationDbContext = await _context.baiTuyenDungs
-                 .Include(b => b.TenBaiTuyenDung)
-                .Include(b => b.MoTaCongViec)
-                .Include(b => b.YeuCauKyNang)
-                .Include(b => b.PhucLoi)
-                .Include(b => b.Luong_min)
-                .Include(b => b.Luong_max)
-                .Include(b => b.KieuCongViec)
-                .Include(b => b.ThoiGianDangBai)
-                .Include(b => b.ThoiGianCapNhat)
-                .ToListAsync();
+    .Include(b => b.thanhPho)
+    .Include(b => b.kinhNghiem)
+    .Include(b => b.chuyenNganh)
+    .Include(b => b.applicationUser)
+    .ToListAsync();
+
 
             return await _context.baiTuyenDungs.ToListAsync();
         }
@@ -33,16 +29,11 @@ namespace WEBTimViec.Repositories
         {
             //bao gồm danh mục, nếu không có sẽ ko ra danh mục
             var applicationDbContext = await _context.baiTuyenDungs
-                 .Include(b => b.TenBaiTuyenDung)
-                .Include(b => b.MoTaCongViec)
-                .Include(b => b.YeuCauKyNang)
-                .Include(b => b.PhucLoi)
-                .Include(b => b.Luong_min)
-                .Include(b => b.Luong_max)
-                .Include(b => b.KieuCongViec)
-                .Include(b => b.ThoiGianDangBai)
-                .Include(b => b.ThoiGianCapNhat)
-                .ToListAsync();
+    .Include(b => b.thanhPho)
+    .Include(b => b.kinhNghiem)
+    .Include(b => b.chuyenNganh)
+    .Include(b => b.applicationUser)
+    .ToListAsync();
 
             return applicationDbContext;
         }
@@ -51,16 +42,11 @@ namespace WEBTimViec.Repositories
         public async Task<BaiTuyenDung> GetByIdAsync(int id)
         {
             var applicationDbContext = await _context.baiTuyenDungs
-                .Include(b => b.TenBaiTuyenDung)
-                .Include(b => b.MoTaCongViec)
-                .Include(b => b.YeuCauKyNang)
-                .Include(b => b.PhucLoi)
-                .Include(b => b.Luong_min)
-                .Include(b => b.Luong_max)
-                .Include(b => b.KieuCongViec)
-                .Include(b => b.ThoiGianDangBai)
-                .Include(b => b.ThoiGianCapNhat)
-                .ToListAsync();
+    .Include(b => b.thanhPho)
+    .Include(b => b.kinhNghiem)
+    .Include(b => b.chuyenNganh)
+    .Include(b => b.applicationUser)
+    .ToListAsync();
             return await _context.baiTuyenDungs.FindAsync(id);
         }
 

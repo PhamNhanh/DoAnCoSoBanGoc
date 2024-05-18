@@ -53,22 +53,56 @@ namespace WEBTimViec.Controllers
             ViewBag.ThanhPho = new SelectList(thanhPho, "ThanhPho_id", "ThanhPho_name");
             return View();
         }
-        public async Task<IActionResult> Create([Bind("BaiTuyenDung_id,BaiTuyenDung_name,MoTaCongViec,YeuCauKyNang,PhucLoi,KieuCongViec,Luong_min,Luong_max,thanhPhoid,ThoiGianDangBai,ThoiGianCapNhat,kinhNghiemid,chuyenNganhid,applicationUserid")] BaiTuyenDung baiTuyenDung)
+        /*        public async Task<IActionResult> Create([Bind("BaiTuyenDung_id,TenBaiTuyenDung,MoTaCongViec,YeuCauKyNang,PhucLoi,KieuCongViec,Luong_min,Luong_max,thanhPhoid,ThoiGianDangBai,ThoiGianCapNhat,kinhNghiemid,chuyenNganhid,applicationUserid")] BaiTuyenDung baiTuyenDung)
+                {
+                    *//*            if (ModelState.IsValid)*//*
+                    {
+                        var find_company = await _userManager.GetUserAsync(User);
+                        if (find_company != null)
+                        baiTuyenDung.applicationUser = find_company;
+                        baiTuyenDung.TenCongViec = baiTuyenDung.TenCongViec;
+                        baiTuyenDung.ThoiGianDangBai = DateTime.Now;
+                        baiTuyenDung.ThoiGianCapNhat = baiTuyenDung.ThoiGianCapNhat;
+                        baiTuyenDung.YeuCauKyNang = baiTuyenDung.YeuCauKyNang?.Replace("\r\n", "\n");
+                        baiTuyenDung.MoTaCongViec = baiTuyenDung.MoTaCongViec?.Replace("\r\n", "\n");
+                        baiTuyenDung.PhucLoi = baiTuyenDung.PhucLoi?.Replace("\r\n", "\n");
+                        await _baiTuyenDung.AddAsync(baiTuyenDung);
+                        return RedirectToAction(nameof(View));
+                    }
+                }*/
+        public async Task<IActionResult> Create([Bind("BaiTuyenDung_id,TenCongViec,MoTaCongViec,YeuCauKyNang,PhucLoi,KieuCongViec,Luong_min,Luong_max,thanhPhoid,ThoiGianDangBai,ThoiGianCapNhat,kinhNghiemid,chuyenNganhid,applicationUserid")] BaiTuyenDung baiTuyenDung)
         {
-            /*            if (ModelState.IsValid)*/
+            if (ModelState.IsValid)
             {
+                if (string.IsNullOrWhiteSpace(baiTuyenDung.TenCongViec))
+                {
+                    ModelState.AddModelError(nameof(baiTuyenDung.TenCongViec), "Tên công việc không được để trống.");
+                    return View(baiTuyenDung);
+                }
+
                 var find_company = await _userManager.GetUserAsync(User);
                 if (find_company != null)
-                baiTuyenDung.applicationUser = find_company;
-                baiTuyenDung.TenBaiTuyenDung = baiTuyenDung.TenBaiTuyenDung;
+                    baiTuyenDung.applicationUser = find_company;
+
                 baiTuyenDung.ThoiGianDangBai = DateTime.Now;
-                baiTuyenDung.ThoiGianCapNhat = baiTuyenDung.ThoiGianCapNhat;
+                baiTuyenDung.ThoiGianCapNhat = DateTime.Now;
+
                 baiTuyenDung.YeuCauKyNang = baiTuyenDung.YeuCauKyNang?.Replace("\r\n", "\n");
                 baiTuyenDung.MoTaCongViec = baiTuyenDung.MoTaCongViec?.Replace("\r\n", "\n");
                 baiTuyenDung.PhucLoi = baiTuyenDung.PhucLoi?.Replace("\r\n", "\n");
+
+
                 await _baiTuyenDung.AddAsync(baiTuyenDung);
-                return RedirectToAction(nameof(View));
+                await _context.SaveChangesAsync();
+                return RedirectToAction("IndexBaiTuyenDung", "Home");
             }
+            return View(baiTuyenDung);
+        }
+
+        public async Task<IActionResult> IndexBaiTuyenDung()
+        {
+            var baiTuyenDung = await _baiTuyenDung.GetAllAsync();
+            return View(baiTuyenDung);
         }
 
         //Thanh Pho

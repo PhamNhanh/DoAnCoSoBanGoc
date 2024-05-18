@@ -7,7 +7,7 @@ namespace WEBTimViec.Models
     {
         [Key]
         public int BaiTuyenDung_id { get; set; }
-        public string? TenBaiTuyenDung { get; set; }
+        public string? TenCongViec { get; set; }
         public string? MoTaCongViec { get; set; }
         public string? YeuCauKyNang { get; set; }
         public string? PhucLoi { get; set; }
