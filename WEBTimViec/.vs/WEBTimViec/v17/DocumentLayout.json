@@ -3,8 +3,96 @@
   "WorkspaceRootPath": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\views\\home\\detailsbaituyendung.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\views\\home\\detailsbaituyendung.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\views\\home\\addthanhpho.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\views\\home\\addthanhpho.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\views\\home\\addchuyennganh.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\views\\home\\addchuyennganh.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\views\\home\\indexbaituyendung.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\views\\home\\indexbaituyendung.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\views\\home\\indexchuyennganh.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\views\\home\\indexchuyennganh.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\views\\home\\addbaituyendung.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\views\\home\\addbaituyendung.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\views\\home\\indexthanhpho.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\views\\home\\indexthanhpho.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\models\\baituyendung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\models\\baituyendung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\repositories\\ivitricongviec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\repositories\\ivitricongviec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\repositories\\ichuyennganh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\repositories\\ichuyennganh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\repositories\\efvitricongviecrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\repositories\\efvitricongviecrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\repositories\\ithanhpho.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\repositories\\ithanhpho.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\repositories\\efchuyennganhrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\repositories\\efchuyennganhrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Migrations\\20240519050132_identity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:WEBTimViec\\Migrations\\20240519050132_identity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\models\\baituyendung_chuyennganh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\models\\baituyendung_chuyennganh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\models\\baituyendung_vitri.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\models\\baituyendung_vitri.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\repositories\\ibaituyendung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\repositories\\ibaituyendung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\repositories\\efbaituyendungrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\repositories\\efbaituyendungrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Migrations\\20240519040122_identity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:WEBTimViec\\Migrations\\20240519040122_identity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\models\\chuyennganh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,60 +119,8 @@
       "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\models\\kinhnghiem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\views\\home\\addbaituyendung.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\views\\home\\addbaituyendung.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\models\\baituyendung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\models\\baituyendung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\views\\home\\indexbaituyendung.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\views\\home\\indexbaituyendung.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\repositories\\efbaituyendungrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\repositories\\efbaituyendungrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\views\\home\\addchuyennganh.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\views\\home\\addchuyennganh.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\views\\home\\indexchuyennganh.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\views\\home\\indexchuyennganh.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\views\\home\\indexthanhpho.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\views\\home\\indexthanhpho.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\repositories\\efchuyennganhrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\repositories\\efchuyennganhrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\repositories\\efthanhphorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\repositories\\efthanhphorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\repositories\\ithanhpho.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\repositories\\ithanhpho.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\views\\home\\addthanhpho.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\views\\home\\addthanhpho.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\models\\hinhanhbtd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -95,8 +131,8 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:WEBTimViec\\Migrations\\20240518133817_identity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\migrations\\20240518160231_identity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\migrations\\20240518160231_identity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|c:\\doancoso\\github\\doancosobangoc\\webtimviec\\webtimviec\\migrations\\20240519051748_identity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A162876E-F2CF-4869-B5B3-D61206D05B06}|WEBTimViec\\WEBTimViec.csproj|solutionrelative:webtimviec\\migrations\\20240519051748_identity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -106,7 +142,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 377,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -134,7 +170,341 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AddChuyenNganh.cshtml",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\AddChuyenNganh.cshtml",
+              "RelativeDocumentMoniker": "WEBTimViec\\Views\\Home\\AddChuyenNganh.cshtml",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\AddChuyenNganh.cshtml",
+              "RelativeToolTip": "WEBTimViec\\Views\\Home\\AddChuyenNganh.cshtml",
+              "ViewState": "AQIAAFoAAAAAAAAAAAAAABkAAABAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T15:22:28.184Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IndexBaiTuyenDung.cshtml",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\IndexBaiTuyenDung.cshtml",
+              "RelativeDocumentMoniker": "WEBTimViec\\Views\\Home\\IndexBaiTuyenDung.cshtml",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\IndexBaiTuyenDung.cshtml",
+              "RelativeToolTip": "WEBTimViec\\Views\\Home\\IndexBaiTuyenDung.cshtml",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAACsAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T15:51:57.391Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DetailsBaiTuyenDung.cshtml",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\DetailsBaiTuyenDung.cshtml",
+              "RelativeDocumentMoniker": "WEBTimViec\\Views\\Home\\DetailsBaiTuyenDung.cshtml",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\DetailsBaiTuyenDung.cshtml",
+              "RelativeToolTip": "WEBTimViec\\Views\\Home\\DetailsBaiTuyenDung.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAE4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-19T04:09:57.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "AddThanhPho.cshtml",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\AddThanhPho.cshtml",
+              "RelativeDocumentMoniker": "WEBTimViec\\Views\\Home\\AddThanhPho.cshtml",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\AddThanhPho.cshtml",
+              "RelativeToolTip": "WEBTimViec\\Views\\Home\\AddThanhPho.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T13:51:34.722Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IndexChuyenNganh.cshtml",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\IndexChuyenNganh.cshtml",
+              "RelativeDocumentMoniker": "WEBTimViec\\Views\\Home\\IndexChuyenNganh.cshtml",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\IndexChuyenNganh.cshtml",
+              "RelativeToolTip": "WEBTimViec\\Views\\Home\\IndexChuyenNganh.cshtml",
+              "ViewState": "AQIAADkAAAAAAAAAAAAAAEYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T15:24:18.506Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AddBaiTuyenDung.cshtml",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\AddBaiTuyenDung.cshtml",
+              "RelativeDocumentMoniker": "WEBTimViec\\Views\\Home\\AddBaiTuyenDung.cshtml",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\AddBaiTuyenDung.cshtml",
+              "RelativeToolTip": "WEBTimViec\\Views\\Home\\AddBaiTuyenDung.cshtml",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAACYAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T14:53:38.35Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "WEBTimViec\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "WEBTimViec\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACEAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T13:59:17.2Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "WEBTimViec\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "WEBTimViec\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAABMAAAAAAAAAAAAwwCsAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T15:41:47.244Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IndexThanhPho.cshtml",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\IndexThanhPho.cshtml",
+              "RelativeDocumentMoniker": "WEBTimViec\\Views\\Home\\IndexThanhPho.cshtml",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\IndexThanhPho.cshtml",
+              "RelativeToolTip": "WEBTimViec\\Views\\Home\\IndexThanhPho.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-18T14:34:09.39Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "WEBTimViec\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "WEBTimViec\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAEcAAAAAAAAAAAAwwFUAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T13:45:54.68Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "20240519051748_identity.cs",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Migrations\\20240519051748_identity.cs",
+              "RelativeDocumentMoniker": "WEBTimViec\\Migrations\\20240519051748_identity.cs",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Migrations\\20240519051748_identity.cs",
+              "RelativeToolTip": "WEBTimViec\\Migrations\\20240519051748_identity.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T05:17:48.202Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IViTriCongViec.cs",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Repositories\\IViTriCongViec.cs",
+              "RelativeDocumentMoniker": "WEBTimViec\\Repositories\\IViTriCongViec.cs",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Repositories\\IViTriCongViec.cs",
+              "RelativeToolTip": "WEBTimViec\\Repositories\\IViTriCongViec.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T05:06:28.669Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IChuyenNganh.cs",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Repositories\\IChuyenNganh.cs",
+              "RelativeDocumentMoniker": "WEBTimViec\\Repositories\\IChuyenNganh.cs",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Repositories\\IChuyenNganh.cs",
+              "RelativeToolTip": "WEBTimViec\\Repositories\\IChuyenNganh.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T05:09:04.7Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "BaiTuyenDung.cs",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\BaiTuyenDung.cs",
+              "RelativeDocumentMoniker": "WEBTimViec\\Models\\BaiTuyenDung.cs",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\BaiTuyenDung.cs",
+              "RelativeToolTip": "WEBTimViec\\Models\\BaiTuyenDung.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAiwCEAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T15:55:30.554Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "EFViTriCongViecRepository.cs",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Repositories\\EFViTriCongViecRepository.cs",
+              "RelativeDocumentMoniker": "WEBTimViec\\Repositories\\EFViTriCongViecRepository.cs",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Repositories\\EFViTriCongViecRepository.cs",
+              "RelativeToolTip": "WEBTimViec\\Repositories\\EFViTriCongViecRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T05:06:12.479Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IThanhPho.cs",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Repositories\\IThanhPho.cs",
+              "RelativeDocumentMoniker": "WEBTimViec\\Repositories\\IThanhPho.cs",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Repositories\\IThanhPho.cs",
+              "RelativeToolTip": "WEBTimViec\\Repositories\\IThanhPho.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T14:07:20.564Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Program.cs",
+              "RelativeDocumentMoniker": "WEBTimViec\\Program.cs",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Program.cs",
+              "RelativeToolTip": "WEBTimViec\\Program.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAB8AAABGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T14:34:26.701Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "EFChuyenNganhRepository.cs",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Repositories\\EFChuyenNganhRepository.cs",
+              "RelativeDocumentMoniker": "WEBTimViec\\Repositories\\EFChuyenNganhRepository.cs",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Repositories\\EFChuyenNganhRepository.cs",
+              "RelativeToolTip": "WEBTimViec\\Repositories\\EFChuyenNganhRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T15:19:40.196Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "20240519050132_identity.cs",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Migrations\\20240519050132_identity.cs",
+              "RelativeDocumentMoniker": "WEBTimViec\\Migrations\\20240519050132_identity.cs",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Migrations\\20240519050132_identity.cs",
+              "RelativeToolTip": "WEBTimViec\\Migrations\\20240519050132_identity.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAABxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T05:01:32.791Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "BaiTuyenDung_ChuyenNganh.cs",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\BaiTuyenDung_ChuyenNganh.cs",
+              "RelativeDocumentMoniker": "WEBTimViec\\Models\\BaiTuyenDung_ChuyenNganh.cs",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\BaiTuyenDung_ChuyenNganh.cs",
+              "RelativeToolTip": "WEBTimViec\\Models\\BaiTuyenDung_ChuyenNganh.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T04:36:57.814Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "BaiTuyenDung_ViTri.cs",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\BaiTuyenDung_ViTri.cs",
+              "RelativeDocumentMoniker": "WEBTimViec\\Models\\BaiTuyenDung_ViTri.cs",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\BaiTuyenDung_ViTri.cs",
+              "RelativeToolTip": "WEBTimViec\\Models\\BaiTuyenDung_ViTri.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T04:07:53.393Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "IBaiTuyenDung.cs",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Repositories\\IBaiTuyenDung.cs",
+              "RelativeDocumentMoniker": "WEBTimViec\\Repositories\\IBaiTuyenDung.cs",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Repositories\\IBaiTuyenDung.cs",
+              "RelativeToolTip": "WEBTimViec\\Repositories\\IBaiTuyenDung.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T04:08:00.153Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "EFBaiTuyenDungRepository.cs",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Repositories\\EFBaiTuyenDungRepository.cs",
+              "RelativeDocumentMoniker": "WEBTimViec\\Repositories\\EFBaiTuyenDungRepository.cs",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Repositories\\EFBaiTuyenDungRepository.cs",
+              "RelativeToolTip": "WEBTimViec\\Repositories\\EFBaiTuyenDungRepository.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAYwCcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T15:05:13.347Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "20240519040122_identity.cs",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Migrations\\20240519040122_identity.cs",
+              "RelativeDocumentMoniker": "WEBTimViec\\Migrations\\20240519040122_identity.cs",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Migrations\\20240519040122_identity.cs",
+              "RelativeToolTip": "WEBTimViec\\Migrations\\20240519040122_identity.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T04:01:22.365Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "KyNangMem.cs",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\KyNangMem.cs",
+              "RelativeDocumentMoniker": "WEBTimViec\\Models\\KyNangMem.cs",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\KyNangMem.cs",
+              "RelativeToolTip": "WEBTimViec\\Models\\KyNangMem.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T16:18:21.694Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "ThanhPho.cs",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\ThanhPho.cs",
+              "RelativeDocumentMoniker": "WEBTimViec\\Models\\ThanhPho.cs",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\ThanhPho.cs",
+              "RelativeToolTip": "WEBTimViec\\Models\\ThanhPho.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T16:18:30.518Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "TruongDaiHoc.cs",
+              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\TruongDaiHoc.cs",
+              "RelativeDocumentMoniker": "WEBTimViec\\Models\\TruongDaiHoc.cs",
+              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\TruongDaiHoc.cs",
+              "RelativeToolTip": "WEBTimViec\\Models\\TruongDaiHoc.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T16:18:37.126Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
               "Title": "ChuyenNganh.cs",
               "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\ChuyenNganh.cs",
               "RelativeDocumentMoniker": "WEBTimViec\\Models\\ChuyenNganh.cs",
@@ -147,59 +517,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "TruongDaiHoc.cs",
-              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\TruongDaiHoc.cs",
-              "RelativeDocumentMoniker": "WEBTimViec\\Models\\TruongDaiHoc.cs",
-              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\TruongDaiHoc.cs",
-              "RelativeToolTip": "WEBTimViec\\Models\\TruongDaiHoc.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T16:18:37.126Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ThanhPho.cs",
-              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\ThanhPho.cs",
-              "RelativeDocumentMoniker": "WEBTimViec\\Models\\ThanhPho.cs",
-              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\ThanhPho.cs",
-              "RelativeToolTip": "WEBTimViec\\Models\\ThanhPho.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T16:18:30.518Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "KyNangMem.cs",
-              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\KyNangMem.cs",
-              "RelativeDocumentMoniker": "WEBTimViec\\Models\\KyNangMem.cs",
-              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\KyNangMem.cs",
-              "RelativeToolTip": "WEBTimViec\\Models\\KyNangMem.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T16:18:21.694Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "WEBTimViec\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "WEBTimViec\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAAYwDwAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T13:45:54.68Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 24,
               "Title": "ViTriCongViec.cs",
               "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\ViTriCongViec.cs",
               "RelativeDocumentMoniker": "WEBTimViec\\Models\\ViTriCongViec.cs",
@@ -207,12 +525,11 @@
               "RelativeToolTip": "WEBTimViec\\Models\\ViTriCongViec.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T16:18:45.819Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-18T16:18:45.819Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 28,
               "Title": "KinhNghiem.cs",
               "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\KinhNghiem.cs",
               "RelativeDocumentMoniker": "WEBTimViec\\Models\\KinhNghiem.cs",
@@ -220,144 +537,11 @@
               "RelativeToolTip": "WEBTimViec\\Models\\KinhNghiem.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T16:18:08.392Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-18T16:18:08.392Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "20240518160231_identity.cs",
-              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Migrations\\20240518160231_identity.cs",
-              "RelativeDocumentMoniker": "WEBTimViec\\Migrations\\20240518160231_identity.cs",
-              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Migrations\\20240518160231_identity.cs",
-              "RelativeToolTip": "WEBTimViec\\Migrations\\20240518160231_identity.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T16:02:32.049Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "BaiTuyenDung.cs",
-              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\BaiTuyenDung.cs",
-              "RelativeDocumentMoniker": "WEBTimViec\\Models\\BaiTuyenDung.cs",
-              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\BaiTuyenDung.cs",
-              "RelativeToolTip": "WEBTimViec\\Models\\BaiTuyenDung.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAywCIAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T15:55:30.554Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AddBaiTuyenDung.cshtml",
-              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\AddBaiTuyenDung.cshtml",
-              "RelativeDocumentMoniker": "WEBTimViec\\Views\\Home\\AddBaiTuyenDung.cshtml",
-              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\AddBaiTuyenDung.cshtml",
-              "RelativeToolTip": "WEBTimViec\\Views\\Home\\AddBaiTuyenDung.cshtml",
-              "ViewState": "AQIAAGIAAAAAAAAAAAAAABEAAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-18T14:53:38.35Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "IndexBaiTuyenDung.cshtml",
-              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\IndexBaiTuyenDung.cshtml",
-              "RelativeDocumentMoniker": "WEBTimViec\\Views\\Home\\IndexBaiTuyenDung.cshtml",
-              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\IndexBaiTuyenDung.cshtml",
-              "RelativeToolTip": "WEBTimViec\\Views\\Home\\IndexBaiTuyenDung.cshtml",
-              "ViewState": "AQIAAAsAAAAAAAAAAAD4vw8AAAA/AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-18T15:51:57.391Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "EFBaiTuyenDungRepository.cs",
-              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Repositories\\EFBaiTuyenDungRepository.cs",
-              "RelativeDocumentMoniker": "WEBTimViec\\Repositories\\EFBaiTuyenDungRepository.cs",
-              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Repositories\\EFBaiTuyenDungRepository.cs",
-              "RelativeToolTip": "WEBTimViec\\Repositories\\EFBaiTuyenDungRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T15:05:13.347Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "WEBTimViec\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "WEBTimViec\\Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAABAAAAAAAAAAAAAUwCEAAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-18T13:59:17.2Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "IndexThanhPho.cshtml",
-              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\IndexThanhPho.cshtml",
-              "RelativeDocumentMoniker": "WEBTimViec\\Views\\Home\\IndexThanhPho.cshtml",
-              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\IndexThanhPho.cshtml",
-              "RelativeToolTip": "WEBTimViec\\Views\\Home\\IndexThanhPho.cshtml",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAQwCMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-18T14:34:09.39Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "AddChuyenNganh.cshtml",
-              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\AddChuyenNganh.cshtml",
-              "RelativeDocumentMoniker": "WEBTimViec\\Views\\Home\\AddChuyenNganh.cshtml",
-              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\AddChuyenNganh.cshtml",
-              "RelativeToolTip": "WEBTimViec\\Views\\Home\\AddChuyenNganh.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAABJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-18T15:22:28.184Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "WEBTimViec\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "WEBTimViec\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAQwCoAAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-18T15:41:47.244Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "IndexChuyenNganh.cshtml",
-              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\IndexChuyenNganh.cshtml",
-              "RelativeDocumentMoniker": "WEBTimViec\\Views\\Home\\IndexChuyenNganh.cshtml",
-              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\IndexChuyenNganh.cshtml",
-              "RelativeToolTip": "WEBTimViec\\Views\\Home\\IndexChuyenNganh.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-18T15:24:18.506Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "EFChuyenNganhRepository.cs",
-              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Repositories\\EFChuyenNganhRepository.cs",
-              "RelativeDocumentMoniker": "WEBTimViec\\Repositories\\EFChuyenNganhRepository.cs",
-              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Repositories\\EFChuyenNganhRepository.cs",
-              "RelativeToolTip": "WEBTimViec\\Repositories\\EFChuyenNganhRepository.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABEAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T15:19:40.196Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 29,
               "Title": "EFThanhPhoRepository.cs",
               "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Repositories\\EFThanhPhoRepository.cs",
               "RelativeDocumentMoniker": "WEBTimViec\\Repositories\\EFThanhPhoRepository.cs",
@@ -369,43 +553,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "IThanhPho.cs",
-              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Repositories\\IThanhPho.cs",
-              "RelativeDocumentMoniker": "WEBTimViec\\Repositories\\IThanhPho.cs",
-              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Repositories\\IThanhPho.cs",
-              "RelativeToolTip": "WEBTimViec\\Repositories\\IThanhPho.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAyAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T14:07:20.564Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "AddThanhPho.cshtml",
-              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\AddThanhPho.cshtml",
-              "RelativeDocumentMoniker": "WEBTimViec\\Views\\Home\\AddThanhPho.cshtml",
-              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Views\\Home\\AddThanhPho.cshtml",
-              "RelativeToolTip": "WEBTimViec\\Views\\Home\\AddThanhPho.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAABGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-18T13:51:34.722Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Program.cs",
-              "RelativeDocumentMoniker": "WEBTimViec\\Program.cs",
-              "ToolTip": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Program.cs",
-              "RelativeToolTip": "WEBTimViec\\Program.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-18T14:34:26.701Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 30,
               "Title": "HinhAnhBTD.cs",
               "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Models\\HinhAnhBTD.cs",
               "RelativeDocumentMoniker": "WEBTimViec\\Models\\HinhAnhBTD.cs",
@@ -417,7 +565,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 31,
               "Title": "20240518133817_identity.cs",
               "DocumentMoniker": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\Migrations\\20240518133817_identity.cs",
               "RelativeDocumentMoniker": "WEBTimViec\\Migrations\\20240518133817_identity.cs",

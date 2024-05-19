@@ -1,10 +1,55 @@
 ﻿@model WEBTimViec.Models.BaiTuyenDung
 
 @{
-    ViewData["Title"] = "Create Post Job";
+    ViewData["Title"] = "Thêm bài tuyển dụng";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - WEBTimViec</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Add your custom styles here -->
+    <style>
 
+        .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+            color: black; /* Đặt màu chữ thành màu đen */
+        }
+
+        #chuyenNganhSelect {
+            background-color: white; /* Đặt màu nền thành màu đen */
+            color: black; /* Đặt màu chữ thành màu trắng */
+        }
+
+        #selectedChuyenNganh {
+            background-color: white; /* Đặt màu nền thành màu đen */
+            color: black; /* Đặt màu chữ thành màu trắng */
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #28a745; /* Màu chữ xanh lá cây */
+        }
+
+        .btn-primary {
+            background-color: #28a745; /* Màu nền nút */
+            border-color: #28a745; /* Màu viền nút */
+        }
+
+            .btn-primary:hover {
+                background-color: #218838; /* Màu nền nút khi hover */
+                border-color: #218838; /* Màu viền nút khi hover */
+            }
+    </style>
+</head>
 <h1 class="text-primary">Thêm tin tuyển dụng</h1>
 <hr />
 <div class="row">
@@ -69,9 +114,9 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="ThoiGianCapNhat" class="control-label"><i class="fas fa-calendar"></i> Hạn nộp hồ sơ</label>
-                <input asp-for="ThoiGianCapNhat" class="form-control datepicker" asp-format="{0:dd/MM/yy}" required />
-                <span asp-validation-for="ThoiGianCapNhat" class="text-danger"></span>
+                <label asp-for="ThoiGianHetHan" class="control-label"><i class="fas fa-calendar"></i> Hạn nộp hồ sơ</label>
+                <input asp-for="ThoiGianHetHan" class="form-control datepicker" asp-format="{0:dd/MM/yy}" required />
+                <span asp-validation-for="ThoiGianHetHan" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -100,10 +145,28 @@
                     <i class="fas fa-user-tie"></i> <!-- Icon "User Tie" của Font Awesome -->
                     Chuyên ngành ứng viên
                 </label>
-                <select asp-for="chuyenNganh.ChuyenNganh_name" asp-items="ViewBag.ChuyenNganh" class="form-control">
-                    <option value="">-- Chọn Chuyên Ngành --</option>
+                <select asp-for="chuyenNganh.ChuyenNganh_name" asp-items="ViewBag.ChuyenNganh" class="form-control" multiple="multiple" id="chuyenNganhSelect">
                 </select>
                 <span asp-validation-for="chuyenNganh.ChuyenNganh_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="selectedChuyenNganh" class="control-label" style="font-weight: bold;">
+                    Chuyên ngành đã chọn
+                </label>
+                <textarea id="selectedChuyenNganh" class="form-control" readonly></textarea>
+            </div>
+
+
+
+            <div class="form-group">
+                <label asp-for="viTriCongViec.ViTriCongViec_name" class="control-label" style="font-weight: bold;">
+                    <i class="fas fa-user-tie"></i> <!-- Icon "User Tie" của Font Awesome -->
+                    Vị Trí Công Việc 
+                </label>
+                <select asp-for="viTriCongViec.ViTriCongViec_name" asp-items="ViewBag.ViTriCongViec" class="form-control">
+                    <option value="">-- Chọn Kinh nghiệm --</option>
+                </select>
+                <span asp-validation-for="viTriCongViec.ViTriCongViec_name" class="text-danger"></span>
             </div>
             </>
             <div class="form-group">
@@ -113,11 +176,45 @@
     </div>
 </div>
 
-<script>
-    $(document).ready(function () {
-        $('.datepicker').datepicker({
-            format: 'dd/mm/yyyy', // Định dạng ngày tháng
-            autoclose: true // Tự động đóng khi chọn ngày
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <script>
+        $(function () {
+            var today = new Date();
+            $(".datepicker").datepicker({
+                dateFormat: "dd/mm/yy",
+                minDate: today
+            });
         });
-    });
-</script>
+    </script>
+    <script>
+        $(document).ready(function() {
+            // Initialize select2
+            $('#chuyenNganhSelect').select2({
+                placeholder: "-- Chọn Chuyên Ngành --"
+            });
+
+            // Function to update the selectedChuyenNganh textarea
+            function updateSelectedChuyenNganh() {
+                var selected = $('#chuyenNganhSelect').val();
+                var selectedText = [];
+                if (selected) {
+                    selected.forEach(function(id) {
+                        selectedText.push($('#chuyenNganhSelect option[value="' + id + '"]').text());
+                    });
+                }
+                $('#selectedChuyenNganh').val(selectedText.join(', '));
+            }
+
+            // Update the selectedChuyenNganh textarea when selection changes
+            $('#chuyenNganhSelect').on('change', function() {
+                updateSelectedChuyenNganh();
+            });
+
+            // Initial update to fill the textarea if there are already selected items
+            updateSelectedChuyenNganh();
+        });
+    </script>
+    }

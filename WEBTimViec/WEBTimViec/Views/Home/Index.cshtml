@@ -5,14 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JobPlus</title>
     <style>
-        h1 a {
-            text-decoration: none; /* Loại bỏ gạch chân */
-            color: inherit; /* Giữ nguyên màu chữ */
+        body {
+            font-family: Arial, sans-serif; /* Sử dụng font chữ dễ đọc */
+            margin: 0; /* Loại bỏ margin mặc định */
+            padding: 0; /* Loại bỏ padding mặc định */
+            background-color: #1a1a1a; /* Màu nền */
+            color: #fff; /* Màu chữ */
         }
 
-    /*         h1 a:hover {
-                text-decoration: underline; /* Tùy chọn: Thêm gạch chân khi hover */
-            } */
+        header {
+            background-color: #333; /* Màu nền header */
+            padding: 10px 0; /* Khoảng cách giữa header và nội dung */
+        }
+
+        .container {
+            max-width: 1200px; /* Giới hạn chiều rộng của nội dung */
+            margin: 0 auto; /* Căn giữa nội dung */
+            padding: 0 20px; /* Khoảng cách giữa nội dung và lề trái/phải */
+        }
+        h5 {
+            color: #ff7f50;
+        }
+        h1 a {
+            text-decoration: none; /* Loại bỏ gạch chân */
+            color: #3e4; /* Màu chữ xanh lá */
+        }
+
+        nav ul li a {
+            text-decoration: none; /* Loại bỏ gạch chân */
+            color: #ff7f50; /* Màu chữ cam */
+        }
+        nav ul {
+            list-style-type: none; /* Loại bỏ dấu chấm liệt kê */
+            padding: 0; /* Loại bỏ padding mặc định */
+            margin: 0; /* Loại bỏ margin mặc định */
+        }
+
+            nav ul li {
+                display: inline; /* Hiển thị các mục liền kề nhau */
+                margin-right: 20px; /* Khoảng cách giữa các mục */
+            }
+
+                nav ul li a {
+                    text-decoration: none; /* Loại bỏ gạch chân */
+                    color: #fff; /* Màu chữ */
+                }
+
+        .search-bar {
+            background-color: #444; /* Màu nền của phần tìm kiếm */
+            padding: 20px 0; /* Khoảng cách giữa phần tìm kiếm và nội dung */
+        }
+
+            .search-bar h2 {
+                margin: 0; /* Loại bỏ margin mặc định */
+                text-align: center; /* Căn giữa tiêu đề */
+            }
+
+            .search-bar form {
+                text-align: center; /* Căn giữa nội dung form */
+                margin-top: 20px; /* Khoảng cách giữa form và tiêu đề */
+            }
+
+            .search-bar input[type="text"] {
+                padding: 10px; /* Khoảng cách bên trong input */
+                margin-right: 10px; /* Khoảng cách giữa các input */
+                border: none; /* Loại bỏ đường viền */
+                border-radius: 5px; /* Bo tròn góc */
+                background-color: #fff; /* Màu nền input */
+                color: #fff; /* Màu chữ */
+            }
+
+            .search-bar button {
+                padding: 10px 20px; /* Kích thước nút */
+                border: none; /* Loại bỏ đường viền */
+                border-radius: 5px; /* Bo tròn góc */
+                background-color: #007bff; /* Màu nền nút */
+                color: #fff; /* Màu chữ */
+                cursor: pointer; /* Chỉ định con trỏ khi rê chuột */
+            }
+
+                .search-bar button:hover {
+                    background-color: #0056b3; /* Màu nền nút khi hover */
+                }
     </style>
 </head>
 <body>
@@ -23,7 +97,7 @@
                 <ul>
                     <li><a asp-controller="Home" asp-action="Index">Trang chủ</a></li>
                     <li><a asp-controller="Home" asp-action="IndexChuyenNganh">Chuyên Ngành</a></li>
-                    <li><a asp-controller="Employer" asp-action="Index">Nhà tuyển dụng</a></li>
+@*                     <li><a asp-controller="Employer" asp-action="Index">Nhà tuyển dụng</a></li> *@
                     <li><a asp-controller="Home" asp-action="IndexThanhPho">Thành phố</a></li>
                     <li><a asp-controller="Home" asp-action="IndexBaiTuyenDung">Bài tuyển dụng</a></li>
                 </ul>
@@ -33,7 +107,7 @@
 
     <section class="search-bar">
         <div class="container">
-            <h2>Tìm kiếm công việc mơ ước của bạn</h2>
+            <h5>Tìm kiếm công việc mơ ước của bạn</h5>
             <form action="#" method="get">
                 <input type="text" name="keyword" placeholder="Nhập từ khóa...">
                 <input type="text" name="location" placeholder="Nhập địa điểm...">
@@ -41,23 +115,5 @@
             </form>
         </div>
     </section>
-
-@*     <footer>
-        <div class="container">
-            <nav>
-                <ul>
-                    <li><a asp-controller="Privacy" asp-action="Index">Chính sách bảo mật</a></li>
-                    <li><a asp-controller="Terms" asp-action="Index">Điều khoản sử dụng</a></li>
-                    <li><a asp-controller="Contact" asp-action="Index">Liên hệ</a></li>
-                </ul>
-            </nav>
-        </div>
-    </footer> *@
- 
 </body>
 </html>
-
-
-
-
-

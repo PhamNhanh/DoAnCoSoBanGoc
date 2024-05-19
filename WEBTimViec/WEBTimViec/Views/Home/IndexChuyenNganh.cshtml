@@ -4,32 +4,110 @@
     ViewData["Title"] = "IndexChuyenNganh";
 }
 
-<h1>IndexChuyenNganh</h1>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        /* Thay đổi màu nền và màu chữ */
+        body {
+            background-color: #292b2c; /* Màu xám đậm cho nền */
+            color: #ffffff; /* Màu trắng cho chữ */
+            font-family: Arial, sans-serif; /* Sử dụng font chữ mặc định */
+        }
 
-<p>
-    <a asp-action="AddChuyenNganh">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ChuyenNganh_name)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChuyenNganh_name)
-            </td>
-            <td>
-                <a asp-action="#" asp-route-id="@item.ChuyenNganh_id">Edit</a> |
-                <a asp-action="#" asp-route-id="@item.ChuyenNganh_id">Details</a> |
-                <a asp-action="#" asp-route-id="@item.ChuyenNganh_id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        /* Thay đổi màu chữ của các đường link */
+        a {
+            color: #17a2b8; /* Màu xanh dương nhạt cho các đường link */
+            text-decoration: none; /* Loại bỏ gạch chân */
+        }
+
+            /* Màu chữ khi hover trên đường link */
+            a:hover {
+                color: #15888a; /* Màu xanh dương nhạt khi hover */
+            }
+
+        /* Thay đổi màu chữ của tiêu đề */
+        h1 {
+            color: #3e4; /* Màu xanh dương nhạt cho tiêu đề */
+        }
+
+        /* Thay đổi màu chữ của các ô trong bảng */
+        table {
+            color: #ffffff; /* Màu trắng cho nội dung bảng */
+            width: 100%; /* Độ rộng bảng */
+            border-collapse: collapse; /* Loại bỏ đường viền */
+        }
+
+        th, td {
+            padding: 8px; /* Khoảng cách giữa các ô */
+            border-bottom: 1px solid #fff; /* Đường viền dưới */
+            text-align: left; /* Căn lề trái */
+        }
+        /* Thay đổi màu chữ của các ô trong bảng */
+        td {
+            color: #ffffff; /* Màu trắng cho nội dung các ô */
+        }
+
+        /* Thay đổi màu nền và chữ của tiêu đề bảng */
+        tr th {
+            color: White; /* Màu xanh lá cây */
+        }
+
+        /* Thay đổi màu của các nút */
+        .btn {
+            background-color: #17a2b8; /* Màu xanh dương nhạt cho nút */
+            border: none; /* Loại bỏ đường viền */
+            color: #fff; /* Màu trắng cho chữ */
+            padding: 6px 12px; /* Kích thước nút */
+            cursor: pointer; /* Chuyển con trỏ thành bàn tay khi di chuột vào nút */
+            text-decoration: none; /* Loại bỏ gạch chân */
+            border-radius: 4px; /* Bo tròn viền */
+            transition: background-color 0.3s ease; /* Hiệu ứng khi hover */
+        }
+
+            /* Màu của nút khi hover */
+            .btn:hover {
+                background-color: green; 
+            }
+
+            /* Căn lề nút */
+            .btn:not(:last-child) {
+                margin-right: 5px; /* Khoảng cách phải */
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-3">Danh sách các chuyên ngành</h1>
+
+        <p>
+            <a href="@Url.Action("AddChuyenNganh")" class="btn btn-primary">Thêm chuyên ngành mới</a>
+        </p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Tên chuyên ngành</th>
+                    <th scope="col">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.ChuyenNganh_name)</td>
+                        <td>
+                            <a href="#" class="btn btn-warning btn-sm">Sửa</a>
+                            @* <a href="#" class="btn btn-info btn-sm">Chi tiết</a> *@
+                            <a href="#" class="btn btn-danger btn-sm">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

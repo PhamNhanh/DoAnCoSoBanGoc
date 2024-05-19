@@ -15,7 +15,7 @@ namespace WEBTimViec.Models
         public decimal? Luong_max { get; set; }
         public string? KieuCongViec { get; set; }
         public DateTime? ThoiGianDangBai { get; set; }
-        public DateTime? ThoiGianCapNhat { get; set; }
+        public DateTime? ThoiGianHetHan { get; set; }
         public List<HinhAnhBTD>? hinhAnhBTD { get; set; }
         public ThanhPho? thanhPho { get; set; }
         public int? thanhPhoid { get; set; }
@@ -25,7 +25,8 @@ namespace WEBTimViec.Models
         public List<BaiTuyenDung_ChuyenNganh>? baiTuyenDung_ChuyenNganhs { get; set; }
 
         public ChuyenNganh? chuyenNganh { get; set; }
-        public int? chuyenNganhid { get; set; }
+        public ViTriCongViec? viTriCongViec { get; set; }
+/*        public int? chuyenNganhid { get; set; }*/
 
 /*        public int? applicationUserid { get; set; }*/
         public ApplicationUser? applicationUser { get; set; }

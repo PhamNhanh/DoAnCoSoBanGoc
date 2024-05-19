@@ -10,6 +10,5 @@ namespace WEBTimViec.Repositories
         Task AddAsync(BaiTuyenDung baiTuyenDung);
         Task UpdateAsync(BaiTuyenDung baiTuyenDung);
         Task DeleteAsync(int id);
-
     }
 }

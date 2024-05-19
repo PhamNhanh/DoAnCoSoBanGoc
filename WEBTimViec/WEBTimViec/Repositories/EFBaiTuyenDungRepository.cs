@@ -38,7 +38,6 @@ namespace WEBTimViec.Repositories
             return applicationDbContext;
         }
 
-
         public async Task<BaiTuyenDung> GetByIdAsync(int id)
         {
             var applicationDbContext = await _context.baiTuyenDungs

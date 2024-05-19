@@ -19,14 +19,15 @@ namespace WEBTimViec.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IKinhNghiem _kinhNghiem;
         private readonly IUngTuyen _ungTuyen;
-
+        private readonly IViTriCongViec _viTriCongViec;
         public HomeController(ApplicationDbContext context,
             IBaiTuyenDung baiTuyenDung,
             IChuyenNganh chuyenNganh,
             IThanhPho thanhPho,
             IKinhNghiem kinhNghiem,
             UserManager<ApplicationUser> userManager,
-            IUngTuyen ungTuyen)
+            IUngTuyen ungTuyen,
+            IViTriCongViec viTriCongViec)
         {
             _context = context;
             _baiTuyenDung = baiTuyenDung;
@@ -35,6 +36,7 @@ namespace WEBTimViec.Controllers
             _thanhPho = thanhPho;
             _userManager = userManager;
             _ungTuyen = ungTuyen;
+            _viTriCongViec = viTriCongViec;
         }
         public IActionResult Index()
         {
@@ -53,9 +55,13 @@ namespace WEBTimViec.Controllers
             var thanhPho = await _thanhPho.GetAllAsync();
             var sortedThanhPho = thanhPho.OrderBy(tp => tp.ThanhPho_name).ToList();
 
+            var viTriCongViec = await _viTriCongViec.GetAllAsync();
+            var sortedVitricongviec = viTriCongViec.OrderBy(tp => tp.ViTriCongViec_name).ToList();
+
             ViewBag.KinhNghiem = new SelectList(sortedKinhNghiem, "KinhNghiem_id", "NamKinhNghiem");
             ViewBag.ChuyenNganh = new SelectList(sortedChuyenNganh, "ChuyenNganh_id", "ChuyenNganh_name");
             ViewBag.ThanhPho = new SelectList(sortedThanhPho, "ThanhPho_id", "ThanhPho_name");
+            ViewBag.ViTriCongViec = new SelectList(sortedVitricongviec, "ViTriCongViec_id", "ViTriCongViec_name");
 
             return View();
         }
@@ -68,18 +74,36 @@ namespace WEBTimViec.Controllers
                     ModelState.AddModelError(nameof(baiTuyenDung.TenCongViec), "Tên công việc không được để trống.");
                     return View(baiTuyenDung);
                 }
-
+                if (!User.Identity.IsAuthenticated)
+                {
+                    // Chưa đăng nhập, chuyển hướng tới trang đăng nhập
+                    return Redirect("/Identity/Account/Login");
+                }
+                if (baiTuyenDung.ThoiGianHetHan <= DateTime.Now)
+                {
+                    ModelState.AddModelError(nameof(baiTuyenDung.ThoiGianHetHan), "Thời gian hết hạn phải lớn hơn thời gian hiện tại.");
+                    return View(baiTuyenDung);
+                }
                 var find_company = await _userManager.GetUserAsync(User);
                 if (find_company != null)
                     baiTuyenDung.applicationUser = find_company;
 
                 baiTuyenDung.ThoiGianDangBai = DateTime.Now;
-                baiTuyenDung.ThoiGianCapNhat = DateTime.Now;
-
+                baiTuyenDung.ThoiGianHetHan = baiTuyenDung.ThoiGianHetHan;
                 baiTuyenDung.YeuCauKyNang = baiTuyenDung.YeuCauKyNang?.Replace("\r\n", "\n");
                 baiTuyenDung.MoTaCongViec = baiTuyenDung.MoTaCongViec?.Replace("\r\n", "\n");
                 baiTuyenDung.PhucLoi = baiTuyenDung.PhucLoi?.Replace("\r\n", "\n");
+                if (baiTuyenDung.Luong_min < 0)
+                {
+                    ModelState.AddModelError(nameof(baiTuyenDung.Luong_min), "Lương từ không được âm.");
+                    return Redirect("/Home/AddBaiTuyenDung");
+                }
 
+                if (baiTuyenDung.Luong_min >= baiTuyenDung.Luong_max)
+                {
+                    ModelState.AddModelError(nameof(baiTuyenDung.Luong_max), "Lương từ phải nhỏ hơn lương đến.");
+                    return Redirect("/Home/AddBaiTuyenDung");
+                }
 
                 await _baiTuyenDung.AddAsync(baiTuyenDung);
                 await _context.SaveChangesAsync();
@@ -91,6 +115,11 @@ namespace WEBTimViec.Controllers
         public async Task<IActionResult> IndexBaiTuyenDung()
         {
             var baiTuyenDung = await _baiTuyenDung.GetAllAsync();
+            return View(baiTuyenDung);
+        }
+        public async Task<IActionResult> DetailsBaiTuyenDung(int id)
+        {
+            var baiTuyenDung = await _baiTuyenDung.GetByIdAsync(id);
             return View(baiTuyenDung);
         }
 

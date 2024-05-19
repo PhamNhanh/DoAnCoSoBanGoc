@@ -5,12 +5,12 @@
     <a asp-action="Index">Back to List</a>
 </div>
 <body>
-    <h1>Thêm thanh pho</h1>
+    <h1>Thêm thành phố</h1>
 
     <form asp-action="AddThanhPho">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="ThanhPho_name" class="control-label"></label>
+            <label asp-for="ThanhPho_name" class="control-label"><i class="fas fa-user"></i> Tên thành phố</label>
             <input asp-for="ThanhPho_name" class="form-control" />
             <span asp-validation-for="ThanhPho_name" class="text-danger"></span>
         </div>

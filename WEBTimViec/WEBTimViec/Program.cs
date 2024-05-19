@@ -32,6 +32,7 @@ builder.Services.AddScoped<IChuyenNganh, EFChuyenNganhRepository>();
 builder.Services.AddScoped<IBaiTuyenDung, EFBaiTuyenDungRepository>();
 builder.Services.AddScoped<IUngTuyen, EFUngTuyenRepository>();
 builder.Services.AddScoped<IThanhPho, EFThanhPhoRepository>();
+builder.Services.AddScoped<IViTriCongViec, EFViTriCongViecRepository>();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
