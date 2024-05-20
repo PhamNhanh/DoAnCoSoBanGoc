@@ -13,50 +13,36 @@ namespace WEBTimViec.Repositories
         }
         public async Task<IEnumerable<UngTuyen>> GetAllAsync()
         {
-            //bao gồm danh mục, nếu không có sẽ ko ra danh mục
-            var applicationDbContext = await _context.ungTuyens
-                .Include(b => b.url_CV)
+            return await _context.ungTuyens
+/*                .Include(b => b.url_CV)
                 .Include(b => b.ThuGioiThieu)
-                .Include(b => b.ThoiGianUngTuyen)
+                .Include(b => b.ThoiGianUngTuyen)*/
                 .ToListAsync();
-
-            return await _context.ungTuyens.ToListAsync();
         }
-
 
         public async Task<IEnumerable<UngTuyen>> GetAllApplyByUserIdAsync(string id)
         {
-            //bao gồm danh mục, nếu không có sẽ ko ra danh mục
-            var applicationDbContext = await _context.ungTuyens
-                .Include(b => b.url_CV)
+            return await _context.ungTuyens
+/*                .Include(b => b.url_CV)
                 .Include(b => b.ThuGioiThieu)
-                .Include(b => b.ThoiGianUngTuyen)
+                .Include(b => b.ThoiGianUngTuyen)*/
                 .Where(b => b.applicationUser.Id == id)
                 .ToListAsync();
-
-            return applicationDbContext;
         }
 
         public async Task<IEnumerable<UngTuyen>> GetAllApplyByCompanyIdAsync(string id)
         {
-            //bao gồm danh mục, nếu không có sẽ ko ra danh mục
-            var applicationDbContext = await _context.ungTuyens
-                .Include(b => b.url_CV)
+            return await _context.ungTuyens
+/*                .Include(b => b.url_CV)
                 .Include(b => b.ThuGioiThieu)
-                .Include(b => b.ThoiGianUngTuyen)
-                 .Where(b => b.BaiTuyenDung.applicationUser.Id == id)
+                .Include(b => b.ThoiGianUngTuyen)*/
+                .Where(b => b.BaiTuyenDung.applicationUser.Id == id)
                 .ToListAsync();
-
-            return applicationDbContext;
         }
 
 
-        public async Task<UngTuyen> GetByIdAsync(int id)
+        public async Task<UngTuyen?> GetByIdAsync(int id)
         {
-            var applicationDbContext = await _context.ungTuyens
-                .Include(b => b.BaiTuyenDung)
-                .Include(b => b.applicationUser)
-                .ToListAsync();
             return await _context.ungTuyens.FindAsync(id);
         }
 

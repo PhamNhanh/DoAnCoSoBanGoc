@@ -38,12 +38,14 @@ namespace WEBTimViec.Controllers
             _ungTuyen = ungTuyen;
             _viTriCongViec = viTriCongViec;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-/*            var hienthi_NhaTuyenDung = await _userManager.GetUserAsync(User);*/
-
-            return View();
+            {
+                var baiTuyenDung = await _baiTuyenDung.GetAllAsync();
+                return View(baiTuyenDung);
+            }
         }
+        [HttpGet]
         public async Task<IActionResult> AddBaiTuyenDung()
         {
             var kinhNghiem = await _kinhNghiem.GetAllAsync();
@@ -65,7 +67,8 @@ namespace WEBTimViec.Controllers
 
             return View();
         }
-        public async Task<IActionResult> Create([Bind("BaiTuyenDung_id,TenCongViec,MoTaCongViec,YeuCauKyNang,PhucLoi,KieuCongViec,Luong_min,Luong_max,thanhPhoid,ThoiGianDangBai,ThoiGianCapNhat,kinhNghiemid,chuyenNganhid,applicationUserid")] BaiTuyenDung baiTuyenDung)
+        [HttpPost]
+        public async Task<IActionResult> Create(BaiTuyenDung baiTuyenDung)
         {
             if (ModelState.IsValid)
             {
@@ -93,6 +96,7 @@ namespace WEBTimViec.Controllers
                 baiTuyenDung.YeuCauKyNang = baiTuyenDung.YeuCauKyNang?.Replace("\r\n", "\n");
                 baiTuyenDung.MoTaCongViec = baiTuyenDung.MoTaCongViec?.Replace("\r\n", "\n");
                 baiTuyenDung.PhucLoi = baiTuyenDung.PhucLoi?.Replace("\r\n", "\n");
+                baiTuyenDung.thanhPhoid = baiTuyenDung.thanhPho.ThanhPho_id;
                 if (baiTuyenDung.Luong_min < 0)
                 {
                     ModelState.AddModelError(nameof(baiTuyenDung.Luong_min), "Lương từ không được âm.");
@@ -200,6 +204,100 @@ namespace WEBTimViec.Controllers
             }
             return "/images/" + image.FileName; // Trả về đường dẫn tương đối
         }
-        
+
+
+
+
+
+        [HttpGet]
+        public async Task<IActionResult> DSUngTuyen()
+        {
+            var find_user = await _userManager.GetUserAsync(User);
+            if (find_user != null)
+            {
+
+                var dsUngTuyen = await _ungTuyen.GetAllApplyByUserIdAsync(find_user.Id);
+                return View(dsUngTuyen);
+            }
+            else
+            {
+                return NotFound();
+            }
+
+        }
+        [HttpGet]
+        public async Task<IActionResult> UngTuyen(int Id)
+        {
+            var baiTuyenDung = await _baiTuyenDung.GetByIdAsync(Id);
+            ViewBag.BaiTuyenDung = baiTuyenDung;
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> UngTuyen(UngTuyen ungTuyen, IFormFile url_cv, int id)
+        {
+            var find_user = await _userManager.GetUserAsync(User);
+            if (find_user == null)
+            {
+                /*return NotFound();*/
+                return View("Thiếu Id user");
+            }
+            var post = await _baiTuyenDung.GetByIdAsync(id);
+            if (post == null)
+            {
+                /*return NotFound();*/
+                return View("Thiếu Id postjob");
+            }
+
+            if (ModelState.IsValid)
+            {
+                if (url_cv != null && IsFileSizeValid(url_cv))
+                {
+                    // Lưu CV
+                    ungTuyen.url_CV = await SaveCV(url_cv);
+                }
+                else
+                {
+                    ModelState.AddModelError("url_cv", "Vui lòng chọn một tệp pdf hợp lệ và có kích thước nhỏ hơn 10MB.");
+                    return View(ungTuyen);
+                }
+                ungTuyen.BaiTuyenDungid = post.BaiTuyenDung_id;
+                ungTuyen.applicationUser = post.applicationUser; // Đã lưu id Nhà Tuyển Dụng
+                ungTuyen.application_Userid = find_user.Id; //Chưa lưuu id Ung Viên
+                ungTuyen.ThoiGianUngTuyen = DateTime.Now;
+/*                ungTuyen.update_at = DateTime.Now;*/
+                await _ungTuyen.AddAsync(ungTuyen);
+                return RedirectToAction(nameof(DSUngTuyen));
+            }
+            else
+            {
+                return BadRequest("Có gì đó không đúng");
+            }
+        }
+
+        private async Task<string> SaveCV(IFormFile url_cv)
+        {
+            try
+            {
+                //đảm bảo tên cv là duy nhất khi up
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(url_cv.FileName);
+                var savePath = Path.Combine("wwwroot/filecv", fileName); // Thay đổi đường dẫn theo cấu hình của bạn
+                using (var fileStream = new FileStream(savePath, FileMode.Create))
+                {
+                    await url_cv.CopyToAsync(fileStream);
+                }
+                return "/filecv/" + fileName;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+        private bool IsFileSizeValid(IFormFile file)
+        {
+            // Kiểm tra kích thước file không vượt quá 10MB
+            var maxSize = 10 * 1024 * 1024; // 10MB
+            return file.Length <= maxSize;
+        }
     }
 }

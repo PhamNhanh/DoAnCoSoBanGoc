@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<WEBTimViec.Models.BaiTuyenDung>
+
+<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -6,87 +8,98 @@
     <title>JobPlus</title>
     <style>
         body {
-            font-family: Arial, sans-serif; /* Sử dụng font chữ dễ đọc */
-            margin: 0; /* Loại bỏ margin mặc định */
-            padding: 0; /* Loại bỏ padding mặc định */
-            background-color: #1a1a1a; /* Màu nền */
-            color: #fff; /* Màu chữ */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #fff;
         }
 
         header {
-            background-color: #333; /* Màu nền header */
-            padding: 10px 0; /* Khoảng cách giữa header và nội dung */
+            background-color: #333;
+            padding: 10px 0;
         }
 
         .container {
-            max-width: 1200px; /* Giới hạn chiều rộng của nội dung */
-            margin: 0 auto; /* Căn giữa nội dung */
-            padding: 0 20px; /* Khoảng cách giữa nội dung và lề trái/phải */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
+
         h5 {
             color: #ff7f50;
         }
+
         h1 a {
-            text-decoration: none; /* Loại bỏ gạch chân */
-            color: #3e4; /* Màu chữ xanh lá */
+            text-decoration: none;
+            color: #3e4;
         }
 
         nav ul li a {
-            text-decoration: none; /* Loại bỏ gạch chân */
-            color: #ff7f50; /* Màu chữ cam */
+            text-decoration: none;
+            color: #ff7f50;
         }
+
         nav ul {
-            list-style-type: none; /* Loại bỏ dấu chấm liệt kê */
-            padding: 0; /* Loại bỏ padding mặc định */
-            margin: 0; /* Loại bỏ margin mặc định */
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
         }
 
-            nav ul li {
-                display: inline; /* Hiển thị các mục liền kề nhau */
-                margin-right: 20px; /* Khoảng cách giữa các mục */
-            }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
 
-                nav ul li a {
-                    text-decoration: none; /* Loại bỏ gạch chân */
-                    color: #fff; /* Màu chữ */
-                }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+        }
 
         .search-bar {
-            background-color: #444; /* Màu nền của phần tìm kiếm */
-            padding: 20px 0; /* Khoảng cách giữa phần tìm kiếm và nội dung */
+            background-color: #444;
+            padding: 20px 0;
         }
 
-            .search-bar h2 {
-                margin: 0; /* Loại bỏ margin mặc định */
-                text-align: center; /* Căn giữa tiêu đề */
-            }
+        .search-bar h2 {
+            margin: 0;
+            text-align: center;
+        }
 
-            .search-bar form {
-                text-align: center; /* Căn giữa nội dung form */
-                margin-top: 20px; /* Khoảng cách giữa form và tiêu đề */
-            }
+        .search-bar form {
+            text-align: center;
+            margin-top: 20px;
+        }
 
-            .search-bar input[type="text"] {
-                padding: 10px; /* Khoảng cách bên trong input */
-                margin-right: 10px; /* Khoảng cách giữa các input */
-                border: none; /* Loại bỏ đường viền */
-                border-radius: 5px; /* Bo tròn góc */
-                background-color: #fff; /* Màu nền input */
-                color: #fff; /* Màu chữ */
-            }
+        .search-bar input[type="text"] {
+            padding: 10px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #fff;
+        }
 
-            .search-bar button {
-                padding: 10px 20px; /* Kích thước nút */
-                border: none; /* Loại bỏ đường viền */
-                border-radius: 5px; /* Bo tròn góc */
-                background-color: #007bff; /* Màu nền nút */
-                color: #fff; /* Màu chữ */
-                cursor: pointer; /* Chỉ định con trỏ khi rê chuột */
-            }
+        .search-bar button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
 
-                .search-bar button:hover {
-                    background-color: #0056b3; /* Màu nền nút khi hover */
-                }
+        .search-bar button:hover {
+            background-color: #0056b3;
+        }
+
+        .card {
+            background-color: #333;
+            color: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -97,9 +110,9 @@
                 <ul>
                     <li><a asp-controller="Home" asp-action="Index">Trang chủ</a></li>
                     <li><a asp-controller="Home" asp-action="IndexChuyenNganh">Chuyên Ngành</a></li>
-@*                     <li><a asp-controller="Employer" asp-action="Index">Nhà tuyển dụng</a></li> *@
                     <li><a asp-controller="Home" asp-action="IndexThanhPho">Thành phố</a></li>
                     <li><a asp-controller="Home" asp-action="IndexBaiTuyenDung">Bài tuyển dụng</a></li>
+                    <li><a asp-controller="Home" asp-action="DSUngTuyen">Ứng tuyển</a></li>
                 </ul>
             </nav>
         </div>
@@ -114,6 +127,28 @@
                 <button type="submit">Tìm kiếm</button>
             </form>
         </div>
+        <h1 class="mt-3">@ViewData["Title"]</h1>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">@item.TenCongViec</h3>
+                            <p class="card-text"><strong>Mô tả công việc:</strong> @item.MoTaCongViec</p>
+                            <p class="card-text"><strong>Yêu cầu kỹ năng:</strong> @item.YeuCauKyNang</p>
+                            <p class="card-text"><strong>Phúc lợi:</strong> @item.PhucLoi</p>
+                            <p class="card-text"><strong>Lương:</strong> @item.Luong_min - @item.Luong_max triệu đồng</p>
+                            <p class="card-text"><strong>Loại công việc:</strong> @item.KieuCongViec</p>
+                            <p class="card-text"><strong>Hạn nộp hồ sơ:</strong> @item.ThoiGianHetHan</p>
+                            <a href="@Url.Action("DetailsBaiTuyenDung", new { id = item.BaiTuyenDung_id })" class="btn btn-primary">Chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            }
+                </div>
     </section>
+
 </body>
 </html>
+   

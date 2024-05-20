@@ -3,63 +3,121 @@
 @{
     ViewData["Title"] = "DetailsBaiTuyenDung";
 }
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - WEBTimViec</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding-top: 20px; /* Để không dính vào top của browser */
+        }
 
-<h1>DetailsBaiTuyenDung</h1>
+        .card {
+            margin-bottom: 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            transition: transform 0.3s ease; /* Hiệu ứng khi hover */
+        }
+
+        a {
+            color: #17a2b8; /* Màu xanh dương nhạt cho các đường link */
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* Hiệu ứng nhảy lên khi hover */
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .card-text {
+            margin-bottom: 5px;
+            color: #ccc; /* Màu chữ xám nhạt cho nội dung */
+        }
+
+        .btn-primary {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+            transition: background-color 0.3s ease, border-color 0.3s ease; /* Hiệu ứng khi hover */
+        }
+
+            .btn-primary:hover {
+                background-color: green;
+                border-color: green;
+            }
+    </style>
+</head>
+
+<p>
+    <a href="@Url.Action("Index")" class="btn btn-primary">Back to List</a>
+</p>
+<h1>Chi tiết bài tuyển dụng</h1>
 
 <div>
-    <h4>BaiTuyenDung</h4>
+@*     <h4>BaiTuyenDung</h4> *@
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TenCongViec)
+
+        <dt class="col-sm-2">
+            Tên Công Việc
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TenCongViec)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MoTaCongViec)
+            Mô tả công việc
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.MoTaCongViec)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.YeuCauKyNang)
+            Yêu cầu kỹ năng
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.YeuCauKyNang)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PhucLoi)
+            Phúc lợi
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PhucLoi)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Luong_min)
+            Lương tối thiểu
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Luong_min)
+            @Html.DisplayFor(model => model.Luong_min) Triệu
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Luong_max)
+            Lương tối đa 
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Luong_max)
+            @Html.DisplayFor(model => model.Luong_max) Triệu
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.KieuCongViec)
+            Kiểu công việc
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.KieuCongViec)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ThoiGianDangBai)
+            Thời gian đăng bài
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ThoiGianDangBai)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ThoiGianHetHan)
+            Thời gian hết hạn
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ThoiGianHetHan)
@@ -85,6 +143,12 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.BaiTuyenDung_id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <button onclick="location.href='@Url.Action("UngTuyen", new { id = Model?.BaiTuyenDung_id })'" class="btn btn-primary">Ứng tuyển</button>
 </div>
+
+@* <div>
+    <p>    <button href="@Url.Action("UngTuyen", new { id = Model?.BaiTuyenDung_id })">Ứng tuyển</button></p>
+
+
+
+</div> *@

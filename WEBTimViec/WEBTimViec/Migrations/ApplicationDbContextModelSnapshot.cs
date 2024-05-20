@@ -543,11 +543,14 @@ namespace WEBTimViec.Migrations
                     b.Property<string>("ThuGioiThieu")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("TrangThai")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("applicationUserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("application_Userid")
-                        .HasColumnType("int");
+                    b.Property<string>("application_Userid")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("url_CV")
                         .HasColumnType("nvarchar(max)");

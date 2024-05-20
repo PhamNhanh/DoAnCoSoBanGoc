@@ -1,0 +1,14 @@
+- AddBaiTuyenDung 
+	+ Lưu id của thành phố mình chọn thành thanhPho_name và tạo ra 1 dòng mới trong csdl.
+	+ Tương tự với chuyên ngành, vị trí công việc, năm kinh nghiệm.
+
+
+- Chữ của list chọn nhiều chuyên ngành màu trắng ( sửa thành đen).
+
+
+- Chưa lưu được vào bảng BaiTuyenDung_ChuyenNganh.
+	(Lưu chuyenNganh_id và baiTuyenDung_id)
+	+ Muốn bảng BaiTuyenDung_ChuyenNganh không cần khóa chính, 2 cột kia làm khóa ngoại.
+
+- Lương cho nhập số thập phân (float)
+	
