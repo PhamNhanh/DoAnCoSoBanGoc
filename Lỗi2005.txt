@@ -2,7 +2,7 @@
 	+ Lưu id của thành phố mình chọn thành thanhPho_name và tạo ra 1 dòng mới trong csdl.
 	+ Tương tự với chuyên ngành, vị trí công việc, năm kinh nghiệm.
 
-
+- Trang đang chưa hiển thị full giao diện được. (Rộng hết màn hình).
 - Chữ của list chọn nhiều chuyên ngành màu trắng ( sửa thành đen).
 
 

@@ -23,7 +23,6 @@ namespace WEBTimViec.Models
         public int? HocVanid { get; set; }
 
         public List<UngVien_ChuyenNganh>? ungVien_ChuyenNganhs { get; set; }
-        public List<UngVien_KyNangMem>? ungVien_KyNangMems { get; set; }
 
         public string? NhaTuyenDung_name { get; set; }
         public string? GioiThieuNhaTuyenDung { get; set; }

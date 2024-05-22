@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Thêm bài tuyển dụng";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutNhaTuyenDung.cshtml";
 }
 <!DOCTYPE html>
 <html lang="vi">
@@ -12,7 +12,6 @@
     <title>@ViewData["Title"] - WEBTimViec</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Add your custom styles here -->
     <style>
 
         .select2-container--default .select2-selection--multiple .select2-selection__rendered {
@@ -50,11 +49,14 @@
             }
     </style>
 </head>
+<p>
+    <a href= @Url.Action("Index")" class="btn btn-primary">Back to List</a>
+</p>
 <h1 class="text-primary">Thêm tin tuyển dụng</h1>
 <hr />
 <div class="row">
     <div class="col-md-4 d-flex justify-content-center">
-        <form asp-action="Create" method="post" enctype="multipart/form-data">
+        <form asp-action="AddBaiTuyenDung" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="TenCongViec" class="control-label"><i class="fas fa-user"></i> Tên công việc</label>
@@ -72,7 +74,6 @@
                 <textarea asp-for="YeuCauKyNang" class="form-control" rows="5" required></textarea>
                 <span asp-validation-for="YeuCauKyNang" class="text-danger"></span>
             </div>
-
 
             <div class="form-group">
                 <label asp-for="PhucLoi" class="control-label"><i class="fas fa-gift"></i> Phúc lợi</label>
@@ -120,28 +121,34 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="thanhPho.ThanhPho_id" class="control-label" style="font-weight: bold;">Địa điểm công ty</label>
-                <select asp-for="thanhPho.ThanhPho_name" asp-items="ViewBag.ThanhPho" class="form-control">
+                <label asp-for="thanhPhoId" class="control-label" style="font-weight: bold;">Địa điểm công ty</label>
+                <select asp-for="thanhPhoId" asp-items="ViewBag.ThanhPho" class="form-control">
                     <option value="">-- Chọn tỉnh - Thành phố --</option>
                 </select>
-                <span asp-validation-for="thanhPho.ThanhPho_id" class="text-danger"></span>
+                <span asp-validation-for="thanhPhoId" class="text-danger"></span>
             </div>
 
-
+@*             <div class="form-group">
+                <label asp-for="KyNangMemId" class="control-label" style="font-weight: bold;">Ky Nang Mem</label>
+                <select asp-for="KyNangMemId" asp-items="ViewBag.KyNangMem" class="form-control">
+                    <option value="">-- Chọn tỉnh - Thành phố --</option>
+                </select>
+                <span asp-validation-for="KyNangMemId" class="text-danger"></span>
+            </div> *@
 
             <div class="form-group">
-                <label asp-for="kinhNghiem.NamKinhNghiem" class="control-label" style="font-weight: bold;">
-                    <i class="fas fa-user-tie"></i> <!-- Icon "User Tie" của Font Awesome -->
+                <label asp-for="kinhNghiemId" class="control-label" style="font-weight: bold;">
+                    <i class="fas fa-user-tie"></i> 
                     Kinh nghiệm ứng viên
                 </label>
-                <select asp-for="kinhNghiem.NamKinhNghiem" asp-items="ViewBag.KinhNghiem" class="form-control">
+                <select asp-for="kinhNghiemId" asp-items="ViewBag.KinhNghiem" class="form-control">
                     <option value="">-- Chọn Kinh nghiệm --</option>
                 </select>
-                <span asp-validation-for="kinhNghiem.NamKinhNghiem" class="text-danger"></span>
+                <span asp-validation-for="kinhNghiemId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="chuyenNganh.ChuyenNganh_name" class="control-label" style="font-weight: bold;">
-                    <i class="fas fa-user-tie"></i> <!-- Icon "User Tie" của Font Awesome -->
+                    <i class="fas fa-user-tie"></i> 
                     Chuyên ngành ứng viên
                 </label>
                 <select asp-for="chuyenNganh.ChuyenNganh_name" asp-items="ViewBag.ChuyenNganh" class="form-control" multiple="multiple" id="chuyenNganhSelect">
@@ -169,9 +176,8 @@
             </div>
             </>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Thêm" class="btn btn-primary" />
             </div>
-        </form>
     </div>
 </div>
 

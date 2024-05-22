@@ -33,6 +33,8 @@ builder.Services.AddScoped<IBaiTuyenDung, EFBaiTuyenDungRepository>();
 builder.Services.AddScoped<IUngTuyen, EFUngTuyenRepository>();
 builder.Services.AddScoped<IThanhPho, EFThanhPhoRepository>();
 builder.Services.AddScoped<IViTriCongViec, EFViTriCongViecRepository>();
+builder.Services.AddScoped<IUserRepository, EFUserRepository>();
+builder.Services.AddScoped<IKyNangMem, EFKyNangMemRepository>();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
@@ -59,8 +61,23 @@ app.UseAuthentication(); // Ensure the app uses authentication
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name: "Admin",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+
+app.MapControllerRoute(
+    name: "NhaTuyenDung",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "UngVien",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.MapRazorPages();
 
 app.Run();

@@ -57,7 +57,7 @@
             }
 
         h1 {
-            color: Black;
+            color: #28a745;
         }
 
         input[type="submit"] {
@@ -85,12 +85,13 @@
             }
     </style>
 </head>
-
 <p>
     <a href="@Url.Action("IndexThanhPho")" class="btn btn-primary">Back to list</a>
 </p>
 <body>
-    <h1>Thêm thành phố</h1>
+    <header>
+        <h1>Thêm chuyên ngành</h1>
+    </header>
 
     <form asp-action="AddThanhPho">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>

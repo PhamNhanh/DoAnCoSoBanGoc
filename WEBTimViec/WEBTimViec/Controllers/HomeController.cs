@@ -8,6 +8,7 @@ using WEBTimViec.Models;
 using WEBTimViec.Repositories;
 using System.Linq;
 
+
 namespace WEBTimViec.Controllers
 {
     public class HomeController : Controller
@@ -20,6 +21,8 @@ namespace WEBTimViec.Controllers
         private readonly IKinhNghiem _kinhNghiem;
         private readonly IUngTuyen _ungTuyen;
         private readonly IViTriCongViec _viTriCongViec;
+        private readonly IUserRepository _userRepository;
+        private readonly IKyNangMem _kyNangMem;
         public HomeController(ApplicationDbContext context,
             IBaiTuyenDung baiTuyenDung,
             IChuyenNganh chuyenNganh,
@@ -27,7 +30,9 @@ namespace WEBTimViec.Controllers
             IKinhNghiem kinhNghiem,
             UserManager<ApplicationUser> userManager,
             IUngTuyen ungTuyen,
-            IViTriCongViec viTriCongViec)
+            IUserRepository userRepository,
+            IViTriCongViec viTriCongViec,
+            IKyNangMem kyNangMem)
         {
             _context = context;
             _baiTuyenDung = baiTuyenDung;
@@ -36,7 +41,9 @@ namespace WEBTimViec.Controllers
             _thanhPho = thanhPho;
             _userManager = userManager;
             _ungTuyen = ungTuyen;
+            _userRepository = userRepository;
             _viTriCongViec = viTriCongViec;
+            _kyNangMem = kyNangMem;
         }
         public async Task<IActionResult> Index()
         {
@@ -60,15 +67,19 @@ namespace WEBTimViec.Controllers
             var viTriCongViec = await _viTriCongViec.GetAllAsync();
             var sortedVitricongviec = viTriCongViec.OrderBy(tp => tp.ViTriCongViec_name).ToList();
 
+            var kyNangMem = await _kyNangMem.GetAllAsync();
+            var sortedKyNangMem = kyNangMem.OrderBy(tp => tp.KNMem_name).ToList();
+
             ViewBag.KinhNghiem = new SelectList(sortedKinhNghiem, "KinhNghiem_id", "NamKinhNghiem");
             ViewBag.ChuyenNganh = new SelectList(sortedChuyenNganh, "ChuyenNganh_id", "ChuyenNganh_name");
             ViewBag.ThanhPho = new SelectList(sortedThanhPho, "ThanhPho_id", "ThanhPho_name");
             ViewBag.ViTriCongViec = new SelectList(sortedVitricongviec, "ViTriCongViec_id", "ViTriCongViec_name");
+            ViewBag.KyNangMem = new SelectList(sortedKyNangMem, "KyNangMemId", "KNMem_name");
 
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(BaiTuyenDung baiTuyenDung)
+        public async Task<IActionResult> AddBaiTuyenDung(BaiTuyenDung baiTuyenDung)
         {
             if (ModelState.IsValid)
             {
@@ -92,11 +103,6 @@ namespace WEBTimViec.Controllers
                     baiTuyenDung.applicationUser = find_company;
 
                 baiTuyenDung.ThoiGianDangBai = DateTime.Now;
-                baiTuyenDung.ThoiGianHetHan = baiTuyenDung.ThoiGianHetHan;
-                baiTuyenDung.YeuCauKyNang = baiTuyenDung.YeuCauKyNang?.Replace("\r\n", "\n");
-                baiTuyenDung.MoTaCongViec = baiTuyenDung.MoTaCongViec?.Replace("\r\n", "\n");
-                baiTuyenDung.PhucLoi = baiTuyenDung.PhucLoi?.Replace("\r\n", "\n");
-                baiTuyenDung.thanhPhoid = baiTuyenDung.thanhPho.ThanhPho_id;
                 if (baiTuyenDung.Luong_min < 0)
                 {
                     ModelState.AddModelError(nameof(baiTuyenDung.Luong_min), "Lương từ không được âm.");
@@ -116,7 +122,7 @@ namespace WEBTimViec.Controllers
             return View(baiTuyenDung);
         }
 
-        public async Task<IActionResult> IndexBaiTuyenDung()
+        public async Task<IActionResult> ListBaiTuyenDung()
         {
             var baiTuyenDung = await _baiTuyenDung.GetAllAsync();
             return View(baiTuyenDung);
@@ -152,7 +158,7 @@ namespace WEBTimViec.Controllers
             }
             return View(thanhPho);
         }
-        public async Task<IActionResult> IndexThanhPho()
+        public async Task<IActionResult> ListThanhPho()
         {
             var thanhPho = await _thanhPho.GetAllAsync();
             var sortedThanhPho = thanhPho.OrderBy(tp => tp.ThanhPho_name).ToList();
@@ -184,7 +190,7 @@ namespace WEBTimViec.Controllers
             }
             return View(chuyenNganh);
         }
-        public async Task<IActionResult> IndexChuyenNganh()
+        public async Task<IActionResult> ListChuyenNganh()
         {
             var chuyenNganh = await _chuyenNganh.GetAllAsync();
 
@@ -298,6 +304,84 @@ namespace WEBTimViec.Controllers
             // Kiểm tra kích thước file không vượt quá 10MB
             var maxSize = 10 * 1024 * 1024; // 10MB
             return file.Length <= maxSize;
+        }
+
+
+        //Nha tuyen dung
+        public async Task<IActionResult> ListNhaTuyenDung()
+        {
+            var listnhatuyendung = await _userRepository.GetAllAsync();
+            return View(listnhatuyendung);
+        }
+
+        public async Task<IActionResult> IndexProfileNTD()
+        {
+            var find_company = await _userManager.GetUserAsync(User);
+            if (find_company != null)
+            {
+                return View(find_company);
+            }
+            else
+            {
+                return NotFound();
+            }
+
+        }
+        public async Task<IActionResult> UpdateProfileNTD()
+        {
+            var find_company = await _userManager.GetUserAsync(User);
+            return View(find_company);
+        }
+
+        [HttpPost]
+/*        [ValidateAntiForgeryToken]*/
+        public async Task<IActionResult> UpdateProfileNTD(string id, ApplicationUser company, IFormFile image_url)
+        {
+            var find_company = await _userManager.GetUserAsync(User);
+
+            if (find_company != null && id != find_company.Id)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    if (ModelState.IsValid)
+                    {
+                        if (company != null && find_company != null)
+                        {
+                            if (image_url != null && IsImageFile(image_url) && IsFileSizeValid(image_url))
+                            {
+                                // Lưu hình ảnh đại diện
+                                find_company.image_url = await SaveImage(image_url);
+                            }
+                           /* find_company.NhaTuyenDung_name = company.NhaTuyenDung_name;
+                            find_company.DiaChi = company.DiaChi;
+                            find_company.FullName = company.FullName;
+                            find_company.SDTNhaTuyenDung = company.SDTNhaTuyenDung;
+                            find_company.Email = company.Email;*/
+                            find_company.ThoiGianCapNhat = DateTime.Now;
+                          /*  find_company.Website = company.Website;
+                            find_company.GioiThieuNhaTuyenDung = company.GioiThieuNhaTuyenDung;*/
+                            await _userManager.UpdateAsync(find_company);
+                        }
+                    }
+                }
+                catch
+                {
+                    return NotFound();
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(find_company);
+        }
+        private bool IsImageFile(IFormFile file)
+        {
+            // Kiểm tra phần mở rộng của file có phải là ảnh hay không
+            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+            var fileExtension = Path.GetExtension(file.FileName).ToLowerInvariant();
+            return allowedExtensions.Contains(fileExtension);
         }
     }
 }

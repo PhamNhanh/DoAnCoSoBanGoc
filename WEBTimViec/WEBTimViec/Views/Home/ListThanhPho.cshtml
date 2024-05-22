@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<WEBTimViec.Models.ThanhPho>
 
 @{
-    ViewData["Title"] = "IndexThanhPho";
+    ViewData["Title"] = "ListThanhPho";
 }
 <!DOCTYPE html>
 <html lang="vi">
@@ -78,6 +78,9 @@
             }
     </style>
 </head>
+<p>
+    <a href="@Url.Action("Index")" class="btn btn-primary">Back to List</a>
+</p>
 <h1>Danh sách các thành phố</h1>
 
 <p>
