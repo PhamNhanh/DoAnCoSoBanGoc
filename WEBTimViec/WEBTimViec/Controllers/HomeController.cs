@@ -52,7 +52,7 @@ namespace WEBTimViec.Controllers
                 return View(baiTuyenDung);
             }
         }
-        [HttpGet]
+       /* [HttpGet]
         public async Task<IActionResult> AddBaiTuyenDung()
         {
             var kinhNghiem = await _kinhNghiem.GetAllAsync();
@@ -74,7 +74,7 @@ namespace WEBTimViec.Controllers
             ViewBag.ChuyenNganh = new SelectList(sortedChuyenNganh, "ChuyenNganh_id", "ChuyenNganh_name");
             ViewBag.ThanhPho = new SelectList(sortedThanhPho, "ThanhPho_id", "ThanhPho_name");
             ViewBag.ViTriCongViec = new SelectList(sortedVitricongviec, "ViTriCongViec_id", "ViTriCongViec_name");
-            ViewBag.KyNangMem = new SelectList(sortedKyNangMem, "KyNangMemId", "KNMem_name");
+            ViewBag.KyNangMem = new SelectList(sortedKyNangMem, "KyNangMem_id", "KNMem_name");
 
             return View();
         }
@@ -121,7 +121,7 @@ namespace WEBTimViec.Controllers
             }
             return View(baiTuyenDung);
         }
-
+*/
         public async Task<IActionResult> ListBaiTuyenDung()
         {
             var baiTuyenDung = await _baiTuyenDung.GetAllAsync();
@@ -314,7 +314,7 @@ namespace WEBTimViec.Controllers
             return View(listnhatuyendung);
         }
 
-        public async Task<IActionResult> IndexProfileNTD()
+        /*public async Task<IActionResult> IndexProfileNTD()
         {
             var find_company = await _userManager.GetUserAsync(User);
             if (find_company != null)
@@ -334,7 +334,7 @@ namespace WEBTimViec.Controllers
         }
 
         [HttpPost]
-/*        [ValidateAntiForgeryToken]*/
+*//*        [ValidateAntiForgeryToken]*//*
         public async Task<IActionResult> UpdateProfileNTD(string id, ApplicationUser company, IFormFile image_url)
         {
             var find_company = await _userManager.GetUserAsync(User);
@@ -356,14 +356,14 @@ namespace WEBTimViec.Controllers
                                 // Lưu hình ảnh đại diện
                                 find_company.image_url = await SaveImage(image_url);
                             }
-                           /* find_company.NhaTuyenDung_name = company.NhaTuyenDung_name;
+                           *//* find_company.NhaTuyenDung_name = company.NhaTuyenDung_name;
                             find_company.DiaChi = company.DiaChi;
                             find_company.FullName = company.FullName;
                             find_company.SDTNhaTuyenDung = company.SDTNhaTuyenDung;
-                            find_company.Email = company.Email;*/
+                            find_company.Email = company.Email;*//*
                             find_company.ThoiGianCapNhat = DateTime.Now;
-                          /*  find_company.Website = company.Website;
-                            find_company.GioiThieuNhaTuyenDung = company.GioiThieuNhaTuyenDung;*/
+                          *//*  find_company.Website = company.Website;
+                            find_company.GioiThieuNhaTuyenDung = company.GioiThieuNhaTuyenDung;*//*
                             await _userManager.UpdateAsync(find_company);
                         }
                     }
@@ -382,6 +382,6 @@ namespace WEBTimViec.Controllers
             var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
             var fileExtension = Path.GetExtension(file.FileName).ToLowerInvariant();
             return allowedExtensions.Contains(fileExtension);
-        }
+        }*/
     }
 }

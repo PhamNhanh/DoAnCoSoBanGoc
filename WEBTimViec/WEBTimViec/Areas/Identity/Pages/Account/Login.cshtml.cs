@@ -21,11 +21,13 @@ namespace WEBTimViec.Areas.Identity.Pages.Account
     public class LoginModel : PageModel
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, ILogger<LoginModel> logger)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
             _logger = logger;
         }
 
@@ -116,6 +118,24 @@ namespace WEBTimViec.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+
+                    // Lấy thông tin người dùng
+                    var user = await _userManager.FindByEmailAsync(Input.Email);
+
+                    // Kiểm tra vai trò và điều hướng
+                    if (await _userManager.IsInRoleAsync(user, "Nhà Tuyển Dụng"))
+                    {
+                        return LocalRedirect("/NhaTuyenDung/NTD/Index");
+                    }
+                    if (await _userManager.IsInRoleAsync(user, "Admin"))
+                    {
+                        return LocalRedirect("/Admin/Ad/Index");
+                    }
+                    if (await _userManager.IsInRoleAsync(user, "Ứng Viên"))
+                    {
+                        return LocalRedirect("/UngVien/UV/Index");
+                    }
+
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

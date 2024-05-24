@@ -176,6 +176,18 @@ namespace WEBTimViec.Areas.Identity.Pages.Account
                     else
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);
+                        if (Input.Role == "Nhà Tuyển Dụng")
+                        {
+                            return LocalRedirect("/NhaTuyenDung/NTD/Index");
+                        }
+                        if (Input.Role == "Ứng Viên")
+                        {
+                            return LocalRedirect("/UngVien/UV/Index");
+                        }
+                        if (Input.Role == "Admin")
+                        {
+                            return LocalRedirect("/Admin/AD/Index");
+                        }
                         return LocalRedirect(returnUrl);
                     }
                 }

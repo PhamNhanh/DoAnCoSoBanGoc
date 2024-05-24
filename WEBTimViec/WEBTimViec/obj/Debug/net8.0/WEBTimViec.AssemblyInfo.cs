@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WEBTimViec")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a25b79f39f39027c1fef66cc343e06d2ede42637")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b94866ad9c6779cc1bda7af78f7d48beea1d643")]
 [assembly: System.Reflection.AssemblyProductAttribute("WEBTimViec")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WEBTimViec")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
