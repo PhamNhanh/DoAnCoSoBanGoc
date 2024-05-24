@@ -1,0 +1,33 @@
+﻿@model WEBTimViec.Models.BaiTuyenDung
+
+@{
+    ViewData["Title"] = "Chi tiết bài tuyển dụng";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - WEBTimViec</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-3">@ViewData["Title"]</h1>
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">@Model.TenCongViec</h3>
+                <p class="card-text"><strong>Mô tả công việc:</strong> @Model.MoTaCongViec</p>
+                <p class="card-text"><strong>Yêu cầu kỹ năng:</strong> @Model.YeuCauKyNang</p>
+                <p class="card-text"><strong>Phúc lợi:</strong> @Model.PhucLoi</p>
+                <p class="card-text"><strong>Lương:</strong> @Model.Luong_min - @Model.Luong_max triệu đồng</p>
+                <p class="card-text"><strong>Loại công việc:</strong> @Model.KieuCongViec</p>
+                <p class="card-text"><strong>Hạn nộp hồ sơ:</strong> @Model.ThoiGianHetHan</p>
+                <p class="card-text"><strong>Thành phố:</strong> @ViewData["TenTP"]</p>
+@*                 <p class="card-text"><strong>Kỹ năng mềm:</strong> @Model.KyNangMem.KNMem_name</p> *@
+            </div>
+        </div>
+    </div>
+</body>
+</html>

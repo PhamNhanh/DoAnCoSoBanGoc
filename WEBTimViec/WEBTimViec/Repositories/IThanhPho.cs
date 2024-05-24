@@ -10,5 +10,6 @@ namespace WEBTimViec.Repositories
         Task AddAsync(ThanhPho thanhPho);
         Task UpdateAsync(ThanhPho thanhPho);
         Task DeleteAsync(int id);
+        Task<string> HienThiTenTP(int? Id);
     }
 }

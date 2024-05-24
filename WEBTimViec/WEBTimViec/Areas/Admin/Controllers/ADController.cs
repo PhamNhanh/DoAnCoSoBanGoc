@@ -51,5 +51,72 @@ namespace WEBTimViec.Areas.Admin.Controllers
             var applicationDbContext = _context.baiTuyenDungs.Include(b => b.KyNangMem).Include(b => b.kinhNghiem).Include(b => b.thanhPho);
             return View(await applicationDbContext.ToListAsync());
         }
+
+        //Thanh Pho
+
+        [HttpGet]
+        public IActionResult AddThanhPho()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddThanhPho(ThanhPho thanhPho)
+        {
+            if (ModelState.IsValid)
+            {
+                if (string.IsNullOrEmpty(thanhPho.ThanhPho_name))
+                {
+                    TempData["ErrorMessage"] = "Vui lòng nhập thông tin đầy đủ";
+                    return View(thanhPho);
+                }
+
+                // Nếu không có lỗi, thêm thể loại và hiển thị thông báo thành công
+                await _thanhPho.AddAsync(thanhPho);
+                TempData["SuccessMessage"] = "Đã thêm thể loại thành công";
+                return RedirectToAction("IndexThanhPho", "Home");
+            }
+            return View(thanhPho);
+        }
+        public async Task<IActionResult> ListThanhPho()
+        {
+            var thanhPho = await _thanhPho.GetAllAsync();
+            var sortedThanhPho = thanhPho.OrderBy(tp => tp.ThanhPho_name).ToList();
+            return View(sortedThanhPho);
+        }
+
+
+        //Chuyen Nganh
+        [HttpGet]
+        public IActionResult AddChuyenNganh()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddChuyenNganh(ChuyenNganh chuyenNganh)
+        {
+            if (ModelState.IsValid)
+            {
+                if (string.IsNullOrEmpty(chuyenNganh.ChuyenNganh_name))
+                {
+                    TempData["ErrorMessage"] = "Vui lòng nhập thông tin đầy đủ";
+                    return View(chuyenNganh);
+                }
+
+                // Nếu không có lỗi, thêm thể loại và hiển thị thông báo thành công
+                await _chuyenNganh.AddAsync(chuyenNganh);
+                TempData["SuccessMessage"] = "Đã thêm thể loại thành công";
+                return RedirectToAction("IndexChuyenNganh", "Home");
+            }
+            return View(chuyenNganh);
+        }
+        public async Task<IActionResult> ListChuyenNganh()
+        {
+            var chuyenNganh = await _chuyenNganh.GetAllAsync();
+
+            return View(chuyenNganh);
+        }
+
+
+
     }
 }

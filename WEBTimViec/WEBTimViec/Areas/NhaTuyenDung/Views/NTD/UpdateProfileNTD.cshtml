@@ -1,88 +1,70 @@
 ﻿@model WEBTimViec.Models.ApplicationUser
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Cập nhật thông tin Profile";
 }
 
 <h1>Cập nhật thông tin Profile </h1>
 <hr />
 
-
-<div class="container-fluid  bg-white mt-5 mb-5">
+<div class="container-fluid bg-white mt-5 mb-5">
     <div class="row">
         <form asp-action="UpdateProfile" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
+
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h3 style="font-family:'Times New Roman'" class="text-right">Thông tin nhà tuyển dụng</h3>
+                        <h3 style="font-family: 'Times New Roman'" class="text-right">Thông tin nhà tuyển dụng</h3>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-6">
-                            <label asp-for="NhaTuyenDung_name" style="font-family:'Times New Roman';font-size:20px"
-                                   class="control-label">Tên công ty</label>
-                            <input asp-for="NhaTuyenDung_name" style="font-family:'Times New Roman';font-size:18px" class="form-control" />
+                            <label asp-for="NhaTuyenDung_name" style="font-family: 'Times New Roman'; font-size: 20px" class="control-label">Tên công ty</label>
+                            <input asp-for="NhaTuyenDung_name" style="font-family: 'Times New Roman'; font-size: 18px" class="form-control" />
                             <span asp-validation-for="NhaTuyenDung_name" class="text-danger"></span>
                         </div>
                         <div class="col-md-6">
-                            <label asp-for="SDTNhaTuyenDung" style="font-family:'Times New Roman';font-size:20px" class="control-label">
-                                Số
-                                điện thoại công ty
-                            </label>
-                            <input asp-for="SDTNhaTuyenDung" style="font-family:'Times New Roman';font-size:18px" class="form-control" />
+                            <label asp-for="SDTNhaTuyenDung" style="font-family: 'Times New Roman'; font-size: 20px" class="control-label">Số điện thoại công ty</label>
+                            <input asp-for="SDTNhaTuyenDung" style="font-family: 'Times New Roman'; font-size: 18px" class="form-control" />
                             <span asp-validation-for="SDTNhaTuyenDung" class="text-danger"></span>
                         </div>
-
                         <div class="col-md-12">
-                            <label asp-for="Website" style="font-family:'Times New Roman';font-size:20px"
-                                   class="control-label">Website</label>
-                            <input asp-for="Website" style="font-family:'Times New Roman';font-size:18px" class="form-control" />
+                            <label asp-for="Website" style="font-family: 'Times New Roman'; font-size: 20px" class="control-label">Website</label>
+                            <input asp-for="Website" style="font-family: 'Times New Roman'; font-size: 18px" class="form-control" />
                             <span asp-validation-for="Website" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-6">
-                            <label asp-for="FullName" style="font-family:'Times New Roman';font-size:20px" class="control-label">
-                                Tên
-                                cá nhân
-                            </label>
-                            <input asp-for="FullName" style="font-family:'Times New Roman';font-size:18px" class="form-control" />
+                            <label asp-for="FullName" style="font-family: 'Times New Roman'; font-size: 20px" class="control-label">Tên cá nhân</label>
+                            <input asp-for="FullName" style="font-family: 'Times New Roman'; font-size: 18px" class="form-control" />
                             <span asp-validation-for="FullName" class="text-danger"></span>
                         </div>
-
                         <div class="col-md-12">
-                            <label asp-for="DiaChi" style="font-family:'Times New Roman';font-size:20px">Địa điểm công ty</label>
-                            <input asp-for="DiaChi" style="font-family:'Times New Roman';font-size:18px" class="form-control" />
+                            <label asp-for="DiaChi" style="font-family: 'Times New Roman'; font-size: 20px">Địa điểm công ty</label>
+                            <input asp-for="DiaChi" style="font-family: 'Times New Roman'; font-size: 18px" class="form-control" />
                             <span asp-validation-for="DiaChi" class="text-danger"></span>
                         </div>
                         <div class="col-md-12">
-                            <label asp-for="GioiThieuNhaTuyenDung" style="font-family:'Times New Roman';font-size:20px"
-                                   class="control-label">Giới thiệu về công ty</label>
-                            <textarea asp-for="GioiThieuNhaTuyenDung" class="form-control"
-                                      style="font-family:'Times New Roman';height: 200px;font-size:18px"></textarea>
+                            <label asp-for="GioiThieuNhaTuyenDung" style="font-family: 'Times New Roman'; font-size: 20px" class="control-label">Giới thiệu về công ty</label>
+                            <textarea asp-for="GioiThieuNhaTuyenDung" class="form-control" style="font-family: 'Times New Roman'; height: 200px; font-size: 18px"></textarea>
                             <span asp-validation-for="GioiThieuNhaTuyenDung" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="@Model.image_url">Logo công ty</label>
-                            <input type="file" asp-for="@Model.image_url" class="form-control" id="imageInput" accept="image/*" />
+                            <label for="image_url">Logo công ty</label>
+                            <input type="file" id="image_url" name="image_url" class="form-control" accept="image/*" />
                             <img src="@Model.image_url" alt="Logo công ty" style="max-width:200px;" id="previewImage" />
-                            <span asp-validation-for="@Model.image_url" class="text-danger"></span>
+                            <span asp-validation-for="image_url" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="mt-5 text-center">
-                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 </div>
-</div>
-</div>
-</div>
-
-@* <div>
-    <a class="btn btn-primary" href="/Company/Profile/Index/">Trở về</a>
-</div>
- *@
-
 
 <script>
     document.querySelectorAll('input[type="file"]').forEach(input => {
@@ -99,5 +81,3 @@
         });
     });
 </script>
-
-

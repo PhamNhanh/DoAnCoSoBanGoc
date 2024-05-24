@@ -132,7 +132,7 @@ namespace WEBTimViec.Controllers
             var baiTuyenDung = await _baiTuyenDung.GetByIdAsync(id);
             return View(baiTuyenDung);
         }
-
+/*
         //Thanh Pho
 
         [HttpGet]
@@ -198,7 +198,7 @@ namespace WEBTimViec.Controllers
         }
 
 
-
+*/
 
         private async Task<string> SaveImage(IFormFile image)
         {

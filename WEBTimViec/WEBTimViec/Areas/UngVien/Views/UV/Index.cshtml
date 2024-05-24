@@ -11,62 +11,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"] - WEBTimViec</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #1a1a1a;
-            color: #fff;
-            padding-top: 20px; /* Để không dính vào top của browser */
-        }
 
-        .card {
-            margin-bottom: 20px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            transition: transform 0.3s ease; /* Hiệu ứng khi hover */
-        }
-
-        a {
-            color: #17a2b8; /* Màu xanh dương nhạt cho các đường link */
-        }
-
-        .card:hover {
-            transform: translateY(-5px); /* Hiệu ứng nhảy lên khi hover */
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-
-        .card-text {
-            margin-bottom: 5px;
-            color: #ccc; /* Màu chữ xám nhạt cho nội dung */
-        }
-
-        .btn-primary {
-            background-color: #17a2b8;
-            border-color: #17a2b8;
-            transition: background-color 0.3s ease, border-color 0.3s ease; /* Hiệu ứng khi hover */
-        }
-
-            .btn-primary:hover {
-                background-color: green;
-                border-color: green;
-            }
-    </style>
 </head>
 <body>
-    <p>
-        <a href="@Url.Action("Index")" class="btn btn-primary">Back to List</a>
-    </p>
-    <div class="container">
+    <header>
+        <div class="container">
+            <h1><a asp-controller="Home" asp-action="Index">JobPlus</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="@Url.Action("Index", "UV", new { area = "UngVien" })">Trang chủ</a></li>
+                    <li><a href="@Url.Action("DSUngTuyen", "UV", new { area = "UngVien" })">Xem danh sách ứng tuyển</a></li>
+                    <li><a href="@Url.Action("ListBaiTuyenDung", "NTD", new { area = "NhaTuyenDung" })">Xem bài tuyển dụng</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="search-bar">
+        <div class="container">
+            <h5>Tìm kiếm công việc mơ ước của bạn</h5>
+            <form action="#" method="get">
+                <input type="text" name="keyword" placeholder="Nhập từ khóa...">
+                <input type="text" name="location" placeholder="Nhập địa điểm...">
+                <button type="submit">Tìm kiếm</button>
+            </form>
+        </div>
         <h1 class="mt-3">@ViewData["Title"]</h1>
-        <p>
-            <a href="@Url.Action("AddBaiTuyenDung")" class="btn btn-primary">Thêm bài tuyển dụng mới</a>
-        </p>
         <div class="row">
             @foreach (var item in Model)
             {
@@ -86,6 +56,7 @@
                 </div>
             }
         </div>
-    </div>
+    </section>
+
 </body>
 </html>

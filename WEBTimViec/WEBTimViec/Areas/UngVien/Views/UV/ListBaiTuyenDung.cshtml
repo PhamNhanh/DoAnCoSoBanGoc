@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"] - WEBTimViec</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
+    @* <style>
         body {
             background-color: #1a1a1a;
             color: #fff;
@@ -30,9 +30,9 @@
             color: #17a2b8; /* Màu xanh dương nhạt cho các đường link */
         }
 
-        .card:hover {
-            transform: translateY(-5px); /* Hiệu ứng nhảy lên khi hover */
-        }
+            .card:hover {
+                transform: translateY(-5px); /* Hiệu ứng nhảy lên khi hover */
+            }
 
         .card-title {
             font-size: 1.25rem;
@@ -53,10 +53,10 @@
         }
 
             .btn-primary:hover {
-                background-color: green;
+                background-color: green ;
                 border-color: green;
             }
-    </style>
+    </style> *@
 </head>
 <body>
     <p>
@@ -67,21 +67,6 @@
         <p>
             <a href="@Url.Action("AddBaiTuyenDung")" class="btn btn-primary">Thêm bài tuyển dụng mới</a>
         </p>
-        <header>
-            <div class="container">
-                <h1><a asp-controller="Home" asp-action="Index">JobPlus</a></h1>
-                <nav>
-                    <ul>
-                        <li><a asp-controller="NTD" asp-action="Index">Trang chủ</a></li>
-                        <li><a asp-controller="NTD" asp-action="IndexProfile">Thông tin nhà tuyển dụngh</a></li>
-                        @*                         <li><a asp-controller="Home" asp-action="ListThanhPho">Thành phố</a></li>
-                        <li><a asp-controller="Home" asp-action="ListBaiTuyenDung">Bài tuyển dụng</a></li>
-                        <li><a asp-controller="Home" asp-action="ListNhaTuyenDung">Nha tuyển dụng</a></li>
-                        <li><a asp-controller="Home" asp-action="DSUngTuyen">Ứng tuyển</a></li> *@
-                    </ul>
-                </nav>
-            </div>
-        </header>
         <div class="row">
             @foreach (var item in Model)
             {

@@ -45,5 +45,15 @@ namespace WEBTimViec.Repositories
             _context.hocVans.Remove(thanhPho);
             await _context.SaveChangesAsync();
         }
+        public async Task<string> HienThiTenTP(int? Id)
+        {
+
+            var TenTP = await _context.thanhPhos
+                .Where(tp => tp.ThanhPho_id == Id)
+                .Select(tp => tp.ThanhPho_name)
+                .FirstOrDefaultAsync();
+
+            return TenTP;
+        }
     }
 }

@@ -62,16 +62,16 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "Admin",
-    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area:exists}/{controller=AD}/{action=Index}/{id?}");
 
 
 app.MapControllerRoute(
     name: "NhaTuyenDung",
-    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area:exists}/{controller=NTD}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "UngVien",
-    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area:exists}/{controller=UV}/{action=Index}/{id?}");
 
 
 app.MapControllerRoute(

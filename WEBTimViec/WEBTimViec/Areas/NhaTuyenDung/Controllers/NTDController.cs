@@ -57,8 +57,22 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             var applicationDbContext = _context.baiTuyenDungs.Include(b => b.KyNangMem).Include(b => b.kinhNghiem).Include(b => b.thanhPho);
             return View(await applicationDbContext.ToListAsync());
         }
+        private async Task<string> HienThiTenTP(int id)
+        {
+            return await _thanhPho.HienThiTenTP(id);
 
-
+        }
+        public async Task<IActionResult> DetailsBaiTuyenDung(int id)
+        {
+            var baiTuyenDung = await _baiTuyenDung.GetByIdAsync(id);
+            ViewData["TenTP"] = await _thanhPho.HienThiTenTP(baiTuyenDung.thanhPhoId);
+            return View(baiTuyenDung);
+        }
+        public async Task<IActionResult> ListBaiTuyenDung()
+        {
+            var baiTuyenDung = await _baiTuyenDung.GetAllAsync();
+            return View(baiTuyenDung);
+        }
         [HttpGet]
         public async Task<IActionResult> AddBaiTuyenDung()
         {
@@ -85,6 +99,7 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
 
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> AddBaiTuyenDung(BaiTuyenDung baiTuyenDung)
         {
@@ -148,7 +163,7 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
         }
 
         [HttpPost]
-        /*        [ValidateAntiForgeryToken]*/
+
         public async Task<IActionResult> UpdateProfileNTD(string id, ApplicationUser company, IFormFile image_url)
         {
             var find_company = await _userManager.GetUserAsync(User);
@@ -170,14 +185,7 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
                                 // Lưu hình ảnh đại diện
                                 find_company.image_url = await SaveImage(image_url);
                             }
-                            /* find_company.NhaTuyenDung_name = company.NhaTuyenDung_name;
-                             find_company.DiaChi = company.DiaChi;
-                             find_company.FullName = company.FullName;
-                             find_company.SDTNhaTuyenDung = company.SDTNhaTuyenDung;
-                             find_company.Email = company.Email;*/
                             find_company.ThoiGianCapNhat = DateTime.Now;
-                            /*  find_company.Website = company.Website;
-                              find_company.GioiThieuNhaTuyenDung = company.GioiThieuNhaTuyenDung;*/
                             await _userManager.UpdateAsync(find_company);
                         }
                     }

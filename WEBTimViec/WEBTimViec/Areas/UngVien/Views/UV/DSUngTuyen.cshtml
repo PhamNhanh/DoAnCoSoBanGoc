@@ -1,0 +1,29 @@
+﻿@model IEnumerable<WEBTimViec.Models.UngTuyen>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 style="margin-bottom:20px; font-family:'Times New Roman'">
+                Công ty đã ứng tuyển
+            </h2>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead style=" font-weight: bold; font-size: 20px;">
+                        <tr>
+                            <th style="font-weight: bold; font-size: 30px;color:black; font-family:'Times New Roman'">Tên công ty</th>
+                            <th style="font-weight: bold; font-size: 30px;color:black; font-family:'Times New Roman'">Vị trí</th>
+                            <th style="font-weight: bold; font-size: 30px;color:black; font-family:'Times New Roman'">Thông tin liên hệ</th>
+                            <th style="font-weight: bold; font-size: 30px;color:black; font-family:'Times New Roman'">Ngày ứng tuyển</th>
+                            <th style="font-weight: bold; font-size: 30px;color:black; font-family:'Times New Roman'">Trạng thái</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

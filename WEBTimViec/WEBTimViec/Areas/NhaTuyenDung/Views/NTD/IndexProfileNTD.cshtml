@@ -1,6 +1,6 @@
 ﻿@model WEBTimViec.Models.ApplicationUser
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Thông tin nhà tuyển dụng";
 }
 
 <div class="container-fluid bg-white mt-5 mb-5">
@@ -8,49 +8,46 @@
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <img class="rounded-circle mt-5" width="150px" src="@Model.image_url">
-                <span style="font-family:'Times New Roman'" class="font-weight-bold"><h4>@Model.NhaTuyenDung_name</h4></span>
+                <span style="font-family: 'Times New Roman'" class="font-weight-bold"><h4>@Model.NhaTuyenDung_name</h4></span>
                 <span class="text-black-50">@Model.Email</span>
-                <span> </span>
             </div>
         </div>
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h3 style="font-family:'Times New Roman'" class="text-right">Thông tin nhà tuyển dụng</h3>
+                    <h3 style="font-family: 'Times New Roman'" class="text-right">Thông tin nhà tuyển dụng</h3>
                 </div>
                 <div class="row mt-2">
                     <div class="col-md-6">
-                        <label class="labels" style="font-family:'Times New Roman';font-size:20px">Tên công ty</label>
-                        <div class="form-control" style="font-family:'Times New Roman';font-size:18px">@Model.NhaTuyenDung_name</div>
+                        <label class="labels" style="font-family: 'Times New Roman'; font-size: 20px">Tên công ty</label>
+                        <div class="form-control" style="font-family: 'Times New Roman'; font-size: 18px">@Model.NhaTuyenDung_name</div>
                     </div>
                     <div class="col-md-6">
-                        <label class="labels" style="font-family:'Times New Roman';font-size:20px">SDT công ty</label>
-                        <div class="form-control" style="font-family:'Times New Roman';font-size:18px">@Model.SDTNhaTuyenDung</div>
+                        <label class="labels" style="font-family: 'Times New Roman'; font-size: 20px">SDT công ty</label>
+                        <div class="form-control" style="font-family: 'Times New Roman'; font-size: 18px">@Model.SDTNhaTuyenDung</div>
                     </div>
-
                     <div class="col-md-12">
-                        <label class="labels" style="font-family:'Times New Roman';font-size:20px">Website công ty</label>
-                        <div class="form-control" style="font-family:'Times New Roman';font-size:18px">@Model.Website</div>
+                        <label class="labels" style="font-family: 'Times New Roman'; font-size: 20px">Website công ty</label>
+                        <div class="form-control" style="font-family: 'Times New Roman'; font-size: 18px">@Model.Website</div>
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6">
-                        <label class="labels" style="font-family:'Times New Roman';font-size:20px">Tên cá nhân</label>
-                        <div class="form-control" style="font-family:'Times New Roman';font-size:18px">@Model.FullName</div>
+                        <label class="labels" style="font-family: 'Times New Roman'; font-size: 20px">Tên cá nhân</label>
+                        <div class="form-control" style="font-family: 'Times New Roman'; font-size: 18px">@Model.FullName</div>
                     </div>
                     <div class="col-md-12">
-                        <label class="labels" style="font-family:'Times New Roman';font-size:20px">Địa điểm công ty</label>
-                        <div class="form-control" style="font-family:'Times New Roman';font-size:18px">@Model.DiaChi</div>
+                        <label class="labels" style="font-family: 'Times New Roman'; font-size: 20px">Địa điểm công ty</label>
+                        <div class="form-control" style="font-family: 'Times New Roman'; font-size: 18px">@Model.DiaChi</div>
                     </div>
                     <div class="col-md-12">
-                        <label class="labels" style="font-family:'Times New Roman';font-size:20px">Giới thiệu về công ty</label>
-                        <textarea class="form-control" style="font-family:'Times New Roman';height: 200px;font-size:18px">@Model.GioiThieuNhaTuyenDung</textarea>
+                        <label class="labels" style="font-family: 'Times New Roman'; font-size: 20px">Giới thiệu về công ty</label>
+                        <textarea class="form-control" style="font-family: 'Times New Roman'; height: 200px; font-size: 18px">@Model.GioiThieuNhaTuyenDung</textarea>
                     </div>
                 </div>
                 <div class="mt-5 text-center">
-                    <a class="btn btn-primary" asp-action="UpdateProfileNTD" style="font-family:'Times New Roman';font-size:20px" asp-route-id="@Model.Id">Chỉnh sửa thông tin</a>
+                    <a class="btn btn-primary" asp-controller="NTD" asp-action="UpdateProfileNTD" style="font-family: 'Times New Roman'; font-size: 20px" asp-route-id="@Model.Id">Chỉnh sửa thông tin</a>
                 </div>
-                @* <div><li><a asp-controller="Home" asp-action="UpdateProfileNTD">Chinh Sua</a></li></div> *@
             </div>
         </div>
     </div>
