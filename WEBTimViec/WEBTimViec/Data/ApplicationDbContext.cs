@@ -15,8 +15,6 @@ namespace WEBTimViec.Data
         public DbSet<BaiTuyenDung_ChuyenNganh> baiTuyenDung_ChuyenNganhs { get; set; }
         public DbSet<BaiTuyenDung_ViTri> baiTuyenDung_ViTris { get; set; }
         public DbSet<ChuyenNganh> chuyenNganhs { get; set; }
-        public DbSet<HinhAnhBTD> hinhAnhBTDs { get; set; }
-        public DbSet<HinhAnhNTD> hinhAnhNTDs { get; set; }
         public DbSet<HocVan> hocVans { get; set; }
         public DbSet<KinhNghiem> kinhNghiems { get; set; }
         public DbSet<KyNangMem> kyNangMems { get; set; }
@@ -27,6 +25,7 @@ namespace WEBTimViec.Data
 /*        public DbSet<UngVien> ungViens { get; set; }*/
         public DbSet<UngVien_ChuyenNganh> ungVien_ChuyenNganhs { get; set; }
         public DbSet<ViTriCongViec> viTriCongViecs { get; set; }
+        public DbSet<BaiTuyenDung_KyNangMem> baiTuyenDung_KyNangMems { get; set; }
 
     }
 }

@@ -48,7 +48,7 @@ namespace WEBTimViec.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.baiTuyenDungs.Include(b => b.KyNangMem).Include(b => b.kinhNghiem).Include(b => b.thanhPho);
+            var applicationDbContext = _context.baiTuyenDungs.Include(b => b.kinhNghiem).Include(b => b.thanhPho);
             return View(await applicationDbContext.ToListAsync());
         }
 

@@ -54,14 +54,49 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
         // GET: NhaTuyenDung/BaiTuyenDung
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.baiTuyenDungs.Include(b => b.KyNangMem).Include(b => b.kinhNghiem).Include(b => b.thanhPho);
+            var applicationDbContext = _context.baiTuyenDungs.Include(b => b.kinhNghiem).Include(b => b.thanhPho);
             return View(await applicationDbContext.ToListAsync());
         }
 
         public async Task<IActionResult> DetailsBaiTuyenDung(int id)
         {
-            var baiTuyenDung = await _baiTuyenDung.GetByIdAsync(id);
-            ViewData["TenTP"] = await _thanhPho.HienThiTenTP(baiTuyenDung.thanhPhoId);
+            var baiTuyenDung = _context.baiTuyenDungs
+        .Include(b => b.baiTuyenDung_ChuyenNganhs)
+            .ThenInclude(bcn => bcn.chuyenNganh)
+        .Include(b => b.baiTuyenDung_ViTris)
+            .ThenInclude(bv => bv.viTriCongViec)
+        .Include(b => b.baiTuyenDung_KyNangMems)
+            .ThenInclude(bk => bk.kyNangMem)
+        .FirstOrDefault(b => b.BaiTuyenDung_id == id);
+
+            if (baiTuyenDung == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.TenTP = _context.thanhPhos
+                .Where(tp => tp.ThanhPho_id == baiTuyenDung.thanhPhoId)
+                .Select(tp => tp.ThanhPho_name)
+                .FirstOrDefault();
+
+            // Lấy danh sách chuyên ngành dựa trên BaiTuyenDungId
+            ViewBag.ChuyenNganhs = baiTuyenDung.baiTuyenDung_ChuyenNganhs
+                .Where(bcn => bcn.BaiTuyenDungid == id)
+                .Select(bcn => bcn.chuyenNganh.ChuyenNganh_name)
+                .ToList();
+
+            // Lấy danh sách vị trí công việc dựa trên BaiTuyenDungId
+            ViewBag.ViTriCongViecs = baiTuyenDung.baiTuyenDung_ViTris
+                .Where(bv => bv.BaiTuyenDungid == id)
+                .Select(bv => bv.viTriCongViec.ViTriCongViec_name)
+                .ToList();
+
+            // Lấy danh sách kỹ năng mềm dựa trên BaiTuyenDungId
+            ViewBag.KyNangMems = baiTuyenDung.baiTuyenDung_KyNangMems
+                .Where(bk => bk.BaiTuyenDungid == id)
+                .Select(bk => bk.kyNangMem.KNMem_name)
+                .ToList();
+
             return View(baiTuyenDung);
         }
         public async Task<IActionResult> ListBaiTuyenDung()
@@ -108,7 +143,6 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
                 }
                 if (!User.Identity.IsAuthenticated)
                 {
-                    // Chưa đăng nhập, chuyển hướng tới trang đăng nhập
                     return Redirect("/Identity/Account/Login");
                 }
                 if (baiTuyenDung.ThoiGianHetHan <= DateTime.Now)
@@ -124,17 +158,58 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
                 if (baiTuyenDung.Luong_min < 0)
                 {
                     ModelState.AddModelError(nameof(baiTuyenDung.Luong_min), "Lương từ không được âm.");
-                    return Redirect("/Home/AddBaiTuyenDung");
+                    return View(baiTuyenDung);
                 }
 
                 if (baiTuyenDung.Luong_min >= baiTuyenDung.Luong_max)
                 {
                     ModelState.AddModelError(nameof(baiTuyenDung.Luong_max), "Lương từ phải nhỏ hơn lương đến.");
-                    return Redirect("/Home/AddBaiTuyenDung");
+                    return View(baiTuyenDung);
                 }
 
-                await _baiTuyenDung.AddAsync(baiTuyenDung);
+                _context.baiTuyenDungs.Add(baiTuyenDung);
                 await _context.SaveChangesAsync();
+
+                if (baiTuyenDung.ChuyenNganhIds != null)
+                {
+                    foreach (var chuyenNganhId in baiTuyenDung.ChuyenNganhIds)
+                    {
+                        var baiTuyenDungChuyenNganh = new BaiTuyenDung_ChuyenNganh
+                        {
+                            BaiTuyenDungid = baiTuyenDung.BaiTuyenDung_id,
+                            ChuyenNganhid = chuyenNganhId
+                        };
+                        _context.baiTuyenDung_ChuyenNganhs.Add(baiTuyenDungChuyenNganh);
+                    }
+                    await _context.SaveChangesAsync();
+                }
+                if (baiTuyenDung.KyNangMemIds != null)
+                {
+                    foreach (var kyNangMemId in baiTuyenDung.KyNangMemIds)
+                    {
+                        var baiTuyenDungKyNangMem = new BaiTuyenDung_KyNangMem
+                        {
+                            BaiTuyenDungid = baiTuyenDung.BaiTuyenDung_id,
+                            KyNangMemid = kyNangMemId
+                        };
+                        _context.baiTuyenDung_KyNangMems.Add(baiTuyenDungKyNangMem);
+                    }
+                    await _context.SaveChangesAsync();
+                }
+                if (baiTuyenDung.ViTriCongViecIds != null)
+                {
+                    foreach (var viTriCongViec in baiTuyenDung.ViTriCongViecIds)
+                    {
+                        var baiTuyenDungVITri = new BaiTuyenDung_ViTri
+                        {
+                            BaiTuyenDungid = baiTuyenDung.BaiTuyenDung_id,
+                            ViTriCongViecid = viTriCongViec
+                        };
+                        _context.baiTuyenDung_ViTris.Add(baiTuyenDungVITri);
+                    }
+                    await _context.SaveChangesAsync();
+                }
+
                 return RedirectToAction("Index", "NTD");
             }
             return View(baiTuyenDung);
@@ -152,6 +227,7 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             }
 
         }
+
         public async Task<IActionResult> UpdateProfileNTD()
         {
             var find_company = await _userManager.GetUserAsync(User);
@@ -168,32 +244,55 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             {
                 return NotFound();
             }
+
             if (ModelState.IsValid)
             {
                 try
                 {
-                    if (ModelState.IsValid)
+                    if (image_url != null && IsImageFile(image_url) && IsFileSizeValid(image_url))
                     {
-                        if (company != null && find_company != null)
+                        // Lưu hình ảnh đại diện
+                        find_company.image_url = await SaveImage(image_url);
+                    }
+                    else if (image_url == null)
+                    {
+                        if (find_company.image_url != null)
                         {
-                            if (image_url != null && IsImageFile(image_url) && IsFileSizeValid(image_url))
-                            {
-                                // Lưu hình ảnh đại diện
-                                find_company.image_url = await SaveImage(image_url);
-                            }
-                            find_company.ThoiGianCapNhat = DateTime.Now;
-                            await _userManager.UpdateAsync(find_company);
+                            // Nếu trong cơ sở dữ liệu có URL hình ảnh được lưu trữ, giữ nguyên giá trị của image_url
+                            find_company.image_url = find_company.image_url;
+                        }
+                        else
+                        {
+                            // Nếu không có URL hình ảnh trong cơ sở dữ liệu, gán image_url = null
+                            find_company.image_url = null;
                         }
                     }
+
+
+                    // Cập nhật các thông tin khác của công ty
+                    find_company.NhaTuyenDung_name = company.NhaTuyenDung_name;
+                    find_company.SDTNhaTuyenDung = company.SDTNhaTuyenDung;
+                    find_company.Website = company.Website;
+                    find_company.FullName = company.FullName;
+                    find_company.DiaChi = company.DiaChi;
+                    find_company.GioiThieuNhaTuyenDung = company.GioiThieuNhaTuyenDung;
+                    find_company.ThoiGianCapNhat = DateTime.Now;
+
+                    // Lưu thay đổi vào cơ sở dữ liệu
+                    await _userManager.UpdateAsync(find_company);
+
+                    return RedirectToAction(nameof(IndexProfileNTD));
                 }
                 catch
                 {
                     return NotFound();
                 }
-                return RedirectToAction(nameof(Index));
             }
+
             return View(find_company);
         }
+
+
         private bool IsImageFile(IFormFile file)
         {
             // Kiểm tra phần mở rộng của file có phải là ảnh hay không

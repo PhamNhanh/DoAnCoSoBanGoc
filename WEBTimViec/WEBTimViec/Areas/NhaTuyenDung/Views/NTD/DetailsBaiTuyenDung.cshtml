@@ -25,7 +25,28 @@
                 <p class="card-text"><strong>Loại công việc:</strong> @Model.KieuCongViec</p>
                 <p class="card-text"><strong>Hạn nộp hồ sơ:</strong> @Model.ThoiGianHetHan</p>
                 <p class="card-text"><strong>Thành phố:</strong> @ViewData["TenTP"]</p>
-@*                 <p class="card-text"><strong>Kỹ năng mềm:</strong> @Model.KyNangMem.KNMem_name</p> *@
+                <p class="card-text">
+                    <strong>Chuyên ngành:</strong>
+                    @if (ViewBag.ChuyenNganhs != null)
+                    {
+                        @string.Join(", ", ViewBag.ChuyenNganhs)
+                    }
+                </p>
+                <p class="card-text">
+                    <strong>Vị trí công việc:</strong>
+                    @if (ViewBag.ViTriCongViecs != null)
+                    {
+                        @string.Join(", ", ViewBag.ViTriCongViecs)
+                    }
+                </p>
+                <p class="card-text">
+                    <strong>Kỹ năng mềm:</strong>
+                    @if (ViewBag.KyNangMems != null)
+                    {
+                        @string.Join(", ", ViewBag.KyNangMems)
+                    }
+                </p>
+
             </div>
         </div>
     </div>

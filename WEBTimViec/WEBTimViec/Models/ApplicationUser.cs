@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WEBTimViec.Models
 {
     public class ApplicationUser : IdentityUser
     {
         //Su dung chung
-        [Key]
-        public int User_id { get; set; }
+/*        [Key]
+        public int User_id { get; set; }*/
         //Ung vien
    
      /*   public int UngVien_id { get; set; }*/
@@ -31,6 +32,5 @@ namespace WEBTimViec.Models
         public string? Website { get; set; }
         public DateTime? ThoiGianTao { get; set; }
         public DateTime? ThoiGianCapNhat { get; set; }
-        public List<HinhAnhNTD>? HinhAnhNTD { get; set; }
     }
 }

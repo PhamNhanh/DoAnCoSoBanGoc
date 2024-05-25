@@ -88,13 +88,7 @@
                     </select>
                     <span asp-validation-for="thanhPhoId" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="KyNangMemId" class="control-label" style="font-weight: bold;">Kỹ năng mềm</label>
-                    <select asp-for="KyNangMemId" asp-items="ViewBag.KyNangMem" class="form-control">
-                        <option value="">-- Chọn kỹ năng mềm --</option>
-                    </select>
-                    <span asp-validation-for="KyNangMemId" class="text-danger"></span>
-                </div>
+
                 <div class="form-group">
                     <label asp-for="kinhNghiemId" class="control-label" style="font-weight: bold;">
                         <i class="fas fa-user-tie"></i>
@@ -105,30 +99,34 @@
                     </select>
                     <span asp-validation-for="kinhNghiemId" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="chuyenNganh.ChuyenNganh_name" class="control-label" style="font-weight: bold;">
-                        <i class="fas fa-user-tie"></i>
-                        Chuyên ngành ứng viên
-                    </label>
-                    <select asp-for="chuyenNganh.ChuyenNganh_name" asp-items="ViewBag.ChuyenNganh" class="form-control" multiple="multiple" id="chuyenNganhSelect">
+
+                <div>
+                    <label for="ChuyenNganhIds">Chuyên Ngành</label>
+                    <select id="ChuyenNganhIds" name="ChuyenNganhIds" multiple class="form-control">
+                        @foreach (var chuyenNganh in ViewBag.ChuyenNganh)
+                        {
+                            <option value="@chuyenNganh.Value">@chuyenNganh.Text</option>
+                        }
                     </select>
-                    <span asp-validation-for="chuyenNganh.ChuyenNganh_name" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label for="selectedChuyenNganh" class="control-label" style="font-weight: bold;">
-                        Chuyên ngành đã chọn
-                    </label>
-                    <textarea id="selectedChuyenNganh" class="form-control" readonly></textarea>
-                </div>
-                <div class="form-group">
-                    <label asp-for="viTriCongViec.ViTriCongViec_name" class="control-label" style="font-weight: bold;">
-                        <i class="fas fa-user-tie"></i>
-                        Vị trí công việc
-                    </label>
-                    <select asp-for="viTriCongViec.ViTriCongViec_name" asp-items="ViewBag.ViTriCongViec" class="form-control">
-                        <option value="">-- Chọn vị trí --</option>
+
+                <div>
+                    <label for="ViTriCongViecIds">Vị Trí Công Việc</label>
+                    <select id="ViTriCongViecIds" name="ViTriCongViecIds" multiple class="form-control">
+                        @foreach (var viTri in ViewBag.ViTriCongViec)
+                        {
+                            <option value="@viTri.Value">@viTri.Text</option>
+                        }
                     </select>
-                    <span asp-validation-for="viTriCongViec.ViTriCongViec_name" class="text-danger"></span>
+                </div>
+                <div>
+                    <label for="KyNangMemIds">Kỹ Năng Mềm</label>
+                    <select id="KyNangMemIds" name="KyNangMemIds" multiple class="form-control">
+                        @foreach (var kyNangMem in ViewBag.KyNangMem)
+                        {
+                            <option value="@kyNangMem.Value">@kyNangMem.Text</option>
+                        }
+                    </select>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Thêm" class="btn btn-primary" />
@@ -156,32 +154,7 @@
                 });
             });
 
-            $(document).ready(function () {
-                // Initialize select2
-                $('#chuyenNganhSelect').select2({
-                    placeholder: "-- Chọn Chuyên Ngành --"
-                });
-
-                // Function to update the selectedChuyenNganh textarea
-                function updateSelectedChuyenNganh() {
-                    var selected = $('#chuyenNganhSelect').val();
-                    var selectedText = [];
-                    if (selected) {
-                        selected.forEach(function (id) {
-                            selectedText.push($('#chuyenNganhSelect option[value="' + id + '"]').text());
-                        });
-                    }
-                    $('#selectedChuyenNganh').val(selectedText.join(', '));
-                }
-
-                // Update the selectedChuyenNganh textarea when selection changes
-                $('#chuyenNganhSelect').on('change', function () {
-                    updateSelectedChuyenNganh();
-                });
-
-                // Initial update to fill the textarea if there are already selected items
-                updateSelectedChuyenNganh();
-            });
+            
         </script>
     }
 </body>

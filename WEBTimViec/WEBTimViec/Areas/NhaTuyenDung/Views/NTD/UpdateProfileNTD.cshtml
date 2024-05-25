@@ -8,7 +8,7 @@
 
 <div class="container-fluid bg-white mt-5 mb-5">
     <div class="row">
-        <form asp-action="UpdateProfile" method="post" enctype="multipart/form-data">
+        <form asp-action="UpdateProfileNTD" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
 
@@ -20,7 +20,7 @@
                     <div class="row mt-2">
                         <div class="col-md-6">
                             <label asp-for="NhaTuyenDung_name" style="font-family: 'Times New Roman'; font-size: 20px" class="control-label">Tên công ty</label>
-                            <input asp-for="NhaTuyenDung_name" style="font-family: 'Times New Roman'; font-size: 18px" class="form-control" />
+                            <input asp-for="NhaTuyenDung_name" style="font-family: 'Times New Roman'; font-size: 18px" class="form-control" value="@Model.NhaTuyenDung_name" />
                             <span asp-validation-for="NhaTuyenDung_name" class="text-danger"></span>
                         </div>
                         <div class="col-md-6">
@@ -52,10 +52,18 @@
                         </div>
                         <div class="form-group">
                             <label for="image_url">Logo công ty</label>
-                            <input type="file" id="image_url" name="image_url" class="form-control" accept="image/*" />
-                            <img src="@Model.image_url" alt="Logo công ty" style="max-width:200px;" id="previewImage" />
+                            @if (!string.IsNullOrEmpty(Model.image_url))
+                            {
+                                <img src="@Model.image_url" alt="Logo công ty" style="max-width:200px; cursor:pointer;" id="previewImage" />
+                                <input type="file" id="image_url" name="image_url" class="form-control" accept="image/*" style="display:none;" onchange="previewFile(this);" />
+                            }
+                            else
+                            {
+                                <input type="file" id="image_url" name="image_url" class="form-control" accept="image/*" onchange="previewFile(this);" />
+                            }
                             <span asp-validation-for="image_url" class="text-danger"></span>
                         </div>
+
                     </div>
                     <div class="mt-5 text-center">
                         <button type="submit" class="btn btn-primary">Lưu</button>
@@ -66,7 +74,7 @@
     </div>
 </div>
 
-<script>
+@* <script>
     document.querySelectorAll('input[type="file"]').forEach(input => {
         input.addEventListener('change', function (event) {
             const file = event.target.files[0];
@@ -80,4 +88,24 @@
             }
         });
     });
+</script>
+ *@
+<script>
+    function previewFile(input) {
+        var preview = document.getElementById('previewImage');
+        var file = input.files[0];
+        var reader = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+
+    document.getElementById('previewImage').onclick = function () {
+        document.getElementById('image_url').click();
+    };
 </script>
