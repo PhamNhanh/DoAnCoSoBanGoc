@@ -1,8 +1,7 @@
 ﻿@model WEBTimViec.Models.UngTuyen
-@{
+@* @{
     ViewData["Title"] = "Ứng tuyển";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+} *@
 
 <div class="container">
     <div class="row">
@@ -11,14 +10,17 @@
 
             <form asp-action="UngTuyen" method="post" enctype="multipart/form-data">
                 <div class="row g-3">
-                    <div class="col-12 col-sm-6">
-                        <input type="text" asp-for="applicationUser.FullName" class="form-control" placeholder="Tên của bạn" required>
-                        <span asp-validation-for="applicationUser.FullName" class="text-danger"></span>
+@*                     <div class="col-12 col-sm-6">
+                        <input type="text" class="form-control" value="@Model.applicationUser.FullName" readonly>
                     </div>
+
                     <div class="col-12 col-sm-6">
+                        <input type="text" class="form-control" value="@Model.applicationUser.Email" readonly>
+                    </div> *@
+@*                     <div class="col-12 col-sm-6">
                         <input type="email" asp-for="applicationUser.Email" class="form-control" placeholder="Email" required>
                         <span asp-validation-for="applicationUser.Email" class="text-danger"></span>
-                    </div>
+                    </div> *@
                     <div class="col-12 col-sm-6">
                         <label asp-for="url_CV" class="form-label me-2 mb-0">Chọn CV</label>
                         <input type="file" asp-for="url_CV" class="form-control bg-white" required>

@@ -31,11 +31,11 @@ namespace WEBTimViec.Repositories
         {
             return await _userManager.FindByIdAsync(id);
         }
-
         public async Task<IEnumerable<ApplicationUser>> GetAllCompanyAsync()
         {
-            var usersInRole = await _userManager.GetUsersInRoleAsync("Company");
+            var usersInRole = await _userManager.GetUsersInRoleAsync("Nhà Tuyển Dụng");
             return usersInRole.ToList();
         }
+
     }
 }

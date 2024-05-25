@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WEBTimViec</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <!-- Menu Icon -->
+    <div class="menu-icon" onclick="openNav()">
+        <span>&#9776;</span>
+    </div>
+
+    <!-- Sidebar -->
+    <!-- Sidebar -->
+    <div class="sidebar" id="mySidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+        <ul>
+            <li><a href="@Url.Action("Index", "AD", new { area = "Admin" })">Trang chủ</a></li>
+            <li><a href="@Url.Action("DSNguoiDung", "AD", new { area = "Admin" })">Danh sách tài khoản</a></li>
+            <li><a href="@Url.Action("ListBaiTuyenDung", "AD", new { area = "Admin" })">Xem bài tuyển dụng</a></li>
+            <li><a href="@Url.Action("ListThanhPho", "AD", new { area = "Admin" })">Danh sách thành phố</a></li>
+            <li><a href="@Url.Action("ListChuyenNganh", "AD", new { area = "Admin" })">Danh sách chuyên ngành</a></li>
+            <li>
+                <form class="btn btn-warning" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="btn btn-warning">Đăng xuất</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted mt-3">
+        <!-- Your footer content here -->
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+    </script>
+</body>
+</html>

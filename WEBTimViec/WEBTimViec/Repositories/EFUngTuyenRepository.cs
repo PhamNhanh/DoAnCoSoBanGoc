@@ -14,18 +14,12 @@ namespace WEBTimViec.Repositories
         public async Task<IEnumerable<UngTuyen>> GetAllAsync()
         {
             return await _context.ungTuyens
-/*                .Include(b => b.url_CV)
-                .Include(b => b.ThuGioiThieu)
-                .Include(b => b.ThoiGianUngTuyen)*/
                 .ToListAsync();
         }
 
         public async Task<IEnumerable<UngTuyen>> GetAllApplyByUserIdAsync(string id)
         {
             return await _context.ungTuyens
-/*                .Include(b => b.url_CV)
-                .Include(b => b.ThuGioiThieu)
-                .Include(b => b.ThoiGianUngTuyen)*/
                 .Where(b => b.applicationUser.Id == id)
                 .ToListAsync();
         }
@@ -33,9 +27,6 @@ namespace WEBTimViec.Repositories
         public async Task<IEnumerable<UngTuyen>> GetAllApplyByCompanyIdAsync(string id)
         {
             return await _context.ungTuyens
-/*                .Include(b => b.url_CV)
-                .Include(b => b.ThuGioiThieu)
-                .Include(b => b.ThoiGianUngTuyen)*/
                 .Where(b => b.BaiTuyenDung.applicationUser.Id == id)
                 .ToListAsync();
         }

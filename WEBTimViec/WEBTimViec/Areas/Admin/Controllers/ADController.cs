@@ -51,7 +51,14 @@ namespace WEBTimViec.Areas.Admin.Controllers
             var applicationDbContext = _context.baiTuyenDungs.Include(b => b.kinhNghiem).Include(b => b.thanhPho);
             return View(await applicationDbContext.ToListAsync());
         }
+        public async Task<IActionResult> DSNguoiDung()
+        {
+            // Lấy danh sách các nhà tuyển dụng từ nguồn dữ liệu (ví dụ: database)
+            var danhSachNhaTuyenDung = await _context.Users.ToListAsync();
 
+            // Truyền danh sách nhà tuyển dụng tới view
+            return View(danhSachNhaTuyenDung);
+        }
         //Thanh Pho
 
         [HttpGet]
@@ -73,7 +80,7 @@ namespace WEBTimViec.Areas.Admin.Controllers
                 // Nếu không có lỗi, thêm thể loại và hiển thị thông báo thành công
                 await _thanhPho.AddAsync(thanhPho);
                 TempData["SuccessMessage"] = "Đã thêm thể loại thành công";
-                return RedirectToAction("IndexThanhPho", "Home");
+                return RedirectToAction("ListThanhPho", "AD");
             }
             return View(thanhPho);
         }
@@ -83,7 +90,47 @@ namespace WEBTimViec.Areas.Admin.Controllers
             var sortedThanhPho = thanhPho.OrderBy(tp => tp.ThanhPho_name).ToList();
             return View(sortedThanhPho);
         }
+        public async Task<IActionResult> DetailsBaiTuyenDung(int id)
+        {
+            var baiTuyenDung = _context.baiTuyenDungs
+        .Include(b => b.baiTuyenDung_ChuyenNganhs)
+            .ThenInclude(bcn => bcn.chuyenNganh)
+        .Include(b => b.baiTuyenDung_ViTris)
+            .ThenInclude(bv => bv.viTriCongViec)
+        .Include(b => b.baiTuyenDung_KyNangMems)
+            .ThenInclude(bk => bk.kyNangMem)
+        .FirstOrDefault(b => b.BaiTuyenDung_id == id);
 
+            if (baiTuyenDung == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.TenTP = _context.thanhPhos
+                .Where(tp => tp.ThanhPho_id == baiTuyenDung.thanhPhoId)
+                .Select(tp => tp.ThanhPho_name)
+                .FirstOrDefault();
+
+            // Lấy danh sách chuyên ngành dựa trên BaiTuyenDungId
+            ViewBag.ChuyenNganhs = baiTuyenDung.baiTuyenDung_ChuyenNganhs
+                .Where(bcn => bcn.BaiTuyenDungid == id)
+                .Select(bcn => bcn.chuyenNganh.ChuyenNganh_name)
+                .ToList();
+
+            // Lấy danh sách vị trí công việc dựa trên BaiTuyenDungId
+            ViewBag.ViTriCongViecs = baiTuyenDung.baiTuyenDung_ViTris
+                .Where(bv => bv.BaiTuyenDungid == id)
+                .Select(bv => bv.viTriCongViec.ViTriCongViec_name)
+                .ToList();
+
+            // Lấy danh sách kỹ năng mềm dựa trên BaiTuyenDungId
+            ViewBag.KyNangMems = baiTuyenDung.baiTuyenDung_KyNangMems
+                .Where(bk => bk.BaiTuyenDungid == id)
+                .Select(bk => bk.kyNangMem.KNMem_name)
+                .ToList();
+
+            return View(baiTuyenDung);
+        }
 
         //Chuyen Nganh
         [HttpGet]
@@ -105,7 +152,7 @@ namespace WEBTimViec.Areas.Admin.Controllers
                 // Nếu không có lỗi, thêm thể loại và hiển thị thông báo thành công
                 await _chuyenNganh.AddAsync(chuyenNganh);
                 TempData["SuccessMessage"] = "Đã thêm thể loại thành công";
-                return RedirectToAction("IndexChuyenNganh", "Home");
+                return RedirectToAction("ListChuyenNganh", "AD");
             }
             return View(chuyenNganh);
         }

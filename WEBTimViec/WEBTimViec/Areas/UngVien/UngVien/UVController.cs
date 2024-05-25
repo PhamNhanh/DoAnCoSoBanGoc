@@ -53,11 +53,11 @@ namespace WEBTimViec.Areas.UngVien.UngVien
         public async Task<IActionResult> DSNhaTuyenDung()
         {
             // Lấy danh sách các nhà tuyển dụng từ nguồn dữ liệu (ví dụ: database)
-            var danhSachNhaTuyenDung = await _context.Users.ToListAsync();
-
+            var danhSachNhaTuyenDung = await _userRepository.GetAllCompanyAsync();
             // Truyền danh sách nhà tuyển dụng tới view
             return View(danhSachNhaTuyenDung);
         }
+
         public async Task<IActionResult> DetailsNhaTuyenDung(string id)
         {
             if (id == null)
@@ -147,16 +147,11 @@ namespace WEBTimViec.Areas.UngVien.UngVien
         [HttpPost]
         public async Task<IActionResult> UngTuyen(UngTuyen ungTuyen, IFormFile url_cv, int id)
         {
+            //id người dùng
             var find_user = await _userManager.GetUserAsync(User);
-            if (find_user == null)
-            {
-                return View("Thiếu Id user");
-            }
+            //id bài tuyển dụng
             var post = await _baiTuyenDung.GetByIdAsync(id);
-            if (post == null)
-            {
-                return View("Thiếu Id postjob");
-            }
+
 
             if (ModelState.IsValid)
             {
@@ -193,31 +188,31 @@ namespace WEBTimViec.Areas.UngVien.UngVien
         }
 
 
-        private async Task<string> SaveCV(IFormFile url_cv)
-        {
-            try
+            private async Task<string> SaveCV(IFormFile url_cv)
             {
-                //đảm bảo tên cv là duy nhất khi up
-                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(url_cv.FileName);
-                var savePath = Path.Combine("wwwroot/filecv", fileName); // Thay đổi đường dẫn theo cấu hình của bạn
-                using (var fileStream = new FileStream(savePath, FileMode.Create))
+                try
                 {
-                    await url_cv.CopyToAsync(fileStream);
+                    //đảm bảo tên cv là duy nhất khi up
+                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(url_cv.FileName);
+                    var savePath = Path.Combine("wwwroot/filecv", fileName); // Thay đổi đường dẫn theo cấu hình của bạn
+                    using (var fileStream = new FileStream(savePath, FileMode.Create))
+                    {
+                        await url_cv.CopyToAsync(fileStream);
+                    }
+                    return "/filecv/" + fileName;
                 }
-                return "/filecv/" + fileName;
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
             }
-            catch (Exception e)
+            private bool IsFileSizeValid(IFormFile file)
             {
-                Console.WriteLine(e.Message);
-                return null;
+                // Kiểm tra kích thước file không vượt quá 10MB
+                var maxSize = 10 * 1024 * 1024; // 10MB
+                return file.Length <= maxSize;
             }
-        }
-        private bool IsFileSizeValid(IFormFile file)
-        {
-            // Kiểm tra kích thước file không vượt quá 10MB
-            var maxSize = 10 * 1024 * 1024; // 10MB
-            return file.Length <= maxSize;
-        }
 
     }
 }
