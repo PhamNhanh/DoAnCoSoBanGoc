@@ -119,7 +119,7 @@ namespace WEBTimViec.Areas.UngVien.UngVien
 
                 ungTuyen.BaiTuyenDungid = post.BaiTuyenDung_id;
                 ungTuyen.applicationUser = post.applicationUser; // Đã lưu id Nhà Tuyển Dụng
-                ungTuyen.application_Userid = find_user.Id; //Chưa lưuu id Ung Viên
+                ungTuyen.application_Userid = find_user.Id; //Da lưuu id Ung Viên
                 ungTuyen.ThoiGianUngTuyen = DateTime.Now;
 
                 await _ungTuyen.AddAsync(ungTuyen);

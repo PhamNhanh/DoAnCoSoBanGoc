@@ -52,7 +52,7 @@ namespace WEBTimViec.Controllers
                 return View(baiTuyenDung);
             }
         }
-       /* [HttpGet]
+        [HttpGet]
         public async Task<IActionResult> AddBaiTuyenDung()
         {
             var kinhNghiem = await _kinhNghiem.GetAllAsync();
@@ -121,7 +121,7 @@ namespace WEBTimViec.Controllers
             }
             return View(baiTuyenDung);
         }
-*/
+
         public async Task<IActionResult> ListBaiTuyenDung()
         {
             var baiTuyenDung = await _baiTuyenDung.GetAllAsync();

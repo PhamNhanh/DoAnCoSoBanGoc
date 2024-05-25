@@ -57,11 +57,7 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             var applicationDbContext = _context.baiTuyenDungs.Include(b => b.KyNangMem).Include(b => b.kinhNghiem).Include(b => b.thanhPho);
             return View(await applicationDbContext.ToListAsync());
         }
-        private async Task<string> HienThiTenTP(int id)
-        {
-            return await _thanhPho.HienThiTenTP(id);
 
-        }
         public async Task<IActionResult> DetailsBaiTuyenDung(int id)
         {
             var baiTuyenDung = await _baiTuyenDung.GetByIdAsync(id);

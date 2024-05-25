@@ -23,6 +23,14 @@
                     <li><a href="@Url.Action("AddBaiTuyenDung", "NTD", new { area = "NhaTuyenDung" })">Thêm bài tuyển dụng</a></li>
                     <li><a href="@Url.Action("ListBaiTuyenDung", "NTD", new { area = "NhaTuyenDung" })">Xem bài tuyển dụng</a></li>
                 </ul>
+                <ul>
+                    <li><a asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+                    <li><a asp-controller="Home" asp-action="ListChuyenNganh">Chuyên Ngành</a></li>
+                    <li><a asp-controller="Home" asp-action="ListThanhPho">Thành phố</a></li>
+                    <li><a asp-controller="Home" asp-action="ListBaiTuyenDung">Bài tuyển dụng</a></li>
+                    <li><a asp-controller="Home" asp-action="ListNhaTuyenDung">Nha tuyển dụng</a></li>
+                    <li><a asp-controller="Home" asp-action="DSUngTuyen">Ứng tuyển</a></li>
+                </ul>
             </nav>
         </div>
     </header>
