@@ -52,6 +52,41 @@ namespace WEBTimViec.Controllers
                 return View(baiTuyenDung);
             }
         }
+        public async Task<IActionResult> IndexAll()
+        {
+
+            var baiTuyenDungs = await _context.baiTuyenDungs.ToListAsync();
+            var thanhPho = await _context.thanhPhos.ToListAsync();
+            var chuyenNganh = await _context.chuyenNganhs.ToListAsync();
+            var viewModel = new ViewModel
+            {
+                BaiTuyenDungs = baiTuyenDungs,
+                ThanhPhos = thanhPho,
+                ChuyenNganhs = chuyenNganh,
+            };
+            // Truyền danh sách bài tuyển dụng tới view
+            return View(viewModel);
+        }
+        [HttpGet]
+        public async Task<IActionResult> TimKiem(ViewModel viewModel)
+        {
+            if (viewModel.ThanhPhoId != null)
+            {
+                var baiTuyenDungs = await _context.baiTuyenDungs
+                    .Where(b => b.thanhPhoId == viewModel.ThanhPhoId)
+                    .ToListAsync();
+
+                viewModel.BaiTuyenDungs = baiTuyenDungs;
+            }
+
+            var thanhPho = await _context.thanhPhos.ToListAsync();
+            var chuyenNganh = await _context.chuyenNganhs.ToListAsync();
+            viewModel.ThanhPhos = thanhPho;
+            viewModel.ChuyenNganhs = chuyenNganh;
+
+            return View(viewModel);
+        }
+
         [HttpGet]
         public async Task<IActionResult> AddBaiTuyenDung()
         {
