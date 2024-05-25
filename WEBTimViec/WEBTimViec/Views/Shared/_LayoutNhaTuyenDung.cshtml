@@ -23,9 +23,14 @@
             <li><a href="@Url.Action("Index", "NTD", new { area = "NhaTuyenDung" })">Trang chủ</a></li>
             <li><a href="@Url.Action("AddBaiTuyenDung", "NTD", new { area = "NhaTuyenDung" })">Thêm bài tuyển dụng</a></li>
             <li><a href="@Url.Action("ListBaiTuyenDung", "NTD", new { area = "NhaTuyenDung" })">Xem bài tuyển dụng</a></li>
-            <li><a href="@Url.Action("Login", "Account", new { area = "Identity"})">Đăng nhập</a></li>
-            <li><a href="@Url.Action("Register", "Account",  new { area = "Identity"})">Đăng ký</a></li>
-            <li><a href="@Url.Action("Logout", "Account",  new { area = "Identity"})">Đăng xuất</a></li>
+            <li><a href="@Url.Action("IndexProfileNTD", "NTD", new { area = "NhaTuyenDung" })">Thông tin nhà tuyển dụng</a></li>
+@*             <li><a href="@Url.Action("Login", "Account", new { area = "Identity"})">Đăng nhập</a></li>
+            <li><a href="@Url.Action("Register", "Account",  new { area = "Identity"})">Đăng ký</a></li> *@
+            <li>
+                <form class="btn btn-warning" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="btn btn-warning">Đăng xuất</button>
+                </form>
+            </li>
         </ul>
     </div>
 

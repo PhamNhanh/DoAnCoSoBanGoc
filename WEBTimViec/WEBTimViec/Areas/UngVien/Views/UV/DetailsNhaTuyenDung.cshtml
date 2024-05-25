@@ -1,0 +1,28 @@
+﻿@model WEBTimViec.Models.ApplicationUser
+
+<!DOCTYPE html>
+<html>
+<p>
+    <a href="@Url.Action("DSNhaTuyenDung", "UV", new { area = "UngVien" })" class="btn btn-primary">Back to List</a>
+</p>
+<head>
+    <title>Chi tiết nhà tuyển dụng</title>
+</head>
+<body>
+    <h1>Thông tin nhà tuyển dụng</h1>
+    <div class="col-md-3 border-right">
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+            <img class="rounded-circle mt-5" width="150px" src="@Model.image_url">
+        </div>
+    </div>
+    <div>
+        <p><strong>Tên công ty:</strong> @Model.NhaTuyenDung_name</p>
+        <p><strong>Giới thiệu:</strong> @Model.GioiThieuNhaTuyenDung</p>
+        <p><strong>Địa chỉ:</strong> @Model.DiaChi</p>
+        <p><strong>Số điện thoại:</strong> @Model.SDTNhaTuyenDung</p>
+        <p><strong>Website:</strong> @Model.Website</p>
+        <p><strong>Thời gian tạo:</strong> @Model.ThoiGianTao</p>
+        <p><strong>Thời gian cập nhật:</strong> @Model.ThoiGianCapNhat</p>
+    </div>
+</body>
+</html>

@@ -50,6 +50,29 @@ namespace WEBTimViec.Areas.UngVien.UngVien
             var applicationDbContext = _context.baiTuyenDungs.Include(b => b.kinhNghiem).Include(b => b.thanhPho);
             return View(await applicationDbContext.ToListAsync());
         }
+        public async Task<IActionResult> DSNhaTuyenDung()
+        {
+            // Lấy danh sách các nhà tuyển dụng từ nguồn dữ liệu (ví dụ: database)
+            var danhSachNhaTuyenDung = await _context.Users.ToListAsync();
+
+            // Truyền danh sách nhà tuyển dụng tới view
+            return View(danhSachNhaTuyenDung);
+        }
+        public async Task<IActionResult> DetailsNhaTuyenDung(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var company = await _context.Users.FindAsync(id);
+            if (company == null)
+            {
+                return NotFound();
+            }
+
+            return View(company);
+        }
         [HttpGet]
         public async Task<IActionResult> DSUngTuyen()
         {
@@ -68,9 +91,46 @@ namespace WEBTimViec.Areas.UngVien.UngVien
         }
         public async Task<IActionResult> DetailsBaiTuyenDung(int id)
         {
-            var baiTuyenDung = await _baiTuyenDung.GetByIdAsync(id);
-            ViewData["TenTP"] = await _thanhPho.HienThiTenTP(baiTuyenDung.thanhPhoId);
-            return View(baiTuyenDung);
+            {
+                var baiTuyenDung = _context.baiTuyenDungs
+            .Include(b => b.baiTuyenDung_ChuyenNganhs)
+                .ThenInclude(bcn => bcn.chuyenNganh)
+            .Include(b => b.baiTuyenDung_ViTris)
+                .ThenInclude(bv => bv.viTriCongViec)
+            .Include(b => b.baiTuyenDung_KyNangMems)
+                .ThenInclude(bk => bk.kyNangMem)
+            .FirstOrDefault(b => b.BaiTuyenDung_id == id);
+
+                if (baiTuyenDung == null)
+                {
+                    return NotFound();
+                }
+
+                ViewBag.TenTP = _context.thanhPhos
+                    .Where(tp => tp.ThanhPho_id == baiTuyenDung.thanhPhoId)
+                    .Select(tp => tp.ThanhPho_name)
+                    .FirstOrDefault();
+
+                // Lấy danh sách chuyên ngành dựa trên BaiTuyenDungId
+                ViewBag.ChuyenNganhs = baiTuyenDung.baiTuyenDung_ChuyenNganhs
+                    .Where(bcn => bcn.BaiTuyenDungid == id)
+                    .Select(bcn => bcn.chuyenNganh.ChuyenNganh_name)
+                    .ToList();
+
+                // Lấy danh sách vị trí công việc dựa trên BaiTuyenDungId
+                ViewBag.ViTriCongViecs = baiTuyenDung.baiTuyenDung_ViTris
+                    .Where(bv => bv.BaiTuyenDungid == id)
+                    .Select(bv => bv.viTriCongViec.ViTriCongViec_name)
+                    .ToList();
+
+                // Lấy danh sách kỹ năng mềm dựa trên BaiTuyenDungId
+                ViewBag.KyNangMems = baiTuyenDung.baiTuyenDung_KyNangMems
+                    .Where(bk => bk.BaiTuyenDungid == id)
+                    .Select(bk => bk.kyNangMem.KNMem_name)
+                    .ToList();
+
+                return View(baiTuyenDung);
+            }
         }
         public async Task<IActionResult> ListBaiTuyenDung()
         {

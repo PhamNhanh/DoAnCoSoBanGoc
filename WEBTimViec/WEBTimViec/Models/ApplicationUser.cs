@@ -32,5 +32,7 @@ namespace WEBTimViec.Models
         public string? Website { get; set; }
         public DateTime? ThoiGianTao { get; set; }
         public DateTime? ThoiGianCapNhat { get; set; }
+        public List<BaiTuyenDung> BaiTuyenDungs { get; set; }
+
     }
 }

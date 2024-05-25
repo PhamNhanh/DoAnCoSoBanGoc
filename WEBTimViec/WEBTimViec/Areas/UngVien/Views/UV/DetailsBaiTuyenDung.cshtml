@@ -1,9 +1,8 @@
 ﻿@model WEBTimViec.Models.BaiTuyenDung
 
 @{
-    ViewData["Title"] = "Chi tiết bài tuyển dụng";
+    ViewData["Title"] = "Chi tiết bài tuyển dụng của công ty: ";
 }
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -18,6 +17,7 @@
         <div class="card">
             <div class="card-body">
                 <h3 class="card-title">@Model.TenCongViec</h3>
+                @*                 <p class="card-text"><strong>Tên công ty:</strong> @Model.applicationUser.FullName</p> *@
                 <p class="card-text"><strong>Mô tả công việc:</strong> @Model.MoTaCongViec</p>
                 <p class="card-text"><strong>Yêu cầu kỹ năng:</strong> @Model.YeuCauKyNang</p>
                 <p class="card-text"><strong>Phúc lợi:</strong> @Model.PhucLoi</p>
@@ -25,9 +25,31 @@
                 <p class="card-text"><strong>Loại công việc:</strong> @Model.KieuCongViec</p>
                 <p class="card-text"><strong>Hạn nộp hồ sơ:</strong> @Model.ThoiGianHetHan</p>
                 <p class="card-text"><strong>Thành phố:</strong> @ViewData["TenTP"]</p>
+                <p class="card-text">
+                    <strong>Chuyên ngành:</strong>
+                    @if (ViewBag.ChuyenNganhs != null)
+                    {
+                        @string.Join(", ", ViewBag.ChuyenNganhs)
+                    }
+                </p>
+                <p class="card-text">
+                    <strong>Vị trí công việc:</strong>
+                    @if (ViewBag.ViTriCongViecs != null)
+                    {
+                        @string.Join(", ", ViewBag.ViTriCongViecs)
+                    }
+                </p>
+                <p class="card-text">
+                    <strong>Kỹ năng mềm:</strong>
+                    @if (ViewBag.KyNangMems != null)
+                    {
+                        @string.Join(", ", ViewBag.KyNangMems)
+                    }
+                </p>
                 <a href="@Url.Action("UngTuyen", new { id = Model.BaiTuyenDung_id })" class="btn btn-primary">Ứng tuyển</a>
             </div>
         </div>
     </div>
 </body>
 </html>
+

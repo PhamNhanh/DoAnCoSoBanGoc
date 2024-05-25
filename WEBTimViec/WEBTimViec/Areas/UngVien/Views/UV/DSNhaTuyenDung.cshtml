@@ -1,0 +1,44 @@
+﻿@model IEnumerable<WEBTimViec.Models.ApplicationUser>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danh sách nhà tuyển dụng</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5 mb-3">Danh sách nhà tuyển dụng</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Tên công ty</th>
+                    <th>Email</th>
+                    <th>Địa chỉ</th>
+                    <th>Điện thoại</th>
+                    <th>Website</th>
+                    <th>Thêm</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var company in Model)
+                {
+                    <tr>
+                        <td>@company.NhaTuyenDung_name</td>
+                        <td>@company.Email</td>
+                        <td>@company.DiaChi</td>
+                        <td>@company.SDTNhaTuyenDung</td>
+                        <td>@company.Website</td>
+                        <td>
+                            <a href="@Url.Action("DetailsNhaTuyenDung", "UV", new { id = company.Id })" class="btn btn-info">Chi tiết</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a href="@Url.Action("Index")" class="btn btn-primary">Quay lại</a>
+    </div>
+</body>
+</html>

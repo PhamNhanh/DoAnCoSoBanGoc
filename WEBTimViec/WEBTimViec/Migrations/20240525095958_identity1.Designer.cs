@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WEBTimViec.Data;
 
@@ -11,9 +12,11 @@ using WEBTimViec.Data;
 namespace WEBTimViec.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240525095958_identity1")]
+    partial class identity1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -307,7 +310,7 @@ namespace WEBTimViec.Migrations
                     b.Property<string>("YeuCauKyNang")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("applicationUserId")
+                    b.Property<string>("applicationUserId1")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("kinhNghiemId")
@@ -322,7 +325,7 @@ namespace WEBTimViec.Migrations
 
                     b.HasIndex("ViTriCongViec_id");
 
-                    b.HasIndex("applicationUserId");
+                    b.HasIndex("applicationUserId1");
 
                     b.HasIndex("kinhNghiemId");
 
@@ -656,7 +659,7 @@ namespace WEBTimViec.Migrations
 
                     b.HasOne("WEBTimViec.Models.ApplicationUser", "applicationUser")
                         .WithMany("BaiTuyenDungs")
-                        .HasForeignKey("applicationUserId");
+                        .HasForeignKey("applicationUserId1");
 
                     b.HasOne("WEBTimViec.Models.KinhNghiem", "kinhNghiem")
                         .WithMany()
