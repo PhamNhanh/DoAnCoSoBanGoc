@@ -86,7 +86,7 @@ namespace WEBTimViec.Controllers
                 if (viewModel.chuyenNganhId != null)
                 {
                     // Lọc kết quả theo chuyên ngành
-                    query = query.Where(b => b.baiTuyenDung_ChuyenNganhs.Id == viewModel.chuyenNganhId);
+/*                    query = query.Where(b => b.baiTuyenDung_ChuyenNganhs.Id == viewModel.chuyenNganhId);*/
                 }
 
                 // Gán danh sách bài tuyển dụng vào view model

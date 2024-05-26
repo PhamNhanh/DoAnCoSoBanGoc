@@ -3,13 +3,20 @@
 @{
     ViewData["Title"] = "";
 }
-
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobPlus</title>
+    <link rel="stylesheet" href="~/css/ViewIndex.css">
+</head>
 <h1>@ViewData["Title"]</h1>
-
+<div class="form-container">
 <div class="row justify-content-center">
     <div class="col-md-4">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
-            <h2>Tạo tài khoản mới</h2>
+            <h4 class="custom-heading">Tạo tài khoản mới</h4>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="form-floating mb-3">
@@ -32,7 +39,11 @@
                     <option disabled selected>-select Role-</option>
                 </select>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Đăng ký</button>
+            <button id="registerSubmit" type="submit" class="button1">Đăng ký</button>
+                <p>
+                    <a class="text" asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl"> -> Đã có tài khoản </a>
+                </p>
         </form>
     </div>
+</div>
 </div>

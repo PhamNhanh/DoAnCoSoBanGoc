@@ -8,48 +8,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"] - WEBTimViec</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>JobPlus</title>
+    <link rel="stylesheet" href="~/css/ViewIndex.css">
 </head>
 <body>
     <div class="container">
-        <h1 class="mt-3">@ViewData["Title"]</h1>
-        <div class="card">
+@*         <h1 class="mt-3">@ViewData["Title"]</h1> *@
+        <div class="PhongXanhCoVien">
             <div class="card-body">
                 <h3 class="card-title">@Model.TenCongViec</h3>
+                <div class="PhongVangKhongVien">
+                    <p class="card-text"><strong>Mô tả công việc:</strong> @Model.MoTaCongViec</p>
+                    <p class="card-text"><strong>Yêu cầu kỹ năng:</strong> @Model.YeuCauKyNang</p>
+                    <p class="card-text"><strong>Phúc lợi:</strong> @Model.PhucLoi</p>
+                    <p class="card-text"><strong>Lương:</strong> @Model.Luong_min - @Model.Luong_max triệu đồng</p>
+                    <p class="card-text"><strong>Loại công việc:</strong> @Model.KieuCongViec</p>
+                    <p class="card-text"><strong>Hạn nộp hồ sơ:</strong> @Model.ThoiGianHetHan</p>
+                    <p class="card-text"><strong>Thành phố:</strong> @ViewData["TenTP"]</p>
+                    <p class="card-text">
+                        <strong>Chuyên ngành:</strong>
+                        @if (ViewBag.ChuyenNganhs != null)
+                        {
+                            @string.Join(", ", ViewBag.ChuyenNganhs)
+                        }
+                    </p>
+                    <p class="card-text">
+                        <strong>Vị trí công việc:</strong>
+                        @if (ViewBag.ViTriCongViecs != null)
+                        {
+                            @string.Join(", ", ViewBag.ViTriCongViecs)
+                        }
+                    </p>
+                    <p class="card-text">
+                        <strong>Kỹ năng mềm:</strong>
+                        @if (ViewBag.KyNangMems != null)
+                        {
+                            @string.Join(", ", ViewBag.KyNangMems)
+                        }
+                    </p>
+                </div>
 @*                 <p class="card-text"><strong>Tên công ty:</strong> @Model.applicationUser.FullName</p> *@
-                <p class="card-text"><strong>Mô tả công việc:</strong> @Model.MoTaCongViec</p>
-                <p class="card-text"><strong>Yêu cầu kỹ năng:</strong> @Model.YeuCauKyNang</p>
-                <p class="card-text"><strong>Phúc lợi:</strong> @Model.PhucLoi</p>
-                <p class="card-text"><strong>Lương:</strong> @Model.Luong_min - @Model.Luong_max triệu đồng</p>
-                <p class="card-text"><strong>Loại công việc:</strong> @Model.KieuCongViec</p>
-                <p class="card-text"><strong>Hạn nộp hồ sơ:</strong> @Model.ThoiGianHetHan</p>
-                <p class="card-text"><strong>Thành phố:</strong> @ViewData["TenTP"]</p>
-                <p class="card-text">
-                    <strong>Chuyên ngành:</strong>
-                    @if (ViewBag.ChuyenNganhs != null)
-                    {
-                        @string.Join(", ", ViewBag.ChuyenNganhs)
-                    }
-                </p>
-                <p class="card-text">
-                    <strong>Vị trí công việc:</strong>
-                    @if (ViewBag.ViTriCongViecs != null)
-                    {
-                        @string.Join(", ", ViewBag.ViTriCongViecs)
-                    }
-                </p>
-                <p class="card-text">
-                    <strong>Kỹ năng mềm:</strong>
-                    @if (ViewBag.KyNangMems != null)
-                    {
-                        @string.Join(", ", ViewBag.KyNangMems)
-                    }
-                </p>
+                
 
             </div>
         </div>
     </div>
-    <a href="@Url.Action("Index")" class="btn btn-primary">Quay lại</a>
+    <a href="@Url.Action("IndexAll")" class="button">Quay lại</a>
 </body>
 </html>

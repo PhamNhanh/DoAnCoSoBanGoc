@@ -1,9 +1,11 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - WEBTimViec</title>
+    <link rel="stylesheet" href="~/css/ViewIndex.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -15,12 +17,12 @@
     </div>
 
     <!-- Sidebar -->
-    <div class="sidebar" id="mySidebar">
+    <div class="sidebar" id="mySidebar" style="background-color: #13e2ef;>
         <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
         <ul>
-            <li><a href="/Home/Index">Trang chủ</a></li>
-            <li><a href="@Url.Action("Login", "Account", new { area = "Identity"})">Đăng nhập</a></li>
-            <li><a href="@Url.Action("Register", "Account", new { area = "Identity"})">Đăng ký</a></li>
+            <li><a class="buttonmenu" href="/Home/Index">Trang chủ</a></li>
+            <li><a class="buttonmenu" href="@Url.Action("Login", "Account", new { area = "Identity"})">Đăng nhập</a></li>
+            <li><a class="buttonmenu" href="@Url.Action("Register", "Account", new { area = "Identity"})">Đăng ký</a></li>
 @*             <li>
                 <form class="btn btn-warning" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                     <button type="submit" class="btn btn-warning">Đăng xuất</button>

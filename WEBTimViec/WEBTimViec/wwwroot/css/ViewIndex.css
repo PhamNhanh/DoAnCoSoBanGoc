@@ -3,7 +3,7 @@
     text-align: center;
 }
 .spacing-top {
-    margin-top: 20px; /* Bạn có thể điều chỉnh giá trị này để tạo khoảng cách phù hợp */
+    margin-top: 30px; /*Khoang cach */
 }
 .bg-green {
     background-color: #28a745; 
@@ -29,3 +29,117 @@
         color: orange; /* Đặt màu cho tiêu đề, thay đổi mã màu theo nhu cầu */
         cursor: pointer; /* Thay đổi con trỏ chuột thành con trỏ chỉ tay khi di chuột qua tiêu đề */
     }
+.custom-heading {
+    color: #0e0b8b; /* Đổi màu thành màu xanh */
+    margin-top: 30px; /* Bạn có thể điều chỉnh giá trị này để tạo khoảng cách phù hợp */
+}
+.custom-heading1 {
+    color: Black; /* Đổi màu thành màu xanh */
+
+}
+.form-container {
+    border: 3px solid Black; /* Màu viền của khung */
+    border-radius: 8px; /* Độ cong của góc */
+    padding: 15px; /* Khoảng cách bên trong khung */
+    margin-top: 20px; /* Khoảng cách từ phía trên */
+    background: #fbc726;
+
+}
+.PhongVangKhongVien {
+    border: 3px solid #0e0b8b; 
+    border-radius: 8px; 
+    padding: 15px; /* Khoảng cách bên trong khung */
+    margin-top: 20px; /* Khoảng cách từ phía trên */
+    background: #fbc726;
+}
+.PhongXanhCoVien {
+    border: 3px solid #28a745; 
+    border-radius: 8px; 
+    padding: 15px; /* Khoảng cách bên trong khung */
+    margin-top: 20px; /* Khoảng cách từ phía trên */
+    background: #28a745;
+}
+.limit-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.button {
+    border: 3px solid Black;
+    border-radius: 15px;
+    padding: 15px; /* Khoảng cách bên trong khung */
+    margin-top: 20px; /* Khoảng cách từ phía trên */
+    background: #ffffff;
+    color: black; /* Đặt màu chữ là đen */
+    text-decoration: none; /* Loại bỏ gạch chân */
+}
+.button1 {
+    border: 3px solid Black;
+    border-radius: 10px;
+    padding: 15px; /* Khoảng cách bên trong khung */
+    background: #28a745;
+    color: black; /* Đặt màu chữ là đen */
+    text-decoration: none; /* Loại bỏ gạch chân */
+    font-size: 140%;
+    width: 100%;
+}
+.text {
+    color: black;
+    text-decoration: none;
+}
+.buttonmenu {
+    /*    border: 1px solid #379362;*/
+    border-radius: 8px;
+    padding: 15px; /* Khoảng cách bên trong khung */
+    background: #0bf07b;
+    color: black; /* Đặt màu chữ là đen */
+    text-decoration: none; /* Loại bỏ gạch chân */
+    font-size: 80%;
+    width: 70%;
+    text-align: center;
+    margin-top: 10px;
+}
+.buttonDangXuat {
+    border-radius: 8px;
+    padding: 15px; /* Khoảng cách bên trong khung */
+    background: #e61010;
+    color: black; /* Đặt màu chữ là đen */
+    text-decoration: none; /* Loại bỏ gạch chân */
+    font-size: 80%;
+    width: 70%;
+    text-align: center;
+    margin-top: 10px;
+}
+.DangXuatText {
+    background: #e61010;
+    color: black;
+    border-radius: 0px;
+}
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.form-group {
+    flex: 2;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.thembaituyendung {
+    border: 1px solid Black;
+    border-radius: 15px;
+    padding: 15px; /* Khoảng cách bên trong khung */
+    margin-top: 20px; /* Khoảng cách từ phía trên */
+    background: #28a745;
+    color: black; /* Đặt màu chữ là đen */
+    text-decoration: none; /* Loại bỏ gạch chân */
+    text-align: center; /* Căn nội dung vào giữa */
+    max-width: 40%; /* Đặt độ rộng tối đa */
+}
+.tieude {
+    text-align: center; /* Căn giữa tiêu đề */
+    font-weight: bold; /* Đặt chữ in đậm */
+    font-style: italic; /* Đặt chữ in nghiêng */
+}

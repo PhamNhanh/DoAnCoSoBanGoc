@@ -18,7 +18,7 @@
     <div class="container-fluid bg-green mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
         <div class="container">
             <h4 class="center-text"> Tìm kiếm công việc bạn ưa thích</h4>
-            <form action="@Url.Action("TimKiem", "Home")" method="get">
+            <form action="@Url.Action("TimKiem", "NTD")" method="get">
                 <div class="row g-2 align-items-end">
                     <div class="col-md-3" style="padding-right: 10px;">
                         <div class="row g-2">
@@ -66,16 +66,16 @@
                 @foreach (var baiTuyenDung in Model.BaiTuyenDungs)
                 {
                     <div class="col-md-4">
-                        <div class="card">
+                        <div class="form-container">
                             <div class="card-body">
                                 <h3 class="card-title">@baiTuyenDung.TenCongViec</h3>
-                                <p class="card-text"><strong>Mô tả công việc:</strong> @baiTuyenDung.MoTaCongViec</p>
-                                <p class="card-text"><strong>Yêu cầu kỹ năng:</strong> @baiTuyenDung.YeuCauKyNang</p>
-                                <p class="card-text"><strong>Phúc lợi:</strong> @baiTuyenDung.PhucLoi</p>
-                                <p class="card-text"><strong>Lương:</strong> @baiTuyenDung.Luong_min - @baiTuyenDung.Luong_max triệu đồng</p>
-                                <p class="card-text"><strong>Loại công việc:</strong> @baiTuyenDung.KieuCongViec</p>
-                                <p class="card-text"><strong>Hạn nộp hồ sơ:</strong> @baiTuyenDung.ThoiGianHetHan</p>
-                                <a href="@Url.Action("DetailsBaiTuyenDung", new { id = baiTuyenDung.BaiTuyenDung_id })" class="btn btn-primary">Chi tiết</a>
+                                <p class="limit-text"><strong>Mô tả công việc:</strong> @baiTuyenDung.MoTaCongViec</p>
+                                <p class="limit-text"><strong>Yêu cầu kỹ năng:</strong> @baiTuyenDung.YeuCauKyNang</p>
+                                <p class="limit-text"><strong>Phúc lợi:</strong> @baiTuyenDung.PhucLoi</p>
+                                <p class="limit-text"><strong>Lương:</strong> @baiTuyenDung.Luong_min - @baiTuyenDung.Luong_max triệu đồng</p>
+                                <p class="limit-text"><strong>Loại công việc:</strong> @baiTuyenDung.KieuCongViec</p>
+                                <p class="limit-text"><strong>Hạn nộp hồ sơ:</strong> @baiTuyenDung.ThoiGianHetHan</p>
+                                <a href="@Url.Action("DetailsBaiTuyenDung", new { id = baiTuyenDung.BaiTuyenDung_id })" class="button">Chi tiết</a>
                             </div>
                         </div>
                     </div>
