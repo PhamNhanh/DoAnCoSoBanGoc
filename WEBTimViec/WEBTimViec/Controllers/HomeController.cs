@@ -70,23 +70,78 @@ namespace WEBTimViec.Controllers
         [HttpGet]
         public async Task<IActionResult> TimKiem(ViewModel viewModel)
         {
-            if (viewModel.ThanhPhoId != null)
-            {
-                var baiTuyenDungs = await _context.baiTuyenDungs
-                    .Where(b => b.thanhPhoId == viewModel.ThanhPhoId)
-                    .ToListAsync();
-
-                viewModel.BaiTuyenDungs = baiTuyenDungs;
-            }
-
+            // Lấy danh sách thành phố và chuyên ngành để hiển thị trên form
             var thanhPho = await _context.thanhPhos.ToListAsync();
             var chuyenNganh = await _context.chuyenNganhs.ToListAsync();
             viewModel.ThanhPhos = thanhPho;
             viewModel.ChuyenNganhs = chuyenNganh;
 
+            // Nếu người dùng đã chọn thành phố
+            if (viewModel.ThanhPhoId != null)
+            {
+                // Tìm kiếm bài tuyển dụng dựa trên thành phố
+                var query = _context.baiTuyenDungs.Where(b => b.thanhPhoId == viewModel.ThanhPhoId);
+
+                // Nếu người dùng đã chọn chuyên ngành
+                if (viewModel.chuyenNganhId != null)
+                {
+                    // Lọc kết quả theo chuyên ngành
+                    query = query.Where(b => b.baiTuyenDung_ChuyenNganhs.Id == viewModel.chuyenNganhId);
+                }
+
+                // Gán danh sách bài tuyển dụng vào view model
+                viewModel.BaiTuyenDungs = await query.ToListAsync();
+            }
+            else
+            {
+                // Nếu không có thành phố được chọn, hiển thị tất cả các bài tuyển dụng
+                viewModel.BaiTuyenDungs = await _context.baiTuyenDungs.ToListAsync();
+            }
+
             return View(viewModel);
         }
 
+        public async Task<IActionResult> DetailsBaiTuyenDung(int id)
+        {
+            var baiTuyenDung = _context.baiTuyenDungs
+        .Include(b => b.baiTuyenDung_ChuyenNganhs)
+            .ThenInclude(bcn => bcn.chuyenNganh)
+        .Include(b => b.baiTuyenDung_ViTris)
+            .ThenInclude(bv => bv.viTriCongViec)
+        .Include(b => b.baiTuyenDung_KyNangMems)
+            .ThenInclude(bk => bk.kyNangMem)
+        .FirstOrDefault(b => b.BaiTuyenDung_id == id);
+
+            if (baiTuyenDung == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.TenTP = _context.thanhPhos
+                .Where(tp => tp.ThanhPho_id == baiTuyenDung.thanhPhoId)
+                .Select(tp => tp.ThanhPho_name)
+                .FirstOrDefault();
+
+            // Lấy danh sách chuyên ngành dựa trên BaiTuyenDungId
+            ViewBag.ChuyenNganhs = baiTuyenDung.baiTuyenDung_ChuyenNganhs
+                .Where(bcn => bcn.BaiTuyenDungid == id)
+                .Select(bcn => bcn.chuyenNganh.ChuyenNganh_name)
+                .ToList();
+
+            // Lấy danh sách vị trí công việc dựa trên BaiTuyenDungId
+            ViewBag.ViTriCongViecs = baiTuyenDung.baiTuyenDung_ViTris
+                .Where(bv => bv.BaiTuyenDungid == id)
+                .Select(bv => bv.viTriCongViec.ViTriCongViec_name)
+                .ToList();
+
+            // Lấy danh sách kỹ năng mềm dựa trên BaiTuyenDungId
+            ViewBag.KyNangMems = baiTuyenDung.baiTuyenDung_KyNangMems
+                .Where(bk => bk.BaiTuyenDungid == id)
+                .Select(bk => bk.kyNangMem.KNMem_name)
+                .ToList();
+
+            return View(baiTuyenDung);
+        }
         [HttpGet]
         public async Task<IActionResult> AddBaiTuyenDung()
         {
@@ -162,79 +217,6 @@ namespace WEBTimViec.Controllers
             var baiTuyenDung = await _baiTuyenDung.GetAllAsync();
             return View(baiTuyenDung);
         }
-        public async Task<IActionResult> DetailsBaiTuyenDung(int id)
-        {
-            var baiTuyenDung = await _baiTuyenDung.GetByIdAsync(id);
-            return View(baiTuyenDung);
-        }
-/*
-        //Thanh Pho
-
-        [HttpGet]
-        public IActionResult AddThanhPho()
-        {
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> AddThanhPho(ThanhPho thanhPho)
-        {
-            if (ModelState.IsValid)
-            {
-                if (string.IsNullOrEmpty(thanhPho.ThanhPho_name))
-            {
-                TempData["ErrorMessage"] = "Vui lòng nhập thông tin đầy đủ";
-                return View(thanhPho);
-            }
-
-            // Nếu không có lỗi, thêm thể loại và hiển thị thông báo thành công
-            await _thanhPho.AddAsync(thanhPho);
-            TempData["SuccessMessage"] = "Đã thêm thể loại thành công";
-                return RedirectToAction("IndexThanhPho", "Home");
-            }
-            return View(thanhPho);
-        }
-        public async Task<IActionResult> ListThanhPho()
-        {
-            var thanhPho = await _thanhPho.GetAllAsync();
-            var sortedThanhPho = thanhPho.OrderBy(tp => tp.ThanhPho_name).ToList();
-            return View(sortedThanhPho);
-        }
-
-
-        //Chuyen Nganh
-        [HttpGet]
-        public IActionResult AddChuyenNganh()
-        {
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> AddChuyenNganh(ChuyenNganh chuyenNganh)
-        {
-            if (ModelState.IsValid)
-            {
-                if (string.IsNullOrEmpty(chuyenNganh.ChuyenNganh_name))
-                {
-                    TempData["ErrorMessage"] = "Vui lòng nhập thông tin đầy đủ";
-                    return View(chuyenNganh);
-                }
-
-                // Nếu không có lỗi, thêm thể loại và hiển thị thông báo thành công
-                await _chuyenNganh.AddAsync(chuyenNganh);
-                TempData["SuccessMessage"] = "Đã thêm thể loại thành công";
-                return RedirectToAction("IndexChuyenNganh", "Home");
-            }
-            return View(chuyenNganh);
-        }
-        public async Task<IActionResult> ListChuyenNganh()
-        {
-            var chuyenNganh = await _chuyenNganh.GetAllAsync();
-
-            return View(chuyenNganh);
-        }
-
-
-*/
-
         private async Task<string> SaveImage(IFormFile image)
         {
             var savePath = Path.Combine("wwwroot/images", image.FileName); //
@@ -245,7 +227,6 @@ namespace WEBTimViec.Controllers
             }
             return "/images/" + image.FileName; // Trả về đường dẫn tương đối
         }
-
 
 
 

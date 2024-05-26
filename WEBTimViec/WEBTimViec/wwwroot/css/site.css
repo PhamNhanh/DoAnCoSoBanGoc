@@ -42,3 +42,22 @@
         font-size: 30px;
         cursor: pointer;
     }
+
+body {
+    background-image: url('~/images/Background.jpg'); /* ???ng d?n ??n ?nh n?n */
+    background-size: cover; /* ??m b?o ?nh n?n bao ph? toàn b? màn hình */
+    background-repeat: no-repeat; /* ??m b?o ?nh không l?p l?i */
+    background-position: center; /* ??t ?nh ? gi?a */
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Optional: Additional styling for other elements */
+.sidebar {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+}
+
+.menu-icon {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+}

@@ -35,6 +35,7 @@ builder.Services.AddScoped<IThanhPho, EFThanhPhoRepository>();
 builder.Services.AddScoped<IViTriCongViec, EFViTriCongViecRepository>();
 builder.Services.AddScoped<IUserRepository, EFUserRepository>();
 builder.Services.AddScoped<IKyNangMem, EFKyNangMemRepository>();
+builder.Services.AddScoped<IBaiTuyenDung_ChuyenNganh, EFBaiTuyenDung_ChuyenNganh>();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();

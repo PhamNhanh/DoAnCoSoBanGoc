@@ -1,62 +1,87 @@
-﻿@model IEnumerable<WEBTimViec.Models.BaiTuyenDung>
+﻿@model ViewModel
 
 @{
-    ViewData["Title"] = "Danh sách bài tuyển dụng";
+    ViewData["Title"] = "Trang chủ  ";
 }
 
-<!DOCTYPE html>
-<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"] - WEBTimViec</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+    <title>JobPlus</title>
+    <link rel="stylesheet" href="~/css/ViewIndex.css">
 </head>
 <body>
-    <header>
+    <div class="header">
+        <img src="~/images/Logo.jpg" class="logo" />
+        <h1> JobPlus </h1>
+    </div>
+    <div class="container-fluid bg-green mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
         <div class="container">
-            <h1><a asp-controller="Home" asp-action="Index">JobPlus</a></h1>
-            <nav>
-@*                 <ul>
-                    <li><a href="@Url.Action("Index", "UV", new { area = "UngVien" })">Trang chủ</a></li>
-                    <li><a href="@Url.Action("DSUngTuyen", "UV", new { area = "UngVien" })">Xem danh sách ứng tuyển</a></li>
-                    <li><a href="@Url.Action("ListBaiTuyenDung", "NTD", new { area = "NhaTuyenDung" })">Xem bài tuyển dụng</a></li>
-                </ul> *@
-            </nav>
-        </div>
-    </header>
-
-    <section class="search-bar">
-        <div class="container">
-            <h5>Tìm kiếm công việc mơ ước của bạn</h5>
-            <form action="#" method="get">
-                <input type="text" name="keyword" placeholder="Nhập từ khóa...">
-                <input type="text" name="location" placeholder="Nhập địa điểm...">
-                <button type="submit">Tìm kiếm</button>
-            </form>
-        </div>
-        <h1 class="mt-3">@ViewData["Title"]</h1>
-        <div class="row">
-            @foreach (var item in Model)
-            {
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">@item.TenCongViec</h3>
-                            <p class="card-text"><strong>Mô tả công việc:</strong> @item.MoTaCongViec</p>
-                            <p class="card-text"><strong>Yêu cầu kỹ năng:</strong> @item.YeuCauKyNang</p>
-                            <p class="card-text"><strong>Phúc lợi:</strong> @item.PhucLoi</p>
-                            <p class="card-text"><strong>Lương:</strong> @item.Luong_min - @item.Luong_max triệu đồng</p>
-                            <p class="card-text"><strong>Loại công việc:</strong> @item.KieuCongViec</p>
-                            <p class="card-text"><strong>Hạn nộp hồ sơ:</strong> @item.ThoiGianHetHan</p>
-                            <a href="@Url.Action("DetailsBaiTuyenDung", new { id = item.BaiTuyenDung_id })" class="btn btn-primary">Chi tiết</a>
+            <h4 class="center-text"> Tìm kiếm công việc bạn ưa thích</h4>
+            <form action="@Url.Action("TimKiem", "UV")" method="get">
+                <div class="row g-2 align-items-end">
+                    <div class="col-md-3" style="padding-right: 10px;">
+                        <div class="row g-2">
+                            <div class="col-12">
+                                <input type="text" name="job_name" class="form-control border-0" placeholder="Tên công việc" />
+                            </div>
                         </div>
                     </div>
+                    <div class="col-md-3" style="padding-right: 10px;">
+                        <div class="form-group">
+                            <label asp-for="ThanhPhoId" class="control-label" style="font-weight: bold;">Địa điểm công ty</label>
+                            <select asp-for="ThanhPhoId" class="form-control">
+                                <option value="">-- Chọn tỉnh - Thành phố --</option>
+                                @foreach (var thanhPho in Model.ThanhPhos)
+                                {
+                                    <option value="@thanhPho.ThanhPho_id">@thanhPho.ThanhPho_name</option>
+                                }
+                            </select>
+                            <span asp-validation-for="ThanhPhoId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3" style="padding-right: 10px;">
+                        <div class="form-group">
+                            <label asp-for="chuyenNganhId" class="control-label" style="font-weight: bold;">Chuyên ngành yêu cầu</label>
+                            <select asp-for="chuyenNganhId" class="form-control">
+                                <option value="">-- Chọn chuyên ngành --</option>
+                                @foreach (var chuyenNganh in Model.ChuyenNganhs)
+                                {
+                                    <option value="@chuyenNganh.ChuyenNganh_id">@chuyenNganh.ChuyenNganh_name</option>
+                                }
+                            </select>
+                            <span asp-validation-for="chuyenNganhId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-auto">
+                        <button type="submit" class="btn btn-dark border-0">Tìm kiếm</button>
+                    </div>
                 </div>
-            }
+            </form>
+            <h5 class="center-text spacing-top">
+                Bài tuyển dụng phù hợp
+            </h5>
+            <div class="row">
+                @foreach (var baiTuyenDung in Model.BaiTuyenDungs)
+                {
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title">@baiTuyenDung.TenCongViec</h3>
+                                <p class="card-text"><strong>Mô tả công việc:</strong> @baiTuyenDung.MoTaCongViec</p>
+                                <p class="card-text"><strong>Yêu cầu kỹ năng:</strong> @baiTuyenDung.YeuCauKyNang</p>
+                                <p class="card-text"><strong>Phúc lợi:</strong> @baiTuyenDung.PhucLoi</p>
+                                <p class="card-text"><strong>Lương:</strong> @baiTuyenDung.Luong_min - @baiTuyenDung.Luong_max triệu đồng</p>
+                                <p class="card-text"><strong>Loại công việc:</strong> @baiTuyenDung.KieuCongViec</p>
+                                <p class="card-text"><strong>Hạn nộp hồ sơ:</strong> @baiTuyenDung.ThoiGianHetHan</p>
+                                <a href="@Url.Action("DetailsBaiTuyenDung", new { id = baiTuyenDung.BaiTuyenDung_id })" class="btn btn-primary">Chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
-    </section>
+    </div>
+
 
 </body>
-</html>

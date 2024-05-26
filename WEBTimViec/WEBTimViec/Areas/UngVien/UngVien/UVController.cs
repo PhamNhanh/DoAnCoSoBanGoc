@@ -47,8 +47,50 @@ namespace WEBTimViec.Areas.UngVien.UngVien
         }
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.baiTuyenDungs.Include(b => b.kinhNghiem).Include(b => b.thanhPho);
-            return View(await applicationDbContext.ToListAsync());
+            var baiTuyenDungs = await _context.baiTuyenDungs.ToListAsync();
+            var thanhPho = await _context.thanhPhos.ToListAsync();
+            var chuyenNganh = await _context.chuyenNganhs.ToListAsync();
+            var viewModel = new ViewModel
+            {
+                BaiTuyenDungs = baiTuyenDungs,
+                ThanhPhos = thanhPho,
+                ChuyenNganhs = chuyenNganh,
+            };
+            // Truyền danh sách bài tuyển dụng tới view
+            return View(viewModel);
+        }
+        [HttpGet]
+        public async Task<IActionResult> TimKiem(ViewModel viewModel)
+        {
+            // Lấy danh sách thành phố và chuyên ngành để hiển thị trên form
+            var thanhPho = await _context.thanhPhos.ToListAsync();
+            var chuyenNganh = await _context.chuyenNganhs.ToListAsync();
+            viewModel.ThanhPhos = thanhPho;
+            viewModel.ChuyenNganhs = chuyenNganh;
+
+            // Nếu người dùng đã chọn thành phố
+            if (viewModel.ThanhPhoId != null)
+            {
+                // Tìm kiếm bài tuyển dụng dựa trên thành phố
+                var query = _context.baiTuyenDungs.Where(b => b.thanhPhoId == viewModel.ThanhPhoId);
+
+                // Nếu người dùng đã chọn chuyên ngành
+                if (viewModel.chuyenNganhId != null)
+                {
+                    // Lọc kết quả theo chuyên ngành
+                    query = query.Where(b => b.chuyenNganh.ChuyenNganh_id == viewModel.chuyenNganhId);
+                }
+
+                // Gán danh sách bài tuyển dụng vào view model
+                viewModel.BaiTuyenDungs = await query.ToListAsync();
+            }
+            else
+            {
+                // Nếu không có thành phố được chọn, hiển thị tất cả các bài tuyển dụng
+                viewModel.BaiTuyenDungs = await _context.baiTuyenDungs.ToListAsync();
+            }
+
+            return View(viewModel);
         }
         public async Task<IActionResult> DSNhaTuyenDung()
         {

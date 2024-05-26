@@ -54,8 +54,17 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
         // GET: NhaTuyenDung/BaiTuyenDung
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.baiTuyenDungs.Include(b => b.kinhNghiem).Include(b => b.thanhPho);
-            return View(await applicationDbContext.ToListAsync());
+            var baiTuyenDungs = await _context.baiTuyenDungs.ToListAsync();
+            var thanhPho = await _context.thanhPhos.ToListAsync();
+            var chuyenNganh = await _context.chuyenNganhs.ToListAsync();
+            var viewModel = new ViewModel
+            {
+                BaiTuyenDungs = baiTuyenDungs,
+                ThanhPhos = thanhPho,
+                ChuyenNganhs = chuyenNganh,
+            };
+            // Truyền danh sách bài tuyển dụng tới view
+            return View(viewModel);
         }
 
         public async Task<IActionResult> DetailsBaiTuyenDung(int id)

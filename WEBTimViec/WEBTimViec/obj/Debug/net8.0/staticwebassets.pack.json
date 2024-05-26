@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\WEBTimViec.bundle.scp.css"
     },
     {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\css\\ViewIndex.css",
+      "PackagePath": "staticwebassets\\css\\ViewIndex.css"
+    },
+    {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -55,6 +59,14 @@
     {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\filecv\\f9351ab4-e3b8-47ec-acb0-c5214b5adebf.pdf",
       "PackagePath": "staticwebassets\\filecv\\f9351ab4-e3b8-47ec-acb0-c5214b5adebf.pdf"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\Background.jpg",
+      "PackagePath": "staticwebassets\\images\\Background.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\Logo.jpg",
+      "PackagePath": "staticwebassets\\images\\Logo.jpg"
     },
     {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\Ảnh chụp màn hình 2024-02-28 124746.png",

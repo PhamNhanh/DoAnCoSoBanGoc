@@ -27,8 +27,14 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\NhaTuyenDung\Data\" />
     <Folder Include="Areas\NhaTuyenDung\Models\" />
-    <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\filecv\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Home\DetailsBaiTuyenDung.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
  
