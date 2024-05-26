@@ -45,13 +45,6 @@ namespace WEBTimViec.Controllers
             _viTriCongViec = viTriCongViec;
             _kyNangMem = kyNangMem;
         }
-        public async Task<IActionResult> Index()
-        {
-            {
-                var baiTuyenDung = await _baiTuyenDung.GetAllAsync();
-                return View(baiTuyenDung);
-            }
-        }
         public async Task<IActionResult> IndexAll()
         {
 

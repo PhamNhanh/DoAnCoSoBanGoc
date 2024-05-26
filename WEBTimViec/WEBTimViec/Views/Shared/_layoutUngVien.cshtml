@@ -23,11 +23,13 @@
             <li><a href="@Url.Action("Index", "UV", new { area = "UngVien" })">Trang chủ</a></li>
             <li><a href="@Url.Action("DSNhaTuyenDung", "UV", new { area = "UngVien" })">Danh sách nhà tuyển dụng</a></li>
             <li><a href="@Url.Action("ListBaiTuyenDung", "UV", new { area = "UngVien" })">Xem bài tuyển dụng</a></li>
+            <li><a href="@Url.Action("IndexProfileUV", "UV", new { area = "UngVien" })">Thông tin cá nhân</a></li>
+            <li><a href="@Url.Action("UpdateProfileUV", "UV", new { area = "UngVien" })">Cập nhật thông tin cá nhân</a></li>
 @*             <li><a href="@Url.Action("IndexProfileNTD", "NTD", new { area = "NhaTuyenDung" })">Thông tin nhà tuyển dụng</a></li> *@
             @*             <li><a href="@Url.Action("Login", "Account", new { area = "Identity"})">Đăng nhập</a></li>
             <li><a href="@Url.Action("Register", "Account",  new { area = "Identity"})">Đăng ký</a></li> *@
             <li>
-                <form class="btn btn-warning" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <form class="btn btn-warning" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("IndexAll", "Home", new { area = "" })">
                     <button type="submit" class="btn btn-warning">Đăng xuất</button>
                 </form>
             </li>

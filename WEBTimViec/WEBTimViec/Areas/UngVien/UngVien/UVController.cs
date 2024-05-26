@@ -22,6 +22,7 @@ namespace WEBTimViec.Areas.UngVien.UngVien
         private readonly IViTriCongViec _viTriCongViec;
         private readonly IUserRepository _userRepository;
         private readonly IKyNangMem _kyNangMem;
+        private readonly IHocVan _hocVan;
 
         public UVController(ApplicationDbContext context,
             IBaiTuyenDung baiTuyenDung,
@@ -32,6 +33,7 @@ namespace WEBTimViec.Areas.UngVien.UngVien
             IUngTuyen ungTuyen,
             IUserRepository userRepository,
             IViTriCongViec viTriCongViec,
+            IHocVan hocVan,
             IKyNangMem kyNangMem)
         {
             _context = context;
@@ -44,6 +46,7 @@ namespace WEBTimViec.Areas.UngVien.UngVien
             _userRepository = userRepository;
             _viTriCongViec = viTriCongViec;
             _kyNangMem = kyNangMem;
+            _hocVan = hocVan;
         }
         public async Task<IActionResult> Index()
         {
@@ -94,7 +97,6 @@ namespace WEBTimViec.Areas.UngVien.UngVien
         }
         public async Task<IActionResult> DSNhaTuyenDung()
         {
-            // Lấy danh sách các nhà tuyển dụng từ nguồn dữ liệu (ví dụ: database)
             var danhSachNhaTuyenDung = await _userRepository.GetAllCompanyAsync();
             // Truyền danh sách nhà tuyển dụng tới view
             return View(danhSachNhaTuyenDung);
@@ -249,12 +251,104 @@ namespace WEBTimViec.Areas.UngVien.UngVien
                     return null;
                 }
             }
-            private bool IsFileSizeValid(IFormFile file)
+        public async Task<IActionResult> IndexProfileUV()
+        {
+            var find_user = await _userManager.GetUserAsync(User);
+            if (find_user != null)
             {
-                // Kiểm tra kích thước file không vượt quá 10MB
-                var maxSize = 10 * 1024 * 1024; // 10MB
-                return file.Length <= maxSize;
+                var hocVan = await _hocVan.GetByIdUserAsync(find_user.Id);
+                ViewBag.HocVan = hocVan;
+                return View(find_user);
             }
+            else
+            {
+                return NotFound();
+            }
+        }
+        public async Task<IActionResult> UpdateProfileUV()
+        {
+            var find_company = await _userManager.GetUserAsync(User);
+            return View(find_company);
+        }
+
+        [HttpPost]
+
+        public async Task<IActionResult> UpdateProfileUV(string id, ApplicationUser ungvien, IFormFile image_url)
+        {
+            var find_company = await _userManager.GetUserAsync(User);
+
+            if (find_company != null && id != find_company.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    if (image_url != null && IsImageFile(image_url) && IsFileSizeValid(image_url))
+                    {
+                        // Lưu hình ảnh đại diện
+                        find_company.image_url = await SaveImage(image_url);
+                    }
+                    else if (image_url == null)
+                    {
+                        if (find_company.image_url != null)
+                        {
+                            // Nếu trong cơ sở dữ liệu có URL hình ảnh được lưu trữ, giữ nguyên giá trị của image_url
+                            find_company.image_url = find_company.image_url;
+                        }
+                        else
+                        {
+                            // Nếu không có URL hình ảnh trong cơ sở dữ liệu, gán image_url = null
+                            find_company.image_url = null;
+                        }
+                    }
+
+
+                    // Cập nhật các thông tin khác của công ty
+                    find_company.FullName = ungvien.FullName;
+                    find_company.SDT_UngVien = ungvien.SDT_UngVien;
+                    find_company.NgaySinh = ungvien.NgaySinh;
+                    find_company.DiaChi = ungvien.DiaChi;
+                    find_company.TuGioiThieu = ungvien.TuGioiThieu;
+                    find_company.ThoiGianCapNhat = DateTime.Now;
+
+                    // Lưu thay đổi vào cơ sở dữ liệu
+                    await _userManager.UpdateAsync(find_company);
+
+                    return RedirectToAction(nameof(IndexProfileUV));
+                }
+                catch
+                {
+                    return NotFound();
+                }
+            }
+            return View(find_company);
+        }
+        private bool IsImageFile(IFormFile file)
+        {
+            // Kiểm tra phần mở rộng của file có phải là ảnh hay không
+            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+            var fileExtension = Path.GetExtension(file.FileName).ToLowerInvariant();
+            return allowedExtensions.Contains(fileExtension);
+        }
+        private bool IsFileSizeValid(IFormFile file)
+        {
+            // Kiểm tra kích thước file không vượt quá 10MB
+            var maxSize = 10 * 1024 * 1024; // 10MB
+            return file.Length <= maxSize;
+        }
+        private async Task<string> SaveImage(IFormFile image)
+        {
+            var savePath = Path.Combine("wwwroot/images", image.FileName); //
+
+            using (var fileStream = new FileStream(savePath, FileMode.Create))
+            {
+                await image.CopyToAsync(fileStream);
+            }
+            return "/images/" + image.FileName; // Trả về đường dẫn tương đối
+        }
 
     }
 }

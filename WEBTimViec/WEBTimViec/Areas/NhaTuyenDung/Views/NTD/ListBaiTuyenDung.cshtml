@@ -6,73 +6,33 @@
 
 <!DOCTYPE html>
 <html lang="vi">
-<head>
+<head >
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"] - WEBTimViec</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    @* <style>
-        body {
-            background-color: #1a1a1a;
-            color: #fff;
-            padding-top: 20px; /* Để không dính vào top của browser */
-        }
-
-        .card {
-            margin-bottom: 20px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            transition: transform 0.3s ease; /* Hiệu ứng khi hover */
-        }
-
-        a {
-            color: #17a2b8; /* Màu xanh dương nhạt cho các đường link */
-        }
-
-            .card:hover {
-                transform: translateY(-5px); /* Hiệu ứng nhảy lên khi hover */
-            }
-
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-
-        .card-text {
-            margin-bottom: 5px;
-            color: #ccc; /* Màu chữ xám nhạt cho nội dung */
-        }
-
-        .btn-primary {
-            background-color: #17a2b8;
-            border-color: #17a2b8;
-            transition: background-color 0.3s ease, border-color 0.3s ease; /* Hiệu ứng khi hover */
-        }
-
-            .btn-primary:hover {
-                background-color: green ;
-                border-color: green;
-            }
-    </style> *@
+    <title>JobPlus</title>
+    <link rel="stylesheet" href="~/css/ViewIndex.css">
 </head>
-<body>
-    <p>
-        <a href="@Url.Action("Index")" class="btn btn-primary">Back to List</a>
-    </p>
-    <div class="container">
-        <h1 class="mt-3">@ViewData["Title"]</h1>
+<body class="background">
+    <div class="header">
+        <img src="~/images/Logo.jpg" class="logo" />
+        <h1> JobPlus </h1>
+    </div>
+    <div>
         <p>
-            <a href="@Url.Action("AddBaiTuyenDung")" class="btn btn-primary">Thêm bài tuyển dụng mới</a>
+            <a href="@Url.Action("Index")" class="button">Quay lại</a>
         </p>
-        <div class="row">
+    </div>
+    <div class="container-fluid bg-green mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
+        <div> 
+            <h3 class="tieude"> Các chiến dịch tuyển dụng của công ty </h3>
+        </div>
+        <p>
+            <a href="@Url.Action("AddBaiTuyenDung")" class="button">Thêm bài tuyển dụng mới</a>
+        </p>
             @foreach (var item in Model)
             {
                 <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
+                        <div class="form-container">
                             <h3 class="card-title">@item.TenCongViec</h3>
                             <p class="card-text"><strong>Mô tả công việc:</strong> @item.MoTaCongViec</p>
                             <p class="card-text"><strong>Yêu cầu kỹ năng:</strong> @item.YeuCauKyNang</p>
@@ -80,12 +40,10 @@
                             <p class="card-text"><strong>Lương:</strong> @item.Luong_min - @item.Luong_max triệu đồng</p>
                             <p class="card-text"><strong>Loại công việc:</strong> @item.KieuCongViec</p>
                             <p class="card-text"><strong>Hạn nộp hồ sơ:</strong> @item.ThoiGianHetHan</p>
-                            <a href="@Url.Action("DetailsBaiTuyenDung", new { id = item.BaiTuyenDung_id })" class="btn btn-primary">Chi tiết</a>
+                    <a href="@Url.Action("DetailsBaiTuyenDung", new { id = item.BaiTuyenDung_id })" class="button">Chi tiết</a>
                         </div>
-                    </div>
                 </div>
             }
-        </div>
     </div>
 </body>
 </html>

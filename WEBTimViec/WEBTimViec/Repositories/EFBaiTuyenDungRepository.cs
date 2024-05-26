@@ -21,7 +21,6 @@ namespace WEBTimViec.Repositories
     .Include(b => b.applicationUser)
     .ToListAsync();
 
-
             return await _context.baiTuyenDungs.ToListAsync();
         }
 
@@ -69,6 +68,18 @@ namespace WEBTimViec.Repositories
                 _context.baiTuyenDungs.Remove(baiTuyenDung);
                 await _context.SaveChangesAsync();
             }
+        }
+        public async Task<IEnumerable<BaiTuyenDung>> GetBaiTuyenDungByUserIdAsync(string userId)
+        {
+            var baiTuyenDungByUserId = await _context.baiTuyenDungs
+                .Where(b => b.applicationUser.Id == userId)
+                .Include(b => b.thanhPho)
+                .Include(b => b.kinhNghiem)
+                .Include(b => b.chuyenNganh)
+                .Include(b => b.applicationUser)
+                .ToListAsync();
+
+            return baiTuyenDungByUserId;
         }
 
     }

@@ -26,7 +26,7 @@
             <li><a href="@Url.Action("ListThanhPho", "AD", new { area = "Admin" })">Danh sách thành phố</a></li>
             <li><a href="@Url.Action("ListChuyenNganh", "AD", new { area = "Admin" })">Danh sách chuyên ngành</a></li>
             <li>
-                <form class="btn btn-warning" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <form class="btn btn-warning" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("IndexAll", "Home", new { area = "" })">
                     <button type="submit" class="btn btn-warning">Đăng xuất</button>
                 </form>
             </li>

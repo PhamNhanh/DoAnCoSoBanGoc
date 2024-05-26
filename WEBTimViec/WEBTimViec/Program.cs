@@ -35,6 +35,7 @@ builder.Services.AddScoped<IThanhPho, EFThanhPhoRepository>();
 builder.Services.AddScoped<IViTriCongViec, EFViTriCongViecRepository>();
 builder.Services.AddScoped<IUserRepository, EFUserRepository>();
 builder.Services.AddScoped<IKyNangMem, EFKyNangMemRepository>();
+builder.Services.AddScoped<IHocVan, EFHocVanRepository>();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
@@ -76,7 +77,7 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=IndexAll}/{id?}");
 
 app.MapRazorPages();
 

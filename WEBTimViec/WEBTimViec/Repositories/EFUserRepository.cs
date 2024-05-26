@@ -36,6 +36,10 @@ namespace WEBTimViec.Repositories
             var usersInRole = await _userManager.GetUsersInRoleAsync("Nhà Tuyển Dụng");
             return usersInRole.ToList();
         }
-
+        public async Task<IEnumerable<ApplicationUser>> GetAllUserAsync()
+        {
+            var usersInRole = await _userManager.GetUsersInRoleAsync("Ứng Viên");
+            return usersInRole.ToList();
+        }
     }
 }

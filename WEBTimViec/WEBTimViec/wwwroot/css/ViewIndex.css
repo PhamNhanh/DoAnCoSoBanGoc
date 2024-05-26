@@ -43,14 +43,14 @@
     padding: 15px; /* Khoảng cách bên trong khung */
     margin-top: 20px; /* Khoảng cách từ phía trên */
     background: #fbc726;
-
+    margin-top: 10px;
 }
 .PhongVangKhongVien {
-    border: 3px solid #0e0b8b; 
-    border-radius: 8px; 
+    border: 3px solid #0e0b8b;
+    border-radius: 8px;
     padding: 15px; /* Khoảng cách bên trong khung */
     margin-top: 20px; /* Khoảng cách từ phía trên */
-    background: #fbc726;
+    background: #13e2ef;
 }
 .PhongXanhCoVien {
     border: 3px solid #28a745; 
@@ -65,9 +65,9 @@
     text-overflow: ellipsis;
 }
 .button {
-    border: 3px solid Black;
+    border: 2px solid Black;
     border-radius: 15px;
-    padding: 15px; /* Khoảng cách bên trong khung */
+    padding: 10px 20px; /* Khoảng cách bên trong khung */
     margin-top: 20px; /* Khoảng cách từ phía trên */
     background: #ffffff;
     color: black; /* Đặt màu chữ là đen */
@@ -142,4 +142,12 @@
     text-align: center; /* Căn giữa tiêu đề */
     font-weight: bold; /* Đặt chữ in đậm */
     font-style: italic; /* Đặt chữ in nghiêng */
+}
+.background {
+    background-image: url("/images/Nen.jpg");
+    background-size: cover; /* Chỉnh kích thước của hình ảnh để nó phù hợp với phần tử */
+    background-repeat: no-repeat; /* Ngăn lặp lại hình ảnh nếu kích thước của phần tử lớn hơn kích thước của hình ảnh */
+    background-position: center; /* Đặt hình ảnh ở giữa phần tử */
+    width: 100vw; /* Chiều rộng của phần tử là 100% chiều rộng của viewport */
+    height: auto;
 }

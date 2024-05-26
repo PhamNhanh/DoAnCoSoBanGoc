@@ -2,10 +2,22 @@
 @{
     ViewData["Title"] = "Cập nhật thông tin Profile";
 }
+<!DOCTYPE html>
+<html lang="vi">
 
-<h1>Cập nhật thông tin Profile </h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobPlus</title>
+    <link rel="stylesheet" href="~/css/ViewIndex.css">
+</head>
+
 <hr />
-
+<div class="header">
+    <img src="~/images/Logo.jpg" class="logo" />
+    <h1> JobPlus </h1>
+</div>
+<h1 class="tieude">Cập nhật thông tin Profile </h1>
 <div class="container-fluid bg-white mt-5 mb-5">
     <div class="row">
         <form asp-action="UpdateProfileNTD" method="post" enctype="multipart/form-data">
@@ -52,15 +64,8 @@
                         </div>
                         <div class="form-group">
                             <label for="image_url">Logo công ty</label>
-                            @if (!string.IsNullOrEmpty(Model.image_url))
-                            {
-                                <img src="@Model.image_url" alt="Logo công ty" style="max-width:200px; cursor:pointer;" id="previewImage" />
-                                <input type="file" id="image_url" name="image_url" class="form-control" accept="image/*" style="display:none;" onchange="previewFile(this);" />
-                            }
-                            else
-                            {
-                                <input type="file" id="image_url" name="image_url" class="form-control" accept="image/*" onchange="previewFile(this);" />
-                            }
+                            <input type="file" id="image_url" name="image_url" class="form-control" accept="image/*" />
+                            <img src="@Model.image_url" alt="Logo công ty" style="max-width:200px;" id="previewImage" />
                             <span asp-validation-for="image_url" class="text-danger"></span>
                         </div>
 
@@ -74,7 +79,7 @@
     </div>
 </div>
 
-@* <script>
+<script>
     document.querySelectorAll('input[type="file"]').forEach(input => {
         input.addEventListener('change', function (event) {
             const file = event.target.files[0];
@@ -89,8 +94,8 @@
         });
     });
 </script>
- *@
-<script>
+
+@* <script>
     function previewFile(input) {
         var preview = document.getElementById('previewImage');
         var file = input.files[0];
@@ -108,4 +113,4 @@
     document.getElementById('previewImage').onclick = function () {
         document.getElementById('image_url').click();
     };
-</script>
+</script> *@

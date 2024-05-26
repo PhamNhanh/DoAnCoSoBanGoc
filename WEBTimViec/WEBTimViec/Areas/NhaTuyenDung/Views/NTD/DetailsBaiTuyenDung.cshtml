@@ -5,17 +5,26 @@
 }
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"] - WEBTimViec</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>JobPlus</title>
+    <link rel="stylesheet" href="~/css/ViewIndex.css">
 </head>
 <body>
-    <div class="container">
-        <h1 class="mt-3">@ViewData["Title"]</h1>
-        <div class="card">
-            <div class="card-body">
+    <div class="header">
+        <img src="~/images/Logo.jpg" class="logo" />
+        <h1> JobPlus </h1>
+    </div>
+    <div>
+        <p>
+            <a href="@Url.Action("Index")" class="button">Quay lại</a>
+        </p>
+    </div>
+    <div class="container-fluid bg-green mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
+        <h3 class="tieude">@ViewData["Title"]</h3>
+            <div class="form-container">
                 <h3 class="card-title">@Model.TenCongViec</h3>
 @*                 <p class="card-text"><strong>Tên công ty:</strong> @Model.applicationUser.FullName</p> *@
                 <p class="card-text"><strong>Mô tả công việc:</strong> @Model.MoTaCongViec</p>
@@ -48,8 +57,6 @@
                 </p>
 
             </div>
-        </div>
     </div>
-    <a href="@Url.Action("Index")" class="btn btn-primary">Quay lại</a>
 </body>
 </html>

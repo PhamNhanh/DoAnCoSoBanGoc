@@ -51,7 +51,6 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             _kyNangMem = kyNangMem;
         }
 
-        // GET: NhaTuyenDung/BaiTuyenDung
         public async Task<IActionResult> Index()
         {
             var baiTuyenDungs = await _context.baiTuyenDungs.ToListAsync();
@@ -108,10 +107,22 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
 
             return View(baiTuyenDung);
         }
-        public async Task<IActionResult> ListBaiTuyenDung()
+        public async Task<IActionResult> ListBaiTuyenDung(string id)
         {
-            var baiTuyenDung = await _baiTuyenDung.GetAllAsync();
-            return View(baiTuyenDung);
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var DSBaiTuyenDung = await _baiTuyenDung.GetBaiTuyenDungByUserIdAsync(user.Id);
+            return View(DSBaiTuyenDung);
+        }
+        public async Task<IActionResult> DSUngVien()
+        {
+            var danhSachUngVien = await _userRepository.GetAllUserAsync();
+            // Truyền danh sách nhà tuyển dụng tới view
+            return View(danhSachUngVien);
         }
         [HttpGet]
         public async Task<IActionResult> AddBaiTuyenDung()

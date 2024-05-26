@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Wm6vdj74yOSCjR8R+fi1qh+oqpYRDY5zTUlbk7M9RQo=",
+  "Hash": "EzG0wJcHuafNFh1mcU04m7xEfZWEYoKT4lUXXaABKO4=",
   "Source": "WEBTimViec",
   "BasePath": "_content/WEBTimViec",
   "Mode": "Default",
@@ -414,6 +414,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\Logo.jpg"
+    },
+    {
+      "Identity": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\Nen.jpg",
+      "SourceId": "WEBTimViec",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\",
+      "BasePath": "_content/WEBTimViec",
+      "RelativePath": "images/Nen.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Nen.jpg"
     },
     {
       "Identity": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\site.js",
