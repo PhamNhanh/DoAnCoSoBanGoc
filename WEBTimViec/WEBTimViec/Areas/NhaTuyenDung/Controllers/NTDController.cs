@@ -247,7 +247,7 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             }
 
         }
-
+        [HttpGet]
         public async Task<IActionResult> UpdateProfileNTD()
         {
             var find_company = await _userManager.GetUserAsync(User);
@@ -255,14 +255,14 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
         }
 
         [HttpPost]
-
-        public async Task<IActionResult> UpdateProfileNTD(string id, ApplicationUser company, IFormFile image_url)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateProfileNTD(string id, [Bind("NhaTuyenDung_name, SDTNhaTuyenDung, Website, FullName, DiaChi,GioiThieuNhaTuyenDung")] ApplicationUser company, IFormFile image_url)
         {
             var find_company = await _userManager.GetUserAsync(User);
 
             if (find_company != null && id != find_company.Id)
             {
-                return NotFound();
+                return NotFound("Khong tim thay 1");
             }
 
             if (ModelState.IsValid)
@@ -274,7 +274,7 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
                         // Lưu hình ảnh đại diện
                         find_company.image_url = await SaveImage(image_url);
                     }
-                    else if (image_url == null)
+                   /* else if (image_url == null)
                     {
                         if (find_company.image_url != null)
                         {
@@ -286,7 +286,7 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
                             // Nếu không có URL hình ảnh trong cơ sở dữ liệu, gán image_url = null
                             find_company.image_url = null;
                         }
-                    }
+                    }*/
 
 
                     // Cập nhật các thông tin khác của công ty
@@ -301,17 +301,70 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
                     // Lưu thay đổi vào cơ sở dữ liệu
                     await _userManager.UpdateAsync(find_company);
 
-                    return RedirectToAction(nameof(IndexProfileNTD));
+                   
                 }
                 catch
                 {
-                    return NotFound();
+                    return NotFound("Khong tim thay 2");
                 }
+                return RedirectToAction(nameof(IndexProfileNTD));
             }
 
             return View(find_company);
         }
 
+  /*      [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateProfile(string id, [Bind("company_name, address, introduce_company, position_title, mobile_no, fullname,contact_no, Email, website")] ApplicationUser company, IFormFile image_url)
+        {
+            var find_company = await _userManager.GetUserAsync(User);
+
+            if (find_company != null && id != find_company.Id)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    if (ModelState.IsValid)
+                    {
+                        if (company != null && find_company != null)
+                        {
+                            if (image_url != null && IsImageFile(image_url) && IsFileSizeValid(image_url))
+                            {
+                                // Lưu hình ảnh đại diện
+                                find_company.image_url = await SaveImage(image_url);
+                                var locations = await _locationRepository.GetAllAsync();
+                                ViewBag.Locations = new SelectList(locations, "Id", "province_name");
+                            }
+                            else
+                            {
+                                ModelState.AddModelError("ImageUrl", "Vui lòng chọn một tệp hình ảnh hợp lệ và có kích thước nhỏ hơn 5MB.");
+                            }
+                            find_company.company_name = company.company_name;
+                            find_company.address = company.address;
+                            find_company.position_title = company.position_title;
+                            find_company.mobile_no = company.mobile_no;
+                            find_company.fullname = company.fullname;
+                            find_company.contact_no = company.contact_no;
+                            find_company.Email = company.Email;
+                            find_company.is_active = 1;
+                            find_company.update_at = DateTime.Now;
+                            find_company.website = company.website;
+                            find_company.introduce_company = company.introduce_company;
+                            await _userManager.UpdateAsync(find_company);
+                        }
+                    }
+                }
+                catch
+                {
+                    return NotFound();
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(find_company);
+        }*/
 
         private bool IsImageFile(IFormFile file)
         {

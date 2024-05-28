@@ -42,8 +42,9 @@
     border-radius: 8px; /* Độ cong của góc */
     padding: 15px; /* Khoảng cách bên trong khung */
     margin-top: 20px; /* Khoảng cách từ phía trên */
-    background: #fbc726;
     margin-top: 10px;
+    background: #ffffff;
+
 }
 .PhongVangKhongVien {
     border: 3px solid #0e0b8b;
@@ -60,6 +61,7 @@
     background: #28a745;
 }
 .limit-text {
+
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -150,4 +152,16 @@
     background-position: center; /* Đặt hình ảnh ở giữa phần tử */
     width: 100vw; /* Chiều rộng của phần tử là 100% chiều rộng của viewport */
     height: auto;
+}
+
+.Layout {
+    background: #032480;
+    width: 100vw; /* Chiều rộng của phần tử là 100% chiều rộng của viewport */
+    height: auto;
+}
+.TheBai {
+    border: 1px solid Black;
+    border-radius: 8px;
+    background: White;
+    margin-top: 25px; /* Khoảng cách từ phía trên */
 }

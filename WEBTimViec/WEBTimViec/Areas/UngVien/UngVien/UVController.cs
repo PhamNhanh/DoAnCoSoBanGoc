@@ -98,7 +98,7 @@ namespace WEBTimViec.Areas.UngVien.UngVien
         public async Task<IActionResult> DSNhaTuyenDung()
         {
             var danhSachNhaTuyenDung = await _userRepository.GetAllCompanyAsync();
-            // Truyền danh sách nhà tuyển dụng tới view
+            ViewBag.NhaTuyenDung = danhSachNhaTuyenDung;
             return View(danhSachNhaTuyenDung);
         }
 
@@ -179,12 +179,16 @@ namespace WEBTimViec.Areas.UngVien.UngVien
         public async Task<IActionResult> ListBaiTuyenDung()
         {
             var baiTuyenDung = await _baiTuyenDung.GetAllAsync();
+            var danhSachNhaTuyenDung = await _userRepository.GetAllCompanyAsync();
+            ViewBag.NhaTuyenDung = danhSachNhaTuyenDung;
             return View(baiTuyenDung);
         }
         [HttpGet]
         public async Task<IActionResult> UngTuyen(int Id)
         {
             var baiTuyenDung = await _baiTuyenDung.GetByIdAsync(Id);
+            var nguoiDung = await _userManager.GetUserAsync(User);
+            ViewBag.NguoiDung = nguoiDung;
             ViewBag.BaiTuyenDung = baiTuyenDung;
             return View();
         }
@@ -195,7 +199,6 @@ namespace WEBTimViec.Areas.UngVien.UngVien
             var find_user = await _userManager.GetUserAsync(User);
             //id bài tuyển dụng
             var post = await _baiTuyenDung.GetByIdAsync(id);
-
 
             if (ModelState.IsValid)
             {

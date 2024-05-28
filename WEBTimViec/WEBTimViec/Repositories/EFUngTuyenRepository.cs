@@ -17,13 +17,6 @@ namespace WEBTimViec.Repositories
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<UngTuyen>> GetAllApplyByUserIdAsync(string id)
-        {
-            return await _context.ungTuyens
-                .Where(b => b.applicationUser.Id == id)
-                .ToListAsync();
-        }
-
         public async Task<IEnumerable<UngTuyen>> GetAllApplyByCompanyIdAsync(string id)
         {
             return await _context.ungTuyens
@@ -54,6 +47,17 @@ namespace WEBTimViec.Repositories
             var ungTuyen = await _context.ungTuyens.FindAsync(id);
             _context.ungTuyens.Remove(ungTuyen);
             await _context.SaveChangesAsync();
+        }
+        public async Task<IEnumerable<UngTuyen>> GetAllApplyByUserIdAsync(string id)
+        {
+            //bao gồm danh mục, nếu không có sẽ ko ra danh mục
+            var applicationDbContext = await _context.ungTuyens
+                .Include(b => b.BaiTuyenDung)
+                .Include(b => b.applicationUser)
+                .Where(b => b.applicationUser.Id == id)
+                .ToListAsync();
+
+            return applicationDbContext;
         }
     }
 }

@@ -5,8 +5,24 @@
       "PackagePath": "staticwebassets\\WEBTimViec.bundle.scp.css"
     },
     {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\css\\Home.css",
+      "PackagePath": "staticwebassets\\css\\Home.css"
+    },
+    {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\css\\ViewIndex.css",
       "PackagePath": "staticwebassets\\css\\ViewIndex.css"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\css\\font-awesome.min.css",
+      "PackagePath": "staticwebassets\\css\\font-awesome.min.css"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\css\\main.css",
+      "PackagePath": "staticwebassets\\css\\main.css"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\css\\normalize.min.css",
+      "PackagePath": "staticwebassets\\css\\normalize.min.css"
     },
     {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\css\\site.css",
@@ -33,8 +49,16 @@
       "PackagePath": "staticwebassets\\filecv\\37c2736b-2986-4749-926a-7f1b5cd6b1c5.pdf"
     },
     {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\filecv\\47a9be04-3b34-41ce-b669-50dad1ac365d.jpg",
+      "PackagePath": "staticwebassets\\filecv\\47a9be04-3b34-41ce-b669-50dad1ac365d.jpg"
+    },
+    {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\filecv\\60e2f634-12cd-4115-b5ac-663e66360525.pdf",
       "PackagePath": "staticwebassets\\filecv\\60e2f634-12cd-4115-b5ac-663e66360525.pdf"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\filecv\\89ccd371-63e0-4c4d-b1bb-3cf5622aad7e.pdf",
+      "PackagePath": "staticwebassets\\filecv\\89ccd371-63e0-4c4d-b1bb-3cf5622aad7e.pdf"
     },
     {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\filecv\\a2fc58da-5112-44dd-84d3-c3c07aa08b75.pdf",

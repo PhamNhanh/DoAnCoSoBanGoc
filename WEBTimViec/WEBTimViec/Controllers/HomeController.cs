@@ -50,12 +50,14 @@ namespace WEBTimViec.Controllers
 
             var baiTuyenDungs = await _context.baiTuyenDungs.ToListAsync();
             var thanhPho = await _context.thanhPhos.ToListAsync();
+            var danhSachNhaTuyenDung = await _userRepository.GetAllCompanyAsync();
             var chuyenNganh = await _context.chuyenNganhs.ToListAsync();
             var viewModel = new ViewModel
             {
                 BaiTuyenDungs = baiTuyenDungs,
                 ThanhPhos = thanhPho,
                 ChuyenNganhs = chuyenNganh,
+                ApplicationUsers = danhSachNhaTuyenDung,
             };
             // Truyền danh sách bài tuyển dụng tới view
             return View(viewModel);
@@ -93,7 +95,21 @@ namespace WEBTimViec.Controllers
 
             return View(viewModel);
         }
+        public async Task<IActionResult> DetailsNhaTuyenDung(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            var company = await _context.Users.FindAsync(id);
+            if (company == null)
+            {
+                return NotFound();
+            }
+
+            return View(company);
+        }
         public async Task<IActionResult> DetailsBaiTuyenDung(int id)
         {
             var baiTuyenDung = _context.baiTuyenDungs

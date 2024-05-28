@@ -6,15 +6,15 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
+
             <h3 class="mb-4">Ứng tuyển cho công việc: @ViewBag.BaiTuyenDung.TenCongViec</h3>
 
             <form asp-action="UngTuyen" method="post" enctype="multipart/form-data">
                 <div class="row g-3">
-@*                     <div class="col-12 col-sm-6">
-                        <input type="text" class="form-control" value="@Model.applicationUser.FullName" readonly>
-                    </div>
-
                     <div class="col-12 col-sm-6">
+                        <input type="text" class="form-control" value="@ViewBag.NguoiDung.FullName" readonly>
+                    </div>
+@*                     <div class="col-12 col-sm-6">
                         <input type="text" class="form-control" value="@Model.applicationUser.Email" readonly>
                     </div> *@
 @*                     <div class="col-12 col-sm-6">
