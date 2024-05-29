@@ -23,7 +23,7 @@ namespace WEBTimViec.Data
         public DbSet<TruongDaiHoc> truongDaiHocs { get; set; }
         public DbSet<UngTuyen> ungTuyens { get; set; }
 /*        public DbSet<UngVien> ungViens { get; set; }*/
-        public DbSet<UngVien_ChuyenNganh> ungVien_ChuyenNganhs { get; set; }
+        public DbSet<HocVan_ChuyenNganh> hocvan_ChuyenNganhs { get; set; }
         public DbSet<ViTriCongViec> viTriCongViecs { get; set; }
         public DbSet<BaiTuyenDung_KyNangMem> baiTuyenDung_KyNangMems { get; set; }
 

@@ -28,5 +28,10 @@ namespace WEBTimViec.Models
         public HocVan? hocVan { get; set; }
         [NotMapped]
         public int? hocVanId { get; set; }
+        public IEnumerable<TruongDaiHoc> TruongDaiHocs { get; set; }
+        public TruongDaiHoc? truongDaiHoc { get; set; }
+        [NotMapped]
+        public int? truongDaiHocId { get; set; }
+
     }
 }

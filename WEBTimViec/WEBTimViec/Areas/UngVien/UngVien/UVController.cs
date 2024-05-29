@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WEBTimViec.Data;
 using WEBTimViec.Models;
@@ -23,7 +24,7 @@ namespace WEBTimViec.Areas.UngVien.UngVien
         private readonly IUserRepository _userRepository;
         private readonly IKyNangMem _kyNangMem;
         private readonly IHocVan _hocVan;
-
+        private readonly ITruongDaiHoc _truongDaiHoc;
         public UVController(ApplicationDbContext context,
             IBaiTuyenDung baiTuyenDung,
             IChuyenNganh chuyenNganh,
@@ -34,6 +35,7 @@ namespace WEBTimViec.Areas.UngVien.UngVien
             IUserRepository userRepository,
             IViTriCongViec viTriCongViec,
             IHocVan hocVan,
+            ITruongDaiHoc truongDaiHoc,
             IKyNangMem kyNangMem)
         {
             _context = context;
@@ -45,6 +47,7 @@ namespace WEBTimViec.Areas.UngVien.UngVien
             _ungTuyen = ungTuyen;
             _userRepository = userRepository;
             _viTriCongViec = viTriCongViec;
+            _truongDaiHoc = truongDaiHoc;
             _kyNangMem = kyNangMem;
             _hocVan = hocVan;
         }
@@ -62,6 +65,86 @@ namespace WEBTimViec.Areas.UngVien.UngVien
             // Truyền danh sách bài tuyển dụng tới view
             return View(viewModel);
         }
+        /*        public async Task<IActionResult> HocVan( int id)
+                {
+                    return View(id) ;
+                }*/
+        [HttpGet]
+        public async Task<IActionResult> AddHocVan()
+        {
+
+            var chuyenNganh = await _chuyenNganh.GetAllAsync();
+            var truongDaiHoc = await _truongDaiHoc.GetAllAsync();
+            ViewBag.ChuyenNganh = new SelectList(chuyenNganh, "ChuyenNganh_id", "ChuyenNganh_name");
+            ViewBag.TruongDaiHoc = new SelectList(truongDaiHoc, "TruongDaiHoc_id", "TruongDaiHoc_name");
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddHocVan(HocVan hocVan)
+        {
+            var find_user = await _userManager.GetUserAsync(User);
+            if (find_user == null)
+            {//Khó xảy ra vì đã chuyển hướng từ phân quyền
+                return NotFound("Chưa đăng nhập");
+            }
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    if (ModelState.IsValid)
+                    {
+                        if (find_user != null)
+                        {
+/*                            find_user.Id = hocVan.applicationUserId;*/
+                            var chuyenNganh = await _chuyenNganh.GetAllAsync();
+                            var truongDaiHoc = await _truongDaiHoc.GetAllAsync();
+                            ViewBag.ChuyenNganh = new SelectList(chuyenNganh, "ChuyenNganh_id", "ChuyenNganh_name");
+                            ViewBag.TruongDaiHoc = new SelectList(truongDaiHoc, "TruongDaiHoc_id", "TruongDaiHoc_name");
+                            await _hocVan.AddAsync(hocVan);
+                        }
+                        if (hocVan.ChuyenNganhIds != null)
+                        {
+                            foreach (var chuyenNganhId in hocVan.ChuyenNganhIds)
+                            {
+                                var hocVan_ChuyenNganh = new HocVan_ChuyenNganh
+                                {
+                                    HocVanId = hocVan.HocVan_id,
+                                    ChuyenNganhid = chuyenNganhId
+                                };
+                                _context.hocvan_ChuyenNganhs.Add(hocVan_ChuyenNganh);
+                            }
+                            await _context.SaveChangesAsync();
+                        }
+                    }
+
+                }
+                catch
+                {
+                    return NotFound();
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(find_user);
+        }
+        public async Task<IActionResult> IndexHocVan()
+        {
+            var find_user = await _userManager.GetUserAsync(User);
+            if (find_user != null)
+            {
+                var truongDaiHoc = await _truongDaiHoc.GetAllAsync();
+                var chuyenNganh = await _chuyenNganh.GetAllAsync();
+                var hocVanList = await _hocVan.GetByIdUserAsync(find_user.Id);
+                var hocVan = hocVanList.FirstOrDefault(); // Lấy phần tử đầu tiên từ danh sách
+                return View(hocVan);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+
+
         [HttpGet]
         public async Task<IActionResult> TimKiem(ViewModel viewModel)
         {

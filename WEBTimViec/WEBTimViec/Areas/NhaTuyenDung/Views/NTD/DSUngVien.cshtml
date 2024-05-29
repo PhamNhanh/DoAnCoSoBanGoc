@@ -3,16 +3,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Danh sách ứng viên</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> JobPlus </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="~/css/normalize.min.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/flaticon.css">
+    <link rel="stylesheet" href="~/css/price_rangs.css">
+    <link rel="stylesheet" href="~/css/slicknav.css">
+    <link rel="stylesheet" href="~/css/animate.min.css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/css/themify-icons.css">
+    <link rel="stylesheet" href="~/css/slick.css">
+    <link rel="stylesheet" href="~/css/nice-select.css">
+    <link rel="stylesheet" href="~/css/style.css">
 </head>
 <body>
-    <div class="header">
-        <img src="~/images/Logo.jpg" class="logo" />
-        <h1> JobPlus </h1>
-    </div>
     <div class="container">
         <h1 class="mt-5 mb-3">Danh sách ứng viên</h1>
         <table class="table table-striped">
@@ -38,7 +55,7 @@
                         <td>@ungvien.NgaySinh</td>
                         <td>@ungvien.TuGioiThieu</td>
                         <td>
-                            <a href="@Url.Action("DetailsUngVien", "UV", new { id = ungvien.Id })" class="btn btn-info">Chi tiết</a>
+                            <a href="@Url.Action("DetailsProfileUV", "UV", new { id = ungvien.Id })" class="btn btn-info">Chi tiết</a>
                         </td>
                     </tr>
                 }

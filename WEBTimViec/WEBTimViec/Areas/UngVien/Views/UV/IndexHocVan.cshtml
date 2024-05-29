@@ -1,0 +1,67 @@
+﻿@model WEBTimViec.Models.HocVan
+@{
+    ViewData["Title"] = "Thông tin ứng viên";
+}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> JobPlus </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="~/css/normalize.min.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/flaticon.css">
+    <link rel="stylesheet" href="~/css/price_rangs.css">
+    <link rel="stylesheet" href="~/css/slicknav.css">
+    <link rel="stylesheet" href="~/css/animate.min.css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/css/themify-icons.css">
+    <link rel="stylesheet" href="~/css/slick.css">
+    <link rel="stylesheet" href="~/css/nice-select.css">
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+<div class="container-fluid bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+@*                 <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div style="font-family: 'Times New Roman'; font-size: 30px"> Trình độ học vấn của @Model.FullName</div>
+                </div> *@
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                        <label class="labels" style="font-family: 'Times New Roman'; font-size: 20px">Tên trường đại học</label>
+                        <div class="form-control" style="font-family: 'Times New Roman'; font-size: 18px">@Model.truongDaiHoc.TruongDaiHoc_name</div>
+                    </div>
+
+@*                     <div class="col-md-6">
+                        <label class="labels" style="font-family: 'Times New Roman'; font-size: 20px">Chuyên ngànhn</label>
+                        <div class="form-control" style="font-family: 'Times New Roman'; font-size: 18px">@Model.hocVan_ChuyenNganhs</div>
+                    </div> *@
+                    <div class="col-md-6">
+                        <label class="labels" style="font-family: 'Times New Roman'; font-size: 20px">Điểm trung bình hệ 4</label>
+                        <div class="form-control" style="font-family: 'Times New Roman'; font-size: 18px">@Model.GPA</div>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="labels" style="font-family: 'Times New Roman'; font-size: 20px">Ngày nhập học</label>
+                        <div class="form-control" style="font-family: 'Times New Roman'; font-size: 18px">@Model.NgayBatDau</div>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="labels" style="font-family: 'Times New Roman'; font-size: 20px">Ngày tốt nghiệp </label>
+                        <div class="form-control" style="font-family: 'Times New Roman'; font-size: 18px">@Model.NgayTotNghiep</div>
+                    </div>
+                <div class="mt-5 text-center">
+                    <a class="btn btn-primary" asp-controller="UV" asp-action="UpdateProfileUV" style="font-family: 'Times New Roman'; font-size: 20px" asp-route-id="@Model.HocVan_id">Chỉnh sửa thông tin</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

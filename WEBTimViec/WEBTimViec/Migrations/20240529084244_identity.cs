@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WEBTimViec.Migrations
 {
     /// <inheritdoc />
-    public partial class _1 : Migration
+    public partial class identity : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -133,7 +133,8 @@ namespace WEBTimViec.Migrations
                     GPA = table.Column<float>(type: "real", nullable: false),
                     NgayBatDau = table.Column<DateTime>(type: "datetime2", nullable: true),
                     NgayTotNghiep = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    TruongDaiHocid = table.Column<int>(type: "int", nullable: false)
+                    TruongDaiHocid = table.Column<int>(type: "int", nullable: false),
+                    applicationUserId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -327,27 +328,34 @@ namespace WEBTimViec.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ungVien_ChuyenNganhs",
+                name: "hocvan_ChuyenNganhs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    applicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    ChuyenNganhid = table.Column<int>(type: "int", nullable: true)
+                    HocVanId = table.Column<int>(type: "int", nullable: false),
+                    ChuyenNganhid = table.Column<int>(type: "int", nullable: true),
+                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ungVien_ChuyenNganhs", x => x.Id);
+                    table.PrimaryKey("PK_hocvan_ChuyenNganhs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ungVien_ChuyenNganhs_AspNetUsers_applicationUserId",
-                        column: x => x.applicationUserId,
+                        name: "FK_hocvan_ChuyenNganhs_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_ungVien_ChuyenNganhs_chuyenNganhs_ChuyenNganhid",
+                        name: "FK_hocvan_ChuyenNganhs_chuyenNganhs_ChuyenNganhid",
                         column: x => x.ChuyenNganhid,
                         principalTable: "chuyenNganhs",
                         principalColumn: "ChuyenNganh_id");
+                    table.ForeignKey(
+                        name: "FK_hocvan_ChuyenNganhs_hocVans_HocVanId",
+                        column: x => x.HocVanId,
+                        principalTable: "hocVans",
+                        principalColumn: "HocVan_id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -559,6 +567,21 @@ namespace WEBTimViec.Migrations
                 column: "ViTriCongViec_id");
 
             migrationBuilder.CreateIndex(
+                name: "IX_hocvan_ChuyenNganhs_ApplicationUserId",
+                table: "hocvan_ChuyenNganhs",
+                column: "ApplicationUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_hocvan_ChuyenNganhs_ChuyenNganhid",
+                table: "hocvan_ChuyenNganhs",
+                column: "ChuyenNganhid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_hocvan_ChuyenNganhs_HocVanId",
+                table: "hocvan_ChuyenNganhs",
+                column: "HocVanId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_hocVans_TruongDaiHocid",
                 table: "hocVans",
                 column: "TruongDaiHocid");
@@ -572,16 +595,6 @@ namespace WEBTimViec.Migrations
                 name: "IX_ungTuyens_BaiTuyenDungid",
                 table: "ungTuyens",
                 column: "BaiTuyenDungid");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ungVien_ChuyenNganhs_applicationUserId",
-                table: "ungVien_ChuyenNganhs",
-                column: "applicationUserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ungVien_ChuyenNganhs_ChuyenNganhid",
-                table: "ungVien_ChuyenNganhs",
-                column: "ChuyenNganhid");
         }
 
         /// <inheritdoc />
@@ -612,10 +625,10 @@ namespace WEBTimViec.Migrations
                 name: "baiTuyenDung_ViTris");
 
             migrationBuilder.DropTable(
-                name: "ungTuyens");
+                name: "hocvan_ChuyenNganhs");
 
             migrationBuilder.DropTable(
-                name: "ungVien_ChuyenNganhs");
+                name: "ungTuyens");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

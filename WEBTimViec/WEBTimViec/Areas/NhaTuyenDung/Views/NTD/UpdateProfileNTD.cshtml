@@ -6,17 +6,34 @@
 <html lang="vi">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JobPlus</title>
-    <link rel="stylesheet" href="~/css/ViewIndex.css">
-</head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> JobPlus </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="~/css/normalize.min.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/flaticon.css">
+    <link rel="stylesheet" href="~/css/price_rangs.css">
+    <link rel="stylesheet" href="~/css/slicknav.css">
+    <link rel="stylesheet" href="~/css/animate.min.css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/css/themify-icons.css">
+    <link rel="stylesheet" href="~/css/slick.css">
+    <link rel="stylesheet" href="~/css/nice-select.css">
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
 <hr />
-<div class="header">
-    <img src="~/images/Logo.jpg" class="logo" />
-    <h1> JobPlus </h1>
-</div>
+
 <h1 class="tieude">Cập nhật thông tin Profile </h1>
 <div class="container-fluid bg-white mt-5 mb-5">
     <div class="row">
@@ -78,39 +95,3 @@
         </form>
     </div>
 </div>
-@* 
-<script>
-    document.querySelectorAll('input[type="file"]').forEach(input => {
-        input.addEventListener('change', function (event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    const img = document.getElementById("previewImage")
-                    img.src = e.target.result
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-    });
-</script>
- *@
-@* <script>
-    function previewFile(input) {
-        var preview = document.getElementById('previewImage');
-        var file = input.files[0];
-        var reader = new FileReader();
-
-        reader.onloadend = function () {
-            preview.src = reader.result;
-        }
-
-        if (file) {
-            reader.readAsDataURL(file);
-        }
-    }
-
-    document.getElementById('previewImage').onclick = function () {
-        document.getElementById('image_url').click();
-    };
-</script> *@

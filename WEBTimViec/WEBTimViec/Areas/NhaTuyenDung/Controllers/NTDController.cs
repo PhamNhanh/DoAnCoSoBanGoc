@@ -27,7 +27,8 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
         private readonly IViTriCongViec _viTriCongViec;
         private readonly IUserRepository _userRepository;
         private readonly IKyNangMem _kyNangMem;
-
+        private readonly IHocVan _hocVan;
+        private readonly ITruongDaiHoc _truongDaiHoc;
         public NTDController(ApplicationDbContext context,
             IBaiTuyenDung baiTuyenDung,
             IChuyenNganh chuyenNganh,
@@ -37,7 +38,9 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             IUngTuyen ungTuyen,
             IUserRepository userRepository,
             IViTriCongViec viTriCongViec,
-            IKyNangMem kyNangMem)
+            ITruongDaiHoc truongDaiHoc, 
+            IKyNangMem kyNangMem,
+            IHocVan hocVan)
         {
             _context = context;
             _baiTuyenDung = baiTuyenDung;
@@ -48,7 +51,9 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             _ungTuyen = ungTuyen;
             _userRepository = userRepository;
             _viTriCongViec = viTriCongViec;
+            _truongDaiHoc = truongDaiHoc;
             _kyNangMem = kyNangMem;
+            _hocVan = hocVan;
         }
 
         public async Task<IActionResult> Index()
@@ -313,58 +318,56 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             return View(find_company);
         }
 
-  /*      [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> UpdateProfile(string id, [Bind("company_name, address, introduce_company, position_title, mobile_no, fullname,contact_no, Email, website")] ApplicationUser company, IFormFile image_url)
+        public async Task<IActionResult> DetailsHocVan(string id)
         {
-            var find_company = await _userManager.GetUserAsync(User);
-
-            if (find_company != null && id != find_company.Id)
+            if (id == null)
             {
                 return NotFound();
             }
-            if (ModelState.IsValid)
+
+            var find_user = await _context.Users.FindAsync(id);
+            if (find_user == null)
             {
-                try
-                {
-                    if (ModelState.IsValid)
-                    {
-                        if (company != null && find_company != null)
-                        {
-                            if (image_url != null && IsImageFile(image_url) && IsFileSizeValid(image_url))
-                            {
-                                // Lưu hình ảnh đại diện
-                                find_company.image_url = await SaveImage(image_url);
-                                var locations = await _locationRepository.GetAllAsync();
-                                ViewBag.Locations = new SelectList(locations, "Id", "province_name");
-                            }
-                            else
-                            {
-                                ModelState.AddModelError("ImageUrl", "Vui lòng chọn một tệp hình ảnh hợp lệ và có kích thước nhỏ hơn 5MB.");
-                            }
-                            find_company.company_name = company.company_name;
-                            find_company.address = company.address;
-                            find_company.position_title = company.position_title;
-                            find_company.mobile_no = company.mobile_no;
-                            find_company.fullname = company.fullname;
-                            find_company.contact_no = company.contact_no;
-                            find_company.Email = company.Email;
-                            find_company.is_active = 1;
-                            find_company.update_at = DateTime.Now;
-                            find_company.website = company.website;
-                            find_company.introduce_company = company.introduce_company;
-                            await _userManager.UpdateAsync(find_company);
-                        }
-                    }
-                }
-                catch
-                {
-                    return NotFound();
-                }
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
-            return View(find_company);
-        }*/
+
+            var hocVanList = await _hocVan.GetByIdUserAsync(find_user.Id);
+            var hocVan = hocVanList.FirstOrDefault(); // Lấy phần tử đầu tiên từ danh sách
+
+            if (hocVan == null)
+            {
+                return NotFound();
+            }
+            // Lấy danh sách trường đại học và chuyên ngành
+            var truongDaiHoc = await _truongDaiHoc.GetAllAsync();
+            var chuyenNganh = await _chuyenNganh.GetAllAsync();
+            ViewBag.ChuyenNganh = new SelectList(truongDaiHoc, "ChuyenNganh_id", "ChuyenNganh_name");
+            ViewBag.ThanhPho = new SelectList(chuyenNganh, "ThanhPho_id", "ThanhPho_name");
+            return View(hocVan);
+        }
+        public async Task<IActionResult> DetailsProfileUV(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var find_user = await _context.Users.FindAsync(id);
+            if (find_user == null)
+            {
+                return NotFound();
+            }
+
+            var hocVan = await _hocVan.GetByIdUserAsync(find_user.Id);
+            if (hocVan == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.HocVan = hocVan;
+            return View(find_user);
+        }
+
 
         private bool IsImageFile(IFormFile file)
         {

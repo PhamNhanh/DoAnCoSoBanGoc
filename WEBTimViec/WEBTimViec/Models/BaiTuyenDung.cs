@@ -30,12 +30,12 @@ namespace WEBTimViec.Models
 
         public ChuyenNganh? chuyenNganh { get; set; }
         [NotMapped]
-        public List<int>? ChuyenNganhIds { get; set; }  // Thuộc tính không ánh xạ (đã đổi tên)
+        public List<int>? ChuyenNganhIds { get; set; }  
         public ViTriCongViec? viTriCongViec { get; set; }
         [NotMapped]
-        public List<int>? ViTriCongViecIds { get; set; }  // Thuộc tính không ánh xạ (đã đổi tên)
+        public List<int>? ViTriCongViecIds { get; set; }  
         [NotMapped]
-        public List<int>? KyNangMemIds { get; set; }  // Thuộc tính không ánh xạ (đã đổi tên)
+        public List<int>? KyNangMemIds { get; set; } 
         public ApplicationUser? applicationUser { get; set; }
 
     }

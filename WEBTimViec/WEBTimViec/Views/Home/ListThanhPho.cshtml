@@ -6,77 +6,31 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"]</title>
-    <style>
-        /* Thay đổi màu nền và màu chữ */
-        body {
-            background-color: #292b2c; /* Màu xám đậm cho nền */
-            color: #ffffff; /* Màu trắng cho chữ */
-            font-family: Arial, sans-serif; /* Sử dụng font chữ mặc định */
-        }
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> JobPlus </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        /* Thay đổi màu chữ của các đường link */
-        a {
-            color: #17a2b8; /* Màu xanh dương nhạt cho các đường link */
-            text-decoration: none; /* Loại bỏ gạch chân */
-        }
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
-            /* Màu chữ khi hover trên đường link */
-            a:hover {
-                color: #15888a; /* Màu xanh dương nhạt khi hover */
-            }
-
-        /* Thay đổi màu chữ của tiêu đề */
-        h1 {
-            color: #3e4; /* Màu xanh dương nhạt cho tiêu đề */
-        }
-
-        /* Thay đổi màu chữ của các ô trong bảng */
-        table {
-            color: #ffffff; /* Màu trắng cho nội dung bảng */
-            width: 100%; /* Độ rộng bảng */
-            border-collapse: collapse; /* Loại bỏ đường viền */
-        }
-
-        th, td {
-            padding: 8px; /* Khoảng cách giữa các ô */
-            border-bottom: 1px solid #fff; /* Đường viền dưới */
-            text-align: left; /* Căn lề trái */
-        }
-        /* Thay đổi màu chữ của các ô trong bảng */
-        td {
-            color: #ffffff; /* Màu trắng cho nội dung các ô */
-        }
-
-        /* Thay đổi màu nền và chữ của tiêu đề bảng */
-        tr th {
-            color: White; /* Màu xanh lá cây */
-        }
-
-        /* Thay đổi màu của các nút */
-        .btn {
-            background-color: #17a2b8; /* Màu xanh dương nhạt cho nút */
-            border: none; /* Loại bỏ đường viền */
-            color: #fff; /* Màu trắng cho chữ */
-            padding: 6px 12px; /* Kích thước nút */
-            cursor: pointer; /* Chuyển con trỏ thành bàn tay khi di chuột vào nút */
-            text-decoration: none; /* Loại bỏ gạch chân */
-            border-radius: 4px; /* Bo tròn viền */
-            transition: background-color 0.3s ease; /* Hiệu ứng khi hover */
-        }
-
-            /* Màu của nút khi hover */
-            .btn:hover {
-                background-color: green;
-            }
-
-            /* Căn lề nút */
-            .btn:not(:last-child) {
-                margin-right: 5px; /* Khoảng cách phải */
-            }
-    </style>
+    <!-- CSS here -->
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="~/css/normalize.min.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/flaticon.css">
+    <link rel="stylesheet" href="~/css/price_rangs.css">
+    <link rel="stylesheet" href="~/css/slicknav.css">
+    <link rel="stylesheet" href="~/css/animate.min.css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/css/themify-icons.css">
+    <link rel="stylesheet" href="~/css/slick.css">
+    <link rel="stylesheet" href="~/css/nice-select.css">
+    <link rel="stylesheet" href="~/css/style.css">
 </head>
 <p>
     <a href="@Url.Action("Index")" class="btn btn-primary">Back to List</a>
