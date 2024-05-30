@@ -59,15 +59,55 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
         public async Task<IActionResult> Index()
         {
             var baiTuyenDungs = await _context.baiTuyenDungs.ToListAsync();
-            var thanhPho = await _context.thanhPhos.ToListAsync();
-            var chuyenNganh = await _context.chuyenNganhs.ToListAsync();
+            var thanhPho = await _thanhPho.GetAllAsync();
+            var sortedThanhPho = thanhPho.OrderBy(tp => tp.ThanhPho_name).ToList(); var chuyenNganh = await _chuyenNganh.GetAllAsync();
+            var sortedChuyenNganh = chuyenNganh.OrderBy(cn => cn.ChuyenNganh_name).ToList();
+            var chuyenNganhs = await _context.chuyenNganhs.ToListAsync();
             var viewModel = new ViewModel
             {
+
                 BaiTuyenDungs = baiTuyenDungs,
-                ThanhPhos = thanhPho,
-                ChuyenNganhs = chuyenNganh,
+                ThanhPhos = sortedThanhPho,
+                ChuyenNganhs = sortedChuyenNganh,
             };
             // Truyền danh sách bài tuyển dụng tới view
+            return View(viewModel);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> TimKiem(ViewModel viewModel)
+        {
+            // Lấy danh sách thành phố và chuyên ngành để hiển thị trên form
+            var baiTuyenDungs = await _context.baiTuyenDungs.ToListAsync();
+            var thanhPho = await _thanhPho.GetAllAsync();
+            var sortedThanhPho = thanhPho.OrderBy(tp => tp.ThanhPho_name).ToList(); var chuyenNganh = await _chuyenNganh.GetAllAsync();
+            var sortedChuyenNganh = chuyenNganh.OrderBy(cn => cn.ChuyenNganh_name).ToList();
+            var chuyenNganhs = await _context.chuyenNganhs.ToListAsync();
+            viewModel.ThanhPhos = sortedThanhPho;
+            viewModel.ChuyenNganhs = sortedChuyenNganh;
+
+            // Nếu người dùng đã chọn thành phố
+            if (viewModel.ThanhPhoId != null)
+            {
+                // Tìm kiếm bài tuyển dụng dựa trên thành phố
+                var query = _context.baiTuyenDungs.Where(b => b.thanhPhoId == viewModel.ThanhPhoId);
+
+                // Nếu người dùng đã chọn chuyên ngành
+                if (viewModel.chuyenNganhId != null)
+                {
+                    // Lọc kết quả theo chuyên ngành
+                    query = query.Where(b => b.chuyenNganh.ChuyenNganh_id == viewModel.chuyenNganhId);
+                }
+
+                // Gán danh sách bài tuyển dụng vào view model
+                viewModel.BaiTuyenDungs = await query.ToListAsync();
+            }
+            else
+            {
+                // Nếu không có thành phố được chọn, hiển thị tất cả các bài tuyển dụng
+                viewModel.BaiTuyenDungs = await _context.baiTuyenDungs.ToListAsync();
+            }
+
             return View(viewModel);
         }
 
@@ -125,10 +165,22 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
         }
         public async Task<IActionResult> DSUngVien()
         {
+            var baiTuyenDung = await _baiTuyenDung.GetAllAsync();
+            var user = await _userManager.GetUserAsync(User);
+            var ungTuyen = await _ungTuyen.GetAllAsync();
             var danhSachUngVien = await _userRepository.GetAllUserAsync();
             // Truyền danh sách nhà tuyển dụng tới view
             return View(danhSachUngVien);
         }
+        public async Task<IActionResult> DSUngTuyen()
+        {
+            // Lấy danh sách các ứng viên đã ứng tuyển
+            var dsUngTuyen = await _ungTuyen.GetAllAsync();
+
+            // Trả về view chứa danh sách ứng viên đã ứng tuyển
+            return View(dsUngTuyen);
+        }
+
         [HttpGet]
         public async Task<IActionResult> AddBaiTuyenDung()
         {
@@ -279,20 +331,6 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
                         // Lưu hình ảnh đại diện
                         find_company.image_url = await SaveImage(image_url);
                     }
-                   /* else if (image_url == null)
-                    {
-                        if (find_company.image_url != null)
-                        {
-                            // Nếu trong cơ sở dữ liệu có URL hình ảnh được lưu trữ, giữ nguyên giá trị của image_url
-                            find_company.image_url = find_company.image_url;
-                        }
-                        else
-                        {
-                            // Nếu không có URL hình ảnh trong cơ sở dữ liệu, gán image_url = null
-                            find_company.image_url = null;
-                        }
-                    }*/
-
 
                     // Cập nhật các thông tin khác của công ty
                     find_company.NhaTuyenDung_name = company.NhaTuyenDung_name;

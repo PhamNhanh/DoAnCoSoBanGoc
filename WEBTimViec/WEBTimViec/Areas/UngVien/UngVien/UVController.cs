@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using SQLitePCL;
 using WEBTimViec.Data;
 using WEBTimViec.Models;
 using WEBTimViec.Repositories;
@@ -54,21 +55,21 @@ namespace WEBTimViec.Areas.UngVien.UngVien
         public async Task<IActionResult> Index()
         {
             var baiTuyenDungs = await _context.baiTuyenDungs.ToListAsync();
-            var thanhPho = await _context.thanhPhos.ToListAsync();
-            var chuyenNganh = await _context.chuyenNganhs.ToListAsync();
+            var thanhPho = await _thanhPho.GetAllAsync();
+            var sortedThanhPho = thanhPho.OrderBy(tp => tp.ThanhPho_name).ToList(); var chuyenNganh = await _chuyenNganh.GetAllAsync();
+            var sortedChuyenNganh = chuyenNganh.OrderBy(cn => cn.ChuyenNganh_name).ToList();
+            var chuyenNganhs = await _context.chuyenNganhs.ToListAsync();
             var viewModel = new ViewModel
             {
+                
                 BaiTuyenDungs = baiTuyenDungs,
-                ThanhPhos = thanhPho,
-                ChuyenNganhs = chuyenNganh,
+                ThanhPhos = sortedThanhPho,
+                ChuyenNganhs = sortedChuyenNganh,
             };
             // Truyền danh sách bài tuyển dụng tới view
             return View(viewModel);
         }
-        /*        public async Task<IActionResult> HocVan( int id)
-                {
-                    return View(id) ;
-                }*/
+
         [HttpGet]
         public async Task<IActionResult> AddHocVan()
         {
@@ -149,10 +150,13 @@ namespace WEBTimViec.Areas.UngVien.UngVien
         public async Task<IActionResult> TimKiem(ViewModel viewModel)
         {
             // Lấy danh sách thành phố và chuyên ngành để hiển thị trên form
-            var thanhPho = await _context.thanhPhos.ToListAsync();
-            var chuyenNganh = await _context.chuyenNganhs.ToListAsync();
-            viewModel.ThanhPhos = thanhPho;
-            viewModel.ChuyenNganhs = chuyenNganh;
+            var baiTuyenDungs = await _context.baiTuyenDungs.ToListAsync();
+            var thanhPho = await _thanhPho.GetAllAsync();
+            var sortedThanhPho = thanhPho.OrderBy(tp => tp.ThanhPho_name).ToList(); var chuyenNganh = await _chuyenNganh.GetAllAsync();
+            var sortedChuyenNganh = chuyenNganh.OrderBy(cn => cn.ChuyenNganh_name).ToList();
+            var chuyenNganhs = await _context.chuyenNganhs.ToListAsync();
+            viewModel.ThanhPhos = sortedThanhPho;
+            viewModel.ChuyenNganhs = sortedChuyenNganh;
 
             // Nếu người dùng đã chọn thành phố
             if (viewModel.ThanhPhoId != null)
@@ -200,20 +204,21 @@ namespace WEBTimViec.Areas.UngVien.UngVien
 
             return View(company);
         }
+
+        //Lấy danh sách ứng tuyển theo user
         [HttpGet]
         public async Task<IActionResult> DSUngTuyen()
         {
             var find_user = await _userManager.GetUserAsync(User);
-            if (find_user != null)
-            {
 
-                var dsUngTuyen = await _ungTuyen.GetAllApplyByUserIdAsync(find_user.Id);
-                return View(dsUngTuyen);
-            }
-            else
-            {
-                return NotFound();
-            }
+            var result = from c in _context.ungTuyens
+                         where c.application_Userid == find_user.Id
+                         select c;
+
+            List<UngTuyen> listPhieuUngTuyen = result.ToList();
+
+            ViewBag.listPhieuUngTuyen = listPhieuUngTuyen;
+            return View();
 
         }
         public async Task<IActionResult> DetailsBaiTuyenDung(int id)

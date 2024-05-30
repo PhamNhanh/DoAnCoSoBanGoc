@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Trang chủ  ";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <head>
@@ -89,7 +88,8 @@
                                 <h3 class="card-title">@baiTuyenDung.TenCongViec</h3>
                                 <p class="card-text"><strong>Mô tả công việc:</strong> @baiTuyenDung.MoTaCongViec</p>
                                 <p class="card-text"><strong>Yêu cầu kỹ năng:</strong> @baiTuyenDung.YeuCauKyNang</p>
-                                <p class="card-text"><strong>Phúc lợi:</strong> @baiTuyenDung.PhucLoi</p>
+                                @* <p class="card-text"><strong>Phúc lợi:</strong> @baiTuyenDung.PhucLoi</p> *@
+                                <p class="card-text"><strong>Thành phố làm việc:</strong> @baiTuyenDung.thanhPho.ThanhPho_name</p>
                                 <p class="card-text"><strong>Lương:</strong> @baiTuyenDung.Luong_min - @baiTuyenDung.Luong_max triệu đồng</p>
                                 <p class="card-text"><strong>Loại công việc:</strong> @baiTuyenDung.KieuCongViec</p>
                                 <p class="card-text"><strong>Hạn nộp hồ sơ:</strong> @baiTuyenDung.ThoiGianHetHan</p>

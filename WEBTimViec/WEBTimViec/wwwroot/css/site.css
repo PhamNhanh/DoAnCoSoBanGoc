@@ -1,4 +1,4 @@
-
+﻿
 .menu-icon {
     cursor: pointer;
     position: fixed;
@@ -45,8 +45,8 @@
 
 body {
     background-image: url('~/images/Background.jpg'); /* ???ng d?n ??n ?nh n?n */
-    background-size: cover; /* ??m b?o ?nh n?n bao ph? to�n b? m�n h�nh */
-    background-repeat: no-repeat; /* ??m b?o ?nh kh�ng l?p l?i */
+    background-size: cover; /* ??m b?o ?nh n?n bao ph? toàn b? màn hình */
+    background-repeat: no-repeat; /* ??m b?o ?nh không l?p l?i */
     background-position: center; /* ??t ?nh ? gi?a */
     height: 100%;
     margin: 0;
@@ -60,4 +60,10 @@ body {
 
 .menu-icon {
     background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+}
+.background {
+    background-image: url('~/images/bg1.jpg');
+    background-size: cover; /* Để ảnh phủ kín toàn bộ phần tử */
+    background-position: center; /* Để ảnh căn giữa */
+    background-repeat: no-repeat; /* Để ảnh không lặp lại */
 }

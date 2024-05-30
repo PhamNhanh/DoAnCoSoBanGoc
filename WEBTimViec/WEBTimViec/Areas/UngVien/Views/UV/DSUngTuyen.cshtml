@@ -1,7 +1,9 @@
-﻿@* @model IEnumerable<WEBTimViec.Models.BaiTuyenDung>
+﻿@model IEnumerable<WEBTimViec.Models.UngTuyen>
+@using WEBTimViec.Data
 
 @{
     ViewData["Title"] = "Index";
+    List<UngTuyen> listPhieuUngTuyen = ViewBag.listPhieuUngTuyen;
 }
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
@@ -20,10 +22,21 @@
                             <th style="font-weight: bold; font-size: 30px;color:black; font-family:'Times New Roman'">Trạng thái</th>
                             <th></th>
                         </tr>
+
                     </thead>
+                    <tbody>
+                        @foreach (var item in listPhieuUngTuyen)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.applicationUser)</td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.application_Userid)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
- *@

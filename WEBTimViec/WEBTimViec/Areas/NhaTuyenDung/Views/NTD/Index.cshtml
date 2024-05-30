@@ -87,16 +87,17 @@
                 @foreach (var baiTuyenDung in Model.BaiTuyenDungs)
                 {
                     <div class="col-md-4">
-                        <div class="form-container">
+                            <div class="card">
                             <div class="card-body">
                                 <h3 class="card-title">@baiTuyenDung.TenCongViec</h3>
                                 <p class="limit-text"><strong>Mô tả công việc:</strong> @baiTuyenDung.MoTaCongViec</p>
                                 <p class="limit-text"><strong>Yêu cầu kỹ năng:</strong> @baiTuyenDung.YeuCauKyNang</p>
-                                <p class="limit-text"><strong>Phúc lợi:</strong> @baiTuyenDung.PhucLoi</p>
+                                @* <p class="limit-text"><strong>Phúc lợi:</strong> @baiTuyenDung.PhucLoi</p> *@
+                                    <p class="card-text"><strong>Thành phố làm việc:</strong> @baiTuyenDung.thanhPho.ThanhPho_name</p>
                                 <p class="limit-text"><strong>Lương:</strong> @baiTuyenDung.Luong_min - @baiTuyenDung.Luong_max triệu đồng</p>
                                 <p class="limit-text"><strong>Loại công việc:</strong> @baiTuyenDung.KieuCongViec</p>
                                 <p class="limit-text"><strong>Hạn nộp hồ sơ:</strong> @baiTuyenDung.ThoiGianHetHan</p>
-                                <a href="@Url.Action("DetailsBaiTuyenDung", new { id = baiTuyenDung.BaiTuyenDung_id })" class="button">Chi tiết</a>
+                                    <a href="@Url.Action("DetailsBaiTuyenDung", new { id = baiTuyenDung.BaiTuyenDung_id })" class="btn btn-primary">Chi tiết</a>
                             </div>
                         </div>
                     </div>

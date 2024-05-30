@@ -35,12 +35,12 @@
     <div>
         <h4 class="center"> Danh sách nhà tuyển dụng </h4>
         <form action="@Url.Action("DetailsNhaTuyenDung", "Home")" method="get">
- <div class="row">
+ <div class="card">
                 @foreach (var nhaTuyenDung in Model.ApplicationUsers)
                 {
 
                     <div class="col-md-4">
-                            <div class="TheBai">
+                        <div class="card">
                                 <h3 class="center">@nhaTuyenDung.NhaTuyenDung_name</h3>
                                 <p class="limit-text">->  <strong>Website:</strong> @nhaTuyenDung.Website</p>
                                 <a href="@Url.Action("DetailsNhaTuyenDung", new { id = nhaTuyenDung.Id })" class="button">Chi tiết</a>
@@ -54,7 +54,7 @@
         <div>
             <h4 class="center-text"> Tìm kiếm công việc bạn ưa thích</h4>
             <form action="@Url.Action("TimKiem", "Home")" method="get">
-                <div class="row g-2 align-items-end">
+                <div class="card">
                     <div class="col-md-3" style="padding-right: 10px;">
                         <div class="row g-2">
                             <div class="col-12">
@@ -91,7 +91,6 @@
                     <div class="col-md-auto">
                         <button type="submit" class="btn btn-dark border-0">Tìm kiếm</button>
                     </div>
-                </div>
             </form>
             <h5 class="center-text spacing-top">
                 Bài tuyển dụng phù hợp
@@ -101,20 +100,23 @@
                 {
 
                     <div class="col-md-4">
-                        <div class="TheBai">
-                            <h3 class="center">@baiTuyenDung.TenCongViec</h3>
-                            @*                                 <p class="limit-text"><strong>Mô tả công việc:</strong> @baiTuyenDung.MoTaCongViec</p> *@
-                            <p class="limit-text">->  <strong>Yêu cầu kỹ năng:</strong> @baiTuyenDung.YeuCauKyNang</p>
-                            @*                                 <p class="limit-text"><strong>Phúc lợi:</strong> @baiTuyenDung.PhucLoi</p> *@
-                            <p class="limit-text">->  <strong>Lương:</strong> @baiTuyenDung.Luong_min - @baiTuyenDung.Luong_max triệu đồng</p>
-                            <p class="limit-text">->  <strong>Loại công việc:</strong> @baiTuyenDung.KieuCongViec</p>
-                            <p class="limit-text">->  <strong>Hạn nộp hồ sơ:</strong> @baiTuyenDung.ThoiGianHetHan</p>
-                            <a href="@Url.Action("DetailsBaiTuyenDung", new { id = baiTuyenDung.BaiTuyenDung_id })" class="button">Chi tiết</a>
+                        <div class="card">
+                            <h3 class="card-title">@baiTuyenDung.TenCongViec</h3>
+                            <p class="limit-text"><strong>-->Mô tả công việc:</strong> @baiTuyenDung.MoTaCongViec</p>
+                            <p class="limit-text"><strong>-->Yêu cầu kỹ năng:</strong> @baiTuyenDung.YeuCauKyNang</p>
+                            @* <p class="limit-text"><strong>Phúc lợi:</strong> @baiTuyenDung.PhucLoi</p> *@
+                            <p class="card-text"><strong>-->Thành phố làm việc:</strong> @baiTuyenDung.thanhPho.ThanhPho_name</p>
+                            <p class="limit-text"><strong>-->Lương:</strong> @baiTuyenDung.Luong_min - @baiTuyenDung.Luong_max triệu đồng</p>
+                            <p class="limit-text"><strong>-->Loại công việc:</strong> @baiTuyenDung.KieuCongViec</p>
+                            <p class="limit-text"><strong>-->Hạn nộp hồ sơ:</strong> @baiTuyenDung.ThoiGianHetHan</p>
+                            <a href="@Url.Action("DetailsBaiTuyenDung", new { id = baiTuyenDung.BaiTuyenDung_id })" class="btn btn-primary">Chi tiết</a>
                         </div>
                     </div>
 
                 }
             </div>
+                </div>
+            
         </div>
     </div>
 
