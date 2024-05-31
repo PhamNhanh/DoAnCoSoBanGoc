@@ -27,7 +27,6 @@ namespace WEBTimViec.Models
         public List<BaiTuyenDung_ChuyenNganh>? baiTuyenDung_ChuyenNganhs { get; set; }
         public List<BaiTuyenDung_KyNangMem>? baiTuyenDung_KyNangMems { get; set; }
         public List<UngTuyen>? ungTuyens { get; set; }
-
         public ChuyenNganh? chuyenNganh { get; set; }
         [NotMapped]
         public List<int>? ChuyenNganhIds { get; set; }  

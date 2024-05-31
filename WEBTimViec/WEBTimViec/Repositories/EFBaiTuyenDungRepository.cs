@@ -81,6 +81,5 @@ namespace WEBTimViec.Repositories
 
             return baiTuyenDungByUserId;
         }
-
     }
 }

@@ -109,6 +109,10 @@
       "PackagePath": "staticwebassets\\filecv\\60e2f634-12cd-4115-b5ac-663e66360525.pdf"
     },
     {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\filecv\\7ec83a80-5913-4d79-bb17-c5299e16a419.pdf",
+      "PackagePath": "staticwebassets\\filecv\\7ec83a80-5913-4d79-bb17-c5299e16a419.pdf"
+    },
+    {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\filecv\\89ccd371-63e0-4c4d-b1bb-3cf5622aad7e.pdf",
       "PackagePath": "staticwebassets\\filecv\\89ccd371-63e0-4c4d-b1bb-3cf5622aad7e.pdf"
     },
@@ -161,8 +165,432 @@
       "PackagePath": "staticwebassets\\images\\Nen.jpg"
     },
     {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\about\\about_lft.png",
+      "PackagePath": "staticwebassets\\images\\about\\about_lft.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\about\\about_right.png",
+      "PackagePath": "staticwebassets\\images\\about\\about_right.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\about\\pet_care.png",
+      "PackagePath": "staticwebassets\\images\\about\\pet_care.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\adapt_icon\\1.png",
+      "PackagePath": "staticwebassets\\images\\adapt_icon\\1.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\adapt_icon\\1.svg",
+      "PackagePath": "staticwebassets\\images\\adapt_icon\\1.svg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\adapt_icon\\2.png",
+      "PackagePath": "staticwebassets\\images\\adapt_icon\\2.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\adapt_icon\\3.png",
+      "PackagePath": "staticwebassets\\images\\adapt_icon\\3.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\banner\\dog.png",
+      "PackagePath": "staticwebassets\\images\\banner\\dog.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\banner\\img.png",
+      "PackagePath": "staticwebassets\\images\\banner\\img.png"
+    },
+    {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\bg1.jpg",
       "PackagePath": "staticwebassets\\images\\bg1.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\blog\\author.png",
+      "PackagePath": "staticwebassets\\images\\blog\\author.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\blog\\blog_4.png",
+      "PackagePath": "staticwebassets\\images\\blog\\blog_4.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\blog\\home-blog1.jpg",
+      "PackagePath": "staticwebassets\\images\\blog\\home-blog1.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\blog\\home-blog2.jpg",
+      "PackagePath": "staticwebassets\\images\\blog\\home-blog2.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\blog\\learn_about_bg.png",
+      "PackagePath": "staticwebassets\\images\\blog\\learn_about_bg.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\blog\\single_blog_1.png",
+      "PackagePath": "staticwebassets\\images\\blog\\single_blog_1.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\blog\\single_blog_2.png",
+      "PackagePath": "staticwebassets\\images\\blog\\single_blog_2.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\blog\\single_blog_3.png",
+      "PackagePath": "staticwebassets\\images\\blog\\single_blog_3.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\blog\\single_blog_4.png",
+      "PackagePath": "staticwebassets\\images\\blog\\single_blog_4.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\blog\\single_blog_5.png",
+      "PackagePath": "staticwebassets\\images\\blog\\single_blog_5.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\blog\\slide_thumb_1.png",
+      "PackagePath": "staticwebassets\\images\\blog\\slide_thumb_1.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\comment\\comment_1.png",
+      "PackagePath": "staticwebassets\\images\\comment\\comment_1.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\comment\\comment_2.png",
+      "PackagePath": "staticwebassets\\images\\comment\\comment_2.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\comment\\comment_3.png",
+      "PackagePath": "staticwebassets\\images\\comment\\comment_3.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\a.jpg",
+      "PackagePath": "staticwebassets\\images\\elements\\a.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\a2.jpg",
+      "PackagePath": "staticwebassets\\images\\elements\\a2.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\d.jpg",
+      "PackagePath": "staticwebassets\\images\\elements\\d.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\disabled-check.png",
+      "PackagePath": "staticwebassets\\images\\elements\\disabled-check.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\disabled-radio.png",
+      "PackagePath": "staticwebassets\\images\\elements\\disabled-radio.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\f1.jpg",
+      "PackagePath": "staticwebassets\\images\\elements\\f1.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\f2.jpg",
+      "PackagePath": "staticwebassets\\images\\elements\\f2.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\f3.jpg",
+      "PackagePath": "staticwebassets\\images\\elements\\f3.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\f4.jpg",
+      "PackagePath": "staticwebassets\\images\\elements\\f4.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\f5.jpg",
+      "PackagePath": "staticwebassets\\images\\elements\\f5.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\f6.jpg",
+      "PackagePath": "staticwebassets\\images\\elements\\f6.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\f7.jpg",
+      "PackagePath": "staticwebassets\\images\\elements\\f7.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\f8.jpg",
+      "PackagePath": "staticwebassets\\images\\elements\\f8.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\g1.jpg",
+      "PackagePath": "staticwebassets\\images\\elements\\g1.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\g2.jpg",
+      "PackagePath": "staticwebassets\\images\\elements\\g2.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\g3.jpg",
+      "PackagePath": "staticwebassets\\images\\elements\\g3.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\g4.jpg",
+      "PackagePath": "staticwebassets\\images\\elements\\g4.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\g5.jpg",
+      "PackagePath": "staticwebassets\\images\\elements\\g5.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\g6.jpg",
+      "PackagePath": "staticwebassets\\images\\elements\\g6.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\g7.jpg",
+      "PackagePath": "staticwebassets\\images\\elements\\g7.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\g8.jpg",
+      "PackagePath": "staticwebassets\\images\\elements\\g8.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\primary-check.png",
+      "PackagePath": "staticwebassets\\images\\elements\\primary-check.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\primary-radio.png",
+      "PackagePath": "staticwebassets\\images\\elements\\primary-radio.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\success-check.png",
+      "PackagePath": "staticwebassets\\images\\elements\\success-check.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\elements\\success-radio.png",
+      "PackagePath": "staticwebassets\\images\\elements\\success-radio.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\gallery\\1.png",
+      "PackagePath": "staticwebassets\\images\\gallery\\1.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\gallery\\2.png",
+      "PackagePath": "staticwebassets\\images\\gallery\\2.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\gallery\\3.png",
+      "PackagePath": "staticwebassets\\images\\gallery\\3.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\gallery\\cv_bg.jpg",
+      "PackagePath": "staticwebassets\\images\\gallery\\cv_bg.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\gallery\\how-applybg.png",
+      "PackagePath": "staticwebassets\\images\\gallery\\how-applybg.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\hero\\about.jpg",
+      "PackagePath": "staticwebassets\\images\\hero\\about.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\hero\\h1_hero.jpg",
+      "PackagePath": "staticwebassets\\images\\hero\\h1_hero.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\icon\\form.png",
+      "PackagePath": "staticwebassets\\images\\icon\\form.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\icon\\job-list1.png",
+      "PackagePath": "staticwebassets\\images\\icon\\job-list1.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\icon\\job-list2.png",
+      "PackagePath": "staticwebassets\\images\\icon\\job-list2.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\icon\\job-list3.png",
+      "PackagePath": "staticwebassets\\images\\icon\\job-list3.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\icon\\job-list4.png",
+      "PackagePath": "staticwebassets\\images\\icon\\job-list4.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\logo\\form-iocn.jpg",
+      "PackagePath": "staticwebassets\\images\\logo\\form-iocn.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\logo\\loder.jpg",
+      "PackagePath": "staticwebassets\\images\\logo\\loder.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\logo\\logo.png",
+      "PackagePath": "staticwebassets\\images\\logo\\logo.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\logo\\logo2_footer.png",
+      "PackagePath": "staticwebassets\\images\\logo\\logo2_footer.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\logo\\select-items-icon.jpg",
+      "PackagePath": "staticwebassets\\images\\logo\\select-items-icon.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\logo\\testimonial.png",
+      "PackagePath": "staticwebassets\\images\\logo\\testimonial.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\offers\\1.png",
+      "PackagePath": "staticwebassets\\images\\offers\\1.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\offers\\2.png",
+      "PackagePath": "staticwebassets\\images\\offers\\2.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\offers\\3.png",
+      "PackagePath": "staticwebassets\\images\\offers\\3.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\our_blog\\blog-img1.jpg",
+      "PackagePath": "staticwebassets\\images\\our_blog\\blog-img1.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\post\\next.png",
+      "PackagePath": "staticwebassets\\images\\post\\next.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\post\\post_1.png",
+      "PackagePath": "staticwebassets\\images\\post\\post_1.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\post\\post_10.png",
+      "PackagePath": "staticwebassets\\images\\post\\post_10.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\post\\post_2.png",
+      "PackagePath": "staticwebassets\\images\\post\\post_2.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\post\\post_3.png",
+      "PackagePath": "staticwebassets\\images\\post\\post_3.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\post\\post_4.png",
+      "PackagePath": "staticwebassets\\images\\post\\post_4.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\post\\post_5.png",
+      "PackagePath": "staticwebassets\\images\\post\\post_5.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\post\\post_6.png",
+      "PackagePath": "staticwebassets\\images\\post\\post_6.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\post\\post_7.png",
+      "PackagePath": "staticwebassets\\images\\post\\post_7.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\post\\post_8.png",
+      "PackagePath": "staticwebassets\\images\\post\\post_8.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\post\\post_9.png",
+      "PackagePath": "staticwebassets\\images\\post\\post_9.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\post\\preview.png",
+      "PackagePath": "staticwebassets\\images\\post\\preview.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\prising\\1.png",
+      "PackagePath": "staticwebassets\\images\\prising\\1.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\prising\\10.png",
+      "PackagePath": "staticwebassets\\images\\prising\\10.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\prising\\2.png",
+      "PackagePath": "staticwebassets\\images\\prising\\2.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\prising\\3.png",
+      "PackagePath": "staticwebassets\\images\\prising\\3.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\prising\\4.png",
+      "PackagePath": "staticwebassets\\images\\prising\\4.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\prising\\5.png",
+      "PackagePath": "staticwebassets\\images\\prising\\5.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\prising\\6.png",
+      "PackagePath": "staticwebassets\\images\\prising\\6.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\prising\\7.png",
+      "PackagePath": "staticwebassets\\images\\prising\\7.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\prising\\8.png",
+      "PackagePath": "staticwebassets\\images\\prising\\8.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\prising\\9.png",
+      "PackagePath": "staticwebassets\\images\\prising\\9.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\service\\1.png",
+      "PackagePath": "staticwebassets\\images\\service\\1.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\service\\2.png",
+      "PackagePath": "staticwebassets\\images\\service\\2.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\service\\3.png",
+      "PackagePath": "staticwebassets\\images\\service\\3.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\service\\footer_bg.jpg",
+      "PackagePath": "staticwebassets\\images\\service\\footer_bg.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\service\\service_icon_1.png",
+      "PackagePath": "staticwebassets\\images\\service\\service_icon_1.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\service\\service_icon_2.png",
+      "PackagePath": "staticwebassets\\images\\service\\service_icon_2.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\service\\service_icon_3.png",
+      "PackagePath": "staticwebassets\\images\\service\\service_icon_3.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\service\\service_icon_bg_1.png",
+      "PackagePath": "staticwebassets\\images\\service\\service_icon_bg_1.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\service\\support-img.jpg",
+      "PackagePath": "staticwebassets\\images\\service\\support-img.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\team\\1.png",
+      "PackagePath": "staticwebassets\\images\\team\\1.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\team\\2.png",
+      "PackagePath": "staticwebassets\\images\\team\\2.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\team\\3.png",
+      "PackagePath": "staticwebassets\\images\\team\\3.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\testmonial\\1.png",
+      "PackagePath": "staticwebassets\\images\\testmonial\\1.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\testmonial\\testimonial-founder.png",
+      "PackagePath": "staticwebassets\\images\\testmonial\\testimonial-founder.png"
     },
     {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\Ảnh chụp màn hình 2024-02-28 124746.png",
@@ -177,8 +605,100 @@
       "PackagePath": "staticwebassets\\images\\Ảnh chụp màn hình 2024-03-02 133521.png"
     },
     {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\animated.headline.js",
+      "PackagePath": "staticwebassets\\js\\animated.headline.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\contact.js",
+      "PackagePath": "staticwebassets\\js\\contact.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\jquery.ajaxchimp.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.ajaxchimp.min.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\jquery.form.js",
+      "PackagePath": "staticwebassets\\js\\jquery.form.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\jquery.magnific-popup.js",
+      "PackagePath": "staticwebassets\\js\\jquery.magnific-popup.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\jquery.nice-select.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.nice-select.min.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\jquery.paroller.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.paroller.min.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\jquery.scrollUp.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.scrollUp.min.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\jquery.slicknav.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.slicknav.min.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\jquery.sticky.js",
+      "PackagePath": "staticwebassets\\js\\jquery.sticky.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\mail-script.js",
+      "PackagePath": "staticwebassets\\js\\mail-script.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\main.js",
+      "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\one-page-nav-min.js",
+      "PackagePath": "staticwebassets\\js\\one-page-nav-min.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\owl.carousel.min.js",
+      "PackagePath": "staticwebassets\\js\\owl.carousel.min.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\plugins.js",
+      "PackagePath": "staticwebassets\\js\\plugins.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\popper.min.js",
+      "PackagePath": "staticwebassets\\js\\popper.min.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\price_rangs.js",
+      "PackagePath": "staticwebassets\\js\\price_rangs.js"
+    },
+    {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\slick.min.js",
+      "PackagePath": "staticwebassets\\js\\slick.min.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\vendor\\jquery-1.12.4.min.js",
+      "PackagePath": "staticwebassets\\js\\vendor\\jquery-1.12.4.min.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\vendor\\modernizr-3.5.0.min.js",
+      "PackagePath": "staticwebassets\\js\\vendor\\modernizr-3.5.0.min.js"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\js\\wow.min.js",
+      "PackagePath": "staticwebassets\\js\\wow.min.js"
     },
     {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\lib\\bootstrap\\LICENSE",
@@ -407,6 +927,114 @@
     {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_apply-proces.scss",
+      "PackagePath": "staticwebassets\\scss\\_apply-proces.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_blog.scss",
+      "PackagePath": "staticwebassets\\scss\\_blog.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_blog_page.scss",
+      "PackagePath": "staticwebassets\\scss\\_blog_page.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_bradcam.scss",
+      "PackagePath": "staticwebassets\\scss\\_bradcam.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_color.scss",
+      "PackagePath": "staticwebassets\\scss\\_color.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_common.scss",
+      "PackagePath": "staticwebassets\\scss\\_common.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_contact.scss",
+      "PackagePath": "staticwebassets\\scss\\_contact.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_cv-online.scss",
+      "PackagePath": "staticwebassets\\scss\\_cv-online.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_elements.scss",
+      "PackagePath": "staticwebassets\\scss\\_elements.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_extend.scss",
+      "PackagePath": "staticwebassets\\scss\\_extend.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_featured-Jobs.scss",
+      "PackagePath": "staticwebassets\\scss\\_featured-Jobs.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_footer.scss",
+      "PackagePath": "staticwebassets\\scss\\_footer.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_h1-hero.scss",
+      "PackagePath": "staticwebassets\\scss\\_h1-hero.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_headerMenu.scss",
+      "PackagePath": "staticwebassets\\scss\\_headerMenu.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_job_details.scss",
+      "PackagePath": "staticwebassets\\scss\\_job_details.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_job_listing.scss",
+      "PackagePath": "staticwebassets\\scss\\_job_listing.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_mixins.scss",
+      "PackagePath": "staticwebassets\\scss\\_mixins.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_overlay.scss",
+      "PackagePath": "staticwebassets\\scss\\_overlay.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_pagination.scss",
+      "PackagePath": "staticwebassets\\scss\\_pagination.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_recent.scss",
+      "PackagePath": "staticwebassets\\scss\\_recent.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_services.scss",
+      "PackagePath": "staticwebassets\\scss\\_services.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_services_section.scss",
+      "PackagePath": "staticwebassets\\scss\\_services_section.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_support-company.scss",
+      "PackagePath": "staticwebassets\\scss\\_support-company.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_team.scss",
+      "PackagePath": "staticwebassets\\scss\\_team.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_testimonial.scss",
+      "PackagePath": "staticwebassets\\scss\\_testimonial.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\_variables.scss",
+      "PackagePath": "staticwebassets\\scss\\_variables.scss"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\scss\\style.scss",
+      "PackagePath": "staticwebassets\\scss\\style.scss"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.WEBTimViec.Microsoft.AspNetCore.StaticWebAssets.props",

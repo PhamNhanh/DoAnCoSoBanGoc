@@ -1,42 +1,57 @@
-﻿@model IEnumerable<WEBTimViec.Models.UngTuyen>
-@using WEBTimViec.Data
+﻿@model IEnumerable<WEBTimViec.Models.BaiTuyenDung>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> JobPlus </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@{
-    ViewData["Title"] = "Index";
-    List<UngTuyen> listPhieuUngTuyen = ViewBag.listPhieuUngTuyen;
-}
-<div class="col-lg-12 grid-margin stretch-card">
-    <div class="card">
-        <div class="card-body">
-            <h2 style="margin-bottom:20px; font-family:'Times New Roman'">
-                Công ty đã ứng tuyển
-            </h2>
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead style=" font-weight: bold; font-size: 20px;">
-                        <tr>
-                            <th style="font-weight: bold; font-size: 30px;color:black; font-family:'Times New Roman'">Tên công ty</th>
-                            <th style="font-weight: bold; font-size: 30px;color:black; font-family:'Times New Roman'">Vị trí</th>
-                            <th style="font-weight: bold; font-size: 30px;color:black; font-family:'Times New Roman'">Thông tin liên hệ</th>
-                            <th style="font-weight: bold; font-size: 30px;color:black; font-family:'Times New Roman'">Ngày ứng tuyển</th>
-                            <th style="font-weight: bold; font-size: 30px;color:black; font-family:'Times New Roman'">Trạng thái</th>
-                            <th></th>
-                        </tr>
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
-                    </thead>
-                    <tbody>
-                        @foreach (var item in listPhieuUngTuyen)
-                        {
-                            <tr>
-                                <td>@Html.DisplayFor(modelItem => item.applicationUser)</td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.application_Userid)
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </div>
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="~/css/normalize.min.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/flaticon.css">
+    <link rel="stylesheet" href="~/css/price_rangs.css">
+    <link rel="stylesheet" href="~/css/slicknav.css">
+    <link rel="stylesheet" href="~/css/animate.min.css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/css/themify-icons.css">
+    <link rel="stylesheet" href="~/css/slick.css">
+    <link rel="stylesheet" href="~/css/nice-select.css">
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5 mb-3">Danh sách bài ứng tuyển</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Tên công việc</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ungTuyen in Model)
+                {
+                    <tr>
+
+                        <td style="font-size: 20px;color:black">@ungTuyen.TenCongViec</td>
+
+                        <td>
+                            <a href="@Url.Action("DetailsUngTuyen", "UV", new { id = ungTuyen.BaiTuyenDung_id })" class="btn btn-info">Chi tiết</a>
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
     </div>
-</div>
+</body>
+</html>

@@ -59,5 +59,29 @@ namespace WEBTimViec.Repositories
 
             return applicationDbContext;
         }
+        public async Task<IEnumerable<UngTuyen>> GetApplicationsByApplicantIdAsync(string Id)
+        {
+            var applications = await _context.ungTuyens
+                .Include(ut => ut.BaiTuyenDung)
+                .ThenInclude(bt => bt.applicationUser) // Giả sử có thực thể Company liên quan đến BaiTuyenDung
+                .Include(ut => ut.UngTuyen_id)
+                .Where(ut => ut.applicationUser.Id == Id)
+                .ToListAsync();
+
+            return applications;
+        }
+        public async Task<IEnumerable<UngTuyen>> GetUngTuyenByBaiTuyenDungIdAsync(int id)
+        {
+            return await _context.ungTuyens
+                .Where(u => u.BaiTuyenDungid == id)
+                .ToListAsync();
+        }
+        public async Task<IEnumerable<UngTuyen>> GetUngTuyenByUserIdAsync(string id)
+        {
+            return await _context.ungTuyens
+                .Where(u => u.applicationUser.Id == id)
+                .ToListAsync();
+        }
+
     }
 }

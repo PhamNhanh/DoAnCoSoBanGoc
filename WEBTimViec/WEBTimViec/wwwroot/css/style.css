@@ -5786,6 +5786,13 @@ b, sup, sub, u, del {
     margin-bottom: 39px;
     font-family: "Muli",sans-serif
 }
+.hero__caption {
+    display: flex; /* Sử dụng Flexbox để sắp xếp các phần tử con */
+    justify-content: center; /* Căn giữa nội dung ngang */
+    align-items: center; /* Căn giữa nội dung dọc */
+    gap: 10px; /* Khoảng cách giữa hai dòng chữ, tùy chỉnh theo ý bạn */
+}
+
 
 @media (max-width: 767px) {
     .slider-area .hero__caption p {

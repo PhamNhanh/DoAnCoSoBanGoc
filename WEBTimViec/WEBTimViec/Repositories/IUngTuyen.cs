@@ -11,5 +11,7 @@ namespace WEBTimViec.Repositories
         Task AddAsync(UngTuyen ungTuyen);
         Task UpdateAsync(UngTuyen ungTuyen);
         Task DeleteAsync(int id);
+        Task<IEnumerable<UngTuyen>> GetUngTuyenByBaiTuyenDungIdAsync(int id);
+        Task<IEnumerable<UngTuyen>> GetUngTuyenByUserIdAsync(string id);
     }
 }

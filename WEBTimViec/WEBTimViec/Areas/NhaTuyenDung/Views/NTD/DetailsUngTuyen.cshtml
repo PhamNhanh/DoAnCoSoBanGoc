@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WEBTimViec.Models.UngTuyen>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> JobPlus </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="~/css/normalize.min.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/flaticon.css">
+    <link rel="stylesheet" href="~/css/price_rangs.css">
+    <link rel="stylesheet" href="~/css/slicknav.css">
+    <link rel="stylesheet" href="~/css/animate.min.css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/css/themify-icons.css">
+    <link rel="stylesheet" href="~/css/slick.css">
+    <link rel="stylesheet" href="~/css/nice-select.css">
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5 mb-3">Danh sách bài ứng tuyển</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Tên ứng viên</th>
+                    <th>Thời gian ứng tuyển</th>
+                    <th>Thư giới thiệu</th>
+                    <th>CV</th>
+                    <th>Trạng thái</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ungtuyen in Model)
+                {
+                    <tr>
+                        <td style="font-size: 20px;color:black">@ungtuyen.application_Userid</td>
+                        <td style="font-size: 20px;color:black">@ungtuyen.ThoiGianUngTuyen</td>
+                        <td style="font-size: 20px;color:black">@ungtuyen.ThuGioiThieu</td>
+                        <td style="font-size: 20px; color: black">
+                            <a href="@ungtuyen.url_CV" target="_blank" style="font-size: 20px; color: black">>Xem CV</a>
+                        </td>
+
+                        <td>
+                            @if (ungtuyen.TrangThai == null)
+                            {
+                                <label class="badge badge-warning">Chưa phê duyệt</label>
+                            }
+                            else
+                            {
+                                <label class="badge badge-warning">Đã duyệt</label>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

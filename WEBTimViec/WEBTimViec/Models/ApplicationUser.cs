@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿
+using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -33,6 +34,7 @@ namespace WEBTimViec.Models
         public string? Website { get; set; }
         public DateTime? ThoiGianTao { get; set; }
         public DateTime? ThoiGianCapNhat { get; set; }
+        public List<UngTuyen>? UngTuyens { get; set; }
         public List<BaiTuyenDung> BaiTuyenDungs { get; set; }
 
     }

@@ -72,8 +72,7 @@
                 </div>
                 <div class="row mt-3"">
 
-
-                    <a class="button" asp-controller="NTD" asp-action="UpdateProfileNTD" style="font-family: 'Times New Roman'; font-size: 20px" asp-route-id="@Model.Id">Chỉnh sửa thông tin</a>
+                <a href="@Url.Action("UpdateProfileNTD", new { id = Model.Id })" class="btn btn-primary">Chỉnh sửa thông tin</a>
                 </div>
             </div>
         </div>

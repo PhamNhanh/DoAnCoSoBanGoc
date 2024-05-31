@@ -172,14 +172,33 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             // Truyền danh sách nhà tuyển dụng tới view
             return View(danhSachUngVien);
         }
-        public async Task<IActionResult> DSUngTuyen()
-        {
-            // Lấy danh sách các ứng viên đã ứng tuyển
-            var dsUngTuyen = await _ungTuyen.GetAllAsync();
 
-            // Trả về view chứa danh sách ứng viên đã ứng tuyển
-            return View(dsUngTuyen);
+        public async Task<IActionResult> DSUngTuyen(string id)
+        {
+            var find_user = await _userManager.GetUserAsync(User);
+            if (find_user != null)
+            {
+                var baituyendung = await _baiTuyenDung.GetBaiTuyenDungByUserIdAsync(find_user.Id);
+                return View(baituyendung);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
+        public async Task<IActionResult> DetailsUngTuyen(int id)
+        {
+            var ungTuyenList = await _ungTuyen.GetUngTuyenByBaiTuyenDungIdAsync(id);
+
+            if (ungTuyenList == null || !ungTuyenList.Any())
+            {
+                return NotFound();
+            }
+
+            return View(ungTuyenList);
+        }
+
+
 
         [HttpGet]
         public async Task<IActionResult> AddBaiTuyenDung()
@@ -304,6 +323,14 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             }
 
         }
+        public async Task<IActionResult> IndexProfileUV(string id)
+        {
+
+            var find_ungvien = await _userManager.FindByIdAsync(id);
+            return View(find_ungvien);
+
+        }
+        
         [HttpGet]
         public async Task<IActionResult> UpdateProfileNTD()
         {
