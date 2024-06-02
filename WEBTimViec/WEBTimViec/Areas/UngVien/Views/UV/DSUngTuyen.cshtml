@@ -26,32 +26,27 @@
     <link rel="stylesheet" href="~/css/slick.css">
     <link rel="stylesheet" href="~/css/nice-select.css">
     <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
 </head>
 <body>
-    <div class="container">
-        <h1 class="mt-5 mb-3">Danh sách bài ứng tuyển</h1>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Tên công việc</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var ungTuyen in Model)
-                {
-                    <tr>
-
-                        <td style="font-size: 20px;color:black">@ungTuyen.TenCongViec</td>
-
-                        <td>
-                            <a href="@Url.Action("DetailsUngTuyen", "UV", new { id = ungTuyen.BaiTuyenDung_id })" class="btn btn-info">Chi tiết</a>
-                        </td>
-                    </tr>
-                }
-
-
-            </tbody>
-        </table>
+    <div class="khung2">
+        <h1 class="tieude">Danh sách bài ứng tuyển</h1>
+        <div class="row">
+            @foreach (var ungTuyen in Model)
+            {
+                <div class="col-md-4">
+                    <div class="khungchu">
+                <div class="card" data-url="@Url.Action("DetailsUngTuyen", "UV", new { id = ungTuyen.BaiTuyenDung_id })">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Công ty: </strong>@ungTuyen.applicationUser.NhaTuyenDung_name</h5>
+                        <p class="card-title"><strong>Công việc: </strong>@ungTuyen.TenCongViec</p>
+                        <a href="@Url.Action("DetailsUngTuyen", "UV", new { id = ungTuyen.BaiTuyenDung_id })" class="btn btn-info">Chi tiết</a>
+                    </div>
+                </div>
+                </div>
+                </div>
+            }
+        </div>
     </div>
 </body>
 </html>

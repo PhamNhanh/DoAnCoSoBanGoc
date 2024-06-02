@@ -30,23 +30,26 @@
     <link rel="stylesheet" href="~/css/style.css">
 </head>
 <p>
-    <a href="@Url.Action("DSNhaTuyenDung", "UV", new { area = "UngVien" })" class="btn btn-primary">Back to List</a>
+    <a href="@Url.Action("DSNhaTuyenDung", "UV", new { area = "UngVien" })" class="button">Quay lại</a>
 </p>
 <body>
-    <h1>Thông tin nhà tuyển dụng</h1>
-    <div class="col-md-3 border-right">
+    <h1 class="tieude">Thông tin nhà tuyển dụng</h1>
+@*     <div class="khung">
         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
             <img class="rounded-circle mt-5" width="150px" src="@Model.image_url">
         </div>
-    </div>
-    <div>
-        <p><strong>Tên công ty:</strong> @Model.NhaTuyenDung_name</p>
-        <p><strong>Giới thiệu:</strong> @Model.GioiThieuNhaTuyenDung</p>
-        <p><strong>Địa chỉ:</strong> @Model.DiaChi</p>
-        <p><strong>Số điện thoại:</strong> @Model.SDTNhaTuyenDung</p>
-        <p><strong>Website:</strong> @Model.Website</p>
-        <p><strong>Thời gian tạo:</strong> @Model.ThoiGianTao</p>
-        <p><strong>Thời gian cập nhật:</strong> @Model.ThoiGianCapNhat</p>
+    </div> *@
+    <div class ="khung">
+        <div class=" khungchu2">
+            <p><strong>Tên công ty:</strong> @Model.NhaTuyenDung_name</p>
+            <p><strong>Giới thiệu:</strong> @Model.GioiThieuNhaTuyenDung</p>
+            <p><strong>Địa chỉ:</strong> @Model.DiaChi</p>
+            <p><strong>Số điện thoại:</strong> @Model.SDTNhaTuyenDung</p>
+            <p><strong>Website:</strong> @Model.Website</p>
+            <p><strong>Thời gian tạo:</strong> @Model.ThoiGianTao</p>
+            <p><strong>Thời gian cập nhật:</strong> @Model.ThoiGianCapNhat</p>
+        </div>
+
     </div>
 </body>
 </html>

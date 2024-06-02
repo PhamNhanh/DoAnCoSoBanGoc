@@ -30,28 +30,34 @@
     <link rel="stylesheet" href="~/css/slick.css">
     <link rel="stylesheet" href="~/css/nice-select.css">
     <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/BaiTuyenDung.css">
 </head>
 
 <body>
-    <div>
+    <div class="khung">
+        <div>
+            <div class="slider-area ">
+                <div class="slider-active">
 
-        <div class="slider-area ">
-            <div class="slider-active">
+                    <div class="single-slider slider-height d-flex align-items-center">
 
-                <div class="single-slider slider-height d-flex align-items-center">
+                        <div class="container1">
+                            <div class="row">
+                                <img class="hero__image media" src="~/images/elements/g1.jpg" alt="" style="width: 100%; height: auto;">
+                                <div class="col-xl-6 col-lg-9 col-md-10">
+                                    <div class="hero__caption">
+                                        <h1>Bạn có công việc </h1>
+                                        @*                                     <div>
+                                        <h6 class="khungchu">Bạn có TÀI NĂNG, SỨC TRẺ, KINH NGHIỆM?</h6>
+                                        <h6>Không cần phải trẻ lời đâu. Chúng tôi biết ai cũng có một điểm mạnh riêng, hãy thử ứng tuyển vào công ty mà bạn đang ao ước</h6>
+                                        </div> *@
 
-                    <div class="container1">
-                        <div class="row">
-                            <img class="hero__image media" src="~/images/elements/g1.jpg" alt="" style="width: 100%; height: auto;">
-                            <div class="col-xl-6 col-lg-9 col-md-10">
-                                <div class="hero__caption">
-                                    <h1>Bạn có chuyên môn </h1>
-
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-3 col-md-2">
-                                <div class="hero__caption">
-                                    <h1> Chúng tôi có công việc</h1>
+                                <div class="col-xl-6 col-lg-3 col-md-2">
+                                    <div class="hero__caption">
+                                        <h1> Chúng tôi có nhân lực</h1>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -59,171 +65,163 @@
                 </div>
             </div>
         </div>
-        @*         <h4 class="center"> Danh sách nhà tuyển dụng </h4>
-        <form action="@Url.Action("DetailsNhaTuyenDung", "Home")" method="get">
-        <div class="card">
-        @foreach (var nhaTuyenDung in Model.ApplicationUsers)
-        {
-
-        <div class="col-md-4">
-        <div class="card">
-        <h3 class="center">@nhaTuyenDung.NhaTuyenDung_name</h3>
-        <p class="limit-text">->  <strong>Website:</strong> @nhaTuyenDung.Website</p>
-        <a href="@Url.Action("DetailsNhaTuyenDung", new { id = nhaTuyenDung.Id })" class="button">Chi tiết</a>
-        </div>
-        </div>
-        }
-        </div>
-        </form> *@
-    </div>
-    <div class="our-services section-pad-t30">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-tittle text-center">
-                    <span>QUYẾT ĐỊNH TƯƠNG LAI CỦA BẠN</span>
-                    <h2>Chuyên ngành nổi bật</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row d-flex justify-contnet-center">
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                <div class="single-services text-center mb-30">
-                    <div class="services-ion">
-                        <span class="flaticon-tour"></span>
-                    </div>
-                    <div class="services-cap">
-                        <h5><a href="#">Công nghệ thông tin</a></h5>
-                        <span>(10)</span>
+        <div class="our-services section-pad-t30">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-tittle text-center">
+                        <span>QUYẾT ĐỊNH TƯƠNG LAI CÔNG TY</span>
+                        <h2>Chuyên ngành nổi bật</h2>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                <div class="single-services text-center mb-30">
-                    <div class="services-ion">
-                        <span class="flaticon-cms"></span>
-                    </div>
-                    <div class="services-cap">
-                        <h5><a href="#">Quản trị kinh doanh</a></h5>
-                        <span>(17)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                <div class="single-services text-center mb-30">
-                    <div class="services-ion">
-                        <span class="flaticon-report"></span>
-                    </div>
-                    <div class="services-cap">
-                        <h5><a href="#">Công nghệ ô tô</a></h5>
-                        <span>(30)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                <div class="single-services text-center mb-30">
-                    <div class="services-ion">
-                        <span class="flaticon-app"></span>
-                    </div>
-                    <div class="services-cap">
-                        <h5><a href="#">Thiết kệ đồ họa</a></h5>
-                        <span>(15)</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="browse-btn2 text-center mt-50">
-                    <a href="#" class="border-btn2">Tất cả chuyên ngành</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="our-services section-pad-t30">
-        <div class="container">
-            <div>
-                <div class="card">
-                    <div class="col-lg-12">
-                        <div class="section-tittle text-center">
-                            <span>Tìm kiếm công việc bạn ưa thích</span>
+            <div class="row d-flex justify-contnet-center">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                    <div class="single-services text-center mb-30">
+                        <div class="services-ion">
+                            <span class="flaticon-tour"></span>
+                        </div>
+                        <div class="services-cap">
+                            <h5><a href="#">Công nghệ thông tin</a></h5>
+                            <span>(10)</span>
                         </div>
                     </div>
-
-                    <form action="@Url.Action("TimKiem", "NTD")" method="get">
-                        <div class="row g-2">
-                            <div class="col-md-4">
-                                <div style="font-weight: bold">Tên công việc</div>
-                                <div style="border: 1px solid gray; padding: 4px; border-radius: 4px;">
-                                    <input type="text" name="job_name" class="form-control border-0" placeholder="Tên công việc" style="border: 1px solid #ccc; padding: 5px; border-radius: 4px;" />
-                                </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                    <div class="single-services text-center mb-30">
+                        <div class="services-ion">
+                            <span class="flaticon-cms"></span>
+                        </div>
+                        <div class="services-cap">
+                            <h5><a href="#">Quản trị kinh doanh</a></h5>
+                            <span>(17)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                    <div class="single-services text-center mb-30">
+                        <div class="services-ion">
+                            <span class="flaticon-report"></span>
+                        </div>
+                        <div class="services-cap">
+                            <h5><a href="#">Công nghệ ô tô</a></h5>
+                            <span>(30)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                    <div class="single-services text-center mb-30">
+                        <div class="services-ion">
+                            <span class="flaticon-app"></span>
+                        </div>
+                        <div class="services-cap">
+                            <h5><a href="#">Thiết kệ đồ họa</a></h5>
+                            <span>(15)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="browse-btn2 text-center mt-50">
+                        <a href="#" class="border-btn2">Tất cả chuyên ngành</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="khung">
+                <div>
+                    <div class="card">
+                        <div class="col-lg-12">
+                            <div class="section-tittle text-center">
+                                <span>Tìm kiếm công việc bạn ưa thích</span>
                             </div>
+                        </div>
 
-                            <div class="col-md-4">
-                                <div style="font-weight: bold;">Địa điểm công ty</div>
-                                <select asp-for="ThanhPhoId" class="form-control">
-                                    <option value="">-- Chọn tỉnh - Thành phố --</option>
-                                    @foreach (var thanhPho in Model.ThanhPhos)
-                                    {
-                                        <option value="@thanhPho.ThanhPho_id">@thanhPho.ThanhPho_name</option>
-                                    }
+                        <form action="@Url.Action("TimKiem", "NTD")" method="get">
+                            <div class="row g-2">
+                                <div class="col-md-4">
+                                    <div style="font-weight: bold">Tên công việc</div>
+                                    <div style="border: 1px solid gray; padding: 4px; border-radius: 4px;">
+                                        <input type="text" name="job_name" class="form-control border-0" placeholder="Tên công việc" style="border: 1px solid #ccc; padding: 5px; border-radius: 4px;" />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div style="font-weight: bold;">Địa điểm công ty</div>
+                                    <select asp-for="ThanhPhoId" class="form-control">
+                                        <option value="">-- Chọn tỉnh - Thành phố --</option>
+                                        @foreach (var thanhPho in Model.ThanhPhos)
+                                        {
+                                            <option value="@thanhPho.ThanhPho_id">@thanhPho.ThanhPho_name</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="ThanhPhoId" class="text-danger"></span>
+                                </div>
+
+                                                            <div class="col-md-4">
+                                <div style="font-weight: bold;">Chuyên ngành yêu cầu</div>
+                                <select asp-for="chuyenNganhId" class="form-control">
+                                <option value="">-- Chọn chuyên ngành --</option>
+                                @foreach (var chuyenNganh in Model.ChuyenNganhs)
+                                {
+                                <option value="@chuyenNganh.ChuyenNganh_id">@chuyenNganh.ChuyenNganh_name</option>
+                                }
                                 </select>
-                                <span asp-validation-for="ThanhPhoId" class="text-danger"></span>
+                                <span asp-validation-for="chuyenNganhId" class="text-danger"></span>
+                                </div>
                             </div>
 
-                            @*                             <div class="col-md-4">
-                            <div style="font-weight: bold;">Chuyên ngành yêu cầu</div>
-                            <select asp-for="chuyenNganhId" class="form-control">
-                            <option value="">-- Chọn chuyên ngành --</option>
-                            @foreach (var chuyenNganh in Model.ChuyenNganhs)
+                            <div class="row mt-3">
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-dark border-0">Tìm kiếm</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="col-lg-12">
+                            <h5 class="center-text spacing-top">
+                                Bài tuyển dụng phù hợp
+                            </h5>
+                        </div>
+                        <div class="row">
+                            @foreach (var baiTuyenDung in Model.BaiTuyenDungs)
                             {
-                            <option value="@chuyenNganh.ChuyenNganh_id">@chuyenNganh.ChuyenNganh_name</option>
-                            }
-                            </select>
-                            <span asp-validation-for="chuyenNganhId" class="text-danger"></span>
-                            </div> *@
-                        </div>
 
-                        <div class="row mt-3">
-                            <div class="col-md-4">
-                                <button type="submit" class="btn btn-dark border-0">Tìm kiếm</button>
-                            </div>
-                        </div>
-                    </form>
 
-                    <div class="col-lg-12">
-                        <div class="section-tittle text-center">
-                            <h2>Công việc phù hợp</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        @foreach (var baiTuyenDung in Model.BaiTuyenDungs)
-                        {
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="col-lg-12">
-                                        <div class="section-tittle text-center">
-                                            <span class="card-title" style="font-size: 1.5rem; font-style: italic;">@baiTuyenDung.TenCongViec</span>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="col-lg-12">
+                                            <div class="section-tittle text-center">
+                                                <span class="card-title" style="font-size: 1.5rem; font-style: italic;">@baiTuyenDung.TenCongViec</span>
+                                            </div>
                                         </div>
-                                    </div>
-
-                                    @*                                     <p class="limit-text"><strong>-->Mô tả công việc:</strong> @baiTuyenDung.MoTaCongViec</p> *@
-                                    <p class="limit-text"><strong>-->Yêu cầu kỹ năng:</strong> @baiTuyenDung.YeuCauKyNang</p>
-                                    <p class="card-text"><strong>-->Thành phố làm việc:</strong> @baiTuyenDung.thanhPho.ThanhPho_name</p>
-                                    <p class="limit-text"><strong>-->Lương:</strong> @baiTuyenDung.Luong_min - @baiTuyenDung.Luong_max triệu đồng</p>
-                                    <p class="limit-text"><strong>-->Loại công việc:</strong> @baiTuyenDung.KieuCongViec</p>
-                                    <p class="limit-text"><strong>-->Hạn nộp hồ sơ:</strong> @baiTuyenDung.ThoiGianHetHan</p>
-                                    <div class="col-lg-12">
-                                        <div class="browse-btn2 text-center mt-50">
-                                            <a href="@Url.Action("DetailsBaiTuyenDung", new { id = baiTuyenDung.BaiTuyenDung_id })" class="border-btn2">Chi tiết</a>
+                                        @if (baiTuyenDung.applicationUser != null)
+                                        {
+                                            <p class="limit-text"><strong>-->Ten cong ty:</strong> @baiTuyenDung.applicationUser.NhaTuyenDung_name</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="limit-text"><strong>-->Ten cong ty:</strong> [Tên công ty không có sẵn]</p>
+                                        }
+                                        @*                                     <p class="limit-text"><strong>-->Mô tả công việc:</strong> @baiTuyenDung.MoTaCongViec</p> *@
+                                        <p class="limit-text"><strong>-->Yêu cầu kỹ năng:</strong> @baiTuyenDung.YeuCauKyNang</p>
+                                        <p class="card-text"><strong>-->Thành phố làm việc:</strong> @baiTuyenDung.thanhPho.ThanhPho_name</p>
+                                        <p class="limit-text"><strong>-->Lương:</strong> @baiTuyenDung.Luong_min - @baiTuyenDung.Luong_max triệu đồng</p>
+                                        <p class="limit-text"><strong>-->Loại công việc:</strong> @baiTuyenDung.KieuCongViec</p>
+                                        <p class="limit-text"><strong>-->Hạn nộp hồ sơ:</strong> @baiTuyenDung.ThoiGianHetHan</p>
+                                        <div class="col-lg-12">
+                                            <div class="browse-btn2 text-center mt-50">
+                                                <a href="@Url.Action("DetailsBaiTuyenDung", new { id = baiTuyenDung.BaiTuyenDung_id })" class="border-btn2">Chi tiết</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        }
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </body>

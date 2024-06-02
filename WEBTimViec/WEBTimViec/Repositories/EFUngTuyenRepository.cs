@@ -82,6 +82,9 @@ namespace WEBTimViec.Repositories
                 .Where(u => u.applicationUser.Id == id)
                 .ToListAsync();
         }
-
+        public async Task<int> CountUngTuyenAsync()
+        {
+            return await _context.ungTuyens.CountAsync();
+        }
     }
 }

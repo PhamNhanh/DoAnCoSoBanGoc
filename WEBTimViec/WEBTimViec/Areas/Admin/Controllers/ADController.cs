@@ -48,8 +48,19 @@ namespace WEBTimViec.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.baiTuyenDungs.Include(b => b.kinhNghiem).Include(b => b.thanhPho);
-            return View(await applicationDbContext.ToListAsync());
+            var baiTuyenDungs = await _context.baiTuyenDungs.ToListAsync();
+            var thanhPho = await _thanhPho.GetAllAsync();
+            var sortedThanhPho = thanhPho.OrderBy(tp => tp.ThanhPho_name).ToList(); var chuyenNganh = await _chuyenNganh.GetAllAsync();
+            var sortedChuyenNganh = chuyenNganh.OrderBy(cn => cn.ChuyenNganh_name).ToList();
+            var chuyenNganhs = await _context.chuyenNganhs.ToListAsync();
+            var viewModel = new ViewModel
+            {
+                BaiTuyenDungs = baiTuyenDungs,
+                ThanhPhos = sortedThanhPho,
+                ChuyenNganhs = sortedChuyenNganh,
+            };
+            // Truyền danh sách bài tuyển dụng tới view
+            return View(viewModel);
         }
         public async Task<IActionResult> DSNguoiDung()
         {
@@ -163,7 +174,65 @@ namespace WEBTimViec.Areas.Admin.Controllers
             return View(chuyenNganh);
         }
 
+        public async Task<IActionResult> DSUngVien()
+        {
+            var baiTuyenDung = await _baiTuyenDung.GetAllAsync();
+            var user = await _userManager.GetUserAsync(User);
+            var ungTuyen = await _ungTuyen.GetAllAsync();
+            var danhSachUngVien = await _userRepository.GetAllUserAsync();
+            // Truyền danh sách nhà tuyển dụng tới view
+            return View(danhSachUngVien);
+        }
+        public async Task<IActionResult> DSNhaTuyenDung()
+        {
+            var danhSachNhaTuyenDung = await _userRepository.GetAllCompanyAsync();
+            ViewBag.NhaTuyenDung = danhSachNhaTuyenDung;
+            return View(danhSachNhaTuyenDung);
+        }
+        public async Task<IActionResult> DetailsNhaTuyenDung(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            var company = await _context.Users.FindAsync(id);
+            if (company == null)
+            {
+                return NotFound();
+            }
+
+            return View(company);
+        }
+
+        public async Task<IActionResult> IndexProfileUV(string id)
+        {
+
+            var find_ungvien = await _userManager.FindByIdAsync(id);
+            return View(find_ungvien);
+
+        }
+        public async Task<IActionResult> ListBaiTuyenDung()
+        {
+            var baituyndung = await _baiTuyenDung.GetAllAsync();
+            return View(baituyndung);
+        }
+        public async Task<IActionResult> ThongKe()
+        {
+            var soNhaTuyenDung = await _userRepository.CountUsersInRoleNTDAsync();
+            var soUngVien = await _userRepository.CountUsersInRoleUVAsync();
+            var soBaiTuyenDUng = await _baiTuyenDung.CountBaiTuyenDungAsync();
+            var soUngTuyen = await _ungTuyen.CountUngTuyenAsync();
+            var thongKeViewModel = new ThongKe
+            {
+                slNTD = soNhaTuyenDung,
+                slUV = soUngVien,
+                slBTD = soBaiTuyenDUng,
+                slUT = soUngTuyen
+            };
+
+            return View(thongKeViewModel);
+        }
 
     }
 }

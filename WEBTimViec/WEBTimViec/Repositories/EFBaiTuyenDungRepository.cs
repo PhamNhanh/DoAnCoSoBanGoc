@@ -81,5 +81,9 @@ namespace WEBTimViec.Repositories
 
             return baiTuyenDungByUserId;
         }
+        public async Task<int> CountBaiTuyenDungAsync()
+        {
+            return await _context.baiTuyenDungs.CountAsync();
+        }
     }
 }

@@ -69,18 +69,42 @@ body {
     background-repeat: no-repeat; /* Để ảnh không lặp lại */
 }
 .hero__image {
-    flex: 1 1 auto; /* flex-grow: 1, flex-shrink: 1, flex-basis: auto */
-    max-width: 100%;
-    height: auto; /* Đảm bảo hình ảnh giữ tỉ lệ */
+    position: absolute; /* Đặt vị trí tuyệt đối để ảnh điều chỉnh theo khung chứa */
+    top: 0;
+    left: 0;
+    width: 100%; /* Đặt chiều rộng 100% để ảnh bao phủ toàn bộ khung chứa */
+    height: 100%; /* Đặt chiều cao 100% để ảnh bao phủ toàn bộ khung chứa */
+    object-fit: cover; /* Cắt ảnh để bao phủ toàn bộ khung chứa */
+}
+.hero__image-container {
+    width: 100%;
+    padding-top: 46.875%; /* Tỷ lệ 1280x600 => 600 / 1280 = 0.46875 */
+    position: relative; /* Để chứa các phần tử con có vị trí tuyệt đối */
+    overflow: hidden; /* Đảm bảo nội dung vượt quá sẽ bị ẩn */
+    background-image: url("~/images/Background.jpg"); /* Đường dẫn đến hình ảnh */
+    background-size: cover; /* Cắt ảnh để bao phủ toàn bộ khung chứa */
+    background-position: center; /* Canh giữa hình ảnh */
 }
 
-
-/* Đảm bảo tính đáp ứng */
-@media (max-width: 768px) {
-    .hero__image {
-        height: 50vh; /* Điều chỉnh khi cần cho màn hình nhỏ hơn */
-    }
+.hero__caption {
+    position: absolute;
+    color: white; /* Màu chữ trắng, có thể thay đổi theo nhu cầu */
+    font-size: 2rem; /* Kích thước chữ, có thể thay đổi theo nhu cầu */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Đổ bóng chữ để nổi bật trên nền ảnh */
 }
+
+.hero__caption--left {
+    top: 50%; /* Canh giữa theo chiều dọc */
+    left: 20px; /* Canh lề trái */
+    transform: translateY(-50%); /* Dịch chuyển lên 50% chiều cao để canh giữa */
+}
+
+.hero__caption--right {
+    top: 50%; /* Canh giữa theo chiều dọc */
+    right: 20px; /* Canh lề phải */
+    transform: translateY(-50%); /* Dịch chuyển lên 50% chiều cao để canh giữa */
+}
+
 .container1 {
     display: flex;
     flex-wrap: wrap;
@@ -92,6 +116,7 @@ body {
     flex-wrap: wrap;
     align-items: center;
     width: 100%;
+    
 }
 .input-border {
     border: 1px solid #ccc; /* Thiết lập viền với màu sắc và độ dày tùy chỉnh */
@@ -116,4 +141,9 @@ body {
 .column {
     flex: 1; /* Đảm bảo các cột có chiều rộng bằng nhau */
     min-width: 0; /* Đảm bảo các cột không vượt quá chiều rộng container */
+}
+.br {
+    background-image: url("~/images/Background.jpg"); /* Đường dẫn đến hình ảnh */
+    background-size: cover; /* Cắt ảnh để bao phủ toàn bộ khung chứa */
+    background-position: center; /* Canh giữa hình ảnh */
 }

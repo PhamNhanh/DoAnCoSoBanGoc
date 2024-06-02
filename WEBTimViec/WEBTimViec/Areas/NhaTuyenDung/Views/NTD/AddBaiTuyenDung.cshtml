@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="~/css/slick.css">
     <link rel="stylesheet" href="~/css/nice-select.css">
     <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
 </head>
 
 <body class="background">
@@ -41,32 +42,32 @@
     <h1 class="tieude">Thêm tin tuyển dụng</h1>
     <hr />
     @*     <div class="form-container"> *@
-    <div class="form-container">
+    <div class="khung">
         <form asp-action="AddBaiTuyenDung" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
+            <div class="info-section">
+                <div class="info-item1">
                     <label asp-for="TenCongViec" class="control-label"><i class="fas fa-user"></i> Tên công việc</label>
                     <input asp-for="TenCongViec" class="form-control" required />
                     <span asp-validation-for="TenCongViec" class="text-danger"></span>
                 </div>
 
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-2">
+            <div class="info-section">
+                <div class="info-item1">
                     <label asp-for="MoTaCongViec" class="control-label"><i class="fas fa-file-alt"></i> Mô tả công việc</label>
                     <textarea asp-for="MoTaCongViec" class="form-control" rows="5" required></textarea>
                     <span asp-validation-for="MoTaCongViec" class="text-danger"></span>
                 </div>
-                <div class="form-group col-md-2">
+                <div class="info-item1">
                     <label asp-for="YeuCauKyNang" class="control-label"><i class="fas fa-check"></i> Yêu cầu công việc</label>
                     <textarea asp-for="YeuCauKyNang" class="form-control" rows="5" required></textarea>
                     <span asp-validation-for="YeuCauKyNang" class="text-danger"></span>
                 </div>
             </div>
-            <div class="form-row">
+            <div class="info-section">
 
-                <div class="form-group col-md-2>
+                <div class="info-item1">
                     <label for="ChuyenNganhIds">Chuyên Ngành</label>
                     <select id="ChuyenNganhIds" name="ChuyenNganhIds" multiple class="form-control">
                         @foreach (var chuyenNganh in ViewBag.ChuyenNganh)
@@ -76,7 +77,7 @@
                     </select>
                 </div>
 
-                <div class="form-group col-md-2">
+                <div class="info-item1">
                     <label for="ViTriCongViecIds">Vị Trí Công Việc</label>
                     <select id="ViTriCongViecIds" name="ViTriCongViecIds" multiple class="form-control">
                         @foreach (var viTri in ViewBag.ViTriCongViec)
@@ -85,7 +86,7 @@
                         }
                     </select>
                 </div>
-                <div class="form-group col-md-2">
+                <div class="info-item1">
                     <label for="KyNangMemIds">Kỹ Năng Mềm</label>
                     <select id="KyNangMemIds" name="KyNangMemIds" multiple class="form-control">
                         @foreach (var kyNangMem in ViewBag.KyNangMem)
@@ -94,10 +95,15 @@
                         }
                     </select>
                 </div>
+                <div class="info-item1">
+                    <label asp-for="PhucLoi" class="control-label"><i class="fas fa-gift"></i> Phúc lợi</label>
+                    <textarea asp-for="PhucLoi" class="form-control" rows="5" required></textarea>
+                    <span asp-validation-for="PhucLoi" class="text-danger"></span>
+                </div>
 
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-2">
+            <div class="info-section">
+                <div class="info-item1">
                     <label asp-for="KieuCongViec" class="control-label"><i class="fas fa-briefcase"></i> Loại công việc</label>
                     <select asp-for="KieuCongViec" class="form-control">
                         <option value="Full-Time">Full-Time</option>
@@ -105,7 +111,7 @@
                     </select>
                     <span asp-validation-for="KieuCongViec" class="text-danger"></span>
                 </div>
-                <div class="form-group col-md-2">
+                <div class="info-item1">
                     <div class="row">
                         <div class="col">
                             <label asp-for="Luong_min" class="control-label"><i class="fas fa-money-bill"></i> Lương từ</label>
@@ -131,23 +137,15 @@
                 </div>
             </div>
 
-            <div class="form-row">
-                <div class="form-group col-md-2">
-                    <label asp-for="PhucLoi" class="control-label"><i class="fas fa-gift"></i> Phúc lợi</label>
-                    <textarea asp-for="PhucLoi" class="form-control" rows="5" required></textarea>
-                    <span asp-validation-for="PhucLoi" class="text-danger"></span>
-                </div>
-
-                </div>
-            <div class="form-row">
-                <div class="form-group col-md-2">
+            <div class="info-section">
+                <div class="info-item1">
                     <label asp-for="thanhPhoId" class="control-label" style="font-weight: bold;">Địa điểm công ty</label>
                     <select asp-for="thanhPhoId" asp-items="ViewBag.ThanhPho" class="form-control">
                         <option value="">-- Chọn tỉnh - Thành phố --</option>
                     </select>
                     <span asp-validation-for="thanhPhoId" class="text-danger"></span>
                 </div>
-                <div class="form-group col-md-2">
+                <div class="info-item1">
                     <label asp-for="kinhNghiemId" class="control-label" style="font-weight: bold;">
                         <i class="fas fa-user-tie"></i>
                         Kinh nghiệm ứng viên
@@ -158,8 +156,8 @@
                     <span asp-validation-for="kinhNghiemId" class="text-danger"></span>
                 </div>
                 </div>
-            <div class="form-row">
-                <div class="form-group">
+            <div class="info-section">
+                <div class="info-item1">
                     <label asp-for="ThoiGianHetHan" class="control-label"><i class="fas fa-calendar"></i> Hạn nộp hồ sơ</label>
                     <input asp-for="ThoiGianHetHan" class="form-control datepicker" asp-format="{0:dd/MM/yy}" required />
                     <span asp-validation-for="ThoiGianHetHan" class="text-danger"></span>
@@ -173,3 +171,19 @@
     </div>
 </body>
 </html>
+<script>
+    $(document).ready(function () {
+        // Kiểm tra khi giá trị của Luong_min thay đổi
+        $('#Luong_min').change(function () {
+            var luong_min = parseFloat($(this).val());
+            if (isNaN(luong_min) || luong_min < 0) {
+                alert('Lương từ không được âm.');
+                $(this).val(''); // Xóa giá trị nếu âm
+                return;
+            }
+
+            // Cập nhật giá trị của Luong_max
+            $('#Luong_max').val(luong_min);
+        });
+    });
+</script>

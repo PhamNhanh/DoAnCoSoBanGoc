@@ -1,0 +1,48 @@
+﻿@model WEBTimViec.Models.ApplicationUser
+@{
+    ViewData["Title"] = "Thông tin ứng viên";
+}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> JobPlus </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="~/css/normalize.min.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/flaticon.css">
+    <link rel="stylesheet" href="~/css/price_rangs.css">
+    <link rel="stylesheet" href="~/css/slicknav.css">
+    <link rel="stylesheet" href="~/css/animate.min.css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/css/themify-icons.css">
+    <link rel="stylesheet" href="~/css/slick.css">
+    <link rel="stylesheet" href="~/css/nice-select.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
+</head>
+<body>
+    <div>
+        <div class="khung">
+            <h1 class="tieude">Thông tin ứng viên</h1>
+            <div class="khungchu2">
+                <p> <strong>  Tên ứng viên:</strong>@Model.FullName</p>
+                <p> <strong>  Email: </strong> @Model.Email</p>
+                <p><strong>  Số điện thoại: </strong> @Model.SDT_UngVien</p>
+                <p> <strong>  Địa chỉ: </strong> @Model.DiaChi</p>
+                <p> <strong>  Ngày sinh: </strong>@Model.NgaySinh</p>
+                <p> <strong>  Giới thiệu bản thân: </strong>@Model.TuGioiThieu</p>
+            </div>
+        </div>
+    </div>
+
+</body>

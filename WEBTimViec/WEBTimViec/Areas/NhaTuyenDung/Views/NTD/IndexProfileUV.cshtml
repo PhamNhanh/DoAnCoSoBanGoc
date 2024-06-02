@@ -28,17 +28,21 @@
     <link rel="stylesheet" href="~/css/slick.css">
     <link rel="stylesheet" href="~/css/nice-select.css">
     <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Thông tin ứng viên</h1>
-        <p>Tên ứng viên: @Model.FullName</p>
-        <p>Email: @Model.Email</p>
-        <p>Số điện thoại: @Model.SDT_UngVien</p>
-        <p>Địa chỉ: @Model.DiaChi</p>
-        <p>Ngày sinh: @Model.NgaySinh</p>
-        <p>Giới thiệu bản thân: @Model.TuGioiThieu</p>
-
-        <!-- Thêm các trường thông tin khác tùy theo nhu cầu -->
+    <div>
+        <div class="khung">
+            <h1 class="tieude">Thông tin ứng viên</h1>
+            <div class="khungchu2">
+                <p> <strong>  Tên ứng viên:</strong>@Model.FullName</p>
+                <p> <strong>  Email: </strong> @Model.Email</p>
+                <p><strong>  Số điện thoại: </strong> @Model.SDT_UngVien</p>
+                <p> <strong>  Địa chỉ: </strong> @Model.DiaChi</p>
+                <p> <strong>  Ngày sinh: </strong>@Model.NgaySinh</p>
+                <p> <strong>  Giới thiệu bản thân: </strong>@Model.TuGioiThieu</p>
+            </div>
+        </div>
     </div>
+
 </body>

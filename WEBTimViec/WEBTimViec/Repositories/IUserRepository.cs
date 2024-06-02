@@ -9,5 +9,7 @@ namespace WEBTimViec.Repositories
         Task<IEnumerable<ApplicationUser>> GetAllUserAsync();
         Task<ApplicationUser> GetByIdAsync(string id);
         Task DeleteAsync(string id);
+        Task<int> CountUsersInRoleNTDAsync();
+        Task<int> CountUsersInRoleUVAsync();
     }
 }

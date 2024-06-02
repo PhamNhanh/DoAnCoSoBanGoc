@@ -1,10 +1,11 @@
 ﻿@model WEBTimViec.Models.BaiTuyenDung
 
 @{
-    ViewData["Title"] = "Chi tiết bài tuyển dụng của công ty: ";
+    ViewData["Title"] = "Chi tiết bài tuyển dụng công việc:";
 }
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -31,13 +32,13 @@
     <link rel="stylesheet" href="~/css/slick.css">
     <link rel="stylesheet" href="~/css/nice-select.css">
     <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
 </head>
 <body>
-    <div class="container">
-        <h1 class="mt-3">@ViewData["Title"]</h1>
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title">@Model.TenCongViec</h3>
+    <div class="khung" >
+        <h3 class="tieude">@ViewData["Title"]</h3>
+            <div class="khungchu1">
+            <h3 class="card-text">@Model.TenCongViec</h3>
 @*                 <p class="card-text"><strong>Tên công ty:</strong> @Model.applicationUser.FullName</p> *@
                 <p class="card-text"><strong>Mô tả công việc:</strong> @Model.MoTaCongViec</p>
                 <p class="card-text"><strong>Yêu cầu kỹ năng:</strong> @Model.YeuCauKyNang</p>
@@ -69,8 +70,7 @@
                 </p>
 
             </div>
-        </div>
     </div>
-    <a href="@Url.Action("Index")" class="btn btn-primary">Quay lại</a>
 </body>
 </html>
+

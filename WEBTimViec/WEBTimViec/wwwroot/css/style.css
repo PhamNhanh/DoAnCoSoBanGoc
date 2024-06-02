@@ -5733,7 +5733,7 @@ b, sup, sub, u, del {
 }
 
 .slider-area {
-    margin-top: -1px
+/*    margin-top: -1px*/
 }
 
     .slider-area .hero__caption {
@@ -5786,12 +5786,12 @@ b, sup, sub, u, del {
     margin-bottom: 39px;
     font-family: "Muli",sans-serif
 }
-.hero__caption {
-    display: flex; /* Sử dụng Flexbox để sắp xếp các phần tử con */
-    justify-content: center; /* Căn giữa nội dung ngang */
-    align-items: center; /* Căn giữa nội dung dọc */
-    gap: 10px; /* Khoảng cách giữa hai dòng chữ, tùy chỉnh theo ý bạn */
-}
+/*.hero__caption {
+    display: flex;*/ /* Sử dụng Flexbox để sắp xếp các phần tử con */
+    /*justify-content: center;*/ /* Căn giữa nội dung ngang */
+    /*align-items: center;*/ /* Căn giữa nội dung dọc */
+    /*gap: 10px;*/ /* Khoảng cách giữa hai dòng chữ, tùy chỉnh theo ý bạn */
+/*}*/
 
 
 @media (max-width: 767px) {
@@ -7536,4 +7536,11 @@ form.search-box .search-form a {
     outline: 0;
     background: #242b5e;
     color: #fff
+}
+.bg-image {
+    background-image: url('~/img/elements/g1.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh; /* Adjust the height as needed */
 }

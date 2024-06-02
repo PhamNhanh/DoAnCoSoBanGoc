@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> JobPlus </title>
+    <title> JobPlus - Thêm thành phố mới </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -12,39 +12,39 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="~/css/main.css">
-    <link rel="stylesheet" href="~/css/normalize.min.css">
-    <link rel="stylesheet" href="~/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="~/css/flaticon.css">
-    <link rel="stylesheet" href="~/css/price_rangs.css">
-    <link rel="stylesheet" href="~/css/slicknav.css">
-    <link rel="stylesheet" href="~/css/animate.min.css">
-    <link rel="stylesheet" href="~/css/magnific-popup.css">
-    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="~/css/themify-icons.css">
-    <link rel="stylesheet" href="~/css/slick.css">
-    <link rel="stylesheet" href="~/css/nice-select.css">
     <link rel="stylesheet" href="~/css/style.css">
 </head>
-<p>
-    <a href="@Url.Action("ListThanhPho")" class="btn btn-primary">Back to list</a>
-</p>
-<body>
-    <header>
-        <h1>Thêm chuyên ngành</h1>
-    </header>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="text-center mb-4"><i class="fas fa-city"></i> Thêm thành phố mới</h2>
 
-    <form asp-action="AddThanhPho">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="ThanhPho_name" class="control-label"><i class="fas fa-user"></i> Tên thành phố</label>
-            <input asp-for="ThanhPho_name" class="form-control" />
-            <span asp-validation-for="ThanhPho_name" class="text-danger"></span>
+                        <form asp-action="AddThanhPho">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="ThanhPho_name" class="control-label">Tên thành phố</label>
+                                <input asp-for="ThanhPho_name" class="form-control" />
+                                <span asp-validation-for="ThanhPho_name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block">Thêm thành phố</button>
+                            </div>
+                        </form>
+
+                        <div class="text-center">
+                            <a href="@Url.Action("ListThanhPho")" class="btn btn-link">Quay lại danh sách thành phố</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <input type="submit" value="Create" />
-        </div>
-    </form>
+    </div>
+
+    <!-- JavaScript here -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
+</html>

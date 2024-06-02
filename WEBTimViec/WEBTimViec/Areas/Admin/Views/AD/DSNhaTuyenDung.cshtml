@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WEBTimViec.Models.ApplicationUser>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> JobPlus </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="~/css/normalize.min.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/flaticon.css">
+    <link rel="stylesheet" href="~/css/price_rangs.css">
+    <link rel="stylesheet" href="~/css/slicknav.css">
+    <link rel="stylesheet" href="~/css/animate.min.css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/css/themify-icons.css">
+    <link rel="stylesheet" href="~/css/slick.css">
+    <link rel="stylesheet" href="~/css/nice-select.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
+</head>
+<body>
+    <div class="khung3">
+        <h1 class="tieude">Danh sách nhà tuyển dụng</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Tên công ty</th>
+                    <th>Email</th>
+                    <th>Địa chỉ</th>
+                    <th>Điện thoại</th>
+                    <th>Website</th>
+                    <th>Thêm</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var company in Model)
+                {
+                    <tr>
+                        <td>@company.NhaTuyenDung_name</td>
+                        <td>@company.Email</td>
+                        <td>@company.DiaChi</td>
+                        <td>@company.SDTNhaTuyenDung</td>
+                        <td>@company.Website</td>
+                        <td>
+                            <a href="@Url.Action("DetailsNhaTuyenDung", "AD", new { id = company.Id })" class="btn btn-info">Chi tiết</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a href="@Url.Action("Index")" class="btn btn-primary">Quay lại</a>
+    </div>
+</body>
+</html>

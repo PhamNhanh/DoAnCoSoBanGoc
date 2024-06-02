@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "b26iSnASjzFuWBpDatSEYXbQIHeKMbUSivFveJgtHBw=",
+  "Hash": "La13DaqffolbMFMC6mGfeG0k+suriEjDGuaw3wUj83k=",
   "Source": "WEBTimViec",
   "BasePath": "_content/WEBTimViec",
   "Mode": "Default",
@@ -186,6 +186,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\main.css"
+    },
+    {
+      "Identity": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\css\\NhaTuyenDung.css",
+      "SourceId": "WEBTimViec",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\",
+      "BasePath": "_content/WEBTimViec",
+      "RelativePath": "css/NhaTuyenDung.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\NhaTuyenDung.css"
     },
     {
       "Identity": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\css\\nice-select.css",
@@ -758,6 +777,25 @@
       "OriginalItemSpec": "wwwroot\\filecv\\f9351ab4-e3b8-47ec-acb0-c5214b5adebf.pdf"
     },
     {
+      "Identity": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\1.png",
+      "SourceId": "WEBTimViec",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\",
+      "BasePath": "_content/WEBTimViec",
+      "RelativePath": "images/1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\1.png"
+    },
+    {
       "Identity": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\about\\about_lft.png",
       "SourceId": "WEBTimViec",
       "SourceType": "Discovered",
@@ -1231,6 +1269,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\blog\\slide_thumb_1.png"
+    },
+    {
+      "Identity": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\BrXanh.png",
+      "SourceId": "WEBTimViec",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\",
+      "BasePath": "_content/WEBTimViec",
+      "RelativePath": "images/BrXanh.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\BrXanh.png"
     },
     {
       "Identity": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\comment\\comment_1.png",

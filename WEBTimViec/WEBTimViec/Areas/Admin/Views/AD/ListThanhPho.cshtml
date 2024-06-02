@@ -1,14 +1,11 @@
 ﻿@model IEnumerable<WEBTimViec.Models.ThanhPho>
 
-@{
-    ViewData["Title"] = "ListThanhPho";
-}
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> JobPlus </title>
+    <title> JobPlus - Danh sách các thành phố </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -16,52 +13,34 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="~/css/main.css">
-    <link rel="stylesheet" href="~/css/normalize.min.css">
-    <link rel="stylesheet" href="~/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="~/css/flaticon.css">
-    <link rel="stylesheet" href="~/css/price_rangs.css">
-    <link rel="stylesheet" href="~/css/slicknav.css">
-    <link rel="stylesheet" href="~/css/animate.min.css">
-    <link rel="stylesheet" href="~/css/magnific-popup.css">
-    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="~/css/themify-icons.css">
-    <link rel="stylesheet" href="~/css/slick.css">
-    <link rel="stylesheet" href="~/css/nice-select.css">
     <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
 </head>
-<p>
-    <a href="@Url.Action("Index")" class="btn btn-primary">Back to List</a>
-</p>
-<h1>Danh sách các thành phố</h1>
+<body class="bg-light">
+    <div class="khung3">
+        <h1 class="text-center mb-4">Danh sách các thành phố</h1>
 
-<p>
-    <a href="@Url.Action("AddThanhPho")" class="btn btn-primary">Thêm thành phố mới</a>
-</p>
+        <p class="text-center">
+            <a href="@Url.Action("AddThanhPho")" class="btn btn-primary mb-4">Thêm thành phố mới</a>
+        </p>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ThanhPho_name)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ThanhPho_name)
-            </td>
-                <td>
-                    <a href="#" class="btn btn-warning btn-sm">Sửa</a>
-                    @* <a href="#" class="btn btn-info btn-sm">Chi tiết</a> *@
-                    <a href="#" class="btn btn-danger btn-sm">Xóa</a>
-                </td>
-        </tr>
-}
-    </tbody>
-</table>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.ThanhPho_name</h5>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- JavaScript here -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
