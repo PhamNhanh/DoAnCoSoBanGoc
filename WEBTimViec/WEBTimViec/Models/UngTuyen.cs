@@ -9,6 +9,8 @@ namespace WEBTimViec.Models
         public string? url_CV { get; set; }
         public string? ThuGioiThieu { get; set; }
         public DateTime? ThoiGianUngTuyen { get; set; }
+        public string? TenUngVien {  get; set; }
+        public string? EmailUV { get; set; }
         public string? TrangThai { get; set; }
 /*        public int? applicationUserid { get; set; }*/
         public ApplicationUser? applicationUser { get; set; }

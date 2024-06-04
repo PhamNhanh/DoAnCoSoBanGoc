@@ -36,11 +36,11 @@
             {
                 <div class="col-md-4">
 
-                <div class="card" data-url="@Url.Action("DetailsUngTuyen", "UV", new { id = ungTuyen.BaiTuyenDung_id })">
+                <div class="card" data-url="@Url.Action("DetailsUngTuyen", "NTD", new { id = ungTuyen.BaiTuyenDung_id })">
                     <div class="card-body">
                         <h5 class="card-title"><strong>Công ty: </strong>@ungTuyen.applicationUser.NhaTuyenDung_name</h5>
                         <h5 class="card-title"><strong>Công việc: </strong>@ungTuyen.TenCongViec</h5>
-                        <a href="@Url.Action("DetailsUngTuyen", "UV", new { id = ungTuyen.BaiTuyenDung_id })" class="btn btn-info">Chi tiết</a>
+                        <a href="@Url.Action("DetailsUngTuyen", "NTD", new { id = ungTuyen.BaiTuyenDung_id })" class="btn btn-info">Chi tiết</a>
                     </div>
                 </div>
                 </div>

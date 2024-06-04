@@ -51,5 +51,10 @@ namespace WEBTimViec.Repositories
             var usersInRole = await _userManager.GetUsersInRoleAsync("Ứng Viên");
             return usersInRole.Count;
         }
+        public async Task<int> CountUsersAsync()
+        {
+            var users = _userManager.Users; 
+            return await users.CountAsync(); 
+        }
     }
 }

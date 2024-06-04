@@ -193,7 +193,40 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
 
             return View(ungTuyenList);
         }
+        [HttpPost]
+        public async Task<IActionResult> SaveFeedback(int UngTuyen_id, int BaiTuyenDung_id, string TrangThai)
+        {
+            var ungTuyen = await _ungTuyen.GetByIdAsync(UngTuyen_id);
 
+            if (ungTuyen != null && ungTuyen.BaiTuyenDungid == BaiTuyenDung_id)
+            {
+                ungTuyen.TrangThai = TrangThai;
+                await _ungTuyen.UpdateAsync(ungTuyen);
+                return Ok(new { success = true });
+            }
+
+            return BadRequest(new { success = false, message = "Không tìm thấy ứng tuyển hoặc thông tin không hợp lệ." });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DetailsUngTuyen(IFormCollection form)
+        {
+            var ungTuyenList = await _ungTuyen.GetAllAsync();
+
+            foreach (var ungtuyen in ungTuyenList)
+            {
+                string formKey = $"status_{ungtuyen.UngTuyen_id}";
+                if (form.TryGetValue(formKey, out var statusValue))
+                {
+                    ungtuyen.TrangThai = statusValue;
+                    _context.ungTuyens.Update(ungtuyen);
+                }
+            }
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(DetailsUngTuyen));
+        }
 
 
         [HttpGet]
@@ -367,7 +400,6 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
                         // Lưu hình ảnh đại diện
                         find_company.image_url = await SaveImage(image_url);
                     }
-
                     // Cập nhật các thông tin khác của công ty
                     find_company.NhaTuyenDung_name = company.NhaTuyenDung_name;
                     find_company.SDTNhaTuyenDung = company.SDTNhaTuyenDung;
@@ -379,12 +411,10 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
 
                     // Lưu thay đổi vào cơ sở dữ liệu
                     await _userManager.UpdateAsync(find_company);
-
-
                 }
-                catch
+                catch(Exception e)
                 {
-                    return NotFound("Khong tim thay 2");
+                    throw new Exception(e.Message);
                 }
                 return RedirectToAction(nameof(IndexProfileNTD));
             }

@@ -1,4 +1,4 @@
 Chưa hiện được tên Công ty
 Chưa có profile Ứng viên
 Nhớ xóa 2 bảng hình ảnh
-
+Lấy ds nhà tuyển dụng theo idRole

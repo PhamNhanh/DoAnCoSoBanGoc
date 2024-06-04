@@ -541,6 +541,12 @@ namespace WEBTimViec.Migrations
                     b.Property<int?>("BaiTuyenDungid")
                         .HasColumnType("int");
 
+                    b.Property<string>("EmailUV")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TenUngVien")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("ThoiGianUngTuyen")
                         .HasColumnType("datetime2");
 
@@ -766,7 +772,7 @@ namespace WEBTimViec.Migrations
                         .HasForeignKey("BaiTuyenDungid");
 
                     b.HasOne("WEBTimViec.Models.ApplicationUser", "applicationUser")
-                        .WithMany()
+                        .WithMany("UngTuyens")
                         .HasForeignKey("applicationUserId");
 
                     b.Navigation("BaiTuyenDung");
@@ -777,6 +783,8 @@ namespace WEBTimViec.Migrations
             modelBuilder.Entity("WEBTimViec.Models.ApplicationUser", b =>
                 {
                     b.Navigation("BaiTuyenDungs");
+
+                    b.Navigation("UngTuyens");
 
                     b.Navigation("hocVan");
                 });

@@ -33,6 +33,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>Mã ứng tuyển</th>
                     <th>Thời gian ứng tuyển</th>
                     <th>CV</th>
                     <th>Trạng thái</th>
@@ -42,6 +43,7 @@
                 @foreach (var ungtuyen in Model)
                 {
                     <tr>
+                        <td style="font-size: 20px;color:black">@ungtuyen.UngTuyen_id</td>
                         <td style="font-size: 20px;color:black">@ungtuyen.ThoiGianUngTuyen</td>
                         <td style="font-size: 20px; color: black">
                             <a href="@ungtuyen.url_CV" target="_blank" style="font-size: 20px; color: black">>Xem CV</a>
@@ -54,7 +56,10 @@
                             }
                             else
                             {
-                                <label class="badge badge-warning">Đã duyệt</label>
+                                <div>
+                                    Phản hồi từ nhà tuyển dụng:
+                                </div>
+                        <label class="badge badge-success"> @ungtuyen.TrangThai</label>
                             }
                         </td>
                     </tr>

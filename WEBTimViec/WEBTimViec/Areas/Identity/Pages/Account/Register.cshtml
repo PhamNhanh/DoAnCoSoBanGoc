@@ -42,7 +42,7 @@
                     <hr />
                     <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
                     <div class="form-floating mb-3">
-                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@gmail.com" />
                         <label asp-for="Input.Email">Email</label>
                         <span asp-validation-for="Input.Email" class="text-danger"></span>
                     </div>
@@ -61,12 +61,11 @@
                             <option disabled selected>-select Role-</option>
                         </select>
                     </div>
-                    
-                </form>
-                <button id="registerSubmit" type="submit" class="btn head-btn">Đăng ký</button>
-@*                     <p>
+                    <button id="registerSubmit" type="submit" class="btn head-btn">Đăng ký</button>
+                    <p>
                         <a class="text" asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl"> -> Đã có tài khoản </a>
-                    </p> *@
+                    </p>
+                </form>
             </div>
         </div>
     </div>

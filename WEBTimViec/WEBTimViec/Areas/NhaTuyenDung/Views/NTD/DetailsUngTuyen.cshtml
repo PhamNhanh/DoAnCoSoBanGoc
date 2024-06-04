@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="~/css/nice-select.css">
     <link rel="stylesheet" href="~/css/style.css">
     <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="khung4">
@@ -34,38 +35,69 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>Mã ứng tuyển</th>
                     <th>Tên ứng viên</th>
+                    <th>Email ứng viên</th>
                     <th>Thời gian ứng tuyển</th>
                     <th>Thư giới thiệu</th>
                     <th>CV</th>
-                    <th>Trạng thái</th>
+                    <th>Phản hồi</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var ungtuyen in Model)
                 {
                     <tr>
-                        <td style="font-size: 20px;color:black">@ungtuyen.application_Userid</td>
+                        <td style="font-size: 20px;color:black">@ungtuyen.UngTuyen_id</td>
+                        <td style="font-size: 20px;color:black">@ungtuyen.TenUngVien</td>
+                        <td style="font-size: 20px;color:black">@ungtuyen.EmailUV</td>
                         <td style="font-size: 20px;color:black">@ungtuyen.ThoiGianUngTuyen</td>
                         <td style="font-size: 20px;color:black">@ungtuyen.ThuGioiThieu</td>
                         <td style="font-size: 20px; color: black">
                             <a href="@ungtuyen.url_CV" target="_blank" style="font-size: 20px; color: black">>Xem CV</a>
                         </td>
-
                         <td>
-                            @if (ungtuyen.TrangThai == null)
-                            {
-                                <label class="badge badge-warning">Chưa phê duyệt</label>
-                            }
-                            else
-                            {
-                                <label class="badge badge-warning">Đã duyệt</label>
-                            }
+                            <form class="feedback-form">
+                                <input type="hidden" name="UngTuyen_id" value="@ungtuyen.UngTuyen_id" />
+                                <input type="hidden" name="BaiTuyenDung_id" value="@ungtuyen.BaiTuyenDungid" />
+                                @if (ungtuyen.TrangThai == null)
+                                {
+                                    <input type="text" class="form-control" name="TrangThai" placeholder="Nhập phản hồi" value="@ungtuyen.TrangThai" />
+                                    <button type="submit" class="btn btn-primary mt-2">Gửi phản hồi</button>
+                                }
+                                else
+                                {
+                                    <input type="text" class="form-control" name="TrangThai" placeholder="Nhập phản hồi" value="@ungtuyen.TrangThai" style="background-color: #54ec82; color: black;" />
+                                    <button type="submit" class="btn btn-success mt-2">Gửi lại phản hồi</button>
+                                }
+                            </form>
                         </td>
+
+
                     </tr>
                 }
             </tbody>
         </table>
+
     </div>
+    <script>
+        $(document).ready(function () {
+            $('.feedback-form').on('submit', function (e) {
+                e.preventDefault();
+                var $form = $(this);
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("SaveFeedback", "NTD")', // Đảm bảo URL đúng
+                    data: $form.serialize(),
+                    success: function (response) {
+                        alert('Phản hồi đã được gửi thành công.');
+                    },
+                    error: function (xhr, status, error) {
+                        alert('Có lỗi xảy ra. Vui lòng thử lại.');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

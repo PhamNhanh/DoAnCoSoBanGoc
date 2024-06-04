@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 using SQLitePCL;
 using WEBTimViec.Data;
 using WEBTimViec.Models;
@@ -282,18 +283,21 @@ namespace WEBTimViec.Areas.UngVien.UngVien
         {
             var baiTuyenDung = await _baiTuyenDung.GetByIdAsync(Id);
             var nguoiDung = await _userManager.GetUserAsync(User);
+            if (baiTuyenDung == null || nguoiDung == null)
+            {
+                return NotFound(); 
+            }
             ViewBag.NguoiDung = nguoiDung;
             ViewBag.BaiTuyenDung = baiTuyenDung;
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> UngTuyen(UngTuyen ungTuyen, IFormFile url_cv, int id)
+        public async Task<IActionResult> UngTuyen(UngTuyen ungTuyen, IFormFile url_cv, int id/*, string TenUngVien, string EmailUV*/)
         {
-            //id người dùng
+            // id người dùng
             var find_user = await _userManager.GetUserAsync(User);
-            //id bài tuyển dụng
+            // id bài tuyển dụng
             var post = await _baiTuyenDung.GetByIdAsync(id);
-
             if (ModelState.IsValid)
             {
                 if (url_cv != null && IsFileSizeValid(url_cv))
@@ -311,12 +315,14 @@ namespace WEBTimViec.Areas.UngVien.UngVien
                 {
                     ModelState.AddModelError("url_cv", "Đường dẫn CV không hợp lệ.");
                     return View(ungTuyen);
-                }
-
+                }   
+/*                ungTuyen.TenUngVien = TenUngVien;
+                ungTuyen.EmailUV = EmailUV;*/
                 ungTuyen.BaiTuyenDungid = post.BaiTuyenDung_id;
                 ungTuyen.applicationUser = post.applicationUser; // Đã lưu id Nhà Tuyển Dụng
-                ungTuyen.application_Userid = find_user.Id; //Da lưuu id Ung Viên
+                ungTuyen.application_Userid = find_user.Id; // Đã lưu id Ứng Viên
                 ungTuyen.ThoiGianUngTuyen = DateTime.Now;
+
 
                 await _ungTuyen.AddAsync(ungTuyen);
                 return RedirectToAction(nameof(DSUngTuyen));
@@ -329,7 +335,8 @@ namespace WEBTimViec.Areas.UngVien.UngVien
         }
 
 
-            private async Task<string> SaveCV(IFormFile url_cv)
+
+        private async Task<string> SaveCV(IFormFile url_cv)
             {
                 try
                 {
