@@ -28,46 +28,83 @@
     <link rel="stylesheet" href="~/css/slick.css">
     <link rel="stylesheet" href="~/css/nice-select.css">
     <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 </head>
 <body>
-    <div>
-        <h2 class="tieude">
-            Biểu đồ thống kê
-            
-        </h2>
+    <div class="khung">
+        <div class="row">
+            <div class="col">
+                <div>
+                    <h2 class="tieude">
+                        Biểu đồ thống kê hệ thống
+                    </h2>
+                </div>
+                <div>
+                    <canvas id="thongKeChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+            <div class="col">
+                <div>
+                    <h2 class="tieude">
+                        Biểu đồ thống kê hôm nay
+                    </h2>
+                </div>
+                <div>
+                    <canvas id="thongKeChartToday" width="400" height="200"></canvas>
+                </div>
+            </div>
 
         </div>
-    <div>
-        <div class="card-content">
-            <div class="card-item">
-                <canvas id="thongKeChart" width="400" height="200"></canvas>
+        <div class="row">
+            <div class="col">
+                <div>
+                    <h2 class="tieude">
+                        Biểu đồ nhà tuyển dụng với ứng viên
+                    </h2>
+                </div>
+                <div>
+                    <canvas id="donutChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+            <div class="col">
+                <div>
+                    <h2 class="tieude">
+                        Biểu đồ bài tuyển dụng và ứng tuyển
+                    </h2>
+                </div>
+                <div>
+                    <canvas id="donutChart1" width="400" height="200"></canvas>
+                </div>
             </div>
         </div>
     </div>
-
+   
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var ctx = document.getElementById('thongKeChart').getContext('2d');
             var thongKeChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Nhà tuyển dụng', 'Ứng viên', 'Bài tuyển dụng', 'Bài ứng tuyển'],
+                    labels: ['Tài khoản', 'Ứng viên', 'Nhà tuyển dụng', 'Bài tuyển dụng', 'Bài ứng tuyển'],
                     datasets: [{
                         label: 'Thống kê',
-                        data: [@Model.slNTD, @Model.slUV, @Model.slBTD, @Model.slUT],
+                        data: [@Model.slTaiKhoan, @Model.slUV, @Model.slNTD, @Model.slBTD, @Model.slUT],
                         backgroundColor: [
                             'rgba(75, 192, 192, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
                             'rgba(255, 206, 86, 0.2)',
-                            'rgba(153, 102, 255, 0.2)'
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 99, 132, 0.2)' // Màu cho cột mới (ví dụ: đỏ)
                         ],
                         borderColor: [
                             'rgba(75, 192, 192, 1)',
                             'rgba(54, 162, 235, 1)',
                             'rgba(255, 206, 86, 1)',
-                            'rgba(153, 102, 255, 1)'
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 99, 132, 1)' // Màu cho cột mới (ví dụ: đỏ)
                         ],
                         borderWidth: 1
                     }]
@@ -90,7 +127,110 @@
                 },
                 plugins: [ChartDataLabels]
             });
+
+
+            var ctxToday = document.getElementById('thongKeChartToday').getContext('2d');
+            var thongKeChartToday = new Chart(ctxToday, {
+                type: 'bar',
+                data: {
+                    labels: ['Nhà tuyển dụng', 'Ứng viên', 'Bài tuyển dụng', 'Bài ứng tuyển'],
+                    datasets: [{
+                        label: 'Thống kê hôm nay',
+                        data: [@Model.slntdinday, @Model.sluvinday, @Model.slbtdinday, @Model.slbaiutinday],
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(153, 102, 255, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(153, 102, 255, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            var ctxDonut = document.getElementById('donutChart').getContext('2d');
+            var donutChart = new Chart(ctxDonut, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Nhà tuyển dụng', 'Ứng viên'],
+                    datasets: [{
+                        label: 'Thống kê',
+                        data: [@Model.slNTD, @Model.slUV],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(54, 162, 235, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(54, 162, 235, 0.7)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    cutout: '0%', // Điều này tạo ra biểu đồ doughnut không có lỗ ở giữa
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Biểu đồ hình tròn số lượng nhà tuyển dụng và ứng viên',
+                        }
+                    },
+                    cutoutPercentage: 50 // Thu nhỏ kích thước của biểu đồ đi một nửa
+                }
+            });
+
+            var ctxDonut1 = document.getElementById('donutChart1').getContext('2d');
+            var donutChart1 = new Chart(ctxDonut1, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Bài tuyển dụng', 'Bài ứng tuyển'],
+                    datasets: [{
+                        label: 'Thống kê',
+                        data: [@Model.slBTD, @Model.slUT],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(54, 162, 235, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    cutout: '0%', // Điều này tạo ra biểu đồ doughnut không có lỗ ở giữa
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Biểu đồ hình tròn số lượng bài tuyển dụng và bài ứng tuyển',
+                        }
+                    },
+                    cutoutPercentage: 50 // Thu nhỏ kích thước của biểu đồ đi một nửa
+                }
+            });
         });
     </script>
+
 </body>
 </html>

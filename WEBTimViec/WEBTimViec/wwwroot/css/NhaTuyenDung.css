@@ -248,3 +248,38 @@
     border-radius: 10px; /* Bo tròn các góc của khung */
     background: linear-gradient(to right, #f8f5d9, #fff);
 }
+.khung5 {
+    background-color: #d1fcf8; /* Màu nền xanh nhạt */
+    padding: 20px;
+    border: 1px solid #000; /* Boder màu xám với độ rộng là 2px */
+    border-radius: 10px; /* Bo tròn các góc của khung */
+    background: linear-gradient(to bottom, #ffffff, #c4f7cf);
+}
+.styled-button {
+    padding: 10px 30px;
+    color: black;
+    background-color: #f0f0f0; /* màu nền tùy chỉnh */
+    border: 1px solid #ccc; /* viền tùy chỉnh */
+    border-radius: 10px; /* bo tròn góc */
+    font-size: 16px; /* kích thước chữ */
+    cursor: pointer;
+    text-decoration: none; /* Xóa bỏ gạch chân */
+    margin: 20px 0;
+}
+
+    .styled-button:hover {
+        background-color: #bad7f8; /* màu nền khi hover */
+        border-color: #000; /* màu viền khi hover */
+    }
+.styled-button1 {
+    padding: 10px 20px; /* điều chỉnh padding nếu cần */
+    color: black;
+    background-color: #4bf5b4; /* màu nền tùy chỉnh */
+    border: 1px solid #ccc; /* viền tùy chỉnh */
+    border-radius: 10px; /* bo tròn góc */
+    font-size: 14px; /* kích thước chữ */
+    font-style: italic;
+    cursor: pointer;
+    text-decoration: none; /* Xóa bỏ gạch chân */   
+    margin: 10px 0; /* tạo khoảng cách lề trên và dưới */
+}

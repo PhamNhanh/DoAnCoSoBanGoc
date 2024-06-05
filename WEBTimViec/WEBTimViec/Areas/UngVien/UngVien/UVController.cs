@@ -60,17 +60,39 @@ namespace WEBTimViec.Areas.UngVien.UngVien
             var sortedThanhPho = thanhPho.OrderBy(tp => tp.ThanhPho_name).ToList(); var chuyenNganh = await _chuyenNganh.GetAllAsync();
             var sortedChuyenNganh = chuyenNganh.OrderBy(cn => cn.ChuyenNganh_name).ToList();
             var chuyenNganhs = await _context.chuyenNganhs.ToListAsync();
+            var ungvien = await _userRepository.GetAllAsync();
             var viewModel = new ViewModel
             {
                 
                 BaiTuyenDungs = baiTuyenDungs,
                 ThanhPhos = sortedThanhPho,
                 ChuyenNganhs = sortedChuyenNganh,
+                ApplicationUsers = ungvien,
             };
-            // Truyền danh sách bài tuyển dụng tới view
+            foreach (var baiTuyenDung in viewModel.BaiTuyenDungs)
+            {
+                var applicationUser = await _context.Users.FirstOrDefaultAsync(u => u.Id == baiTuyenDung.ApplicationUserId);
+                baiTuyenDung.applicationUser = applicationUser;
+            }
+
             return View(viewModel);
         }
-
+        public async Task<IActionResult> IndexHocVan(string id)
+        {
+            var find_user = await _userManager.FindByIdAsync(id);
+            if (find_user != null)
+            {
+                var truongDaiHoc = await _truongDaiHoc.GetAllAsync();
+                var chuyenNganh = await _chuyenNganh.GetAllAsync();
+                var hocVanList = await _hocVan.GetByIdUserAsync(find_user.Id);
+                var hocVan = hocVanList.FirstOrDefault(); 
+                return View(hocVan);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
         [HttpGet]
         public async Task<IActionResult> AddHocVan()
         {
@@ -97,7 +119,6 @@ namespace WEBTimViec.Areas.UngVien.UngVien
                     {
                         if (find_user != null)
                         {
-/*                            find_user.Id = hocVan.applicationUserId;*/
                             var chuyenNganh = await _chuyenNganh.GetAllAsync();
                             var truongDaiHoc = await _truongDaiHoc.GetAllAsync();
                             ViewBag.ChuyenNganh = new SelectList(chuyenNganh, "ChuyenNganh_id", "ChuyenNganh_name");
@@ -128,24 +149,41 @@ namespace WEBTimViec.Areas.UngVien.UngVien
             }
             return View(find_user);
         }
-        public async Task<IActionResult> IndexHocVan(string id)
+        public async Task<IActionResult> UpdateHocVan(string id)
         {
-            var find_user = await _userManager.FindByIdAsync(id);
-            if (find_user != null)
-            {
-                var truongDaiHoc = await _truongDaiHoc.GetAllAsync();
-                var chuyenNganh = await _chuyenNganh.GetAllAsync();
-                var hocVanList = await _hocVan.GetByIdUserAsync(find_user.Id);
-                var hocVan = hocVanList.FirstOrDefault(); // Lấy phần tử đầu tiên từ danh sách
-                return View(hocVan);
-            }
-            else
-            {
-                return NotFound();
-            }
+            return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateHocVan(string id, HocVan hocVan)
+        {
 
+            try
+            {
+                var existingHocVan = await _hocVan.GetByIdUserAsync(hocVan.applicationUserId);
+
+                if (existingHocVan == null)
+                {
+                    // Nếu không có học vấn cho id này, thêm mới
+                    await _hocVan.AddAsync(hocVan);
+                }
+                else
+                {
+                    // Nếu đã có học vấn, cập nhật thông tin
+                    await _hocVan.UpdateAsync(hocVan);
+                }
+
+                return RedirectToAction(nameof(IndexHocVan), new { id = hocVan.applicationUserId });
+            }
+            catch (Exception)
+            {
+                // Xử lý lỗi nếu cần
+                throw;
+            }
+
+
+        }
 
         [HttpGet]
         public async Task<IActionResult> TimKiem(ViewModel viewModel)
@@ -220,7 +258,7 @@ namespace WEBTimViec.Areas.UngVien.UngVien
         {
             // Lấy danh sách ứng tuyển dựa trên IdBaiTuyenDung
             var ungTuyenList = await _ungTuyen.GetUngTuyenByBaiTuyenDungIdAsync(id);
-
+            var nhaTuyenDung = await _userRepository.GetAllAsync();
             if (ungTuyenList == null || !ungTuyenList.Any())
             {
                 return NotFound();
@@ -276,6 +314,7 @@ namespace WEBTimViec.Areas.UngVien.UngVien
             var baiTuyenDung = await _baiTuyenDung.GetAllAsync();
             var danhSachNhaTuyenDung = await _userRepository.GetAllCompanyAsync();
             ViewBag.NhaTuyenDung = danhSachNhaTuyenDung;
+
             return View(baiTuyenDung);
         }
         [HttpGet]
@@ -376,18 +415,18 @@ namespace WEBTimViec.Areas.UngVien.UngVien
         }
 
         [HttpPost]
-
+        
         public async Task<IActionResult> UpdateProfileUV(string id, ApplicationUser ungvien, IFormFile image_url)
         {
             var find_company = await _userManager.GetUserAsync(User);
 
-            if (find_company != null && id != find_company.Id)
+            if (find_company == null || id != find_company.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+/*            if (ModelState.IsValid)
+            {*/
                 try
                 {
                     if (image_url != null && IsImageFile(image_url) && IsFileSizeValid(image_url))
@@ -395,20 +434,6 @@ namespace WEBTimViec.Areas.UngVien.UngVien
                         // Lưu hình ảnh đại diện
                         find_company.image_url = await SaveImage(image_url);
                     }
-                    else if (image_url == null)
-                    {
-                        if (find_company.image_url != null)
-                        {
-                            // Nếu trong cơ sở dữ liệu có URL hình ảnh được lưu trữ, giữ nguyên giá trị của image_url
-                            find_company.image_url = find_company.image_url;
-                        }
-                        else
-                        {
-                            // Nếu không có URL hình ảnh trong cơ sở dữ liệu, gán image_url = null
-                            find_company.image_url = null;
-                        }
-                    }
-
 
                     // Cập nhật các thông tin khác của công ty
                     find_company.FullName = ungvien.FullName;
@@ -423,13 +448,19 @@ namespace WEBTimViec.Areas.UngVien.UngVien
 
                     return RedirectToAction(nameof(IndexProfileUV));
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return NotFound();
+                    // Xử lý ngoại lệ
+                    // Ghi log lỗi hoặc hiển thị thông báo lỗi
+                    return BadRequest("Đã xảy ra lỗi khi cập nhật thông tin.");
                 }
-            }
-            return View(find_company);
+        
+
+/*            // ModelState không hợp lệ, hiển thị lại form với thông báo lỗi
+            return View(find_company);*/
         }
+
+
         private bool IsImageFile(IFormFile file)
         {
             // Kiểm tra phần mở rộng của file có phải là ảnh hay không

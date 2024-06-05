@@ -26,14 +26,21 @@
     <link rel="stylesheet" href="~/css/slick.css">
     <link rel="stylesheet" href="~/css/nice-select.css">
     <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
 </head>
 <body>
     <div class="container">
-        <h1 class="mt-5 mb-3">Danh sách bài ứng tuyển</h1>
+        <button class=" styled-button">
+            <a style="color: black;" href="@Url.Action("DSUngTuyen", "UV")"> <<< </a>
+        </button>
+
+        <h1 class="tieude">Danh sách bài ứng tuyển</h1>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Mã ứng tuyển</th>
+                    <th>Tên ứng viên</th>
+@*                     <th>Tên công ty</th> *@
                     <th>Thời gian ứng tuyển</th>
                     <th>CV</th>
                     <th>Trạng thái</th>
@@ -44,6 +51,8 @@
                 {
                     <tr>
                         <td style="font-size: 20px;color:black">@ungtuyen.UngTuyen_id</td>
+                        <td style="font-size: 20px;color:black">@ungtuyen.TenUngVien</td>
+@*                         <td style="font-size: 20px;color:black">@ungtuyen.applicationUser.NhaTuyenDung_name</td> *@
                         <td style="font-size: 20px;color:black">@ungtuyen.ThoiGianUngTuyen</td>
                         <td style="font-size: 20px; color: black">
                             <a href="@ungtuyen.url_CV" target="_blank" style="font-size: 20px; color: black">>Xem CV</a>

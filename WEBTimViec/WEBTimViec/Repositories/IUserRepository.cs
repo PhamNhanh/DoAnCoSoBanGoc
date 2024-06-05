@@ -12,5 +12,7 @@ namespace WEBTimViec.Repositories
         Task<int> CountUsersInRoleNTDAsync();
         Task<int> CountUsersInRoleUVAsync();
         Task<int> CountUsersAsync();
+        Task<int> CountNewNTDTodayAsync();
+        Task<int> CountNewUVTodayAsync();
     }
 }

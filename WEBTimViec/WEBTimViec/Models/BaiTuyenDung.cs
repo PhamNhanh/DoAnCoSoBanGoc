@@ -15,8 +15,8 @@ namespace WEBTimViec.Models
         public decimal? Luong_min { get; set; }
         public decimal? Luong_max { get; set; }
         public string? KieuCongViec { get; set; }
-        public int? KyNangMemId { get; set; }
-
+/*        public int? KyNangMemId { get; set; }*/
+        public bool? TrangThai { get; set; }
         public DateTime? ThoiGianDangBai { get; set; }
         public DateTime? ThoiGianHetHan { get; set; }
         public int? thanhPhoId { get; set; }
@@ -36,6 +36,7 @@ namespace WEBTimViec.Models
         [NotMapped]
         public List<int>? KyNangMemIds { get; set; } 
         public ApplicationUser? applicationUser { get; set; }
+        public string? ApplicationUserId { get; set; }
 
     }
 }

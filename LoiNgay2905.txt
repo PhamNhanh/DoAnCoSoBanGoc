@@ -1,4 +1,0 @@
-Chưa hiện được nhiều chuyên ngành trong HocVan (Đã thêm được)
-Nhà tuyển dụng chưa xem được DetailsProfileUngVien
-Không biết cách cho học vấn vào IndexProfileUV
-Chưa lưu được Id trong bảng học vấn 

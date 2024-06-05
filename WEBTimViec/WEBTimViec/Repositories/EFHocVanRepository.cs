@@ -46,11 +46,11 @@ namespace WEBTimViec.Repositories
                 await _context.SaveChangesAsync();
             }
         }
-        public async Task<IEnumerable<HocVan>> GetByIdUserAsync(string id)
-        {
-            return await _context.hocVans
-                .Where(h => h.applicationUser.Id == id)
-                .ToListAsync();
-        }
+            public async Task<IEnumerable<HocVan>> GetByIdUserAsync(string id)
+            {
+                return await _context.hocVans
+                    .Where(h => h.applicationUser.Id == id)
+                    .ToListAsync();
+            }
     }
 }

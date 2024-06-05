@@ -196,16 +196,9 @@
                                                 <span class="card-title" style="font-size: 1.5rem; font-style: italic;">@baiTuyenDung.TenCongViec</span>
                                             </div>
                                         </div>
-                                        @if (baiTuyenDung.applicationUser != null)
-                                        {
-                                            <p class="limit-text"><strong>-->Ten cong ty:</strong> @baiTuyenDung.applicationUser.NhaTuyenDung_name</p>
-                                        }
-                                        else
-                                        {
-                                            <p class="limit-text"><strong>-->Ten cong ty:</strong> [Tên công ty không có sẵn]</p>
-                                        }
+                                        <p class="card-text"><strong>Công ty: </strong>@baiTuyenDung.applicationUser.NhaTuyenDung_name</p>
                                         @*                                     <p class="limit-text"><strong>-->Mô tả công việc:</strong> @baiTuyenDung.MoTaCongViec</p> *@
-                                        <p class="limit-text"><strong>-->Yêu cầu kỹ năng:</strong> @baiTuyenDung.YeuCauKyNang</p>
+                                        <p class="limit-text overflow-ellipsis"><strong>-->Yêu cầu kỹ năng:</strong> @baiTuyenDung.YeuCauKyNang</p>
                                         <p class="card-text"><strong>-->Thành phố làm việc:</strong> @baiTuyenDung.thanhPho.ThanhPho_name</p>
                                         <p class="limit-text"><strong>-->Lương:</strong> @baiTuyenDung.Luong_min - @baiTuyenDung.Luong_max triệu đồng</p>
                                         <p class="limit-text"><strong>-->Loại công việc:</strong> @baiTuyenDung.KieuCongViec</p>

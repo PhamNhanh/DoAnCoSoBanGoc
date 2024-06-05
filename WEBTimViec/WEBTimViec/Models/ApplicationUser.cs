@@ -21,9 +21,7 @@ namespace WEBTimViec.Models
         public DateTime? NgaySinh { get; set; }
         public string? SDT_UngVien { get; set; }
         public string? TuGioiThieu { get; set; }
-        public HocVan? hocVan { get; set; }
-        [NotMapped]
-        public int? HocVanid { get; set; }
+        public List<HocVan>? hocVans { get; set; }
 
 /*        public List<HocVan_ChuyenNganh>? hocvan_ChuyenNganhs { get; set; }
 */

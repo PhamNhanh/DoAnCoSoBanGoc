@@ -36,12 +36,12 @@
 </head>
 
 <body class="background">
-    <p>
-        <a href="@Url.Action("Index", "NTD", new { area = "NhaTuyenDung" })" class="button">Back to List</a>
-    </p>
+    <button class=" styled-button">
+        <a style="color: black;" href="@Url.Action("Index", "NTD")"> <<< </a>
+    </button>
+
     <h1 class="tieude">Thêm tin tuyển dụng</h1>
     <hr />
-    @*     <div class="form-container"> *@
     <div class="khung">
         <form asp-action="AddBaiTuyenDung" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -51,7 +51,6 @@
                     <input asp-for="TenCongViec" class="form-control" required />
                     <span asp-validation-for="TenCongViec" class="text-danger"></span>
                 </div>
-
             </div>
             <div class="info-section">
                 <div class="info-item1">

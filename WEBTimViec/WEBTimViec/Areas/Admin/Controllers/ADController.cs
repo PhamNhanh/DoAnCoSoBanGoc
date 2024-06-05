@@ -59,6 +59,11 @@ namespace WEBTimViec.Areas.Admin.Controllers
                 ThanhPhos = sortedThanhPho,
                 ChuyenNganhs = sortedChuyenNganh,
             };
+            foreach (var baiTuyenDung in viewModel.BaiTuyenDungs)
+            {
+                var applicationUser = await _context.Users.FirstOrDefaultAsync(u => u.Id == baiTuyenDung.ApplicationUserId);
+                baiTuyenDung.applicationUser = applicationUser;
+            }
             // Truyền danh sách bài tuyển dụng tới view
             return View(viewModel);
         }
@@ -189,21 +194,13 @@ namespace WEBTimViec.Areas.Admin.Controllers
             ViewBag.NhaTuyenDung = danhSachNhaTuyenDung;
             return View(danhSachNhaTuyenDung);
         }
-        public async Task<IActionResult> DetailsNhaTuyenDung(string id)
+
+        public async Task<IActionResult> IndexProfileNTD(string id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var company = await _context.Users.FindAsync(id);
-            if (company == null)
-            {
-                return NotFound();
-            }
-
-            return View(company);
+            var find_ungvien = await _userManager.FindByIdAsync(id);
+            return View(find_ungvien);
         }
+
 
         public async Task<IActionResult> IndexProfileUV(string id)
         {
@@ -219,12 +216,22 @@ namespace WEBTimViec.Areas.Admin.Controllers
         }
         public async Task<IActionResult> ThongKe()
         {
+            var sotaikhoan = await _userRepository.CountUsersAsync();
             var soNhaTuyenDung = await _userRepository.CountUsersInRoleNTDAsync();
             var soUngVien = await _userRepository.CountUsersInRoleUVAsync();
             var soBaiTuyenDUng = await _baiTuyenDung.CountBaiTuyenDungAsync();
             var soUngTuyen = await _ungTuyen.CountUngTuyenAsync();
+            var sonewBTD = await _baiTuyenDung.CountBaiTuyenDungTodayAsync();
+            var sonewUT = await _ungTuyen.CountUngTuyenTodayAsync();
+            var soUVnew = await _userRepository.CountUsersInRoleUVAsync();
+            var sonewNTD = await _userRepository.CountUsersInRoleNTDAsync();
             var thongKeViewModel = new ThongKe
             {
+                slTaiKhoan = sotaikhoan,
+                slbaiutinday = sonewUT,
+                slbtdinday = sonewBTD,
+                slntdinday= sonewNTD,
+                sluvinday = soUVnew,
                 slNTD = soNhaTuyenDung,
                 slUV = soUngVien,
                 slBTD = soBaiTuyenDUng,

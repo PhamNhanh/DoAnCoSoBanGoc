@@ -30,8 +30,13 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+    <button class=" styled-button" >
+        <a style="color: black;" href="@Url.Action("DSUngTuyen", "NTD")"> <<< </a>
+    </button>
     <div class="khung4">
-        <h1 class="mt-5 mb-3">Chi tiết các bài ứng tuyển</h1>
+        <h1 class="tieude">Chi tiết các bài ứng tuyển</h1>
+         @if (Model.Any())
+        {
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -78,7 +83,11 @@
                 }
             </tbody>
         </table>
-
+        }
+        else
+        {
+            <p>Không có ứng viên nào ứng tuyển</p>
+        }
     </div>
     <script>
         $(document).ready(function () {

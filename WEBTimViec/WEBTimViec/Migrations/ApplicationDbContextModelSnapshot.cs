@@ -264,6 +264,9 @@ namespace WEBTimViec.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BaiTuyenDung_id"));
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int?>("ChuyenNganh_id")
                         .HasColumnType("int");
 
@@ -294,14 +297,14 @@ namespace WEBTimViec.Migrations
                     b.Property<DateTime?>("ThoiGianHetHan")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool?>("TrangThai")
+                        .HasColumnType("bit");
+
                     b.Property<int?>("ViTriCongViec_id")
                         .HasColumnType("int");
 
                     b.Property<string>("YeuCauKyNang")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("applicationUserId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("kinhNghiemId")
                         .HasColumnType("int");
@@ -311,11 +314,11 @@ namespace WEBTimViec.Migrations
 
                     b.HasKey("BaiTuyenDung_id");
 
+                    b.HasIndex("ApplicationUserId");
+
                     b.HasIndex("ChuyenNganh_id");
 
                     b.HasIndex("ViTriCongViec_id");
-
-                    b.HasIndex("applicationUserId");
 
                     b.HasIndex("kinhNghiemId");
 
@@ -436,9 +439,7 @@ namespace WEBTimViec.Migrations
 
                     b.HasIndex("TruongDaiHocid");
 
-                    b.HasIndex("applicationUserId")
-                        .IsUnique()
-                        .HasFilter("[applicationUserId] IS NOT NULL");
+                    b.HasIndex("applicationUserId");
 
                     b.ToTable("hocVans");
                 });
@@ -643,6 +644,10 @@ namespace WEBTimViec.Migrations
 
             modelBuilder.Entity("WEBTimViec.Models.BaiTuyenDung", b =>
                 {
+                    b.HasOne("WEBTimViec.Models.ApplicationUser", "applicationUser")
+                        .WithMany("BaiTuyenDungs")
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("WEBTimViec.Models.ChuyenNganh", "chuyenNganh")
                         .WithMany()
                         .HasForeignKey("ChuyenNganh_id");
@@ -650,10 +655,6 @@ namespace WEBTimViec.Migrations
                     b.HasOne("WEBTimViec.Models.ViTriCongViec", "viTriCongViec")
                         .WithMany()
                         .HasForeignKey("ViTriCongViec_id");
-
-                    b.HasOne("WEBTimViec.Models.ApplicationUser", "applicationUser")
-                        .WithMany("BaiTuyenDungs")
-                        .HasForeignKey("applicationUserId");
 
                     b.HasOne("WEBTimViec.Models.KinhNghiem", "kinhNghiem")
                         .WithMany()
@@ -740,8 +741,8 @@ namespace WEBTimViec.Migrations
                         .IsRequired();
 
                     b.HasOne("WEBTimViec.Models.ApplicationUser", "applicationUser")
-                        .WithOne("hocVan")
-                        .HasForeignKey("WEBTimViec.Models.HocVan", "applicationUserId");
+                        .WithMany("hocVans")
+                        .HasForeignKey("applicationUserId");
 
                     b.Navigation("applicationUser");
 
@@ -786,7 +787,7 @@ namespace WEBTimViec.Migrations
 
                     b.Navigation("UngTuyens");
 
-                    b.Navigation("hocVan");
+                    b.Navigation("hocVans");
                 });
 
             modelBuilder.Entity("WEBTimViec.Models.BaiTuyenDung", b =>

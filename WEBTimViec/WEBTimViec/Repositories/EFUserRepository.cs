@@ -56,5 +56,45 @@ namespace WEBTimViec.Repositories
             var users = _userManager.Users; 
             return await users.CountAsync(); 
         }
+
+        public async Task<int> CountNewUVTodayAsync()
+        {
+            DateTime today = DateTime.Today;
+
+            var usersInRole = await _userManager.GetUsersInRoleAsync("Ứng Viên");
+
+            if (usersInRole != null && usersInRole.Any())
+            {
+                var newUsersToday = await _userManager.Users
+                    .Where(u => u.ThoiGianTao.HasValue && u.ThoiGianTao.Value.Date == today)
+                    .ToListAsync();
+
+                return newUsersToday.Count;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        public async Task<int> CountNewNTDTodayAsync()
+        {
+            DateTime today = DateTime.Today;
+
+            var usersInRole = await _userManager.GetUsersInRoleAsync("Nhà Tuyển Dụng");
+
+            if (usersInRole != null && usersInRole.Any())
+            {
+                var newUsersToday = await _userManager.Users
+                    .Where(u => u.ThoiGianTao.HasValue && u.ThoiGianTao.Value.Date == today)
+                    .ToListAsync();
+
+                return newUsersToday.Count;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
     }
 }

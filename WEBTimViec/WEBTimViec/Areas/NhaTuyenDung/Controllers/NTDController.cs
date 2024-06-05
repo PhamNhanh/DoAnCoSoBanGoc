@@ -69,6 +69,11 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
                 ThanhPhos = sortedThanhPho,
                 ChuyenNganhs = sortedChuyenNganh,
             };
+            foreach (var baiTuyenDung in viewModel.BaiTuyenDungs)
+            {
+                var applicationUser = await _context.Users.FirstOrDefaultAsync(u => u.Id == baiTuyenDung.ApplicationUserId);
+                baiTuyenDung.applicationUser = applicationUser;
+            }
             // Truyền danh sách bài tuyển dụng tới view
             return View(viewModel);
         }
@@ -207,11 +212,17 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
 
             return BadRequest(new { success = false, message = "Không tìm thấy ứng tuyển hoặc thông tin không hợp lệ." });
         }
-
         [HttpPost]
         public async Task<IActionResult> DetailsUngTuyen(IFormCollection form)
         {
             var ungTuyenList = await _ungTuyen.GetAllAsync();
+
+            if (!ungTuyenList.Any())
+            {
+                // Trả về view với thông báo nếu không có bài ứng tuyển nào trong danh sách
+                ViewBag.Message = "Không có bài ứng tuyển nào.";
+                return View();  
+            }
 
             foreach (var ungtuyen in ungTuyenList)
             {
@@ -280,7 +291,7 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
                     var find_company = await _userManager.GetUserAsync(User);
                     if (find_company != null)
                         baiTuyenDung.applicationUser = find_company;
-
+                    baiTuyenDung.TrangThai = true;
                     baiTuyenDung.ThoiGianDangBai = DateTime.Now;
                     if (baiTuyenDung.Luong_min < 0)
                     {
@@ -390,9 +401,9 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             {
                 return NotFound("Khong tim thay 1");
             }
-
+/*
             if (ModelState.IsValid)
-            {
+            {*/
                 try
                 {
                     if (image_url != null && IsImageFile(image_url) && IsFileSizeValid(image_url))
@@ -417,9 +428,9 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
                     throw new Exception(e.Message);
                 }
                 return RedirectToAction(nameof(IndexProfileNTD));
-            }
+/*            }
 
-            return View(find_company);
+            return View(find_company);*/
         }
 
         public async Task<IActionResult> DetailsHocVan(string id)
@@ -496,6 +507,44 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             }
             return "/images/" + image.FileName; // Trả về đường dẫn tương đối
         }
+        public async Task<IActionResult> DeleteBTD(int id)
+        {
+            // Tìm bài tuyển dụng theo ID
+            var baiTuyenDung = await _context.baiTuyenDungs.FirstOrDefaultAsync(b => b.BaiTuyenDung_id == id);
+
+            if (baiTuyenDung == null)
+            {
+                return NotFound();
+            }
+
+            // Cập nhật thuộc tính TrangThai thành false (0)
+            baiTuyenDung.TrangThai = false;
+
+            // Lưu thay đổi vào cơ sở dữ liệu
+            _context.baiTuyenDungs.Update(baiTuyenDung);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
+        [HttpPost, ActionName("DeleteConfirmed")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var baiTuyenDung = await _context.baiTuyenDungs.FirstOrDefaultAsync(b => b.BaiTuyenDung_id == id);
+            if (baiTuyenDung != null)
+            {
+                // Cập nhật thuộc tính TrangThai thành false (0)
+                baiTuyenDung.TrangThai = false;
+
+                // Lưu thay đổi vào cơ sở dữ liệu
+                _context.baiTuyenDungs.Update(baiTuyenDung);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(ListBaiTuyenDung));
+        }
+
 
     }
 }

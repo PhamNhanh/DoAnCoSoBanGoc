@@ -28,17 +28,18 @@
     <link rel="stylesheet" href="~/css/slick.css">
     <link rel="stylesheet" href="~/css/nice-select.css">
     <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
 </head>
 <p>
     <a href="@Url.Action("DSNhaTuyenDung", "UV", new { area = "UngVien" })" class="button">Quay lại</a>
 </p>
 <body>
     <h1 class="tieude">Thông tin nhà tuyển dụng</h1>
-@*     <div class="khung">
+    <div class="khung">
         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
             <img class="rounded-circle mt-5" width="150px" src="@Model.image_url">
         </div>
-    </div> *@
+    </div>
     <div class ="khung">
         <div class=" khungchu2">
             <p><strong>Tên công ty:</strong> @Model.NhaTuyenDung_name</p>

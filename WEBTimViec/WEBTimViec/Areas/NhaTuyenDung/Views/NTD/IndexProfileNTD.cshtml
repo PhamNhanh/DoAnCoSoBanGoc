@@ -36,12 +36,19 @@
 <body>
     <div class ="ha1">
         <div class="container">
+            <button class=" styled-button">
+                <a style="color: black;" href="@Url.Action("Index", "NTD")"> <<< </a>
+            </button>
             <div class="header">
                 <h3>Thông tin nhà tuyển dụng</h3>
             </div>
             <div class="khung">
-                <div>
-                    <img src="@Model.image_url" alt="Company Image">
+                <div class="col-md-3 border-right">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <img class="rounded-circle mt-5" width="150px" src="@Model.image_url">
+                        <span style="font-family: 'Times New Roman'" class="font-weight-bold"><h4>@Model.NhaTuyenDung_name</h4></span>
+                        <span class="text-black-50">@Model.Email</span>
+                    </div>
                 </div>
                 <div>
 

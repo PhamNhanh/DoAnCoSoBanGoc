@@ -72,7 +72,7 @@ namespace WEBTimViec.Repositories
         public async Task<IEnumerable<BaiTuyenDung>> GetBaiTuyenDungByUserIdAsync(string userId)
         {
             var baiTuyenDungByUserId = await _context.baiTuyenDungs
-                .Where(b => b.applicationUser.Id == userId)
+                .Where(b => b.applicationUser.Id == userId && b.TrangThai == true)
                 .Include(b => b.thanhPho)
                 .Include(b => b.kinhNghiem)
                 .Include(b => b.chuyenNganh)
@@ -84,6 +84,16 @@ namespace WEBTimViec.Repositories
         public async Task<int> CountBaiTuyenDungAsync()
         {
             return await _context.baiTuyenDungs.CountAsync();
+        }
+        public async Task<int> CountBaiTuyenDungTodayAsync()
+        {
+            var today = DateTime.Today;
+
+            var count = await _context.baiTuyenDungs
+                .Where(b => b.ThoiGianDangBai.Value == today)
+                .CountAsync();
+
+            return count;
         }
     }
 }

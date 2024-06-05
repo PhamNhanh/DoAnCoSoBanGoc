@@ -1,0 +1,32 @@
+﻿@model WEBTimViec.Models.BaiTuyenDung_ViTri
+
+@{
+    ViewData["Title"] = "DeleteBTD";
+}
+
+<h1>DeleteBTD</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>BaiTuyenDung_ViTri</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.baiTuyenDung)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.baiTuyenDung.BaiTuyenDung_id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.viTriCongViec)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.viTriCongViec.ViTriCongViec_id)
+        </dd>
+    </dl>
+    
+    <form asp-action="DeleteConfirmed">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+    </form>
+</div>

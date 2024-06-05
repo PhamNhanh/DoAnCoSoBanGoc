@@ -31,18 +31,30 @@
     <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
 </head>
 <body>
-    <div>
-        <div class="khung">
-            <h1 class="tieude">Thông tin ứng viên</h1>
-            <div class="khungchu2">
-                <p> <strong>  Tên ứng viên:</strong>@Model.FullName</p>
-                <p> <strong>  Email: </strong> @Model.Email</p>
-                <p><strong>  Số điện thoại: </strong> @Model.SDT_UngVien</p>
-                <p> <strong>  Địa chỉ: </strong> @Model.DiaChi</p>
-                <p> <strong>  Ngày sinh: </strong>@Model.NgaySinh</p>
-                <p> <strong>  Giới thiệu bản thân: </strong>@Model.TuGioiThieu</p>
+    <button class=" styled-button">
+        <a style="color: black;" href="@Url.Action("DSUngVien", "NTD")"> <<< </a>
+    </button>
+    
+    <div class="khung">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img class="rounded-circle mt-5" width="150px" src="@Model.image_url">
+                    <span style="font-family: 'Times New Roman'" class="font-weight-bold"><h4>@Model.FullName</h4></span>
+                    <span class="text-black-50">@Model.Email</span>
+                </div>
+            </div>
+            <!-- Cột chứa thông tin bên phải -->
+            <div class="col-md-9">
+                <div class="khungchu2">
+                    <p><strong>Tên ứng viên:</strong> @Model.FullName</p>
+                    <p><strong>Email:</strong> @Model.Email</p>
+                    <p><strong>Số điện thoại:</strong> @Model.SDT_UngVien</p>
+                    <p><strong>Địa chỉ:</strong> @Model.DiaChi</p>
+                    <p><strong>Ngày sinh:</strong> @Model.NgaySinh</p>
+                    <p><strong>Giới thiệu bản thân:</strong> @Model.TuGioiThieu</p>
+                </div>
             </div>
         </div>
     </div>
-
 </body>

@@ -28,73 +28,94 @@
     <link rel="stylesheet" href="~/css/slick.css">
     <link rel="stylesheet" href="~/css/nice-select.css">
     <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
 </head>
-<h1>Cập nhật thông tin Profile </h1>
+<button class=" styled-button">
+    <a style="color: black;" href="@Url.Action("IndexProfile", "UV")"> <<< </a>
+</button>
 
-<div class="container-fluid bg-white mt-5 mb-5">
-    <div class="row">
-        <form asp-action="UpdateProfileUV" method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+<h1 class=" tieude">Cập nhật thông tin Profile </h1>
+<div class="khung">
 
-            <div class="col-md-5 border-right">
-                <div class="p-3 py-5">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h3 style="font-family: 'Times New Roman'" class="text-right">Thông tin nhà tuyển dụng</h3>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6">
-                            <label asp-for="FullName" style="font-family: 'Times New Roman'; font-size: 20px" class="control-label">Tên ứng viên</label>
-                            <input asp-for="FullName" style="font-family: 'Times New Roman'; font-size: 18px" class="form-control" value="@Model.FullName" />
-                            <span asp-validation-for="FullName" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-6">
-                            <label asp-for="SDT_UngVien" style="font-family: 'Times New Roman'; font-size: 20px" class="control-label">Số điện thoại ứng viên</label>
-                            <input asp-for="SDT_UngVien" style="font-family: 'Times New Roman'; font-size: 18px" class="form-control" />
-                            <span asp-validation-for="SDT_UngVien" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-12">
-                            <label asp-for="DiaChi" style="font-family: 'Times New Roman'; font-size: 20px" class="control-label">Địa chỉ</label>
-                            <input asp-for="DiaChi" style="font-family: 'Times New Roman'; font-size: 18px" class="form-control" />
-                            <span asp-validation-for="DiaChi" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label asp-for="NgaySinh" style="font-family: 'Times New Roman'; font-size: 20px" class="control-label">Ngày sinh</label>
-                        <input type="date" asp-for="NgaySinh" style="font-family: 'Times New Roman'; font-size: 18px" class="form-control" />
-                        <span asp-validation-for="NgaySinh" class="text-danger"></span>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-6">
-                            <label asp-for="Email" style="font-family: 'Times New Roman'; font-size: 20px" class="control-label">Email</label>
-                            <input asp-for="Email" style="font-family: 'Times New Roman'; font-size: 18px" class="form-control" />
-@*                             <span asp-validation-for="Email" class="text-danger"></span> *@
-                        </div>
-                        <div class="col-md-12">
-                            <label asp-for="TuGioiThieu" style="font-family: 'Times New Roman'; font-size: 20px">Giới thiệu bản thân</label>
-                            <input asp-for="TuGioiThieu" style="font-family: 'Times New Roman'; font-size: 18px" class="form-control" />
-                            <span asp-validation-for="TuGioiThieu" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="image_url">Avatar</label>
-                            @if (!string.IsNullOrEmpty(Model.image_url))
-                            {
-                                <img src="@Model.image_url" alt="Logo công ty" style="max-width:200px; cursor:pointer;" id="previewImage" />
-                                <input type="file" id="image_url" name="image_url" class="form-control" accept="image/*" style="display:none;" onchange="previewFile(this);" />
-                            }
-                            else
-                            {
-                                <input type="file" id="image_url" name="image_url" class="form-control" accept="image/*" onchange="previewFile(this);" />
-                            }
-                            <span asp-validation-for="image_url" class="text-danger"></span>
-                        </div>
+    <form asp-action="UpdateProfileUV" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
 
-                    </div>
-                    <div class="mt-5 text-center">
-                        <button type="submit" class="btn btn-primary">Lưu</button>
-                    </div>
-                </div>
+        <div class="info-section">
+            <h3 style="font-family: 'Times New Roman'" class="text-right">Thông tin ứng viên</h3>
+        </div>
+        <div class="info-section">
+            <div class="info-item1">
+                <label asp-for="FullName" class="control-label">Họ và tên</label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
             </div>
-        </form>
-    </div>
+            <div class="info-item1">
+                <label asp-for="SDT_UngVien" class="control-label">Số điện thoại</label>
+                <input asp-for="SDT_UngVien" class="form-control" />
+                <span asp-validation-for="SDT_UngVien" class="text-danger"></span>
+            </div>
+            <div class="info-item1">
+                <label asp-for="DiaChi" class="control-label">Địa chỉ</label>
+                <input asp-for="DiaChi" class="form-control" />
+                <span asp-validation-for="DiaChi" class="text-danger"></span>
+            </div>
+            <div class="info-item1">
+                <label asp-for="NgaySinh" class="control-label">Ngày sinh</label>
+                <input type="date" asp-for="NgaySinh" class="form-control" />
+                <span asp-validation-for="NgaySinh" class="text-danger"></span>
+            </div>
+@*             <div class="info-item1">
+                <label asp-for="Email" class="control-label">Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div> *@
+            <div class="info-item1">
+                <label asp-for="TuGioiThieu" class="control-label">Giới thiệu bản thân</label>
+                <input asp-for="TuGioiThieu" class="form-control" />
+                <span asp-validation-for="TuGioiThieu" class="text-danger"></span>
+            </div>
+            <div class="info-item1">
+                <label for="image_url">Avatar</label>
+                @if (!string.IsNullOrEmpty(Model.image_url))
+                {
+                    <img src="@Model.image_url" alt="Ảnh đại diện" style="max-width:200px; cursor:pointer;" id="previewImage" onclick="changeImage()" />
+                    <input type="file" id="image_url" name="image_url" class="form-control" accept="image/*" style="display:none;" onchange="previewFile(this);" />
+                }
+                else
+                {
+                    <input type="file" id="image_url" name="image_url" class="form-control" accept="image/*" onchange="previewFile(this);" />
+                }
+                <span asp-validation-for="image_url" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="mt-5 text-center">
+            <button type="submit" class="btn btn-primary">Lưu</button>
+        </div>
+    </form>
 </div>
+
+<script>
+    function changeImage() {
+        var inputFile = document.getElementById('image_url');
+        inputFile.click();
+    }
+
+    function previewFile(input) {
+        var file = input.files[0];
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            var previewImage = document.getElementById('previewImage');
+            previewImage.src = e.target.result;
+        }
+
+        reader.readAsDataURL(file);
+    }
+</script>
+
+
+
+
+

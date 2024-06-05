@@ -121,6 +121,10 @@
       "PackagePath": "staticwebassets\\filecv\\60e2f634-12cd-4115-b5ac-663e66360525.pdf"
     },
     {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\filecv\\76a4d763-fb2c-44c2-b01f-9af0838f84fd.pdf",
+      "PackagePath": "staticwebassets\\filecv\\76a4d763-fb2c-44c2-b01f-9af0838f84fd.pdf"
+    },
+    {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\filecv\\787f116e-7d89-4745-86cc-51e0981e3543.pdf",
       "PackagePath": "staticwebassets\\filecv\\787f116e-7d89-4745-86cc-51e0981e3543.pdf"
     },
@@ -135,6 +139,10 @@
     {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\filecv\\a2fc58da-5112-44dd-84d3-c3c07aa08b75.pdf",
       "PackagePath": "staticwebassets\\filecv\\a2fc58da-5112-44dd-84d3-c3c07aa08b75.pdf"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\filecv\\aaa923aa-5e72-4483-8dff-afb983dd9ac9.pdf",
+      "PackagePath": "staticwebassets\\filecv\\aaa923aa-5e72-4483-8dff-afb983dd9ac9.pdf"
     },
     {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\filecv\\b06a9cbd-3c2c-4653-8cd3-6398046cade6.pdf",
@@ -181,6 +189,10 @@
       "PackagePath": "staticwebassets\\images\\1.png"
     },
     {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\AvtChuong.png",
+      "PackagePath": "staticwebassets\\images\\AvtChuong.png"
+    },
+    {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\Background.jpg",
       "PackagePath": "staticwebassets\\images\\Background.jpg"
     },
@@ -189,12 +201,28 @@
       "PackagePath": "staticwebassets\\images\\BrXanh.png"
     },
     {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\CongTyDulux.png",
+      "PackagePath": "staticwebassets\\images\\CongTyDulux.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\CongTyIntel.jpg",
+      "PackagePath": "staticwebassets\\images\\CongTyIntel.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\CongTySamSung.jpg",
+      "PackagePath": "staticwebassets\\images\\CongTySamSung.jpg"
+    },
+    {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\Logo.jpg",
       "PackagePath": "staticwebassets\\images\\Logo.jpg"
     },
     {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\Nen.jpg",
       "PackagePath": "staticwebassets\\images\\Nen.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\Phiếu+đăng+ký+đề+tài_+Phạm+Hoa+Nhanh_1 - Copy.jpg",
+      "PackagePath": "staticwebassets\\images\\Phiếu+đăng+ký+đề+tài_+Phạm+Hoa+Nhanh_1 - Copy.jpg"
     },
     {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\about\\about_lft.png",
@@ -623,6 +651,14 @@
     {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\testmonial\\testimonial-founder.png",
       "PackagePath": "staticwebassets\\images\\testmonial\\testimonial-founder.png"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\z5465874947453_e2c0c54021836e571bf2f3984ce7719e.jpg",
+      "PackagePath": "staticwebassets\\images\\z5465874947453_e2c0c54021836e571bf2f3984ce7719e.jpg"
+    },
+    {
+      "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\z5465875618471_0fea9ee80549028e367a5ad1ea54c109.jpg",
+      "PackagePath": "staticwebassets\\images\\z5465875618471_0fea9ee80549028e367a5ad1ea54c109.jpg"
     },
     {
       "Id": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\images\\Ảnh chụp màn hình 2024-02-28 124746.png",

@@ -12,5 +12,6 @@ namespace WEBTimViec.Repositories
         Task DeleteAsync(int id);
         Task<IEnumerable<BaiTuyenDung>> GetBaiTuyenDungByUserIdAsync(string userId);
         Task<int> CountBaiTuyenDungAsync();
+        Task<int> CountBaiTuyenDungTodayAsync();
     }
 }

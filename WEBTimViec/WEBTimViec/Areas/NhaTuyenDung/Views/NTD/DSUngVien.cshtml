@@ -31,6 +31,9 @@
     <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
 </head>
 <body>
+    <button class=" styled-button">
+        <a style="color: black;" href="@Url.Action("Index", "NTD")"> <<< </a>
+    </button>
     <div class="khung3">
         <h1 class="tieude">Danh sách ứng viên</h1>
         <table class="table table-striped">
@@ -41,7 +44,6 @@
                     <th>Địa chỉ</th>
                     <th>Điện thoại</th>
                     <th>Ngày sinh</th>
-                    <th>Tự giới thiệu</th>
                     <th>Thêm</th>
                 </tr>
             </thead>
@@ -49,12 +51,12 @@
                 @foreach (var ungvien in Model)
                 {
                     <tr>
+
                         <td>@ungvien.FullName</td>
                         <td>@ungvien.Email</td>
                         <td>@ungvien.DiaChi</td>
                         <td>@ungvien.SDT_UngVien</td>
                         <td>@ungvien.NgaySinh</td>
-                        <td>@ungvien.TuGioiThieu</td>
                         <td>
                             <a href="@Url.Action("IndexProfileUV", "NTD", new { id = ungvien.Id })" class="btn btn-info">Chi tiết</a>
                         </td>
@@ -62,7 +64,7 @@
                 }
             </tbody>
         </table>
-        <a href="@Url.Action("Index")" class="btn btn-primary">Quay lại</a>
+     
     </div>
 </body>
 </html>

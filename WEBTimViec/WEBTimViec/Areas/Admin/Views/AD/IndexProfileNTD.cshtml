@@ -1,0 +1,89 @@
+﻿@model WEBTimViec.Models.ApplicationUser
+@{
+    ViewData["Title"] = "Thông tin nhà tuyển dụng";
+}
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> JobPlus </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="~/css/normalize.min.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/flaticon.css">
+    <link rel="stylesheet" href="~/css/price_rangs.css">
+    <link rel="stylesheet" href="~/css/slicknav.css">
+    <link rel="stylesheet" href="~/css/animate.min.css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/css/themify-icons.css">
+    <link rel="stylesheet" href="~/css/slick.css">
+    <link rel="stylesheet" href="~/css/nice-select.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
+</head>
+<body>
+    <div class="ha1">
+        <div class="container">
+            <div class="header">
+                <h3>Thông tin nhà tuyển dụng</h3>
+            </div>
+            <div class="khung">
+                <div class="col-md-3 border-right">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <img class="rounded-circle mt-5" width="150px" src="@Model.image_url">
+                        <span style="font-family: 'Times New Roman'" class="font-weight-bold"><h4>@Model.NhaTuyenDung_name</h4></span>
+                        <span class="text-black-50">@Model.Email</span>
+                    </div>
+                </div>
+                <div>
+
+                    <div class="info-section">
+                        <div class="info-item">
+                            <label>Tên công ty</label>
+                            <div class="custom-background">@Model.NhaTuyenDung_name</div>
+                        </div>
+                        <div class="info-item">
+                            <label>SDT công ty</label>
+                            <div class="custom-background">@Model.SDTNhaTuyenDung</div>
+                        </div>
+                        <div class="info-item">
+                            <label>Website công ty</label>
+                            <div class="custom-background">@Model.Website</div>
+                        </div>
+                        <div class="info-item">
+                            <label>Tên cá nhân</label>
+                            <div class="custom-background">@Model.FullName</div>
+                        </div>
+                        <div class="info-item">
+                            <label>Địa điểm công ty</label>
+                            <div class="custom-background">
+                                @Model.DiaChi
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <label>Giới thiệu về công ty</label>
+                            <textarea readonly class="custom-background">@Model.GioiThieuNhaTuyenDung</textarea>
+                        </div>
+                    </div>
+                    <div class="edit-link">
+                        <a href="@Url.Action("UpdateProfileNTD", new { id = Model.Id })">Chỉnh sửa thông tin</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

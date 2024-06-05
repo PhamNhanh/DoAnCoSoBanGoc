@@ -86,5 +86,15 @@ namespace WEBTimViec.Repositories
         {
             return await _context.ungTuyens.CountAsync();
         }
+        public async Task<int> CountUngTuyenTodayAsync()
+        {
+            var today = DateTime.Today;
+            var count = await _context.ungTuyens
+                .Where(ut => ut.ThoiGianUngTuyen.Value == today)
+                .CountAsync();
+
+            return count;
+        }
+
     }
 }

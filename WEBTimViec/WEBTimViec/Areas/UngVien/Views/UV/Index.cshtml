@@ -33,7 +33,10 @@
     <link rel="stylesheet" href="~/css/BaiTuyenDung.css">
 </head>
 <body>
-    <div>
+    <div class="khung">
+
+
+    <div >
 
         <div class="slider-area ">
             <div class="slider-active">
@@ -184,8 +187,11 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h3 class="card-title">@baiTuyenDung.TenCongViec</h3>
+@*                                         <p>@baiTuyenDung.applicationUser.FullName</p> *@
+                                        <p class ="card-text"><strong>Công ty: </strong>@baiTuyenDung.applicationUser.NhaTuyenDung_name</p>
+
                                       @*   <p class="card-text"><strong>Mô tả công việc:</strong> @baiTuyenDung.MoTaCongViec</p> *@
-                                        <p class="card-text"><strong>Yêu cầu kỹ năng:</strong> @baiTuyenDung.YeuCauKyNang</p>
+                                        <p class="card-text overflow-ellipsis"><strong>Yêu cầu kỹ năng:</strong> @baiTuyenDung.YeuCauKyNang</p>
                                         @* <p class="card-text"><strong>Phúc lợi:</strong> @baiTuyenDung.PhucLoi</p> *@
                                         <p class="card-text"><strong>Thành phố làm việc:</strong> @baiTuyenDung.thanhPho.ThanhPho_name</p>
                                         <p class="card-text"><strong>Lương:</strong> @baiTuyenDung.Luong_min - @baiTuyenDung.Luong_max triệu đồng</p>
@@ -201,5 +207,5 @@
             </div>
         </div>
     </div>
-
+    </div>
 </body>
