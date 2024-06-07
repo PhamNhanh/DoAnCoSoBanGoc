@@ -8,7 +8,6 @@ using WEBTimViec.Models;
 using WEBTimViec.Repositories;
 using System.Linq;
 
-
 namespace WEBTimViec.Controllers
 {
     public class HomeController : Controller
@@ -71,30 +70,35 @@ namespace WEBTimViec.Controllers
             viewModel.ThanhPhos = thanhPho;
             viewModel.ChuyenNganhs = chuyenNganh;
 
+            // Tạo query tìm kiếm bài tuyển dụng
+            var query = _context.baiTuyenDungs.AsQueryable();
+
+            // Tìm kiếm theo tên công việc
+            if (!string.IsNullOrEmpty(viewModel.JobName))
+            {
+                query = query.Where(b => b.TenCongViec.Contains(viewModel.JobName));
+            }
+
             // Nếu người dùng đã chọn thành phố
             if (viewModel.ThanhPhoId != null)
             {
-                // Tìm kiếm bài tuyển dụng dựa trên thành phố
-                var query = _context.baiTuyenDungs.Where(b => b.thanhPhoId == viewModel.ThanhPhoId);
-
-                // Nếu người dùng đã chọn chuyên ngành
-                if (viewModel.chuyenNganhId != null)
-                {
-                    // Lọc kết quả theo chuyên ngành
-/*                    query = query.Where(b => b.baiTuyenDung_ChuyenNganhs.Id == viewModel.chuyenNganhId);*/
-                }
-
-                // Gán danh sách bài tuyển dụng vào view model
-                viewModel.BaiTuyenDungs = await query.ToListAsync();
+                // Lọc kết quả theo thành phố
+                query = query.Where(b => b.thanhPhoId == viewModel.ThanhPhoId);
             }
-            else
+
+/*            // Nếu người dùng đã chọn chuyên ngành
+            if (viewModel.chuyenNganhId != null)
             {
-                // Nếu không có thành phố được chọn, hiển thị tất cả các bài tuyển dụng
-                viewModel.BaiTuyenDungs = await _context.baiTuyenDungs.ToListAsync();
-            }
+                // Lọc kết quả theo chuyên ngành
+                query = query.Where(b => b.ChuyenNganhIds == viewModel.chuyenNganhId);
+            }*/
+
+            // Gán danh sách bài tuyển dụng vào view model
+            viewModel.BaiTuyenDungs = await query.ToListAsync();
 
             return View(viewModel);
         }
+
         public async Task<IActionResult> DetailsNhaTuyenDung(string id)
         {
             if (id == null)
@@ -339,74 +343,6 @@ namespace WEBTimViec.Controllers
             return View(listnhatuyendung);
         }
 
-        /*public async Task<IActionResult> IndexProfileNTD()
-        {
-            var find_company = await _userManager.GetUserAsync(User);
-            if (find_company != null)
-            {
-                return View(find_company);
-            }
-            else
-            {
-                return NotFound();
-            }
-
-        }
-        public async Task<IActionResult> UpdateProfileNTD()
-        {
-            var find_company = await _userManager.GetUserAsync(User);
-            return View(find_company);
-        }
-
-        [HttpPost]
-*//*        [ValidateAntiForgeryToken]*//*
-        public async Task<IActionResult> UpdateProfileNTD(string id, ApplicationUser company, IFormFile image_url)
-        {
-            var find_company = await _userManager.GetUserAsync(User);
-
-            if (find_company != null && id != find_company.Id)
-            {
-                return NotFound();
-            }
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    if (ModelState.IsValid)
-                    {
-                        if (company != null && find_company != null)
-                        {
-                            if (image_url != null && IsImageFile(image_url) && IsFileSizeValid(image_url))
-                            {
-                                // Lưu hình ảnh đại diện
-                                find_company.image_url = await SaveImage(image_url);
-                            }
-                           *//* find_company.NhaTuyenDung_name = company.NhaTuyenDung_name;
-                            find_company.DiaChi = company.DiaChi;
-                            find_company.FullName = company.FullName;
-                            find_company.SDTNhaTuyenDung = company.SDTNhaTuyenDung;
-                            find_company.Email = company.Email;*//*
-                            find_company.ThoiGianCapNhat = DateTime.Now;
-                          *//*  find_company.Website = company.Website;
-                            find_company.GioiThieuNhaTuyenDung = company.GioiThieuNhaTuyenDung;*//*
-                            await _userManager.UpdateAsync(find_company);
-                        }
-                    }
-                }
-                catch
-                {
-                    return NotFound();
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(find_company);
-        }
-        private bool IsImageFile(IFormFile file)
-        {
-            // Kiểm tra phần mở rộng của file có phải là ảnh hay không
-            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
-            var fileExtension = Path.GetExtension(file.FileName).ToLowerInvariant();
-            return allowedExtensions.Contains(fileExtension);
-        }*/
+        
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-
 namespace WEBTimViec.Models
 {
     public class ViewModel
@@ -32,6 +31,8 @@ namespace WEBTimViec.Models
         public TruongDaiHoc? truongDaiHoc { get; set; }
         [NotMapped]
         public int? truongDaiHocId { get; set; }
+        [NotMapped]
+        public string JobName { get; set; }
 
     }
 }

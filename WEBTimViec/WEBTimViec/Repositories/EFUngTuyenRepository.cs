@@ -73,7 +73,7 @@ namespace WEBTimViec.Repositories
         public async Task<IEnumerable<UngTuyen>> GetUngTuyenByBaiTuyenDungIdAsync(int id)
         {
             return await _context.ungTuyens
-                .Where(u => u.BaiTuyenDungid == id)
+                .Where(u => u.BaiTuyenDungid == id && u.BaiTuyenDung.TrangThai == true)
                 .ToListAsync();
         }
         public async Task<IEnumerable<UngTuyen>> GetUngTuyenByUserIdAsync(string id)

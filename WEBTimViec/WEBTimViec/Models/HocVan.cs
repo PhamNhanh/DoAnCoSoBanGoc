@@ -14,9 +14,8 @@ namespace WEBTimViec.Models
         public int TruongDaiHocid { get; set; }
         public ApplicationUser? applicationUser { get; set; }
         public string? applicationUserId { get; set; }
-        public List<HocVan_ChuyenNganh>? hocVan_ChuyenNganhs { get; set; }
-
-        [NotMapped]
-        public List<int>? ChuyenNganhIds { get; set; } 
+ 
+        public ChuyenNganh? chuyenNganhs { get; set; } 
+        public int? chuyenNganhId { get; set; }
     }
 }

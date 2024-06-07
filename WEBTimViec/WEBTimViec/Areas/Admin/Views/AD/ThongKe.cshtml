@@ -46,7 +46,7 @@
                     <canvas id="thongKeChart" width="400" height="200"></canvas>
                 </div>
             </div>
-            <div class="col">
+@*             <div class="col">
                 <div>
                     <h2 class="tieude">
                         Biểu đồ thống kê hôm nay
@@ -55,7 +55,7 @@
                 <div>
                     <canvas id="thongKeChartToday" width="400" height="200"></canvas>
                 </div>
-            </div>
+            </div> *@
 
         </div>
         <div class="row">
@@ -129,37 +129,7 @@
             });
 
 
-            var ctxToday = document.getElementById('thongKeChartToday').getContext('2d');
-            var thongKeChartToday = new Chart(ctxToday, {
-                type: 'bar',
-                data: {
-                    labels: ['Nhà tuyển dụng', 'Ứng viên', 'Bài tuyển dụng', 'Bài ứng tuyển'],
-                    datasets: [{
-                        label: 'Thống kê hôm nay',
-                        data: [@Model.slntdinday, @Model.sluvinday, @Model.slbtdinday, @Model.slbaiutinday],
-                        backgroundColor: [
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(153, 102, 255, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(153, 102, 255, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
+           
             var ctxDonut = document.getElementById('donutChart').getContext('2d');
             var donutChart = new Chart(ctxDonut, {
                 type: 'doughnut',

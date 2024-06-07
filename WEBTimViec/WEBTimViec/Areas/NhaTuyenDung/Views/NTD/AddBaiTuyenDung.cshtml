@@ -170,19 +170,3 @@
     </div>
 </body>
 </html>
-<script>
-    $(document).ready(function () {
-        // Kiểm tra khi giá trị của Luong_min thay đổi
-        $('#Luong_min').change(function () {
-            var luong_min = parseFloat($(this).val());
-            if (isNaN(luong_min) || luong_min < 0) {
-                alert('Lương từ không được âm.');
-                $(this).val(''); // Xóa giá trị nếu âm
-                return;
-            }
-
-            // Cập nhật giá trị của Luong_max
-            $('#Luong_max').val(luong_min);
-        });
-    });
-</script>

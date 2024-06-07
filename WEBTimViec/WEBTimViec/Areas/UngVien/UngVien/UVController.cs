@@ -80,66 +80,51 @@ namespace WEBTimViec.Areas.UngVien.UngVien
         public async Task<IActionResult> IndexHocVan(string id)
         {
             var find_user = await _userManager.FindByIdAsync(id);
+            var truongdaihoc = await _truongDaiHoc.GetAllAsync();
+            var chuyennganh = await _chuyenNganh.GetAllAsync();
             if (find_user != null)
             {
-                var truongDaiHoc = await _truongDaiHoc.GetAllAsync();
-                var chuyenNganh = await _chuyenNganh.GetAllAsync();
+                // Lấy danh sách học vấn của người dùng dựa trên ID của họ
                 var hocVanList = await _hocVan.GetByIdUserAsync(find_user.Id);
-                var hocVan = hocVanList.FirstOrDefault(); 
-                return View(hocVan);
+                return View(hocVanList);
+
             }
             else
             {
                 return NotFound();
             }
-        }
-        [HttpGet]
-        public async Task<IActionResult> AddHocVan()
-        {
 
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AddEducation()
+        {
             var chuyenNganh = await _chuyenNganh.GetAllAsync();
             var truongDaiHoc = await _truongDaiHoc.GetAllAsync();
             ViewBag.ChuyenNganh = new SelectList(chuyenNganh, "ChuyenNganh_id", "ChuyenNganh_name");
             ViewBag.TruongDaiHoc = new SelectList(truongDaiHoc, "TruongDaiHoc_id", "TruongDaiHoc_name");
             return View();
         }
+
         [HttpPost]
-        public async Task<IActionResult> AddHocVan(HocVan hocVan)
+        public async Task<IActionResult> AddEducation(HocVan hocVan)
         {
             var find_user = await _userManager.GetUserAsync(User);
             if (find_user == null)
-            {//Khó xảy ra vì đã chuyển hướng từ phân quyền
+            {
                 return NotFound("Chưa đăng nhập");
             }
             if (ModelState.IsValid)
             {
                 try
                 {
-                    if (ModelState.IsValid)
-                    {
-                        if (find_user != null)
-                        {
-                            var chuyenNganh = await _chuyenNganh.GetAllAsync();
-                            var truongDaiHoc = await _truongDaiHoc.GetAllAsync();
-                            ViewBag.ChuyenNganh = new SelectList(chuyenNganh, "ChuyenNganh_id", "ChuyenNganh_name");
-                            ViewBag.TruongDaiHoc = new SelectList(truongDaiHoc, "TruongDaiHoc_id", "TruongDaiHoc_name");
-                            await _hocVan.AddAsync(hocVan);
-                        }
-                        if (hocVan.ChuyenNganhIds != null)
-                        {
-                            foreach (var chuyenNganhId in hocVan.ChuyenNganhIds)
-                            {
-                                var hocVan_ChuyenNganh = new HocVan_ChuyenNganh
-                                {
-                                    HocVanId = hocVan.HocVan_id,
-                                    ChuyenNganhid = chuyenNganhId
-                                };
-                                _context.hocvan_ChuyenNganhs.Add(hocVan_ChuyenNganh);
-                            }
-                            await _context.SaveChangesAsync();
-                        }
-                    }
 
+                    var chuyenNganh = await _chuyenNganh.GetAllAsync();
+                    var truongDaiHoc = await _truongDaiHoc.GetAllAsync();
+                    ViewBag.ChuyenNganh = new SelectList(chuyenNganh, "ChuyenNganh_id", "ChuyenNganh_name");
+                    ViewBag.TruongDaiHoc = new SelectList(truongDaiHoc, "TruongDaiHoc_id", "TruongDaiHoc_name");
+                    hocVan.applicationUserId = find_user.Id;
+                    await _hocVan.AddAsync(hocVan);
                 }
                 catch
                 {
@@ -149,75 +134,75 @@ namespace WEBTimViec.Areas.UngVien.UngVien
             }
             return View(find_user);
         }
-        public async Task<IActionResult> UpdateHocVan(string id)
-        {
-            return View();
-        }
 
+        [HttpGet]
+        public async Task<IActionResult> UpdateEducation(int id)
+        {
+            var education = await _hocVan.GetByIdAsync(id);
+            var major = await _chuyenNganh.GetAllAsync();
+            var university = await _truongDaiHoc.GetAllAsync();
+            ViewBag.Majors = new SelectList(major, "ChuyenNganh_id", "ChuyenNganh_name");
+            ViewBag.Universities = new SelectList(university, "TruongDaiHoc_id", "TruongDaiHoc_name");
+
+            return View(education);
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> UpdateHocVan(string id, HocVan hocVan)
+        public async Task<IActionResult> UpdateEducation(int id, [Bind("applicationUserId, GPA, NgayBatDau, NgayTotNghiep, TruongDaiHocid")] HocVan hocVan)
         {
-
-            try
-            {
-                var existingHocVan = await _hocVan.GetByIdUserAsync(hocVan.applicationUserId);
-
-                if (existingHocVan == null)
-                {
-                    // Nếu không có học vấn cho id này, thêm mới
-                    await _hocVan.AddAsync(hocVan);
-                }
-                else
-                {
-                    // Nếu đã có học vấn, cập nhật thông tin
-                    await _hocVan.UpdateAsync(hocVan);
-                }
-
-                return RedirectToAction(nameof(IndexHocVan), new { id = hocVan.applicationUserId });
+            var find_user = await _userManager.GetUserAsync(User);
+            if (find_user == null)
+            {//Khó xảy ra vì đã chuyển hướng từ phân quyền
+                return NotFound("Chưa đăng nhập");
             }
-            catch (Exception)
+            var find_education = await _hocVan.GetByIdAsync(id);
+            if (find_education == null || hocVan == null)
             {
-                // Xử lý lỗi nếu cần
-                throw;
+                return NotFound("Id education không hợp lệ");
             }
+                if (find_user != null)
+                {
+                    hocVan.applicationUserId = find_user.Id;
+                    find_education.GPA = hocVan.GPA;
+                    find_education.NgayBatDau = hocVan.NgayBatDau;
+                    find_education.NgayTotNghiep = hocVan.NgayTotNghiep;
+                    find_education.TruongDaiHocid = hocVan.TruongDaiHocid;
+                    var majors = await _chuyenNganh.GetAllAsync();
+                    var universities = await _truongDaiHoc.GetAllAsync();
+                    ViewBag.Majors = new SelectList(majors, "ChuyenNganh_id", "ChuyenNganh_name");
+                    ViewBag.Universities = new SelectList(universities, "TruongDaiHoc_id", "TruongDaiHoc_name");
 
-
+                    await _hocVan.UpdateAsync(find_education);
+                return RedirectToAction("IndexHocVan", new { id = find_user.Id });
+            }
+            return View(find_education);
         }
-
         [HttpGet]
         public async Task<IActionResult> TimKiem(ViewModel viewModel)
         {
             // Lấy danh sách thành phố và chuyên ngành để hiển thị trên form
-            var baiTuyenDungs = await _context.baiTuyenDungs.ToListAsync();
-            var thanhPho = await _thanhPho.GetAllAsync();
-            var sortedThanhPho = thanhPho.OrderBy(tp => tp.ThanhPho_name).ToList(); var chuyenNganh = await _chuyenNganh.GetAllAsync();
-            var sortedChuyenNganh = chuyenNganh.OrderBy(cn => cn.ChuyenNganh_name).ToList();
-            var chuyenNganhs = await _context.chuyenNganhs.ToListAsync();
-            viewModel.ThanhPhos = sortedThanhPho;
-            viewModel.ChuyenNganhs = sortedChuyenNganh;
+            var thanhPho = await _context.thanhPhos.ToListAsync();
+            var chuyenNganh = await _context.chuyenNganhs.ToListAsync();
+            viewModel.ThanhPhos = thanhPho;
+            viewModel.ChuyenNganhs = chuyenNganh;
+
+            // Tạo query tìm kiếm bài tuyển dụng
+            var query = _context.baiTuyenDungs.AsQueryable();
+
+            // Tìm kiếm theo tên công việc
+            if (!string.IsNullOrEmpty(viewModel.JobName))
+            {
+                query = query.Where(b => b.TenCongViec.Contains(viewModel.JobName));
+            }
 
             // Nếu người dùng đã chọn thành phố
             if (viewModel.ThanhPhoId != null)
             {
-                // Tìm kiếm bài tuyển dụng dựa trên thành phố
-                var query = _context.baiTuyenDungs.Where(b => b.thanhPhoId == viewModel.ThanhPhoId);
-
-                // Nếu người dùng đã chọn chuyên ngành
-                if (viewModel.chuyenNganhId != null)
-                {
-                    // Lọc kết quả theo chuyên ngành
-                    query = query.Where(b => b.chuyenNganh.ChuyenNganh_id == viewModel.chuyenNganhId);
-                }
-
-                // Gán danh sách bài tuyển dụng vào view model
-                viewModel.BaiTuyenDungs = await query.ToListAsync();
+                // Lọc kết quả theo thành phố
+                query = query.Where(b => b.thanhPhoId == viewModel.ThanhPhoId);
             }
-            else
-            {
-                // Nếu không có thành phố được chọn, hiển thị tất cả các bài tuyển dụng
-                viewModel.BaiTuyenDungs = await _context.baiTuyenDungs.ToListAsync();
-            }
+
+            viewModel.BaiTuyenDungs = await query.ToListAsync();
 
             return View(viewModel);
         }
@@ -259,13 +244,39 @@ namespace WEBTimViec.Areas.UngVien.UngVien
             // Lấy danh sách ứng tuyển dựa trên IdBaiTuyenDung
             var ungTuyenList = await _ungTuyen.GetUngTuyenByBaiTuyenDungIdAsync(id);
             var nhaTuyenDung = await _userRepository.GetAllAsync();
+
+            // Kiểm tra nếu danh sách ứng tuyển là null hoặc không có bản ghi nào
             if (ungTuyenList == null || !ungTuyenList.Any())
             {
-                return NotFound();
+                // Trả về NotFound nếu không có bài ứng tuyển nào
+                return NotFound("Không có bài ứng tuyển nào.");
             }
 
             return View(ungTuyenList);
         }
+
+
+
+
+
+
+
+        public async Task<IActionResult> DeleteEducation(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var education = await _hocVan.GetByIdAsync(id);
+            if (education == null)
+            {
+                return NotFound();
+            }
+            await _hocVan.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
+
         public async Task<IActionResult> DetailsBaiTuyenDung(int id)
         {
             {
@@ -313,10 +324,15 @@ namespace WEBTimViec.Areas.UngVien.UngVien
         {
             var baiTuyenDung = await _baiTuyenDung.GetAllAsync();
             var danhSachNhaTuyenDung = await _userRepository.GetAllCompanyAsync();
+
+            // Lọc những bài tuyển dụng có TrangThai=true
+            var baiTuyenDungTrangThaiTrue = baiTuyenDung.Where(bai => bai.TrangThai == true).ToList();
+
             ViewBag.NhaTuyenDung = danhSachNhaTuyenDung;
 
-            return View(baiTuyenDung);
+            return View(baiTuyenDungTrangThaiTrue);
         }
+
         [HttpGet]
         public async Task<IActionResult> UngTuyen(int Id)
         {

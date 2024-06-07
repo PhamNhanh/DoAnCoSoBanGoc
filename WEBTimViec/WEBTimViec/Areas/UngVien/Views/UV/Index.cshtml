@@ -137,16 +137,15 @@
                     </div>
                     <form action="@Url.Action("TimKiem", "UV")" method="get">
                         <div class="row g-2">
-                            <div class="col-md-4">
-                                <div style="font-weight: bold">Tên công việc</div>
-                                <div style="border: 1px solid gray; padding: 4px; border-radius: 4px;">
-                                    <input type="text" name="job_name" class="form-control border-0" placeholder="Tên công việc" style="border: 1px solid #ccc; padding: 5px; border-radius: 4px;" />
-                                </div>
-                            </div>
-
-                            <div class="col-md-3" style="padding-right: 10px;">
                                 <div class="col-md-4">
-                                    <label asp-for="ThanhPhoId" class="control-label" style="font-weight: bold;">Địa điểm công ty</label>
+                                    <div style="font-weight: bold">Tên công việc</div>
+                                    <div style="border: 1px solid gray; padding: 4px; border-radius: 4px;">
+                                        <input type="text" name="JobName" class="form-control border-0" placeholder="Tên công việc" style="border: 1px solid #ccc; padding: 5px; border-radius: 4px;" value="@Model.JobName" />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div style="font-weight: bold;">Địa điểm công ty</div>
                                     <select asp-for="ThanhPhoId" class="form-control">
                                         <option value="">-- Chọn tỉnh - Thành phố --</option>
                                         @foreach (var thanhPho in Model.ThanhPhos)
@@ -156,10 +155,9 @@
                                     </select>
                                     <span asp-validation-for="ThanhPhoId" class="text-danger"></span>
                                 </div>
-                            </div>
-                            <div class="col-md-3" style="padding-right: 10px;">
+
                                 <div class="col-md-4">
-                                    <label asp-for="chuyenNganhId" class="control-label" style="font-weight: bold">Chuyên ngành yêu cầu</label>
+                                    <div style="font-weight: bold;">Chuyên ngành yêu cầu</div>
                                     <select asp-for="chuyenNganhId" class="form-control">
                                         <option value="">-- Chọn chuyên ngành --</option>
                                         @foreach (var chuyenNganh in Model.ChuyenNganhs)
@@ -169,14 +167,12 @@
                                     </select>
                                     <span asp-validation-for="chuyenNganhId" class="text-danger"></span>
                                 </div>
-                            </div>
-                            <div class="row mt-3">
                                 <button type="submit" class="btn btn-dark border-0">Tìm kiếm</button>
-                            </div>
+
                         </div>
                     </form>
                     <div class="col-lg-12">
-                        <h5 class="center-text spacing-top">
+                        <h5 class="tieude">
                             Bài tuyển dụng phù hợp
                         </h5>
                     </div>

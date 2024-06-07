@@ -55,9 +55,10 @@
                         </div>
                         <div class="info-item1">
                             <label asp-for="SDTNhaTuyenDung" style="font-family: 'Times New Roman'; font-size: 20px" class="control-label">Số điện thoại công ty</label>
-                            <input asp-for="SDTNhaTuyenDung" style="font-family: 'Times New Roman'; font-size: 18px" class="form-control custom-background" />
+                            <input asp-for="SDTNhaTuyenDung" type="tel" style="font-family: 'Times New Roman'; font-size: 18px" class="form-control custom-background" />
                             <span asp-validation-for="SDTNhaTuyenDung" class="text-danger"></span>
                         </div>
+
 
                     </div>
                     <div class="info-section">
@@ -99,3 +100,16 @@
         </div>
     </div>
     </body>
+<script>
+    document.getElementById("SDTNhaTuyenDung").addEventListener("input", function (event) {
+        let value = event.target.value;
+        let newValue = "";
+        for (let i = 0; i < value.length; i++) {
+            if (!isNaN(parseInt(value[i]))) {
+                newValue += value[i];
+            }
+
+        }
+        event.target.value = newValue;
+    });
+</script>

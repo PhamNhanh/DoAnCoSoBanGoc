@@ -56,7 +56,7 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             _hocVan = hocVan;
         }
 
-        public async Task<IActionResult> Index(string id)
+        public async Task<IActionResult> Index()
         {
             var baiTuyenDungs = await _context.baiTuyenDungs.ToListAsync();
             var thanhPho = await _thanhPho.GetAllAsync();
@@ -77,40 +77,40 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             // Truyền danh sách bài tuyển dụng tới view
             return View(viewModel);
         }
-
         [HttpGet]
         public async Task<IActionResult> TimKiem(ViewModel viewModel)
         {
             // Lấy danh sách thành phố và chuyên ngành để hiển thị trên form
-            var baiTuyenDungs = await _context.baiTuyenDungs.ToListAsync();
-            var thanhPho = await _thanhPho.GetAllAsync();
-            var sortedThanhPho = thanhPho.OrderBy(tp => tp.ThanhPho_name).ToList(); var chuyenNganh = await _chuyenNganh.GetAllAsync();
-            var sortedChuyenNganh = chuyenNganh.OrderBy(cn => cn.ChuyenNganh_name).ToList();
-            var chuyenNganhs = await _context.chuyenNganhs.ToListAsync();
-            viewModel.ThanhPhos = sortedThanhPho;
-            viewModel.ChuyenNganhs = sortedChuyenNganh;
+            var thanhPho = await _context.thanhPhos.ToListAsync();
+            var chuyenNganh = await _context.chuyenNganhs.ToListAsync();
+            viewModel.ThanhPhos = thanhPho;
+            viewModel.ChuyenNganhs = chuyenNganh;
+
+            // Tạo query tìm kiếm bài tuyển dụng
+            var query = _context.baiTuyenDungs.AsQueryable();
+
+            // Tìm kiếm theo tên công việc
+            if (!string.IsNullOrEmpty(viewModel.JobName))
+            {
+                query = query.Where(b => b.TenCongViec.Contains(viewModel.JobName));
+            }
 
             // Nếu người dùng đã chọn thành phố
             if (viewModel.ThanhPhoId != null)
             {
-                // Tìm kiếm bài tuyển dụng dựa trên thành phố
-                var query = _context.baiTuyenDungs.Where(b => b.thanhPhoId == viewModel.ThanhPhoId);
-
-                // Nếu người dùng đã chọn chuyên ngành
-                if (viewModel.chuyenNganhId != null)
-                {
-                    // Lọc kết quả theo chuyên ngành
-                    query = query.Where(b => b.chuyenNganh.ChuyenNganh_id == viewModel.chuyenNganhId);
-                }
-
-                // Gán danh sách bài tuyển dụng vào view model
-                viewModel.BaiTuyenDungs = await query.ToListAsync();
+                // Lọc kết quả theo thành phố
+                query = query.Where(b => b.thanhPhoId == viewModel.ThanhPhoId);
             }
-            else
-            {
-                // Nếu không có thành phố được chọn, hiển thị tất cả các bài tuyển dụng
-                viewModel.BaiTuyenDungs = await _context.baiTuyenDungs.ToListAsync();
-            }
+
+            /*            // Nếu người dùng đã chọn chuyên ngành
+                        if (viewModel.chuyenNganhId != null)
+                        {
+                            // Lọc kết quả theo chuyên ngành
+                            query = query.Where(b => b.ChuyenNganhIds == viewModel.chuyenNganhId);
+                        }*/
+
+            // Gán danh sách bài tuyển dụng vào view model
+            viewModel.BaiTuyenDungs = await query.ToListAsync();
 
             return View(viewModel);
         }
@@ -179,14 +179,17 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             var find_user = await _userManager.GetUserAsync(User);
             if (find_user != null)
             {
+                // Lấy danh sách các bài tuyển dụng có trạng thái là true
                 var baituyendung = await _baiTuyenDung.GetBaiTuyenDungByUserIdAsync(find_user.Id);
-                return View(baituyendung);
+                var filteredBaiTuyenDung = baituyendung.Where(bt => bt.TrangThai == true);
+                return View(filteredBaiTuyenDung);
             }
             else
             {
                 return NotFound();
             }
         }
+
         public async Task<IActionResult> DetailsUngTuyen(int id)
         {
             var ungTuyenList = await _ungTuyen.GetUngTuyenByBaiTuyenDungIdAsync(id);

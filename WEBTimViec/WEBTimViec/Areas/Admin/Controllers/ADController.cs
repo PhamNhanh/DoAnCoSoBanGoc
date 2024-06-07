@@ -223,7 +223,7 @@ namespace WEBTimViec.Areas.Admin.Controllers
             var soUngTuyen = await _ungTuyen.CountUngTuyenAsync();
             var sonewBTD = await _baiTuyenDung.CountBaiTuyenDungTodayAsync();
             var sonewUT = await _ungTuyen.CountUngTuyenTodayAsync();
-            var soUVnew = await _userRepository.CountUsersInRoleUVAsync();
+            var soUVnew = await _userRepository.CountNewUVTodayAsync();
             var sonewNTD = await _userRepository.CountUsersInRoleNTDAsync();
             var thongKeViewModel = new ThongKe
             {
@@ -240,6 +240,42 @@ namespace WEBTimViec.Areas.Admin.Controllers
 
             return View(thongKeViewModel);
         }
+        [HttpGet]
+        public async Task<IActionResult> TimKiem(ViewModel viewModel)
+        {
+            // Lấy danh sách thành phố và chuyên ngành để hiển thị trên form
+            var thanhPho = await _context.thanhPhos.ToListAsync();
+            var chuyenNganh = await _context.chuyenNganhs.ToListAsync();
+            viewModel.ThanhPhos = thanhPho;
+            viewModel.ChuyenNganhs = chuyenNganh;
 
+            // Tạo query tìm kiếm bài tuyển dụng
+            var query = _context.baiTuyenDungs.AsQueryable();
+
+            // Tìm kiếm theo tên công việc
+            if (!string.IsNullOrEmpty(viewModel.JobName))
+            {
+                query = query.Where(b => b.TenCongViec.Contains(viewModel.JobName));
+            }
+
+            // Nếu người dùng đã chọn thành phố
+            if (viewModel.ThanhPhoId != null)
+            {
+                // Lọc kết quả theo thành phố
+                query = query.Where(b => b.thanhPhoId == viewModel.ThanhPhoId);
+            }
+
+            /*            // Nếu người dùng đã chọn chuyên ngành
+                        if (viewModel.chuyenNganhId != null)
+                        {
+                            // Lọc kết quả theo chuyên ngành
+                            query = query.Where(b => b.ChuyenNganhIds == viewModel.chuyenNganhId);
+                        }*/
+
+            // Gán danh sách bài tuyển dụng vào view model
+            viewModel.BaiTuyenDungs = await query.ToListAsync();
+
+            return View(viewModel);
+        }
     }
 }

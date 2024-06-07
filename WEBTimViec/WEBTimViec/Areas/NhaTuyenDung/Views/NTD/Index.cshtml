@@ -143,9 +143,10 @@
                                 <div class="col-md-4">
                                     <div style="font-weight: bold">Tên công việc</div>
                                     <div style="border: 1px solid gray; padding: 4px; border-radius: 4px;">
-                                        <input type="text" name="job_name" class="form-control border-0" placeholder="Tên công việc" style="border: 1px solid #ccc; padding: 5px; border-radius: 4px;" />
+                                        <input type="text" name="JobName" class="form-control border-0" placeholder="Tên công việc" style="border: 1px solid #ccc; padding: 5px; border-radius: 4px;" value="@Model.JobName" />
                                     </div>
                                 </div>
+
 
                                 <div class="col-md-4">
                                     <div style="font-weight: bold;">Địa điểm công ty</div>
@@ -197,7 +198,6 @@
                                             </div>
                                         </div>
                                         <p class="card-text"><strong>Công ty: </strong>@baiTuyenDung.applicationUser.NhaTuyenDung_name</p>
-                                        @*                                     <p class="limit-text"><strong>-->Mô tả công việc:</strong> @baiTuyenDung.MoTaCongViec</p> *@
                                         <p class="limit-text overflow-ellipsis"><strong>-->Yêu cầu kỹ năng:</strong> @baiTuyenDung.YeuCauKyNang</p>
                                         <p class="card-text"><strong>-->Thành phố làm việc:</strong> @baiTuyenDung.thanhPho.ThanhPho_name</p>
                                         <p class="limit-text"><strong>-->Lương:</strong> @baiTuyenDung.Luong_min - @baiTuyenDung.Luong_max triệu đồng</p>

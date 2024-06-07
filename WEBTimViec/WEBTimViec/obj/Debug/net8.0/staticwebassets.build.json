@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PK+7h1CbdUncvvftFlwzFzZQSgQkjcZTZrKA14eWQDs=",
+  "Hash": "l2Nt4qfL0sqN82kemEeKRgqEHmbHCdqFACpIZJKrhuc=",
   "Source": "WEBTimViec",
   "BasePath": "_content/WEBTimViec",
   "Mode": "Default",
@@ -625,6 +625,25 @@
       "OriginalItemSpec": "wwwroot\\filecv\\76a4d763-fb2c-44c2-b01f-9af0838f84fd.pdf"
     },
     {
+      "Identity": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\filecv\\77516c9e-39c9-4681-a6a7-489a23c5192e.pdf",
+      "SourceId": "WEBTimViec",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\",
+      "BasePath": "_content/WEBTimViec",
+      "RelativePath": "filecv/77516c9e-39c9-4681-a6a7-489a23c5192e.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\filecv\\77516c9e-39c9-4681-a6a7-489a23c5192e.pdf"
+    },
+    {
       "Identity": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\filecv\\787f116e-7d89-4745-86cc-51e0981e3543.pdf",
       "SourceId": "WEBTimViec",
       "SourceType": "Discovered",
@@ -680,6 +699,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\filecv\\89ccd371-63e0-4c4d-b1bb-3cf5622aad7e.pdf"
+    },
+    {
+      "Identity": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\filecv\\96c117a9-465d-4e33-b36b-626e6977b88c.pdf",
+      "SourceId": "WEBTimViec",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\",
+      "BasePath": "_content/WEBTimViec",
+      "RelativePath": "filecv/96c117a9-465d-4e33-b36b-626e6977b88c.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\filecv\\96c117a9-465d-4e33-b36b-626e6977b88c.pdf"
     },
     {
       "Identity": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\filecv\\a2fc58da-5112-44dd-84d3-c3c07aa08b75.pdf",
@@ -813,6 +851,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\filecv\\dffd45ab-b21f-49be-a761-a0d40de6e595.pdf"
+    },
+    {
+      "Identity": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\filecv\\e46ef80e-f675-4978-b319-f8e14ba4a867.pdf",
+      "SourceId": "WEBTimViec",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\",
+      "BasePath": "_content/WEBTimViec",
+      "RelativePath": "filecv/e46ef80e-f675-4978-b319-f8e14ba4a867.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\filecv\\e46ef80e-f675-4978-b319-f8e14ba4a867.pdf"
     },
     {
       "Identity": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\filecv\\e48b3571-546f-4c78-9a56-1bce190f71c2.pdf",

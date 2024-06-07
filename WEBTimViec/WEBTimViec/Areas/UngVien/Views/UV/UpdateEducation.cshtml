@@ -1,0 +1,81 @@
+﻿@model WEBTimViec.Models.HocVan
+@{
+    ViewData["Title"] = "Index";
+}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> JobPlus </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="~/css/normalize.min.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/flaticon.css">
+    <link rel="stylesheet" href="~/css/price_rangs.css">
+    <link rel="stylesheet" href="~/css/slicknav.css">
+    <link rel="stylesheet" href="~/css/animate.min.css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/css/themify-icons.css">
+    <link rel="stylesheet" href="~/css/slick.css">
+    <link rel="stylesheet" href="~/css/nice-select.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
+</head>
+<button class=" styled-button">
+    <a style="color: black;" href="@Url.Action("IndexHocVan", "UV")"> <<< </a>
+</button>
+<div class="col-sm-6 mb-3">
+    <h1>Sửa học vấn</h1>
+    <form asp-action="UpdateEducation" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="HocVan_id" />
+            <div>
+            <h5 class="school-name">
+                <label asp-for="TruongDaiHocid" class="control-label">Trường đại học</label>
+                <select asp-for="TruongDaiHocid" asp-items="ViewBag.Universities" class="form-control">
+                    <option value="">-- Chọn Trường Đại Học / Cao Đẳng --</option>
+                </select>
+                <span asp-validation-for="TruongDaiHocid" class="text-danger"></span>
+            </h5>
+            <h5 class="school-name">
+                <label asp-for="chuyenNganhId" class="control-label">Chuyên ngành</label>
+                <select asp-for="chuyenNganhId" asp-items="ViewBag.Majors" class="form-control">
+                    <option value="">-- Chọn Chuyên ngành --</option>
+                </select>
+                <span asp-validation-for="chuyenNganhId" class="text-danger"></span>
+            </h5>
+            <div class="info-item1">
+                <label asp-for="GPA" class="control-label">Điểm trung bình</label>
+                <input asp-for="GPA" class="form-control" />
+                <span asp-validation-for="GPA" class="text-danger"></span>
+            </div>
+            <div class="info-item1">
+                <label asp-for="NgayBatDau" class="control-label">Ngày bắt đầu</label>
+                <input type="date" asp-for="NgayBatDau" class="form-control" />
+                <span asp-validation-for="NgayBatDau" class="text-danger"></span>
+            </div>
+            <div class="info-item1">
+                <label asp-for="NgayTotNghiep" class="control-label">Ngày tốt nghiệp</label>
+                <input type="date" asp-for="NgayTotNghiep" class="form-control" />
+                <span asp-validation-for="NgayTotNghiep" class="text-danger"></span>
+            </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                </div>
+            </div>
+    </form>
+</div>
+
+    <a class="btn btn-primary" href="/User/Profile/Index">
+     Trở vè
+    </a>

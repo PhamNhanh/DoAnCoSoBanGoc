@@ -96,10 +96,12 @@
                 var $form = $(this);
                 $.ajax({
                     type: 'POST',
-                    url: '@Url.Action("SaveFeedback", "NTD")', // Đảm bảo URL đúng
+                    url: '@Url.Action("SaveFeedback", "NTD")',
                     data: $form.serialize(),
                     success: function (response) {
                         alert('Phản hồi đã được gửi thành công.');
+                        // Load lại trang sau khi gửi phản hồi thành công
+                        window.location.reload();
                     },
                     error: function (xhr, status, error) {
                         alert('Có lỗi xảy ra. Vui lòng thử lại.');
@@ -108,5 +110,6 @@
             });
         });
     </script>
+
 </body>
 </html>

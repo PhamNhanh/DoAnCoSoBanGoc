@@ -573,3 +573,5 @@ C:\DoAnCoSo\Github\DoAnCoSoBanGoc\WEBTimViec\WEBTimViec\obj\Debug\net8.0\refint\
 C:\DoAnCoSo\Github\DoAnCoSoBanGoc\WEBTimViec\WEBTimViec\obj\Debug\net8.0\WEBTimViec.pdb
 C:\DoAnCoSo\Github\DoAnCoSoBanGoc\WEBTimViec\WEBTimViec\obj\Debug\net8.0\WEBTimViec.genruntimeconfig.cache
 C:\DoAnCoSo\Github\DoAnCoSoBanGoc\WEBTimViec\WEBTimViec\obj\Debug\net8.0\ref\WEBTimViec.dll
+C:\DoAnCoSo\Github\DoAnCoSoBanGoc\WEBTimViec\WEBTimViec\bin\Debug\net8.0\X.PagedList.dll
+C:\DoAnCoSo\Github\DoAnCoSoBanGoc\WEBTimViec\WEBTimViec\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll

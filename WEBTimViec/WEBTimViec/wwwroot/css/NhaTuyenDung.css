@@ -283,3 +283,10 @@
     text-decoration: none; /* Xóa bỏ gạch chân */   
     margin: 10px 0; /* tạo khoảng cách lề trên và dưới */
 }
+.khung6 {
+    background-color: #abfbcd; /* Màu nền xanh nhạt */
+    padding: 20px;
+    border: 1px solid #000; /* Boder màu xám với độ rộng là 2px */
+    border-radius: px; /* Bo tròn các góc của khung */
+    background: linear-gradient(to bottom, #c4f7cf, #d6f9f0);
+}
