@@ -13,5 +13,6 @@ namespace WEBTimViec.Repositories
         Task<IEnumerable<BaiTuyenDung>> GetBaiTuyenDungByUserIdAsync(string userId);
         Task<int> CountBaiTuyenDungAsync();
         Task<int> CountBaiTuyenDungTodayAsync();
+        Task<int> CountBaiTuyenDungByMajorAsync(string majorName);
     }
 }

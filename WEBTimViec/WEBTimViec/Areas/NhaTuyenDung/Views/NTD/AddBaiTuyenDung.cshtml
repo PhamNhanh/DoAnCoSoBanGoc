@@ -47,19 +47,19 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="info-section">
                 <div class="info-item1">
-                    <label asp-for="TenCongViec" class="control-label"><i class="fas fa-user"></i> Tên công việc</label>
+                    <label asp-for="TenCongViec" class="control-label"> Tên công việc</label>
                     <input asp-for="TenCongViec" class="form-control" required />
                     <span asp-validation-for="TenCongViec" class="text-danger"></span>
                 </div>
             </div>
             <div class="info-section">
                 <div class="info-item1">
-                    <label asp-for="MoTaCongViec" class="control-label"><i class="fas fa-file-alt"></i> Mô tả công việc</label>
+                    <label asp-for="MoTaCongViec" class="control-label"> Mô tả công việc</label>
                     <textarea asp-for="MoTaCongViec" class="form-control" rows="5" required></textarea>
                     <span asp-validation-for="MoTaCongViec" class="text-danger"></span>
                 </div>
                 <div class="info-item1">
-                    <label asp-for="YeuCauKyNang" class="control-label"><i class="fas fa-check"></i> Yêu cầu công việc</label>
+                    <label asp-for="YeuCauKyNang" class="control-label"> Yêu cầu công việc</label>
                     <textarea asp-for="YeuCauKyNang" class="form-control" rows="5" required></textarea>
                     <span asp-validation-for="YeuCauKyNang" class="text-danger"></span>
                 </div>
@@ -95,7 +95,7 @@
                     </select>
                 </div>
                 <div class="info-item1">
-                    <label asp-for="PhucLoi" class="control-label"><i class="fas fa-gift"></i> Phúc lợi</label>
+                    <label asp-for="PhucLoi" class="control-label"> Phúc lợi</label>
                     <textarea asp-for="PhucLoi" class="form-control" rows="5" required></textarea>
                     <span asp-validation-for="PhucLoi" class="text-danger"></span>
                 </div>
@@ -103,7 +103,7 @@
             </div>
             <div class="info-section">
                 <div class="info-item1">
-                    <label asp-for="KieuCongViec" class="control-label"><i class="fas fa-briefcase"></i> Loại công việc</label>
+                    <label asp-for="KieuCongViec" class="control-label"> Loại công việc</label>
                     <select asp-for="KieuCongViec" class="form-control">
                         <option value="Full-Time">Full-Time</option>
                         <option value="Part-Time">Part-Time</option>
@@ -113,7 +113,7 @@
                 <div class="info-item1">
                     <div class="row">
                         <div class="col">
-                            <label asp-for="Luong_min" class="control-label"><i class="fas fa-money-bill"></i> Lương từ</label>
+                            <label asp-for="Luong_min" class="control-label"> Lương từ</label>
                             <div class="input-group">
                                 <input asp-for="Luong_min" class="form-control" type="number" required />
                                 <div class="input-group-append">
@@ -123,7 +123,7 @@
                             <span asp-validation-for="Luong_min" class="text-danger"></span>
                         </div>
                         <div class="col">
-                            <label asp-for="Luong_max" class="control-label"><i class="fas fa-money-bill"></i> Đến</label>
+                            <label asp-for="Luong_max" class="control-label"> Đến</label>
                             <div class="input-group">
                                 <input asp-for="Luong_max" class="form-control" type="number" required />
                                 <div class="input-group-append">
@@ -146,7 +146,6 @@
                 </div>
                 <div class="info-item1">
                     <label asp-for="kinhNghiemId" class="control-label" style="font-weight: bold;">
-                        <i class="fas fa-user-tie"></i>
                         Kinh nghiệm ứng viên
                     </label>
                     <select asp-for="kinhNghiemId" asp-items="ViewBag.KinhNghiem" class="form-control">
@@ -157,7 +156,7 @@
                 </div>
             <div class="info-section">
                 <div class="info-item1">
-                    <label asp-for="ThoiGianHetHan" class="control-label"><i class="fas fa-calendar"></i> Hạn nộp hồ sơ</label>
+                    <label asp-for="ThoiGianHetHan" class="control-label"> Hạn nộp hồ sơ</label>
                     <input asp-for="ThoiGianHetHan" class="form-control datepicker" asp-format="{0:dd/MM/yy}" required />
                     <span asp-validation-for="ThoiGianHetHan" class="text-danger"></span>
                 </div>

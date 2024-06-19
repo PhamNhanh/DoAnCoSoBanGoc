@@ -36,15 +36,16 @@
     <div class="khung2">
         <h1 class="tieude">Danh sách bài ứng tuyển</h1>
         <div class="row">
-            @foreach (var ungTuyen in Model)
+            @foreach (var baiTuyenDung in Model)
             {
                 <div class="col-md-4">
                     <div class="khungchu">
-                <div class="card" data-url="@Url.Action("DetailsUngTuyen", "UV", new { id = ungTuyen.BaiTuyenDung_id })">
+                        <div class="card" data-url="@Url.Action("DetailsUngTuyen", "UV", new { id = baiTuyenDung.BaiTuyenDung_id })">
                     <div class="card-body">
-                        <h5 class="card-title"><strong>Công ty: </strong>@ungTuyen.applicationUser.NhaTuyenDung_name</h5>
-                        <p class="card-title"><strong>Công việc: </strong>@ungTuyen.TenCongViec</p>
-                        <a href="@Url.Action("DetailsUngTuyen", "UV", new { id = ungTuyen.BaiTuyenDung_id })" class="btn btn-info">Chi tiết</a>
+                                <h5 class="card-title"><strong>Công ty: </strong>@baiTuyenDung.applicationUser.NhaTuyenDung_name</h5>
+                                <img src="@baiTuyenDung.applicationUser.image_url" alt="Logo" class="img-fluid">
+                                <h5 class="card-title overflow-ellipsis"><strong>Công việc: </strong>@baiTuyenDung.TenCongViec</h5>
+                                <a href="@Url.Action("DetailsUngTuyen", "UV", new { id = baiTuyenDung.BaiTuyenDung_id })" class="btn btn-info">Chi tiết</a>
                     </div>
                 </div>
                 </div>

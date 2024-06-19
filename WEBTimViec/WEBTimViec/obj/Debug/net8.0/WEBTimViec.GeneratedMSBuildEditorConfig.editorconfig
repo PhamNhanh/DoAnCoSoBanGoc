@@ -182,6 +182,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVW5nVmllblxWaWV3c1xVVlxBZGRFZHVjYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/UngVien/Views/UV/DeleteEducation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVW5nVmllblxWaWV3c1xVVlxEZWxldGVFZHVjYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/UngVien/Views/UV/DetailsBaiTuyenDung.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVW5nVmllblxWaWV3c1xVVlxEZXRhaWxzQmFpVHV5ZW5EdW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

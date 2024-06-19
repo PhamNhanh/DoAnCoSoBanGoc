@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<WEBTimViec.Models.UngTuyen>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,51 +31,58 @@
 </head>
 <body>
     <div class="container">
-        <button class=" styled-button">
+        <button class="styled-button">
             <a style="color: black;" href="@Url.Action("DSUngTuyen", "UV")"> <<< </a>
         </button>
 
         <h1 class="tieude">Danh sách bài ứng tuyển</h1>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Mã ứng tuyển</th>
-                    <th>Tên ứng viên</th>
-@*                     <th>Tên công ty</th> *@
-                    <th>Thời gian ứng tuyển</th>
-                    <th>CV</th>
-                    <th>Trạng thái</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var ungtuyen in Model)
-                {
-                    <tr>
-                        <td style="font-size: 20px;color:black">@ungtuyen.UngTuyen_id</td>
-                        <td style="font-size: 20px;color:black">@ungtuyen.TenUngVien</td>
-@*                         <td style="font-size: 20px;color:black">@ungtuyen.applicationUser.NhaTuyenDung_name</td> *@
-                        <td style="font-size: 20px;color:black">@ungtuyen.ThoiGianUngTuyen</td>
-                        <td style="font-size: 20px; color: black">
-                            <a href="@ungtuyen.url_CV" target="_blank" style="font-size: 20px; color: Green">>Xem CV</a>
-                        </td>
+        @if (Model == null || !Model.Any())
+        {
+            <p>Bạn chưa ứng tuyển vào bài tuyển dụng này</p>
 
-                        <td>
-                            @if (ungtuyen.TrangThai == null)
-                            {
-                                <label class="badge badge-warning">Chưa phê duyệt</label>
-                            }
-                            else
-                            {
-                                <div>
-                                    Phản hồi từ nhà tuyển dụng:
-                                </div>
-                        <label class="badge badge-success"> @ungtuyen.TrangThai</label>
-                            }
-                        </td>
+        }
+
+        else
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Mã ứng tuyển</th>
+                        <th>Tên ứng viên</th>
+                        <th>Thời gian ứng tuyển</th>
+                        <th>CV</th>
+                        <th>Trạng thái</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var ungtuyen in Model)
+                    {
+                        <tr>
+                            <td style="font-size: 20px;color:black">@ungtuyen.UngTuyen_id</td>
+                            <td style="font-size: 20px;color:black">@ungtuyen.TenUngVien</td>
+                            <td style="font-size: 20px;color:black">@ungtuyen.ThoiGianUngTuyen</td>
+                            <td style="font-size: 20px; color: black">
+                                <a href="@ungtuyen.url_CV" target="_blank" style="font-size: 20px; color: Green">Xem CV</a>
+                            </td>
+
+                            <td>
+                                @if (ungtuyen.TrangThai == null)
+                                {
+                                    <label class="badge badge-warning">Chưa phê duyệt</label>
+                                }
+                                else
+                                {
+                                    <div>
+                                        Phản hồi từ nhà tuyển dụng:
+                                    </div>
+                                    <label class="badge badge-success"> @ungtuyen.TrangThai</label>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
     </div>
 </body>
 </html>

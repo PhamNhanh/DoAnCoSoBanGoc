@@ -95,5 +95,25 @@ namespace WEBTimViec.Repositories
 
             return count;
         }
+        public async Task<int> CountBaiTuyenDungByMajorAsync(string majorName)
+        {
+            var count = await _context.baiTuyenDungs
+                .Join(
+                    _context.baiTuyenDung_ChuyenNganhs,
+                    baiTuyenDung => baiTuyenDung.BaiTuyenDung_id,
+                    baiTuyenDung_ChuyenNganh => baiTuyenDung_ChuyenNganh.BaiTuyenDungid,
+                    (baiTuyenDung, baiTuyenDung_ChuyenNganh) => new { baiTuyenDung, baiTuyenDung_ChuyenNganh }
+                )
+                .Join(
+                    _context.chuyenNganhs,
+                    joined => joined.baiTuyenDung_ChuyenNganh.ChuyenNganhid,
+                    chuyenNganh => chuyenNganh.ChuyenNganh_id,
+                    (joined, chuyenNganh) => new { joined.baiTuyenDung, chuyenNganh }
+                )
+                .Where(joined => joined.chuyenNganh.ChuyenNganh_name == majorName)
+                .CountAsync();
+
+            return count;
+        }
     }
 }

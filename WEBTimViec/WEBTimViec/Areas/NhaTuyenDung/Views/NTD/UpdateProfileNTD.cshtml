@@ -35,7 +35,7 @@
 </head>
 <body>
     <button class=" styled-button">
-        <a style="color: black;" href="@Url.Action("IndexProfile", "NTD")"> <<< </a>
+        <a style="color: black;" href="@Url.Action("IndexProfileNTD", "NTD")"> <<< </a>
     </button>
     <h1 class="tieude">Cập nhật thông tin Profile</h1>
     <div class="ha1">
@@ -79,8 +79,8 @@
                         </div>
                         <div class="info-item1">
                             <label for="image_url">Logo công ty</label>
-                            <input type="file" id="image_url" name="image_url" class="form-control custom-background" accept="image/*" />
-                            <img src="@Model.image_url" class="info-item" alt="Logo công ty" style="max-width:200px;" id="previewImage" />
+                            <input type="file" id="image_url" name="image_url" class="form-control custom-background" accept="image/*" style="display: none;" />
+                            <img src="@Model.image_url" class="info-item" alt="Logo công ty" style="max-width:200px; cursor: pointer;" id="previewImage" />
                             <span asp-validation-for="image_url" class="info-item"></span>
                         </div>
 
@@ -113,3 +113,22 @@
         event.target.value = newValue;
     });
 </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var imageUrlInput = document.getElementById('image_url');
+            var previewImage = document.getElementById('previewImage');
+
+            previewImage.addEventListener('click', function () {
+                imageUrlInput.click();
+            });
+
+            imageUrlInput.addEventListener('change', function (event) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImage.src = e.target.result;
+                }
+                reader.readAsDataURL(event.target.files[0]);
+            });
+        });
+    </script>
+}

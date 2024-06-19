@@ -46,19 +46,61 @@ namespace WEBTimViec.Controllers
         }
         public async Task<IActionResult> IndexAll()
         {
+            var baiTuyenDungs = await _context.baiTuyenDungs
+                                                    .Where(b => b.TrangThai == true) // Chỉ lấy bài tuyển dụng có trang thái = 1
+                                                    .ToListAsync();
 
-            var baiTuyenDungs = await _context.baiTuyenDungs.ToListAsync();
-            var thanhPho = await _context.thanhPhos.ToListAsync();
-            var danhSachNhaTuyenDung = await _userRepository.GetAllCompanyAsync();
-            var chuyenNganh = await _context.chuyenNganhs.ToListAsync();
+            // Lấy danh sách thành phố và sắp xếp theo tên
+            var thanhPho = await _thanhPho.GetAllAsync();
+            var sortedThanhPho = thanhPho.OrderBy(tp => tp.ThanhPho_name).ToList();
+
+            // Lấy danh sách chuyên ngành và sắp xếp theo tên
+            var chuyenNganh = await _chuyenNganh.GetAllAsync();
+            var sortedChuyenNganh = chuyenNganh.OrderBy(cn => cn.ChuyenNganh_name).ToList();
+
+            // Lấy danh sách ứng viên
+            var ungvien = await _userRepository.GetAllAsync();
+
+            // Tạo một danh sách để lưu số lượng bài tuyển dụng theo chuyên ngành
+            var jobCountsByMajor = new List<MajorViewModel>();
+
+            // Đếm số lượng bài tuyển dụng cho mỗi chuyên ngành
+            foreach (var chuyenNganhItem in sortedChuyenNganh)
+            {
+                var count = await _context.baiTuyenDung_ChuyenNganhs
+                    .Where(bcn => bcn.ChuyenNganhid == chuyenNganhItem.ChuyenNganh_id)
+                    .CountAsync();
+
+                if (count > 0) // Loại bỏ những chuyên ngành không có bài tuyển dụng
+                {
+                    jobCountsByMajor.Add(new MajorViewModel
+                    {
+                        ChuyenNganhName = chuyenNganhItem.ChuyenNganh_name,
+                        JobCount = count
+                    });
+                }
+            }
+
+            // Sắp xếp các chuyên ngành theo số lượng bài tuyển dụng giảm dần
+            jobCountsByMajor = jobCountsByMajor.OrderByDescending(m => m.JobCount).ToList();
+
+            // Tạo ViewModel để truyền dữ liệu sang View
             var viewModel = new ViewModel
             {
                 BaiTuyenDungs = baiTuyenDungs,
-                ThanhPhos = thanhPho,
-                ChuyenNganhs = chuyenNganh,
-                ApplicationUsers = danhSachNhaTuyenDung,
+                ThanhPhos = sortedThanhPho,
+                ChuyenNganhs = sortedChuyenNganh,
+                ApplicationUsers = ungvien,
+                Majors = jobCountsByMajor // Thêm danh sách chuyên ngành được sắp xếp với số lượng bài tuyển dụng
             };
-            // Truyền danh sách bài tuyển dụng tới view
+
+            // Thêm thông tin applicationUser cho mỗi bài tuyển dụng
+            foreach (var baiTuyenDung in viewModel.BaiTuyenDungs)
+            {
+                var applicationUser = await _context.Users.FirstOrDefaultAsync(u => u.Id == baiTuyenDung.ApplicationUserId);
+                baiTuyenDung.applicationUser = applicationUser;
+            }
+
             return View(viewModel);
         }
         [HttpGet]
@@ -260,7 +302,7 @@ namespace WEBTimViec.Controllers
             }
 
         }
-        [HttpGet]
+/*        [HttpGet]
         public async Task<IActionResult> UngTuyen(int Id)
         {
             var baiTuyenDung = await _baiTuyenDung.GetByIdAsync(Id);
@@ -273,13 +315,13 @@ namespace WEBTimViec.Controllers
             var find_user = await _userManager.GetUserAsync(User);
             if (find_user == null)
             {
-                /*return NotFound();*/
+                *//*return NotFound();*//*
                 return View("Thiếu Id user");
             }
             var post = await _baiTuyenDung.GetByIdAsync(id);
             if (post == null)
             {
-                /*return NotFound();*/
+                *//*return NotFound();*//*
                 return View("Thiếu Id postjob");
             }
 
@@ -299,7 +341,7 @@ namespace WEBTimViec.Controllers
                 ungTuyen.applicationUser = post.applicationUser; // Đã lưu id Nhà Tuyển Dụng
                 ungTuyen.application_Userid = find_user.Id; //Chưa lưuu id Ung Viên
                 ungTuyen.ThoiGianUngTuyen = DateTime.Now;
-/*                ungTuyen.update_at = DateTime.Now;*/
+*//*                ungTuyen.update_at = DateTime.Now;*//*
                 await _ungTuyen.AddAsync(ungTuyen);
                 return RedirectToAction(nameof(DSUngTuyen));
             }
@@ -307,9 +349,9 @@ namespace WEBTimViec.Controllers
             {
                 return BadRequest("Có gì đó không đúng");
             }
-        }
+        }*/
 
-        private async Task<string> SaveCV(IFormFile url_cv)
+       /* private async Task<string> SaveCV(IFormFile url_cv)
         {
             try
             {
@@ -333,7 +375,7 @@ namespace WEBTimViec.Controllers
             // Kiểm tra kích thước file không vượt quá 10MB
             var maxSize = 10 * 1024 * 1024; // 10MB
             return file.Length <= maxSize;
-        }
+        }*/
 
 
         //Nha tuyen dung

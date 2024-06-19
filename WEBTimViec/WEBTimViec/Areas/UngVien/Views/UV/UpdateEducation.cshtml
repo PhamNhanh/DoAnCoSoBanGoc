@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
 </head>
 <button class=" styled-button">
-    <a style="color: black;" href="@Url.Action("IndexHocVan", "UV")"> <<< </a>
+    <a href="@Url.Action("IndexHocVan", "UV", new { id = Model.applicationUserId })" style="color: black;"> <<< </a>
 </button>
 <div class="col-sm-6 mb-3">
     <h1>Sửa học vấn</h1>
@@ -75,7 +75,3 @@
             </div>
     </form>
 </div>
-
-    <a class="btn btn-primary" href="/User/Profile/Index">
-     Trở vè
-    </a>

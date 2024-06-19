@@ -27,19 +27,21 @@
                 </h5>
                 <div>
                     <label asp-for="GPA" class="control-label">GPA</label>
-                    <input asp-for="GPA" class="form-control" />
+                    <input asp-for="GPA" class="form-control" type="number" min="0" max="4" step="0.01" />
                     <span asp-validation-for="GPA" class="text-danger"></span>
                 </div>
+
                 <div>
                     <label asp-for="NgayBatDau" class="control-label">Bắt đầu</label>
                     <input asp-for="NgayBatDau" class="form-control datepicker" asp-format="{0:dd/MM/yy}" />
                     <label asp-for="NgayTotNghiep" class="control-label">Kết thúc</label>
                     <input asp-for="NgayTotNghiep" class="form-control datepicker" asp-format="{0:dd/MM/yy}" />
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Tạo mới" class="btn btn-primary" />
-                </div>
+
             </div>
             </div>
+        <div class="form-group">
+            <input type="submit" value="Thêm học vấn" class="btn btn-primary" />
+        </div>
     </form>
 </div>

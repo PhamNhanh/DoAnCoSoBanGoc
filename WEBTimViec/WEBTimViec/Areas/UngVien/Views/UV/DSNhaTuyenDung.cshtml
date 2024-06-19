@@ -41,11 +41,11 @@
             <thead>
                 <tr>
                     <th>Tên công ty</th>
-                    <th>Email</th>
+@*                     <th>Email</th> *@
                     <th>Địa chỉ</th>
-                    <th>Điện thoại</th>
+@*                     <th>Điện thoại</th> *@
                     <th>Website</th>
-                    <th>Thêm</th>
+                    <th >Thêm</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,18 +53,17 @@
                 {
                     <tr>
                         <td>@company.NhaTuyenDung_name</td>
-                        <td>@company.Email</td>
+@*                         <td>@company.Email</td> *@
                         <td>@company.DiaChi</td>
-                        <td>@company.SDTNhaTuyenDung</td>
+@*                         <td>@company.SDTNhaTuyenDung</td> *@
                         <td>@company.Website</td>
                         <td>
-                            <a href="@Url.Action("DetailsNhaTuyenDung", "UV", new { id = company.Id })" class="btn btn-info">Chi tiết</a>
+                            <a href="@Url.Action("DetailsNhaTuyenDung", "UV", new { id = company.Id })" class="btn btn-info">Xem chi tiết</a>
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
-        <a href="@Url.Action("Index")" class="btn btn-primary">Quay lại</a>
     </div>
 </body>
 </html>

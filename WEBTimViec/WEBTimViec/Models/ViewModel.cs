@@ -33,6 +33,8 @@ namespace WEBTimViec.Models
         public int? truongDaiHocId { get; set; }
         [NotMapped]
         public string JobName { get; set; }
+        public List<MajorViewModel> Majors { get; set; }
+        public List<BaiTuyenDung>? BaiTuyenDung { get; set; }
 
     }
 }

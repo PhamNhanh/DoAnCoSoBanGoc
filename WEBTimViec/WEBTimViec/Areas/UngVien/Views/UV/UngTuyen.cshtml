@@ -39,12 +39,12 @@
             <form asp-action="UngTuyen" method="post" enctype="multipart/form-data">
                 <div class="info-section">
                     <div class="info-item1">
-                        <label class="form-label me-2 mb-0">Tên ứng viên</label>
+                        <label class="form-label me-2 mb-0">Tên ứng viên: </label>
                         <span id="tenUngVien">@ViewBag.NguoiDung.FullName</span>
                         <input type="hidden" name="TenUngVien" id="hiddenTenUngVien" value="@ViewBag.NguoiDung.FullName">
                     </div>
                     <div class="info-item1">
-                        <label class="form-label me-2 mb-0">Email</label>
+                        <label class="form-label me-2 mb-0">Email: </label>
                         <span id="emailUV">@ViewBag.NguoiDung.Email</span>
                         <input type="hidden" name="EmailUV" id="hiddenEmailUV" value="@ViewBag.NguoiDung.Email">
                     </div>

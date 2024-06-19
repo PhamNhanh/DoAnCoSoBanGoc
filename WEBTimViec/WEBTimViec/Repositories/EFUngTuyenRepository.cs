@@ -95,6 +95,16 @@ namespace WEBTimViec.Repositories
 
             return count;
         }
+        public async Task<IEnumerable<UngTuyen>> GetUngTuyenByBaiTuyenDungIdAndUserIdAsync(int idBaiTuyenDung, string idUser)
+        {
+            var ungTuyenList = await _context.ungTuyens
+                .Include(ut => ut.BaiTuyenDung) // Include BaiTuyenDung if necessary
+                .Include(ut => ut.applicationUser) // Include applicationUser if necessary
+                .Where(ut => ut.BaiTuyenDungid == idBaiTuyenDung && ut.application_Userid == idUser)
+                .ToListAsync();
+
+            return ungTuyenList;
+        }
 
     }
 }
