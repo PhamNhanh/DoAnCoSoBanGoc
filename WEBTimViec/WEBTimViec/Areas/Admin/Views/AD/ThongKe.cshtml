@@ -1,6 +1,4 @@
-﻿@model WEBTimViec.Models.ThongKe
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -42,21 +40,10 @@
                         Biểu đồ thống kê hệ thống
                     </h2>
                 </div>
-                <div>
-                    <canvas id="thongKeChart" width="400" height="200"></canvas>
+                <div class="tieude"> 
+                    <canvas id="thongKeChart" width="1200" height="300"></canvas>
                 </div>
             </div>
-@*             <div class="col">
-                <div>
-                    <h2 class="tieude">
-                        Biểu đồ thống kê hôm nay
-                    </h2>
-                </div>
-                <div>
-                    <canvas id="thongKeChartToday" width="400" height="200"></canvas>
-                </div>
-            </div> *@
-
         </div>
         <div class="row">
             <div class="col">
@@ -66,7 +53,7 @@
                     </h2>
                 </div>
                 <div>
-                    <canvas id="donutChart" width="400" height="200"></canvas>
+                    <canvas id="donutChart" width="500" height="300"></canvas>
                 </div>
             </div>
             <div class="col">
@@ -76,12 +63,12 @@
                     </h2>
                 </div>
                 <div>
-                    <canvas id="donutChart1" width="400" height="200"></canvas>
+                    <canvas id="donutChart1" width="500" height="300"></canvas>
                 </div>
             </div>
         </div>
     </div>
-   
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var ctx = document.getElementById('thongKeChart').getContext('2d');
@@ -110,6 +97,8 @@
                     }]
                 },
                 options: {
+                    responsive: false,
+                    maintainAspectRatio: false,
                     scales: {
                         y: {
                             beginAtZero: true
@@ -127,9 +116,6 @@
                 },
                 plugins: [ChartDataLabels]
             });
-
-
-           
             var ctxDonut = document.getElementById('donutChart').getContext('2d');
             var donutChart = new Chart(ctxDonut, {
                 type: 'doughnut',
@@ -150,7 +136,8 @@
                     }]
                 },
                 options: {
-                    responsive: true,
+                    responsive: false,
+                    maintainAspectRatio: false,
                     cutout: '0%', // Điều này tạo ra biểu đồ doughnut không có lỗ ở giữa
                     plugins: {
                         legend: {
@@ -185,7 +172,8 @@
                     }]
                 },
                 options: {
-                    responsive: true,
+                    responsive: false,
+                    maintainAspectRatio: false,
                     cutout: '0%', // Điều này tạo ra biểu đồ doughnut không có lỗ ở giữa
                     plugins: {
                         legend: {

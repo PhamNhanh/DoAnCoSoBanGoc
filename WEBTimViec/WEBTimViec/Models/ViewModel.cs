@@ -10,7 +10,7 @@ namespace WEBTimViec.Models
         public IEnumerable<ApplicationUser> ApplicationUsers { get; set; }
         public ApplicationUser? applicationUser { get; set; }
         [NotMapped]
-        public int? apapplicationUserId { get; set; }
+        public int? applicationUserId { get; set; }
         public IEnumerable<ThanhPho> ThanhPhos { get; set; }
         public ThanhPho? thanhPho { get; set; }
         [NotMapped]
@@ -35,6 +35,7 @@ namespace WEBTimViec.Models
         public string JobName { get; set; }
         public List<MajorViewModel> Majors { get; set; }
         public List<BaiTuyenDung>? BaiTuyenDung { get; set; }
+
 
     }
 }

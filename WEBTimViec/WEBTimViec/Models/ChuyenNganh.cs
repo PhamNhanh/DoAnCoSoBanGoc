@@ -7,6 +7,8 @@ namespace WEBTimViec.Models
         [Key]
         public int ChuyenNganh_id { get; set; }
         public string? ChuyenNganh_name { get; set; }
+        public int? nhomChuyenNganhid { get; set; }
+        public NhomChuyenNganh? chuyenNganh { get; set; }
         public List<BaiTuyenDung_ChuyenNganh>? baiTuyenDung_ChuyenNganhs { get; set; }
     }
 }

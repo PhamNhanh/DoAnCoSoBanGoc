@@ -4,170 +4,116 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> JobPlus </title>
+    <title>JobPlus</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-    <!-- CSS here -->
-    <link rel="stylesheet" href="~/css/main.css">
-    <link rel="stylesheet" href="~/css/normalize.min.css">
-    <link rel="stylesheet" href="~/css/font-awesome.min.css">
-    <link rel="stylesheet" href="~/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="~/css/flaticon.css">
-    <link rel="stylesheet" href="~/css/price_rangs.css">
-    <link rel="stylesheet" href="~/css/slicknav.css">
-    <link rel="stylesheet" href="~/css/animate.min.css">
-    <link rel="stylesheet" href="~/css/magnific-popup.css">
-    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="~/css/themify-icons.css">
-    <link rel="stylesheet" href="~/css/slick.css">
-    <link rel="stylesheet" href="~/css/nice-select.css">
-    <link rel="stylesheet" href="~/css/style.css">
-    <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
+    <!-- Main CSS File -->
+    <link href="~/assets/css/main.css" rel="stylesheet">
+</head>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>JobPlus</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="~/assets/css/main.css" rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <div class="header-area header-transparrent ">
-            <div class="headder-top header-sticky">
-                <div class="khung">
-                    <div class="row align-items-center">
-                        <div class="col-lg-3 col-md-2">
-                            <div class="logo">
-                                <a href="index.html"><img src="~?images/Logo.jpg" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-9 col-md-9">
-                            <div class="menu-wrapper">
-                                <div class="main-menu">
-                                    <nav class="d-none d-lg-block">
-                                        <ul id="navigation">
-                                            <li><a href="@Url.Action("Index", "UV", new { area = "UngVien" })">Trang chủ</a></li>
-                                            <li><a href="@Url.Action("IndexProfileUV", "UV", new { area = "UngVien" })">Thông tin cá nhân</a></li>
-                                            <li>
-                                                <a href="#">Công việc</a>
-                                                <ul class="submenu">
-                                                    <li><a href="@Url.Action("DSNhaTuyenDung", "UV", new { area = "UngVien" })">Danh sách nhà tuyển dụng</a></li>
-                                                    <li><a href="@Url.Action("ListBaiTuyenDung", "UV", new { area = "UngVien" })">Bài tuyển dụng </a></li>
-                                                    <li><a href="@Url.Action("DSUngTuyen", "UV", new { area = "UngVien" })">Danh sách ứng tuyển </a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="#">Góp ý</a>
-                                                <ul class="submenu">
-                                                    <li><a href="mailto:nhanhtvt111@gmail.com"> Email</a></li>
-                                                    <li><a href="https://www.facebook.com/nhanh1412">Facebook</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-                                <div class="header-btn d-none f-right d-lg-block">
-                                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("IndexAll", "Home", new { area = "" })" method="post">
-                                        <button type="submit" class="nav-link btn btn-link text-dark styled-button1">Đăng xuất</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
-                        </div>
-                    </div>
+            <a href="#" class="logo d-flex align-items-center me-auto">
+                <img src="~?images/Logo.jpg" alt="">
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="@Url.Action("Index", "UV", new { area = "UngVien" })">Trang chủ</a></li>
+                    <li><a href="@Url.Action("IndexProfileUV", "UV", new { area = "UngVien" })">Thông tin cá nhân</a></li>
+                    <li class="dropdown">
+                        <a href="#"><span>Công việc</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li><a href="@Url.Action("DSNhaTuyenDung", "UV", new { area = "UngVien" })">Danh sách nhà tuyển dụng</a></li>
+                            <li><a href="@Url.Action("ListBaiTuyenDung", "UV", new { area = "UngVien" })">Bài tuyển dụng </a></li>
+                            <li><a href="@Url.Action("DSUngTuyen", "UV", new { area = "UngVien" })">Danh sách ứng tuyển </a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#"><span>Góp ý</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li><a href="mailto:nhanhtvt111@gmail.com">Email</a></li>
+                            <li><a href="https://www.facebook.com/nhanh1412">Facebook</a></li>
+                        </ul>
+                    </li>
+                    <a class="btn-getstarted" href="@Url.Action("IndexAll", "Home", new { area = "" })">Đăng xuất</a>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+
+
+        </div>
+    </header>
+
+    @RenderBody()
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h4>Chúng Tôi</h4>
+                    <p>Đây là trang web do 2 sinh viên lớp 21DTHF2 của trường đại học Hutech thực hiện</p>
+                </div>
+                <div class="col-lg-4">
+                    <h4>Thông Tin Liên Hệ</h4>
+                    <ul>
+                        <li>Địa chỉ: Thủ Đức Campus, Xa lộ Hà Nội, tp.Thủ Đức.</li>
+                        <li><a href="#">Điện thoại: 0833634655</a></li>
+                        <li><a href="mailto:nhanhtvt111@gmail.com">Email: nhanhtvt111@gmail.com</a></li>
+                        <li><a href="https://www.facebook.com/messages/t/nhanh1412">Facebook: Phạm Nhanh</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h4>Thông tin đồ án cơ sở</h4>
+                    <ul>
+                        <li><a href="#">Giảng viên hướng dẫn: ThS.Nguyễn Văn Danh</a></li>
+                        <li><a href="#">Sinh viên thực hiện:</a></li>
+                        <li><a href="#">1. Phạm Hoa Nhanh</a></li>
+                        <li><a href="#">2. Nguyễn Đình Chương</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <!-- Header End -->
-    </header>
-    @RenderBody()
-   <footer>
-        <div class="footer-area footer-bg footer-padding">
-            <div class="container">
-                <div class="row d-flex justify-content-between">
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-footer-caption mb-50">
-                            <div class="single-footer-caption mb-30">
-                                <div class="footer-tittle">
-                                    <h4>Chúng Tôi</h4>
-                                    <div class="footer-pera">
-                                        <p>Đây là trang web do 2 sinh viên lớp 21DTHF2 của trường đại học Hutech thực hiện </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>Thông Tin Liên Hệ</h4>
-                                <ul>
-                                    <li>
-                                        <p>Địa chỉ: Thủ Đức Campus, Xa lộ Hà Nội, tp.Thủ Đức.</p>
-                                    </li>
-                                    <li><a href="#">Điện thoại: 0833634655</a></li>
-                                    <li><a href="mailto:nhanhtvt111@gmail.com">Email: nhanhtvt111@gmail.com</a></li>
-                                    <li><a href="https://www.facebook.com/messages/t/nhanh1412">Facebook: Phạm Nhanh</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>Thông tin đồ án cơ sở</h4>
-                                <ul>
-                                    <li><a href="#">Giảng viên hướng dẫn: ThS.Nguyễn Văn Danh</a></li>
-                                    <li><a href="#">Sinh viên thực hiện:</a></li>
-                                    <li><a href="#">1. Phạm Hoa Nhanh</a></li>
-                                    <li><a href="#">2. Nguyễn Đình Chương</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-        <div class="footer-bottom-area footer-bg">
-            <div class="container">
-                <div class="footer-border">
-                    <div class="row d-flex justify-content-between align-items-center">
-                        <div class="col-xl-10 col-lg-8">
-                            <div class="footer-copy-right">
-                                <p>
-                                   ĐỒ ÁN CƠ SỞ | Hệ Thống Thông Tin | Website tìm việc nhóm 16
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>ĐỒ ÁN CƠ SỞ | Hệ Thống Thông Tin | Website tìm việc nhóm 16</p>
                 </div>
             </div>
         </div>
     </footer>
-@*     <script src="~/js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="~/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="~/js/popper.min.js"></script>
-    <script src="~/js/bootstrap.min.js"></script>
-    <script src="~/js/jquery.slicknav.min.js"></script>
-    <script src="~/js/owl.carousel.min.js"></script>
-    <script src="~/js/slick.min.js"></script>
-    <script src="~/js/price_rangs.js"></script>
-    <script src="~/js/wow.min.js"></script>
-    <script src="~/js/animated.headline.js"></script>
-    <script src="~/js/jquery.magnific-popup.js"></script>
-    <script src="~/js/jquery.scrollUp.min.js"></script>
-    <script src="~/js/jquery.nice-select.min.js"></script>
-    <script src="~/js/jquery.sticky.js"></script>
-    <script src="~/js/contact.js"></script>
-    <script src="~/js/jquery.form.js"></script>
-    <script src="~/js/jquery.validate.min.js"></script>
-    <script src="~/js/mail-script.js"></script>
-    <script src="~/js/jquery.ajaxchimp.min.js"></script>
-    <script src="~/js/plugins.js"></script>
-    <script src="~/js/main.js"></script> *@
 
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/vendor/aos/aos.js"></script>
+    <script src="~/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/assets/js/main.js"></script>
 </body>
 </html>

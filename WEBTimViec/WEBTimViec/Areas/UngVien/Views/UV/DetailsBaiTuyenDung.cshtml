@@ -8,69 +8,68 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> JobPlus </title>
+    <title>JobPlus</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-    <!-- CSS here -->
-    <link rel="stylesheet" href="~/css/main.css">
-    <link rel="stylesheet" href="~/css/normalize.min.css">
-    <link rel="stylesheet" href="~/css/font-awesome.min.css">
-    <link rel="stylesheet" href="~/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="~/css/flaticon.css">
-    <link rel="stylesheet" href="~/css/price_rangs.css">
-    <link rel="stylesheet" href="~/css/slicknav.css">
-    <link rel="stylesheet" href="~/css/animate.min.css">
-    <link rel="stylesheet" href="~/css/magnific-popup.css">
-    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="~/css/themify-icons.css">
-    <link rel="stylesheet" href="~/css/slick.css">
-    <link rel="stylesheet" href="~/css/nice-select.css">
-    <link rel="stylesheet" href="~/css/style.css">
-    <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet">
 </head>
 <body>
-    <div class="khung">
-        <h1 class="tieude">@ViewData["Title"]</h1>
-            <div class="khungchu1">
-                <h3 class="card-title">@Model.TenCongViec</h3>
-@*             <p class="card-text"><strong>Công ty: </strong>@Model.applicationUser.NhaTuyenDung_name</p> *@
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h1 class="tieude">@ViewData["Title"]</h1>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title text-center">@Model.TenCongViec</h3>
 
-                @*                 <p class="card-text"><strong>Tên công ty:</strong> @Model.applicationUser.FullName</p> *@
-                <p class="card-text"><strong>Mô tả công việc:</strong> @Model.MoTaCongViec</p>
-                <p class="card-text"><strong>Yêu cầu kỹ năng:</strong> @Model.YeuCauKyNang</p>
-                <p class="card-text"><strong>Phúc lợi:</strong> @Model.PhucLoi</p>
-                <p class="card-text"><strong>Lương:</strong> @Model.Luong_min - @Model.Luong_max triệu đồng</p>
-                <p class="card-text"><strong>Loại công việc:</strong> @Model.KieuCongViec</p>
-                <p class="card-text"><strong>Hạn nộp hồ sơ:</strong> @Model.ThoiGianHetHan</p>
-                <p class="card-text"><strong>Thành phố:</strong> @ViewData["TenTP"]</p>
-                <p class="card-text">
-                    <strong>Chuyên ngành:</strong>
-                    @if (ViewBag.ChuyenNganhs != null)
-                    {
-                        @string.Join(", ", ViewBag.ChuyenNganhs)
-                    }
-                </p>
-                <p class="card-text">
-                    <strong>Vị trí công việc:</strong>
-                    @if (ViewBag.ViTriCongViecs != null)
-                    {
-                        @string.Join(", ", ViewBag.ViTriCongViecs)
-                    }
-                </p>
-                <p class="card-text">
-                    <strong>Kỹ năng mềm:</strong>
-                    @if (ViewBag.KyNangMems != null)
-                    {
-                        @string.Join(", ", ViewBag.KyNangMems)
-                    }
-                </p>
-                <a href="@Url.Action("UngTuyen", new { id = Model.BaiTuyenDung_id })" class="btn btn-primary">Ứng tuyển</a>
+                        <p class="card-text"><strong>Mô tả công việc:</strong> @Model.MoTaCongViec</p>
+                        <p class="card-text"><strong>Yêu cầu kỹ năng:</strong> @Model.YeuCauKyNang</p>
+                        <p class="card-text"><strong>Phúc lợi:</strong> @Model.PhucLoi</p>
+                        <p class="card-text"><strong>Lương:</strong> @Model.Luong_min - @Model.Luong_max triệu đồng</p>
+                        <p class="card-text"><strong>Loại công việc:</strong> @Model.KieuCongViec</p>
+                        <p class="card-text"><strong>Hạn nộp hồ sơ:</strong> @Model.ThoiGianHetHan</p>
+                        <p class="card-text"><strong>Thành phố:</strong> @ViewData["TenTP"]</p>
+
+                        <p class="card-text">
+                            <strong>Chuyên ngành:</strong>
+                            @if (ViewBag.ChuyenNganhs != null)
+                            {
+                                @string.Join(", ", ViewBag.ChuyenNganhs)
+                            }
+                        </p>
+                        <p class="card-text">
+                            <strong>Vị trí công việc:</strong>
+                            @if (ViewBag.ViTriCongViecs != null)
+                            {
+                                @string.Join(", ", ViewBag.ViTriCongViecs)
+                            }
+                        </p>
+                        <p class="card-text">
+                            <strong>Kỹ năng mềm:</strong>
+                            @if (ViewBag.KyNangMems != null)
+                            {
+                                @string.Join(", ", ViewBag.KyNangMems)
+                            }
+                        </p>
+
+                        <div class="text-center">
+                            <a href="@Url.Action("UngTuyen", new { id = Model.BaiTuyenDung_id })" class="btn btn-primary">Ứng tuyển</a>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
     </div>
 </body>
 </html>

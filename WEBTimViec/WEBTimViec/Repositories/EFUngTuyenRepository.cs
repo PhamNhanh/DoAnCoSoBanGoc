@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using WEBTimViec.Data;
 using WEBTimViec.Models;
 
@@ -105,6 +107,13 @@ namespace WEBTimViec.Repositories
 
             return ungTuyenList;
         }
-
+        public async Task<IEnumerable<UngTuyen>> GetApplicationsByCurrentUserAsync(string currentUserId)
+        {
+            return await _context.ungTuyens
+                .Include(ut => ut.BaiTuyenDung)
+                .ThenInclude(bt => bt.applicationUser) // Including related data if necessary
+                .Where(ut => ut.applicationUser.Id == currentUserId)
+                .ToListAsync();
+        }
     }
 }

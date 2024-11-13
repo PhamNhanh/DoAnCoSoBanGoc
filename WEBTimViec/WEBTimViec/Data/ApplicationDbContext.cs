@@ -22,6 +22,7 @@ namespace WEBTimViec.Data
         public DbSet<ThanhPho> thanhPhos { get; set; }
         public DbSet<TruongDaiHoc> truongDaiHocs { get; set; }
         public DbSet<UngTuyen> ungTuyens { get; set; }
+        public DbSet<NhomChuyenNganh> nhomChuyenNganhs { get; set; }
         public DbSet<ViTriCongViec> viTriCongViecs { get; set; }
         public DbSet<BaiTuyenDung_KyNangMem> baiTuyenDung_KyNangMems { get; set; }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -72,7 +73,7 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             var sortedChuyenNganh = chuyenNganh.OrderBy(cn => cn.ChuyenNganh_name).ToList();
 
             // Lấy danh sách ứng viên
-            var ungvien = await _userRepository.GetAllAsync();
+            var ungvien = await _userRepository.GetAllUserAsync();
 
             // Tạo một danh sách để lưu số lượng bài tuyển dụng theo chuyên ngành
             var jobCountsByMajor = new List<MajorViewModel>();
@@ -586,6 +587,40 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             return RedirectToAction(nameof(ListBaiTuyenDung));
         }
 
+        public async Task<IActionResult> Test ()
+        {
+            // Get the current user's ID
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
 
+            // Get applications for the current user
+            var applications = await _ungTuyen.GetApplicationsByCurrentUserAsync(userId);
+
+            // Return the applications to the view
+            return View(applications);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Test(IFormCollection form)
+        {
+            var ungTuyenList = await _ungTuyen.GetAllAsync();
+
+            foreach (var ungtuyen in ungTuyenList)
+            {
+                string formKey = $"status_{ungtuyen.UngTuyen_id}";
+                if (form.TryGetValue(formKey, out var statusValue))
+                {
+                    // Assuming TrangThai is a string or an appropriate type that can be directly assigned from statusValue
+                    ungtuyen.TrangThai = statusValue;
+                    _context.ungTuyens.Update(ungtuyen);
+                }
+            }
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Test)); // Redirecting to the same action to show the updated list
+        }
     }
 }

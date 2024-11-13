@@ -55,10 +55,21 @@ namespace WEBTimViec.Areas.UngVien.UngVien
         }
         public async Task<IActionResult> Index()
         {
+            // Lấy thông tin người dùng hiện tại
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser == null)
+            {
+                return NotFound("Người dùng không tồn tại.");
+            }
+
             // Lấy danh sách bài tuyển dụng có trạng thái = 1
             var baiTuyenDungs = await _context.baiTuyenDungs
-                                        .Where(b => b.TrangThai == true) // Chỉ lấy bài tuyển dụng có trang thái = 1
-                                        .ToListAsync();
+                                            .Where(b => b.TrangThai == true)
+                                            .Include(b => b.baiTuyenDung_ChuyenNganhs)
+                                                .ThenInclude(bcn => bcn.chuyenNganh)
+                                            .Include(b => b.thanhPho)
+                                            .Include(b => b.applicationUser)
+                                            .ToListAsync();
 
             // Lấy danh sách thành phố và sắp xếp theo tên
             var thanhPho = await _thanhPho.GetAllAsync();
@@ -67,6 +78,19 @@ namespace WEBTimViec.Areas.UngVien.UngVien
             // Lấy danh sách chuyên ngành và sắp xếp theo tên
             var chuyenNganh = await _chuyenNganh.GetAllAsync();
             var sortedChuyenNganh = chuyenNganh.OrderBy(cn => cn.ChuyenNganh_name).ToList();
+
+            // Lấy danh sách chuyên ngành của ứng viên hiện tại
+            var userChuyenNganhs = await _context.hocVans
+                .Where(uc => uc.applicationUserId == currentUser.Id)
+                .Select(uc => uc.chuyenNganhId)
+                .ToListAsync();
+
+            // Lấy danh sách bài tuyển dụng gợi ý dựa trên chuyên ngành của ứng viên
+            var suggestedJobs = await _context.baiTuyenDung_ChuyenNganhs
+                .Where(bcn => userChuyenNganhs.Contains(bcn.ChuyenNganhid))
+                .Select(bcn => bcn.baiTuyenDung)
+                .Distinct()
+                .ToListAsync();
 
             // Lấy danh sách ứng viên
             var ungvien = await _userRepository.GetAllAsync();
@@ -101,18 +125,14 @@ namespace WEBTimViec.Areas.UngVien.UngVien
                 ThanhPhos = sortedThanhPho,
                 ChuyenNganhs = sortedChuyenNganh,
                 ApplicationUsers = ungvien,
-                Majors = jobCountsByMajor // Thêm danh sách chuyên ngành được sắp xếp với số lượng bài tuyển dụng
+                Majors = jobCountsByMajor,
+                BaiTuyenDung = suggestedJobs // Thêm danh sách gợi ý bài tuyển dụng vào ViewModel
             };
 
-            // Thêm thông tin applicationUser cho mỗi bài tuyển dụng
-            foreach (var baiTuyenDung in viewModel.BaiTuyenDungs)
-            {
-                var applicationUser = await _context.Users.FirstOrDefaultAsync(u => u.Id == baiTuyenDung.ApplicationUserId);
-                baiTuyenDung.applicationUser = applicationUser;
-            }
-
+            // Truyền ViewModel sang View
             return View(viewModel);
         }
+
 
         public async Task<IActionResult> IndexHocVan(string id)
         {
@@ -226,7 +246,14 @@ namespace WEBTimViec.Areas.UngVien.UngVien
             viewModel.ChuyenNganhs = chuyenNganh;
 
             // Tạo query tìm kiếm bài tuyển dụng
-            var query = _context.baiTuyenDungs.AsQueryable();
+            var query = _context.baiTuyenDungs
+                .Include(b => b.thanhPho) // Include related ThanhPho
+                .Include(b => b.baiTuyenDung_ChuyenNganhs) // Include the join table
+                .ThenInclude(bcn => bcn.chuyenNganh) // Include ChuyenNganh through the join table
+                .AsQueryable();
+
+            // Lọc kết quả theo trạng thái
+            query = query.Where(b => b.TrangThai == true);
 
             // Tìm kiếm theo tên công việc
             if (!string.IsNullOrEmpty(viewModel.JobName))
@@ -245,6 +272,7 @@ namespace WEBTimViec.Areas.UngVien.UngVien
 
             return View(viewModel);
         }
+
         public async Task<IActionResult> DSNhaTuyenDung()
         {
             var danhSachNhaTuyenDung = await _userRepository.GetAllCompanyAsync();

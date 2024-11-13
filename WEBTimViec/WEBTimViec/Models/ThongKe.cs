@@ -12,5 +12,6 @@
         public int sluvinday { get; set; }
         public int slntdinday { get; set; }
         public int slTaiKhoan { get; set; }
+
     }
 }

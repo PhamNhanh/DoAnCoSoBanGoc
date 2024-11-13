@@ -290,3 +290,27 @@
     border-radius: px; /* Bo tròn các góc của khung */
     background: linear-gradient(to bottom, #c4f7cf, #d6f9f0);
 }
+.card2 {
+    margin-bottom: 20px; /* Khoảng cách dưới giữa các card */
+    padding: 15px; /* Khoảng cách bên trong các card */
+    border: 1px solid #000; /* Đường viền để phân biệt các card */
+    border-radius: 8px; /* Bo góc các card */
+    background: linear-gradient(to bottom, #c4f7cf, #d6f9f0);
+}
+
+@media (min-width: 768px) {
+    .card2 {
+        margin-right: 15px; /* Khoảng cách bên phải giữa các card */
+        margin-left: 15px; /* Khoảng cách bên trái giữa các card */
+    }
+}
+.company-logo1 {
+    width: 120px; /* Điều chỉnh chiều rộng của logo */
+    height: 120px; /* Điều chỉnh chiều cao của logo */
+    margin-bottom: 10px; /* Khoảng cách dưới của logo so với tiêu đề */
+    margin-left: 15px;
+    border-radius: 50%;
+    display: block; /* Cho phép logo là một block element */
+    margin-left: auto; /* Căn giữa logo */
+    margin-right: auto; /* Căn giữa logo */
+}

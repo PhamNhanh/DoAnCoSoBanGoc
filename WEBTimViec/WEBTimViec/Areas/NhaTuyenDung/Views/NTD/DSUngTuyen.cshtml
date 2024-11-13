@@ -26,7 +26,13 @@
     <link rel="stylesheet" href="~/css/slick.css">
     <link rel="stylesheet" href="~/css/nice-select.css">
     <link rel="stylesheet" href="~/css/style.css">
-    <link rel="stylesheet" href="~/css/BaiTuyenDung.css">
+    <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
+    <style>
+        .tieude {
+            margin-top: 40px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <button class="styled-button">
@@ -34,6 +40,9 @@
     </button>
     <div class="container khung">
         <h1 class="tieude">Danh sách bài ứng tuyển</h1>
+        <button class="styled-button">
+            <a style="color: black;" href="@Url.Action("Test", "NTD")"> Hiển thị dưới dạng danh sách ứng tuyển </a>
+        </button>
         <div class="row">
             @foreach (var baiTuyenDung in Model)
             {
@@ -50,5 +59,7 @@
             }
         </div>
     </div>
+    </div>
+
 </body>
 </html>

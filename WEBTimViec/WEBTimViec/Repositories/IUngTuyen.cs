@@ -16,5 +16,6 @@ namespace WEBTimViec.Repositories
         Task<int> CountUngTuyenAsync();
         Task<int> CountUngTuyenTodayAsync();
         Task<IEnumerable<UngTuyen>> GetUngTuyenByBaiTuyenDungIdAndUserIdAsync(int idBaiTuyenDung, string idUser);
+        Task<IEnumerable<UngTuyen>> GetApplicationsByCurrentUserAsync(string currentUserId);
     }
 }

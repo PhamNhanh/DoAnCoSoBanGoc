@@ -404,7 +404,12 @@ namespace WEBTimViec.Migrations
                     b.Property<string>("ChuyenNganh_name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("nhomChuyenNganhid")
+                        .HasColumnType("int");
+
                     b.HasKey("ChuyenNganh_id");
+
+                    b.HasIndex("nhomChuyenNganhid");
 
                     b.ToTable("chuyenNganhs");
                 });
@@ -476,6 +481,22 @@ namespace WEBTimViec.Migrations
                     b.HasKey("KyNangMem_id");
 
                     b.ToTable("kyNangMems");
+                });
+
+            modelBuilder.Entity("WEBTimViec.Models.NhomChuyenNganh", b =>
+                {
+                    b.Property<int>("NhomChuyenNganhId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("NhomChuyenNganhId"));
+
+                    b.Property<string>("TenNhom")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("NhomChuyenNganhId");
+
+                    b.ToTable("nhomChuyenNganhs");
                 });
 
             modelBuilder.Entity("WEBTimViec.Models.ThanhPho", b =>
@@ -709,6 +730,15 @@ namespace WEBTimViec.Migrations
                     b.Navigation("baiTuyenDung");
 
                     b.Navigation("viTriCongViec");
+                });
+
+            modelBuilder.Entity("WEBTimViec.Models.ChuyenNganh", b =>
+                {
+                    b.HasOne("WEBTimViec.Models.NhomChuyenNganh", "chuyenNganh")
+                        .WithMany()
+                        .HasForeignKey("nhomChuyenNganhid");
+
+                    b.Navigation("chuyenNganh");
                 });
 
             modelBuilder.Entity("WEBTimViec.Models.HocVan", b =>

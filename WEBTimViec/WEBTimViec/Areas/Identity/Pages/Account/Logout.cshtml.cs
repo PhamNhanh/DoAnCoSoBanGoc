@@ -26,15 +26,12 @@ namespace WEBTimViec.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
-            await _signInManager.SignOutAsync();
-            _logger.LogInformation("User logged out.");
-            if (returnUrl != null)
             {
-                return LocalRedirect(returnUrl); // Chuyển hướng về returnUrl nếu có
-            }
-            else
-            {
-                return Redirect("/Home/Index"); // Chuyển hướng về trang localhost:7103/Home/Index
+                await _signInManager.SignOutAsync();
+                _logger.LogInformation("User logged out.");
+
+                   // Chuyển hướng về trang Home/IndexAll
+                return RedirectToAction("IndexAll", "Home");
             }
         }
     }

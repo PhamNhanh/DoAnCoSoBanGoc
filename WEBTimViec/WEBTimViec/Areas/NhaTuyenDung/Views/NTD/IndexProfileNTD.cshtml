@@ -45,7 +45,10 @@
             <div class="khung">
                 <div class="col-md-3 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                        <img class="rounded-circle mt-5" width="150px" src="@Model.image_url">
+                        <a href="@Url.Action("ListBaiTuyenDung", "NTD")">
+                            <img class="rounded-circle mt-5" title="Nhấn vào đây để xem bài tuyển dụng" width="150px" src="@Model.image_url">
+                        </a>
+
                         <span style="font-family: 'Times New Roman'" class="font-weight-bold"><h4>@Model.NhaTuyenDung_name</h4></span>
                         <span class="text-black-50">@Model.Email</span>
                     </div>
@@ -83,6 +86,7 @@
                     <div class="edit-link">
                         <a href="@Url.Action("UpdateProfileNTD", new { id = Model.Id })">Chỉnh sửa thông tin</a>
                     </div>
+
                 </div>
             </div>
         

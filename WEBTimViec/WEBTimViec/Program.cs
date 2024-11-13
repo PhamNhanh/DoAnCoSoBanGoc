@@ -26,7 +26,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 
 builder.Services.AddControllersWithViews();
 // Add scoped services for repositories
-builder.Services.AddScoped<ITruongDaiHoc, EFTruongDaiHocRepository>();
+ 
 builder.Services.AddScoped<IKinhNghiem, EFKinhNghiemRepository>();
 builder.Services.AddScoped<IChuyenNganh, EFChuyenNganhRepository>();
 builder.Services.AddScoped<IBaiTuyenDung, EFBaiTuyenDungRepository>();
@@ -36,6 +36,7 @@ builder.Services.AddScoped<IViTriCongViec, EFViTriCongViecRepository>();
 builder.Services.AddScoped<IUserRepository, EFUserRepository>();
 builder.Services.AddScoped<IKyNangMem, EFKyNangMemRepository>();
 builder.Services.AddScoped<IHocVan, EFHocVanRepository>();
+builder.Services.AddScoped<ITruongDaiHoc, EFTruongDaiHocRepository>();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
@@ -52,6 +53,7 @@ else
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
