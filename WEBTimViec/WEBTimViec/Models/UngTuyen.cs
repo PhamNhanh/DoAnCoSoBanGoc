@@ -7,7 +7,7 @@ namespace WEBTimViec.Models
         [Key]
         public int UngTuyen_id { get; set; }
         public string? url_CV { get; set; }
-        public string? ThuGioiThieu { get; set; }
+/*        public string? ThuGioiThieu { get; set; }*/
         public DateTime? ThoiGianUngTuyen { get; set; }
         public string? TenUngVien {  get; set; }
         public string? EmailUV { get; set; }

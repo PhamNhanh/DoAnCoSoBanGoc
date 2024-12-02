@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 using SQLitePCL;
+using System.Security.Claims;
 using WEBTimViec.Data;
 using WEBTimViec.Models;
 using WEBTimViec.Repositories;
@@ -27,6 +28,8 @@ namespace WEBTimViec.Areas.UngVien.UngVien
         private readonly IKyNangMem _kyNangMem;
         private readonly IHocVan _hocVan;
         private readonly ITruongDaiHoc _truongDaiHoc;
+        private readonly ISaveJob _saveJobRepository;
+
         public UVController(ApplicationDbContext context,
             IBaiTuyenDung baiTuyenDung,
             IChuyenNganh chuyenNganh,
@@ -38,7 +41,8 @@ namespace WEBTimViec.Areas.UngVien.UngVien
             IViTriCongViec viTriCongViec,
             IHocVan hocVan,
             ITruongDaiHoc truongDaiHoc,
-            IKyNangMem kyNangMem)
+            IKyNangMem kyNangMem,
+            ISaveJob saveJobRepository)
         {
             _context = context;
             _baiTuyenDung = baiTuyenDung;
@@ -52,6 +56,7 @@ namespace WEBTimViec.Areas.UngVien.UngVien
             _truongDaiHoc = truongDaiHoc;
             _kyNangMem = kyNangMem;
             _hocVan = hocVan;
+            _saveJobRepository = saveJobRepository;
         }
         public async Task<IActionResult> Index()
         {
@@ -62,20 +67,10 @@ namespace WEBTimViec.Areas.UngVien.UngVien
                 return NotFound("Người dùng không tồn tại.");
             }
 
-            // Lấy danh sách bài tuyển dụng có trạng thái = 1
-            var baiTuyenDungs = await _context.baiTuyenDungs
-                                            .Where(b => b.TrangThai == true)
-                                            .Include(b => b.baiTuyenDung_ChuyenNganhs)
-                                                .ThenInclude(bcn => bcn.chuyenNganh)
-                                            .Include(b => b.thanhPho)
-                                            .Include(b => b.applicationUser)
-                                            .ToListAsync();
-
-            // Lấy danh sách thành phố và sắp xếp theo tên
+            // Lấy danh sách thành phố và chuyên ngành, đã sắp xếp theo tên
             var thanhPho = await _thanhPho.GetAllAsync();
             var sortedThanhPho = thanhPho.OrderBy(tp => tp.ThanhPho_name).ToList();
 
-            // Lấy danh sách chuyên ngành và sắp xếp theo tên
             var chuyenNganh = await _chuyenNganh.GetAllAsync();
             var sortedChuyenNganh = chuyenNganh.OrderBy(cn => cn.ChuyenNganh_name).ToList();
 
@@ -85,20 +80,25 @@ namespace WEBTimViec.Areas.UngVien.UngVien
                 .Select(uc => uc.chuyenNganhId)
                 .ToListAsync();
 
-            // Lấy danh sách bài tuyển dụng gợi ý dựa trên chuyên ngành của ứng viên
-            var suggestedJobs = await _context.baiTuyenDung_ChuyenNganhs
-                .Where(bcn => userChuyenNganhs.Contains(bcn.ChuyenNganhid))
-                .Select(bcn => bcn.baiTuyenDung)
+            // Lấy danh sách bài tuyển dụng gợi ý theo chuyên ngành
+            var suggestedJobs = new List<BaiTuyenDung>();
+            foreach (var chuyenNganhId in userChuyenNganhs)
+            {
+                var baiTuyenDungsByChuyenNganh = await _baiTuyenDung.GetBaiTuyenDungByChuyenNganhAsync(chuyenNganhId);
+                suggestedJobs.AddRange(baiTuyenDungsByChuyenNganh);
+            }
+
+            // Lọc các bài tuyển dụng theo trạng thái và loại bỏ các bản sao
+            var baiTuyenDungs = suggestedJobs
+                .Where(b => b.TrangThai == true)
                 .Distinct()
-                .ToListAsync();
+                .ToList();
 
             // Lấy danh sách ứng viên
             var ungvien = await _userRepository.GetAllAsync();
 
-            // Tạo một danh sách để lưu số lượng bài tuyển dụng theo chuyên ngành
+            // Đếm số lượng bài tuyển dụng theo chuyên ngành
             var jobCountsByMajor = new List<MajorViewModel>();
-
-            // Đếm số lượng bài tuyển dụng cho mỗi chuyên ngành
             foreach (var chuyenNganhItem in sortedChuyenNganh)
             {
                 var count = await _context.baiTuyenDung_ChuyenNganhs
@@ -117,6 +117,9 @@ namespace WEBTimViec.Areas.UngVien.UngVien
 
             // Sắp xếp các chuyên ngành theo số lượng bài tuyển dụng giảm dần
             jobCountsByMajor = jobCountsByMajor.OrderByDescending(m => m.JobCount).ToList();
+
+            // Thêm danh sách bài tuyển dụng vào ViewBag
+            ViewBag.BaiTuyenDung = baiTuyenDungs;
 
             // Tạo ViewModel để truyền dữ liệu sang View
             var viewModel = new ViewModel
@@ -563,6 +566,85 @@ namespace WEBTimViec.Areas.UngVien.UngVien
                 await image.CopyToAsync(fileStream);
             }
             return "/images/" + image.FileName; // Trả về đường dẫn tương đối
+        }
+        /*        public async Task<IActionResult> ViewSavedJobs()
+                {
+                    // Get the current logged-in user's ID
+                    var userId = _userManager.GetUserId(User);
+
+                    // Retrieve the saved jobs for this user
+                    var savedJobs = await _saveJobRepository.GetSavedJobsAsync(userId);
+
+                    // Prepare the model to be passed to the view
+                    var model = new ListSave
+                    {
+                        SavedJobs = savedJobs
+                    };
+
+                    // Return the view with the model
+                    return View(model);
+                }*/
+
+        [HttpPost]
+        public async Task<IActionResult> SaveJob(int jobId)
+        {
+            var userId = _userManager.GetUserId(User);  // Lấy UserId từ người dùng hiện tại
+
+            // Gọi phương thức SaveJobAsync từ repository với userId và jobId
+            await _saveJobRepository.SaveJobAsync(userId, jobId);
+
+            // Chuyển hướng về trang danh sách công việc đã lưu
+            return RedirectToAction("ViewSavedJobs");
+        }
+        public IActionResult LoadMoreJobs(int page)
+        {
+            // Lấy danh sách bài tuyển dụng theo page
+            var jobs = _context.baiTuyenDungs
+                .Skip(page * 6) // Bỏ qua các bài tuyển dụng đã hiển thị
+                .Take(6) // Lấy thêm 6 bài tuyển dụng
+                .ToList();
+
+            return PartialView("_JobList", jobs); // Trả về partial view chứa danh sách bài tuyển dụng
+        }
+        // Action để xem chi tiết một bài tuyển dụng
+        public async Task<IActionResult> ListUngTuyen( string id)
+        {
+            var applications = await _ungTuyen.GetAllAsync(); // Lấy tất cả ứng tuyển từ cơ sở dữ liệu
+
+            if (applications == null || !applications.Any())
+            {
+                ViewBag.Message = "Hiện tại không có bài ứng tuyển nào.";
+            }
+
+            // Trả về view với tất cả các ứng tuyển
+            return View(applications);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> ListUngTuyen(IFormCollection form)
+        {
+            var ungTuyenList = await _ungTuyen.GetAllAsync(); // Lấy tất cả ứng tuyển
+
+            if (ungTuyenList == null || !ungTuyenList.Any())
+            {
+                return RedirectToAction("ListUngTuyen");
+            }
+
+            foreach (var ungtuyen in ungTuyenList)
+            {
+                string formKey = $"status_{ungtuyen.UngTuyen_id}";
+                if (form.TryGetValue(formKey, out var statusValue))
+                {
+                    // Cập nhật trạng thái từ form
+                    ungtuyen.TrangThai = statusValue;
+                    _context.ungTuyens.Update(ungtuyen);
+                }
+            }
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(ListUngTuyen)); // Chuyển hướng lại để hiển thị danh sách đã cập nhật
         }
 
     }

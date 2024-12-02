@@ -1,74 +1,92 @@
 ﻿@model WEBTimViec.Models.UngTuyen
-@* @{
-    ViewData["Title"] = "Ứng tuyển";
-} *@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>JobPlus</title>
-    <meta name="description" content="">
+    <title>Ứng tuyển | JobPlus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Vendor CSS Files -->
     <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="~/assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-    <!-- Main CSS File -->
-    <link href="assets/css/main.css" rel="stylesheet">
 </head>
-<div class="ha1">
-    <div class="khungchu2">
-        <div class="khungchu2">
 
-            <h3 class="tieude">Ứng tuyển cho công việc: @ViewBag.BaiTuyenDung.TenCongViec</h3>
+<div class="container my-5">
+    <div class="row justify-content-center" style="margin-top: 100px;">
+        <!-- Cột bên trái: Thông tin ứng tuyển -->
+        <div class="col-lg-6">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">
+                        Ứng tuyển cho công việc: <strong>@ViewBag.BaiTuyenDung.TenCongViec</strong>
+                    </h3>
 
-            <form asp-action="UngTuyen" method="post" enctype="multipart/form-data">
-                <div class="info-section">
-                    <div class="info-item1">
-                        <label class="form-label me-2 mb-0">Tên ứng viên: </label>
-                        <span id="tenUngVien">@ViewBag.NguoiDung.FullName</span>
-                        <input type="hidden" name="TenUngVien" id="hiddenTenUngVien" value="@ViewBag.NguoiDung.FullName">
-                    </div>
-                    <div class="info-item1">
-                        <label class="form-label me-2 mb-0">Email: </label>
-                        <span id="emailUV">@ViewBag.NguoiDung.Email</span>
-                        <input type="hidden" name="EmailUV" id="hiddenEmailUV" value="@ViewBag.NguoiDung.Email">
-                    </div>
+                    <form asp-action="UngTuyen" method="post" enctype="multipart/form-data">
+                        <!-- Thông tin ứng viên -->
+                        <div class="mb-3">
+                            <label class="form-label">Tên ứng viên:</label>
+                            <span class="fw-bold d-block">@ViewBag.NguoiDung.FullName</span>
+                            <input type="hidden" name="TenUngVien" value="@ViewBag.NguoiDung.FullName">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email:</label>
+                            <span class="fw-bold d-block">@ViewBag.NguoiDung.Email</span>
+                            <input type="hidden" name="EmailUV" value="@ViewBag.NguoiDung.Email">
+                        </div>
 
-                    <div class="info-item1">
-                        <label asp-for="url_CV" class="form-label me-2 mb-0">Chọn CV</label>
-                        <input type="file" asp-for="url_CV" class="form-control bg-white" required>
-                        <span asp-validation-for="url_CV" class="text-danger"></span>
-                    </div>
-                    <div class="info-item1">
-                        <textarea class="form-control" asp-for="ThuGioiThieu" rows="5" placeholder="Thư giới thiệu"></textarea>
-                        <span asp-validation-for="ThuGioiThieu" class="text-danger"></span>
-                    </div>
-                    <div class="col-12">
-                        <button class="btn btn-primary w-100" type="submit">Ứng tuyển ngay</button>
+                        <!-- Chọn CV -->
+                        <div class="mb-3">
+                            <label asp-for="url_CV" class="form-label">Chọn CV:</label>
+                            <input type="file" asp-for="url_CV" class="form-control bg-white" required>
+                            <span asp-validation-for="url_CV" class="text-danger"></span>
+                        </div>
+
+                        <!-- Nút ứng tuyển -->
+                        <div class="d-grid mt-4">
+                            <button class="btn btn-primary btn-lg" type="submit">
+                                Ứng tuyển ngay
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cột bên phải: Đồng hồ kỹ thuật số -->
+        <div class="col-lg-6">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Đồng hồ kỹ thuật số</h3>
+                    <!-- Đồng hồ kỹ thuật số -->
+                    <div id="digitalClock" class="mt-4 text-center">
+                        <h4 id="time"></h4>
                     </div>
                 </div>
-            </form>
-
+            </div>
         </div>
     </div>
 </div>
+
+<!-- Bootstrap JS -->
+<script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Thêm thư viện JS đồng hồ -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Khởi tạo đồng hồ -->
 <script>
     $(document).ready(function () {
-        // Lấy giá trị tên người dùng từ span và gán vào trường ẩn
-        var tenUngVien = $('#tenUngVien').text();
-        $('#hiddenTenUngVien').val(tenUngVien);
-    });
+        // Cập nhật đồng hồ kỹ thuật số
+        function updateDigitalClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('time').textContent = timeString;
+        }
 
-</script>
-<script>
-    $(document).ready(function () {
-        // Lấy giá trị email từ span và gán vào trường ẩn
-        var emailUV = $('#emailUV').text();
-        $('#hiddenEmailUV').val(emailUV);
+        // Cập nhật đồng hồ mỗi giây
+        setInterval(updateDigitalClock, 1000);
+        updateDigitalClock(); // Cập nhật ngay khi trang tải
     });
-
 </script>

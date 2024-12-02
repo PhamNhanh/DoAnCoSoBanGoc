@@ -30,6 +30,7 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
         private readonly IKyNangMem _kyNangMem;
         private readonly IHocVan _hocVan;
         private readonly ITruongDaiHoc _truongDaiHoc;
+        private readonly ILoaiTaiKhoan _loaiTaiKhoan;
         public NTDController(ApplicationDbContext context,
             IBaiTuyenDung baiTuyenDung,
             IChuyenNganh chuyenNganh,
@@ -41,7 +42,8 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             IViTriCongViec viTriCongViec,
             ITruongDaiHoc truongDaiHoc,
             IKyNangMem kyNangMem,
-            IHocVan hocVan)
+            IHocVan hocVan,
+            ILoaiTaiKhoan loaiTaiKhoan)
         {
             _context = context;
             _baiTuyenDung = baiTuyenDung;
@@ -55,6 +57,7 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             _truongDaiHoc = truongDaiHoc;
             _kyNangMem = kyNangMem;
             _hocVan = hocVan;
+            _loaiTaiKhoan = loaiTaiKhoan;
         }
 
         public async Task<IActionResult> Index()
@@ -316,31 +319,55 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    // Kiểm tra tên công việc
                     if (string.IsNullOrWhiteSpace(baiTuyenDung.TenCongViec))
                     {
                         ModelState.AddModelError(nameof(baiTuyenDung.TenCongViec), "Tên công việc không được để trống.");
                         return View(baiTuyenDung);
                     }
+
+                    // Kiểm tra người dùng đã đăng nhập hay chưa
                     if (!User.Identity.IsAuthenticated)
                     {
                         return Redirect("/Identity/Account/Login");
                     }
+
+                    // Kiểm tra thời gian hết hạn của bài tuyển dụng
                     if (baiTuyenDung.ThoiGianHetHan <= DateTime.Now)
                     {
                         ModelState.AddModelError(nameof(baiTuyenDung.ThoiGianHetHan), "Thời gian hết hạn phải lớn hơn thời gian hiện tại.");
                         return View(baiTuyenDung);
                     }
+
+                    // Lấy thông tin người dùng hiện tại
                     var find_company = await _userManager.GetUserAsync(User);
                     if (find_company != null)
+                    {
                         baiTuyenDung.applicationUser = find_company;
+                    }
+
+                    // Kiểm tra số lượng bài tuyển dụng của người dùng
+                    var loaiTaiKhoan = await _context.LoaiTaiKhoans.FindAsync(find_company.loaiTaiKhoanId);
+                    var soLuongBaiTuyenDung = await _context.baiTuyenDungs
+                        .Where(b => b.ApplicationUserId == find_company.Id && b.TrangThai == true)
+                        .CountAsync();
+
+                    // Nếu vượt quá giới hạn số bài tuyển dụng cho loại tài khoản, chuyển hướng đến trang DangKyLoaiTaiKhoan
+                    if (soLuongBaiTuyenDung >= loaiTaiKhoan.soBaiTuyenDung)
+                    {
+                        return RedirectToAction("DanhSachLoaiTaiKhoan", "NTD"); // Chuyển hướng đến trang đăng ký loại tài khoản
+                    }
+
+
                     baiTuyenDung.TrangThai = true;
                     baiTuyenDung.ThoiGianDangBai = DateTime.Now;
+
+                    // Kiểm tra và xử lý thông tin lương
                     if (baiTuyenDung.Luong_min < 0)
                     {
                         ModelState.AddModelError(nameof(baiTuyenDung.Luong_min), "Lương từ không được âm.");
                         return RedirectToAction("AddBaiTuyenDung", "NTD");
                     }
-
                     if (baiTuyenDung.Luong_min >= baiTuyenDung.Luong_max)
                     {
                         ModelState.AddModelError(nameof(baiTuyenDung.Luong_max), "Lương từ phải nhỏ hơn lương đến.");
@@ -352,7 +379,7 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
                         await _context.SaveChangesAsync();
                     }
 
-
+                    // Lưu các mối quan hệ khác (Chuyên ngành, Kỹ năng mềm, Vị trí công việc)
                     if (baiTuyenDung.ChuyenNganhIds != null)
                     {
                         foreach (var chuyenNganhId in baiTuyenDung.ChuyenNganhIds)
@@ -366,6 +393,7 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
                         }
                         await _context.SaveChangesAsync();
                     }
+
                     if (baiTuyenDung.KyNangMemIds != null)
                     {
                         foreach (var kyNangMemId in baiTuyenDung.KyNangMemIds)
@@ -379,6 +407,7 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
                         }
                         await _context.SaveChangesAsync();
                     }
+
                     if (baiTuyenDung.ViTriCongViecIds != null)
                     {
                         foreach (var viTriCongViec in baiTuyenDung.ViTriCongViecIds)
@@ -395,8 +424,8 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
 
                     return RedirectToAction("Index", "NTD");
                 }
-                return View(baiTuyenDung);
 
+                return View(baiTuyenDung);
             }
             catch (Exception ex)
             {
@@ -589,23 +618,24 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
 
         public async Task<IActionResult> Test ()
         {
-            // Get the current user's ID
+            // Lấy ID của người dùng hiện tại từ thông tin đăng nhập
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userId == null)
             {
-                return Unauthorized();
+                return Unauthorized(); // Nếu người dùng chưa đăng nhập, trả về Unauthorized
             }
 
-            // Get applications for the current user
-            var applications = await _ungTuyen.GetApplicationsByCurrentUserAsync(userId);
+            // Lấy các ứng tuyển chỉ của người dùng hiện tại
+            var applications = await _ungTuyen.GetUngTuyenByUserIdAsync(userId);
 
-            // Return the applications to the view
+            // Trả về view với danh sách ứng tuyển đã lọc theo userId
             return View(applications);
         }
         [HttpPost]
         public async Task<IActionResult> Test(IFormCollection form)
         {
-            var ungTuyenList = await _ungTuyen.GetAllAsync();
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var ungTuyenList = await _ungTuyen.GetUngTuyenByUserIdAsync(userId);
 
             foreach (var ungtuyen in ungTuyenList)
             {
@@ -622,5 +652,133 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
 
             return RedirectToAction(nameof(Test)); // Redirecting to the same action to show the updated list
         }
+        // Action hiển thị danh sách loại tài khoản
+        [HttpGet]
+        public async Task<IActionResult> DanhSachLoaiTaiKhoan()
+        {
+            // Lấy thông tin người dùng hiện tại
+            var find_company = await _userManager.GetUserAsync(User);
+            if (find_company == null)
+            {
+                return Redirect("/Identity/Account/Login");
+            }
+
+            // Lấy tên loại tài khoản của người dùng
+            var tenLoaiTaiKhoan = await _loaiTaiKhoan.GetTenLoaiTaiKhoanByUserIdAsync(find_company.Id);
+
+            if (string.IsNullOrEmpty(tenLoaiTaiKhoan))
+            {
+                return RedirectToAction("Index", "Home"); // Nếu không tìm thấy loại tài khoản, chuyển hướng về trang chính
+            }
+
+            // Kiểm tra số lượng bài tuyển dụng của người dùng
+            var soLuongBaiTuyenDung = await _context.baiTuyenDungs
+                .Where(b => b.ApplicationUserId == find_company.Id && b.TrangThai == true)
+                .CountAsync();
+
+            // Kiểm tra xem số lượng bài tuyển dụng có vượt quá giới hạn không
+            var loaiTaiKhoan = await _context.LoaiTaiKhoans.FirstOrDefaultAsync(l => l.tenLoaiTaiKhoan == tenLoaiTaiKhoan);
+            if (soLuongBaiTuyenDung >= loaiTaiKhoan.soBaiTuyenDung)
+            {
+                TempData["UpgradeMessage"] = "Bạn cần nâng cấp tài khoản"; // Thêm thông báo vào TempData
+            }
+
+            // Lấy danh sách loại tài khoản
+            var danhSachLoaiTaiKhoan = await _context.LoaiTaiKhoans.ToListAsync();
+
+            // Truyền thông tin loại tài khoản của người dùng vào ViewData
+            ViewData["LoaiTaiKhoan"] = tenLoaiTaiKhoan; // Truyền tên loại tài khoản của người dùng vào ViewData
+            ViewData["FindCompany"] = find_company; // Truyền thông tin người dùng vào ViewData
+
+            return View(danhSachLoaiTaiKhoan); // Trả về view với danh sách loại tài khoản
+        }
+
+
+
+
+
+
+
+        // Action để xác nhận đăng ký loại tài khoản
+        public async Task<IActionResult> XacNhanDangKy(int loaiTaiKhoanId)
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var loaiTaiKhoan = await _loaiTaiKhoan.GetLoaiTaiKhoanByIdAsync(loaiTaiKhoanId);
+
+            if (loaiTaiKhoan == null)
+            {
+                return NotFound();
+            }
+
+            // Gửi đến view xác nhận đăng ký
+            var viewModel = new XacNhanDangKyViewModel
+            {
+                LoaiTaiKhoan = loaiTaiKhoan
+            };
+
+            return View(viewModel);
+        }
+
+        // Action để xử lý việc đồng ý đăng ký
+        [HttpPost]
+        public async Task<IActionResult> XacNhanDangKy(int loaiTaiKhoanId, bool confirm)
+        {
+            if (!confirm)
+            {
+                return RedirectToAction("DanhSachLoaiTaiKhoan");  // Nếu không đồng ý, quay lại danh sách
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var loaiTaiKhoan = await _loaiTaiKhoan.GetLoaiTaiKhoanByIdAsync(loaiTaiKhoanId);
+
+            if (loaiTaiKhoan == null)
+            {
+                return NotFound();
+            }
+
+            // Cập nhật loại tài khoản và thời gian
+            user.loaiTaiKhoanId = loaiTaiKhoanId;
+            user.ThoiGianLoaiTK = DateTime.Now;
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                ViewData["SuccessMessage"] = "Đăng ký loại tài khoản thành công!";
+                return RedirectToAction("DanhSachLoaiTaiKhoan");
+            }
+            else
+            {
+                ViewData["ErrorMessage"] = "Có lỗi xảy ra, vui lòng thử lại!";
+                return RedirectToAction("DanhSachLoaiTaiKhoan");
+            }
+        }
+        public async Task<IActionResult> DetailsGoiTK(int id)
+        {
+            // Lấy thông tin loại tài khoản từ database theo id
+            var loaiTaiKhoan = await _context.LoaiTaiKhoans.FindAsync(id);
+
+            // Kiểm tra xem loại tài khoản có tồn tại không
+            if (loaiTaiKhoan == null)
+            {
+                return NotFound(); // Nếu không tìm thấy, trả về lỗi 404
+            }
+
+            // Truyền dữ liệu loại tài khoản vào View
+            return View(loaiTaiKhoan);
+        }
+
     }
 }

@@ -81,9 +81,10 @@ namespace WEBTimViec.Repositories
         public async Task<IEnumerable<UngTuyen>> GetUngTuyenByUserIdAsync(string id)
         {
             return await _context.ungTuyens
-                .Where(u => u.applicationUser.Id == id)
+                .Where(u => u.applicationUser.Id == id) 
                 .ToListAsync();
         }
+
         public async Task<int> CountUngTuyenAsync()
         {
             return await _context.ungTuyens.CountAsync();

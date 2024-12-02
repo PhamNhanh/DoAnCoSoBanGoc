@@ -25,6 +25,7 @@ namespace WEBTimViec.Data
         public DbSet<NhomChuyenNganh> nhomChuyenNganhs { get; set; }
         public DbSet<ViTriCongViec> viTriCongViecs { get; set; }
         public DbSet<BaiTuyenDung_KyNangMem> baiTuyenDung_KyNangMems { get; set; }
-
+        public DbSet<SavedJob> saveJobs { get; set; }
+        public DbSet<LoaiTaiKhoan> LoaiTaiKhoans { get; set; }
     }
 }

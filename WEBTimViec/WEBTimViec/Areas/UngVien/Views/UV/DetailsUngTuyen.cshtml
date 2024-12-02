@@ -18,20 +18,110 @@
 
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .styled-button a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+            .styled-button a:hover {
+                color: #0056b3;
+            }
+
+        .tieude {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .table th, .table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .table td {
+            font-size: 18px;
+            color: black;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .badge-warning {
+            background-color: #f0ad4e;
+        }
+
+        .badge-success {
+            background-color: #5bc0de;
+        }
+
+        .badge {
+            font-size: 16px;
+            padding: 8px 16px;
+            border-radius: 12px;
+        }
+
+        .table a {
+            color: green;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+            .table a:hover {
+                color: darkgreen;
+            }
+
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .btn-back {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+
+            .btn-back:hover {
+                background-color: #e2e6ea;
+                color: #0056b3;
+            }
+    </style>
 </head>
 <body>
     <div class="container">
-        <button class="styled-button">
-            <a style="color: black;" href="@Url.Action("DSUngTuyen", "UV")"> <<< </a>
+        <button class="btn-back">
+            <a href="@Url.Action("DSUngTuyen", "UV")"> <<< Quay lại</a>
         </button>
 
         <h1 class="tieude">Danh sách bài ứng tuyển</h1>
+
         @if (Model == null || !Model.Any())
         {
             <p>Bạn chưa ứng tuyển vào bài tuyển dụng này</p>
-
         }
-
         else
         {
             <table class="table table-striped">
@@ -40,6 +130,7 @@
                         <th>Mã ứng tuyển</th>
                         <th>Tên ứng viên</th>
                         <th>Thời gian ứng tuyển</th>
+                        <th>Bài Tuyển Dụng</th>
                         <th>CV</th>
                         <th>Trạng thái</th>
                     </tr>
@@ -48,11 +139,14 @@
                     @foreach (var ungtuyen in Model)
                     {
                         <tr>
-                            <td style="font-size: 20px;color:black">@ungtuyen.UngTuyen_id</td>
-                            <td style="font-size: 20px;color:black">@ungtuyen.TenUngVien</td>
-                            <td style="font-size: 20px;color:black">@ungtuyen.ThoiGianUngTuyen</td>
+                            <td>@ungtuyen.UngTuyen_id</td>
+                            <td>@ungtuyen.TenUngVien</td>
+                            <td>@ungtuyen.ThoiGianUngTuyen</td>
                             <td style="font-size: 20px; color: black">
-                                <a href="@ungtuyen.url_CV" target="_blank" style="font-size: 20px; color: Green">Xem CV</a>
+                                <a href="@Url.Action("DetailsBaiTuyenDung", "UV", new { id = ungtuyen.BaiTuyenDungid })" style="color: black; font-size: 20px;">Xem</a>
+                            </td>
+                            <td>
+                                <a href="@ungtuyen.url_CV" target="_blank">Xem CV</a>
                             </td>
 
                             <td>
@@ -62,10 +156,8 @@
                                 }
                                 else
                                 {
-                                    <div>
-                                        Phản hồi từ nhà tuyển dụng:
-                                    </div>
-                                    <label class="badge badge-success"> @ungtuyen.TrangThai</label>
+                                    <div>Phản hồi từ nhà tuyển dụng:</div>
+                                    <label class="badge badge-success">@ungtuyen.TrangThai</label>
                                 }
                             </td>
                         </tr>

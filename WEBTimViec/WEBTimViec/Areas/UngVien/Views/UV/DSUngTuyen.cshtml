@@ -1,47 +1,220 @@
 ﻿@model IEnumerable<WEBTimViec.Models.BaiTuyenDung>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>JobPlus</title>
-    <meta name="description" content="">
+    <title>Danh sách bài ứng tuyển - JobPlus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <!-- Vendor CSS Files -->
-    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="~/assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Roboto', sans-serif;
+        }
 
-    <!-- Main CSS File -->
-    <link href="assets/css/main.css" rel="stylesheet">
-</head>
-<body>
-    <button class=" styled-button">
-        <a style="color: black;" href="@Url.Action("Index", "UV")"> <<< </a>
-    </button>
+        .button-container {
+            margin-top: 20px;
+            text-align: center;
+        }
 
-    <div class="khung2">
-        <h1 class="tieude">Danh sách bài ứng tuyển</h1>
-        <div class="row">
-            @foreach (var baiTuyenDung in Model)
-            {
-                <div class="col-md-4">
-                    <div class="khungchu">
-                        <div class="card" data-url="@Url.Action("DetailsUngTuyen", "UV", new { id = baiTuyenDung.BaiTuyenDung_id })">
-                    <div class="card-body">
-                                <h5 class="card-title"><strong>Công ty: </strong>@baiTuyenDung.applicationUser.NhaTuyenDung_name</h5>
-                                <img src="@baiTuyenDung.applicationUser.image_url" alt="Logo" class="img-fluid">
-                                <h5 class="card-title overflow-ellipsis"><strong>Công việc: </strong>@baiTuyenDung.TenCongViec</h5>
-                                <a href="@Url.Action("DetailsUngTuyen", "UV", new { id = baiTuyenDung.BaiTuyenDung_id })" class="btn btn-info">Chi tiết</a>
-                    </div>
-                </div>
-                </div>
-                </div>
+        .btn-back {
+            color: #000000;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: normal;
+            transition: color 0.3s ease;
+        }
+
+            .btn-back:hover {
+                color: #0056b3;
             }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .styled-button a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            margin: 0 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+            .styled-button a:hover {
+                background-color: #0056b3;
+            }
+
+        .khung2 {
+            background: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px 30px;
+            margin-bottom: 30px;
+        }
+
+        .tieude {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .company-logo1 {
+            display: block;
+            margin: 0 auto 15px auto;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .card2 {
+            border: 2px solid #d3d3d3;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+            .card2:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000000;
+            background-color: #f0f0f0;
+            padding: 10px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+            .card-title.overflow-ellipsis {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+        .card-text {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .border-btn2 {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 14px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid #007bff;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+
+            .border-btn2:hover {
+                background-color: #007bff;
+                color: #fff;
+            }
+
+        .card {
+            margin-bottom: 20px;
+        }
+
+        /* Thêm kiểu dáng cho nút "Thêm bài ứng tuyển" */
+        .add-button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+            .add-button-container .border-btn2 {
+                background-color: #28a745;
+                border-color: #28a745;
+                color: #fff;
+                font-weight: bold;
+            }
+
+                .add-button-container .border-btn2:hover {
+                    background-color: #218838;
+                    border-color: #1e7e34;
+                }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Nút điều hướng -->
+        <div class="button-container">
+            <a href="@Url.Action("Index", "UV")" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Quay lại
+            </a>
+        </div>
+
+        <!-- Danh sách bài ứng tuyển -->
+        <div class="khung2">
+            <h1 class="tieude">Các bài ứng tuyển của công ty</h1>
+            <div class="row">
+                @foreach (var baiTuyenDung in Model)
+                {
+                    <div class="col-md-3">
+                        <div class="card2">
+                            <div class="card-body">
+                                <h5 class="card-title"><strong>Công ty: </strong>@baiTuyenDung.applicationUser.NhaTuyenDung_name</h5>
+                                <img src="@baiTuyenDung.applicationUser.image_url" alt="Logo" class="company-logo1">
+                                <h5 class="card-title overflow-ellipsis"><strong>Công việc: </strong>@baiTuyenDung.TenCongViec</h5>
+                                <div class="button-group">
+                                    <a href="@Url.Action("DetailsUngTuyen", new { id = baiTuyenDung.BaiTuyenDung_id })" class="border-btn2">Chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Thêm nút "Thêm bài ứng tuyển" -->
+        <div class="add-button-container">
+            <a href="@Url.Action("ListBaiTuyenDung", "UV")" class="border-btn2">+ Thêm bài ứng tuyển</a>
         </div>
     </div>
+    <div class="button-container">
+        <a href="@Url.Action("ListUngTuyen", "UV")" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Dang Danh Sach
+        </a>
+    </div>
 </body>
+
 </html>
+
+<script>
+    // Hàm xử lý sự kiện khi người dùng nhấp vào bài tuyển dụng
+    function handleJobClick(jobId) {
+        window.location.href = '@Url.Action("DetailsUngTuyen", "NTD", new { id = "__jobId__" })'.replace('__jobId__', jobId);
+    }
+</script>

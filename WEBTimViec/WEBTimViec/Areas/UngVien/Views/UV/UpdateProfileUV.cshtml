@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Cập nhật thông tin Profile";
 }
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -19,53 +20,64 @@
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet">
 </head>
-<button class=" styled-button">
-    <a style="color: black;" href="@Url.Action("IndexProfileUV", "UV")"> <<< </a>
+
+<!-- Button Back -->
+<button class="styled-button">
+    <a href="@Url.Action("IndexProfileUV", "UV")" style="color: black;"> <<< Quay lại </a>
 </button>
 
-<h1 class=" tieude">Cập nhật thông tin Profile </h1>
-<div class="khung">
+<!-- Page Title -->
+<h1 class="page-title text-center" style=" margin-top: 100px">Cập nhật thông tin Profile</h1>
 
-    <form asp-action="UpdateProfileUV" method="post" enctype="multipart/form-data">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input type="hidden" asp-for="Id" />
+<div class="container mt-4">
+    <div class="card p-4 shadow-sm">
+        <form asp-action="UpdateProfileUV" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            <input type="hidden" asp-for="Id" />
 
-        <div class="info-section">
-            <h3 style="font-family: 'Times New Roman'" class="text-right">Thông tin ứng viên</h3>
-        </div>
-        <div class="info-section">
-            <div class="info-item1">
+            <!-- Info Section -->
+            <div class="info-section mb-4">
+                <h3 class="text-uppercase text-primary text-center">Thông tin ứng viên</h3>
+            </div>
+
+            <!-- Full Name -->
+            <div class="form-group">
                 <label asp-for="FullName" class="control-label">Họ và tên</label>
-                <input asp-for="FullName" class="form-control" />
+                <input asp-for="FullName" class="form-control" placeholder="Nhập họ và tên" />
                 <span asp-validation-for="FullName" class="text-danger"></span>
             </div>
-            <div class="info-item1">
+
+            <!-- Phone Number -->
+            <div class="form-group">
                 <label asp-for="SDT_UngVien" class="control-label">Số điện thoại</label>
-                <input asp-for="SDT_UngVien" class="form-control" />
+                <input asp-for="SDT_UngVien" class="form-control" placeholder="Nhập số điện thoại" />
                 <span asp-validation-for="SDT_UngVien" class="text-danger"></span>
             </div>
-            <div class="info-item1">
+
+            <!-- Address -->
+            <div class="form-group">
                 <label asp-for="DiaChi" class="control-label">Địa chỉ</label>
-                <input asp-for="DiaChi" class="form-control" />
+                <input asp-for="DiaChi" class="form-control" placeholder="Nhập địa chỉ" />
                 <span asp-validation-for="DiaChi" class="text-danger"></span>
             </div>
-            <div class="info-item1">
+
+            <!-- Birthdate -->
+            <div class="form-group">
                 <label asp-for="NgaySinh" class="control-label">Ngày sinh</label>
                 <input type="date" asp-for="NgaySinh" class="form-control" />
                 <span asp-validation-for="NgaySinh" class="text-danger"></span>
             </div>
-@*             <div class="info-item1">
-                <label asp-for="Email" class="control-label">Email</label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div> *@
-            <div class="info-item1">
+
+            <!-- Self Introduction -->
+            <div class="form-group">
                 <label asp-for="TuGioiThieu" class="control-label">Giới thiệu bản thân</label>
-                <input asp-for="TuGioiThieu" class="form-control" />
+                <textarea asp-for="TuGioiThieu" class="form-control" rows="4" placeholder="Giới thiệu về bản thân"></textarea>
                 <span asp-validation-for="TuGioiThieu" class="text-danger"></span>
             </div>
-            <div class="info-item1">
-                <label for="image_url">Avatar</label>
+
+            <!-- Avatar Image -->
+            <div class="form-group">
+                <label for="image_url">Ảnh đại diện</label>
                 @if (!string.IsNullOrEmpty(Model.image_url))
                 {
                     <img src="@Model.image_url" alt="Ảnh đại diện" style="max-width:200px; cursor:pointer;" id="previewImage" onclick="changeImage()" />
@@ -78,11 +90,13 @@
                 <span asp-validation-for="image_url" class="text-danger"></span>
             </div>
 
-        </div>
-        <div class="mt-5 text-center">
-            <button type="submit" class="btn btn-primary">Lưu</button>
-        </div>
-    </form>
+            <!-- Submit and Cancel Buttons -->
+            <div class="form-group text-center mt-4">
+                <button type="submit" class="btn btn-success btn-lg">Lưu</button>
+                <a href="@Url.Action("IndexProfileUV", "UV")" class="btn btn-secondary btn-lg ml-3">Hủy</a>
+            </div>
+        </form>
+    </div>
 </div>
 
 <script>
@@ -104,7 +118,74 @@
     }
 </script>
 
+<!-- Custom Styles -->
+<style>
+    .styled-button {
+        background-color: transparent;
+        border: none;
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
 
+        .styled-button a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 5px;
+            border: 1px solid #007bff;
+        }
 
+            .styled-button a:hover {
+                background-color: #007bff;
+                color: white;
+            }
 
+    .page-title {
+        font-size: 32px;
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+    }
 
+    .card {
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group label {
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .form-control {
+        border-radius: 8px;
+        border: 1px solid #ced4da;
+        padding: 10px;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+        font-size: 18px;
+        padding: 10px 20px;
+        border-radius: 8px;
+    }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border: none;
+        font-size: 18px;
+        padding: 10px 20px;
+        border-radius: 8px;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+</style>

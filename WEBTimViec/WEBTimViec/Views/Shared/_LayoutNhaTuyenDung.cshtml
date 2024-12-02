@@ -24,12 +24,58 @@
 
     <!-- Main CSS File -->
     <link href="~/assets/css/main.css" rel="stylesheet">
+    <style>
+
+        footer {
+            background-color: #34495e; /* Màu xanh đậm cho nền */
+            padding: 50px 0;
+            margin-top: 50px;
+        }
+
+            footer .footer-container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            footer h4 {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 20px;
+                color: white; /* Màu chữ của tiêu đề h4 */
+            }
+
+            footer ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+                footer ul li {
+                    margin-bottom: 10px;
+                }
+
+                    footer ul li a {
+                        text-decoration: none;
+                        color: #ecf0f1; /* Màu chữ liên kết sáng, phù hợp với màu nền tối */
+                    }
+
+                        footer ul li a:hover {
+                            color: #3498db; /* Màu liên kết khi hover */
+                        }
+
+            footer .footer-bottom {
+                text-align: center;
+                padding-top: 20px;
+                border-top: 1px solid #2c3e50; /* Màu sắc cho viền trên */
+                margin-top: 30px;
+                color: white; /* Màu chữ ở footer dưới cùng */
+            }
+
+    </style>
 </head>
 
 <body>
     <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
             <a href="#" class="logo d-flex align-items-center me-auto">
                 <h1 class="sitename">JobPlus</h1>
             </a>
@@ -38,94 +84,66 @@
                 <ul>
                     <li><a href="@Url.Action("Index", "NTD", new { area = "NhaTuyenDung" })">Trang chủ</a></li>
                     <li><a href="@Url.Action("IndexProfileNTD", "NTD", new { area = "NhaTuyenDung" })">Thông tin nhà tuyển dụng</a></li>
-                    <li><a href="#">Thống kê</a></li>
+
+                    <li><a href="@Url.Action("DanhSachLoaiTaiKhoan", "NTD", new { area = "NhaTuyenDung" })">Nâng cấp tài khoản</a></li>
                     <li class="dropdown">
                         <a href="#"><span>Công việc</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                         <ul>
-                            @*<li class="dropdown">
-                                <a href="#"><span>Công việc</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                                <ul> *@
-                                    <li><a href="@Url.Action("AddBaiTuyenDung", "NTD", new { area = "NhaTuyenDung" })">Thêm bài tuyển dụng</a></li>
-                                    <li><a href="@Url.Action("ListBaiTuyenDung", "NTD", new { area = "NhaTuyenDung" })">Bài tuyển dụng của công ty</a></li>
-                                    <li><a href="@Url.Action("DSUngVien", "NTD", new { area = "NhaTuyenDung" })">Danh sách ứng viên</a></li>
-                                    <li><a href="@Url.Action("DSUngTuyen", "NTD", new { area = "NhaTuyenDung" })">Danh sách ứng tuyển</a></li>
-@*                                 </ul>
-                               
-                            </li> *@
+                        <ul>
+                            <li><a href="@Url.Action("AddBaiTuyenDung", "NTD", new { area = "NhaTuyenDung" })">Thêm bài tuyển dụng</a></li>
+                            <li><a href="@Url.Action("ListBaiTuyenDung", "NTD", new { area = "NhaTuyenDung" })">Bài tuyển dụng của công ty</a></li>
+                            <li><a href="@Url.Action("DSUngVien", "NTD", new { area = "NhaTuyenDung" })">Danh sách ứng viên</a></li>
+                            <li><a href="@Url.Action("DSUngTuyen", "NTD", new { area = "NhaTuyenDung" })">Danh sách ứng tuyển</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="#">Hỗ trợ</a></li>
+                    <li><a href="#">Hỗ trợ</a></li>
                     <a class="btn-getstarted" href="@Url.Action("IndexAll", "Home", new { area = "" })">Đăng xuất</a>
-
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
-            </div>
+        </div>
     </header>
 
     @RenderBody()
+
     <footer>
-                <div >
-                    <div>
-                        <div>
-                            <div >
-                                <div>
-                                    <h4>Chúng Tôi</h4>
-                                    <div>
-                                        <p>Đây là trang web do 2 sinh viên lớp 21DTHF2 của trường đại học Hutech thực hiện </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div >
-                            <div>
-                                <h4>Thông Tin Liên Hệ</h4>
-                                <ul>
-                                    <li>
-                                        <p>Địa chỉ: Thủ Đức Campus, Xa lộ Hà Nội, tp.Thủ Đức.</p>
-                                    </li>
-                                    <li><a href="#">Điện thoại: 0833634655</a></li>
-                                    <li><a href="mailto:nhanhtvt111@gmail.com">Email: nhanhtvt111@gmail.com</a></li>
-                                    <li><a href="https://www.facebook.com/messages/t/nhanh1412">Facebook: Phạm Nhanh</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>
-                                <h4>Thông tin đồ án cơ sở</h4>
-                                <ul>
-                                    <li><a href="#">Giảng viên hướng dẫn: ThS.Nguyễn Văn Danh</a></li>
-                                    <li><a href="#">Sinh viên thực hiện:</a></li>
-                                    <li><a href="#">1. Phạm Hoa Nhanh</a></li>
-                                    <li><a href="#">2. Nguyễn Đình Chương</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+        <div class="footer-container">
+            <div class="row">
+                <!-- Chúng tôi -->
+                <div class="col-md-4">
+                    <h4>Chúng Tôi</h4>
+                    <p style="color: white;">Đây là trang web do 2 sinh viên lớp 21DTHF2 của trường đại học Hutech thực hiện.</p>
+
                 </div>
 
-        <div>
-            <div>
-                <div>
-                    <div>
-                        <div>
-                            <div>
-                                <p>
-                                   ĐỒ ÁN CƠ SỞ | Hệ Thống Thông Tin | Website tìm việc nhóm 16
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
+                <!-- Thông tin liên hệ -->
+                <div class="col-md-4">
+                    <h4>Thông Tin Liên Hệ</h4>
+                    <ul>
+                        <li><p style="color: white;">Địa chỉ: Thủ Đức Campus, Xa lộ Hà Nội, tp.Thủ Đức.</p></li>
+                        <li><a href="#">Điện thoại: 0833634655</a></li>
+                        <li><a href="mailto:nhanhtvt111@gmail.com">Email: nhanhtvt111@gmail.com</a></li>
+                        <li><a href="https://www.facebook.com/messages/t/nhanh1412">Facebook: Phạm Nhanh</a></li>
+                    </ul>
                 </div>
+
+                <!-- Thông tin đồ án -->
+                <div class="col-md-4">
+                    <h4>Thông tin đồ án cơ sở</h4>
+                    <ul>
+                        <li><a href="#">Giảng viên hướng dẫn: ThS. Nguyễn Văn Danh</a></li>
+                        <li><a href="#">Sinh viên thực hiện:</a></li>
+                        <li><a href="#">1. Phạm Hoa Nhanh</a></li>
+                        <li><a href="#">2. Nguyễn Đình Chương</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>ĐỒ ÁN CƠ SỞ | Hệ Thống Thông Tin | Website tìm việc nhóm 16</p>
             </div>
         </div>
     </footer>
+
     <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="~/assets/vendor/php-email-form/validate.js"></script>
     <script src="~/assets/vendor/aos/aos.js"></script>

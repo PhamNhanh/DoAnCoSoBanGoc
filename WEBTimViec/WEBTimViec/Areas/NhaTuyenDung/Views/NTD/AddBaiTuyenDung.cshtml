@@ -9,14 +9,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> JobPlus </title>
-    <meta name="description" content="">
+    <title>JobPlus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-
-    <!-- CSS here -->
+    <!-- Các liên kết CSS của bạn -->
     <link rel="stylesheet" href="~/css/main.css">
     <link rel="stylesheet" href="~/css/normalize.min.css">
     <link rel="stylesheet" href="~/css/font-awesome.min.css">
@@ -33,6 +29,37 @@
     <link rel="stylesheet" href="~/css/nice-select.css">
     <link rel="stylesheet" href="~/css/style.css">
     <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
+
+    <style>
+        /* Layout phân chia màn hình */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin: 20px;
+        }
+
+        .form-section {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .map-section {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            height: 100%;
+        }
+
+        /* Bổ sung các style khác cho form nếu cần */
+        .tieude {
+            text-align: center;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 
 <body class="background">
@@ -42,7 +69,7 @@
 
     <h1 class="tieude">Thêm tin tuyển dụng</h1>
     <hr />
-    <div class="khung">
+    <div class="khung" style="margin-left: 50px; margin-right: 50px;">
         <form asp-action="AddBaiTuyenDung" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="info-section">
@@ -67,33 +94,53 @@
             <div class="info-section">
 
                 <div class="info-item1">
-                    <label for="ChuyenNganhIds">Chuyên Ngành</label>
-                    <select id="ChuyenNganhIds" name="ChuyenNganhIds" multiple class="form-control">
+                    <label>Danh sách: </label>
+                    <span id="chuyenNganhLabel" onclick="toggleCheckboxList('chuyenNganhCheckboxList')" style="cursor: pointer; color: black; text-decoration: underline;">
+                        Chuyên Ngành
+                    </span>
+                    <div id="chuyenNganhCheckboxList" style="display: none;">
                         @foreach (var chuyenNganh in ViewBag.ChuyenNganh)
                         {
-                            <option value="@chuyenNganh.Value">@chuyenNganh.Text</option>
+                            <div class="form-check">
+                                <input type="checkbox" name="ChuyenNganhIds" value="@chuyenNganh.Value" class="form-check-input" id="chuyenNganh_@chuyenNganh.Value" />
+                                <label class="form-check-label" for="chuyenNganh_@chuyenNganh.Value">@chuyenNganh.Text</label>
+                            </div>
                         }
-                    </select>
+                    </div>
                 </div>
 
                 <div class="info-item1">
-                    <label for="ViTriCongViecIds">Vị Trí Công Việc</label>
-                    <select id="ViTriCongViecIds" name="ViTriCongViecIds" multiple class="form-control">
+                    <label>Danh sách:</label>
+                    <span id="viTriLabel" onclick="toggleCheckboxList('viTriCheckboxList')" style="cursor: pointer; color: black; text-decoration: underline;">
+                        Vị Trí Công Việc
+                    </span>
+                    <div id="viTriCheckboxList" style="display: none;">
                         @foreach (var viTri in ViewBag.ViTriCongViec)
                         {
-                            <option value="@viTri.Value">@viTri.Text</option>
+                            <div class="form-check">
+                                <input type="checkbox" name="ViTriCongViecIds" value="@viTri.Value" class="form-check-input" id="viTri_@viTri.Value" />
+                                <label class="form-check-label" for="viTri_@viTri.Value">@viTri.Text</label>
+                            </div>
                         }
-                    </select>
+                    </div>
                 </div>
+
                 <div class="info-item1">
-                    <label for="KyNangMemIds">Kỹ Năng Mềm</label>
-                    <select id="KyNangMemIds" name="KyNangMemIds" multiple class="form-control">
+                    <label>Danh sách:</label>
+                    <span id="kyNangMemLabel" onclick="toggleCheckboxList('kyNangMemCheckboxList')" style="cursor: pointer; color: black; text-decoration: underline;">
+                        Kỹ Năng Mềm
+                    </span>
+                    <div id="kyNangMemCheckboxList" style="display: none;">
                         @foreach (var kyNangMem in ViewBag.KyNangMem)
                         {
-                            <option value="@kyNangMem.Value">@kyNangMem.Text</option>
+                            <div class="form-check">
+                                <input type="checkbox" name="KyNangMemIds" value="@kyNangMem.Value" class="form-check-input" id="kyNangMem_@kyNangMem.Value" />
+                                <label class="form-check-label" for="kyNangMem_@kyNangMem.Value">@kyNangMem.Text</label>
+                            </div>
                         }
-                    </select>
+                    </div>
                 </div>
+
                 <div class="info-item1">
                     <label asp-for="PhucLoi" class="control-label"> Phúc lợi</label>
                     <textarea asp-for="PhucLoi" class="form-control" rows="5" required></textarea>
@@ -165,7 +212,15 @@
             <div class="center-text">
                 <input type="submit" value="Đăng bài tuyển dụng" class="thembaituyendung" />
             </div>
+
         </form>
     </div>
+
 </body>
 </html>
+<script>
+    function toggleCheckboxList(listId) {
+        var checkboxList = document.getElementById(listId);
+        checkboxList.style.display = checkboxList.style.display === "none" ? "block" : "none";
+    }
+</script>

@@ -19,45 +19,129 @@
 
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet">
+
+    <style>
+/*         .container-fluid {
+            background-color: #f4f6f9;
+        } */
+
+        .card {
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+            background: #ffffff;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .labels {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-control {
+            font-size: 14px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            background-color: #fafafa;
+            padding: 10px;
+        }
+
+        .btn {
+            font-size: 14px;
+            padding: 8px 20px;
+            border-radius: 5px;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+        }
+
+            .btn-danger:hover, .btn-info:hover {
+                opacity: 0.9;
+            }
+
+        .styled-button a {
+            font-size: 16px;
+            color: #000;
+            text-decoration: none;
+        }
+
+            .styled-button a:hover {
+                color: #007bff;
+            }
+
+        .mb-3 {
+            margin-bottom: 15px;
+        }
+
+        .mt-3 {
+            margin-top: 15px;
+        }
+
+    </style>
 </head>
-<button class=" styled-button">
-    <a style="color: black;" href="@Url.Action("IndexProfileUV", "UV")"> <<< </a>
+
+<button class="styled-button mb-4">
+    <a href="@Url.Action("IndexProfileUV", "UV")"> <<< Quay lại</a>
 </button>
-<div class="container-fluid bg-white mt-5 mb-5">
+
+<div class="container-fluid mt-5 mb-5">
     <div class="row">
         @foreach (var hocVan in Model)
         {
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Thông tin học vấn</h5>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label class="labels">Điểm trung bình hệ 4</label>
-                            <div class="form-control">@hocVan.GPA</div>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="labels">Trường đại học </label>
-                            <div class="form-control">@hocVan.truongDaiHoc.TruongDaiHoc_name</div>
-                        </div><div class="col-md-6">
-                            <label class="labels">Chuyên ngành </label>
-                            <div class="form-control">@hocVan.chuyenNganhs.ChuyenNganh_name</div>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="labels">Ngày nhập học</label>
-                            <div class="form-control">@hocVan.NgayBatDau</div>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="labels">Ngày tốt nghiệp</label>
-                            <div class="form-control">@hocVan.NgayTotNghiep</div>
-                        </div>
+            <div class="col-md-12 col-lg-6">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Thông tin học vấn</h5>
                         <div class="row">
-                        <div class="col-md-12 mt-3">
-                            <!-- Form để xóa thông tin học vấn -->
-                            <form method="post" action="@Url.Action("DeleteEducation", "UV", new { id = hocVan.HocVan_id })" onsubmit="return confirm('Bạn có chắc chắn muốn xóa học vấn này?');" class="d-inline">
-                                <button type="submit" class="btn btn-danger">Xóa thông tin học vấn</button>
-                            </form>
-                            <!-- Nút để chuyển hướng đến trang cập nhật học vấn -->
-                            <a href="@Url.Action("UpdateEducation", "UV", new { id = hocVan.HocVan_id })" class="btn btn-info mr-2">Cập nhật thông tin học vấn</a>
+                            <div class="col-md-6">
+                                <label class="labels">Điểm trung bình hệ 4</label>
+                                <div class="form-control">@hocVan.GPA</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="labels">Trường đại học</label>
+                                <div class="form-control">@hocVan.truongDaiHoc.TruongDaiHoc_name</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="labels">Chuyên ngành</label>
+                                <div class="form-control">@hocVan.chuyenNganhs.ChuyenNganh_name</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="labels">Ngày nhập học</label>
+                                <div class="form-control">@hocVan.NgayBatDau</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="labels">Ngày tốt nghiệp</label>
+                                <div class="form-control">@hocVan.NgayTotNghiep</div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <!-- Form để xóa thông tin học vấn -->
+                                <form method="post" action="@Url.Action("DeleteEducation", "UV", new { id = hocVan.HocVan_id })" onsubmit="return confirm('Bạn có chắc chắn muốn xóa học vấn này?');" class="d-inline">
+                                    <button type="submit" class="btn btn-danger">Xóa thông tin học vấn</button>
+                                </form>
+                                <!-- Nút để chuyển hướng đến trang cập nhật học vấn -->
+                                <a href="@Url.Action("UpdateEducation", "UV", new { id = hocVan.HocVan_id })" class="btn btn-info mr-2">Cập nhật thông tin học vấn</a>
                             </div>
                         </div>
                     </div>

@@ -130,12 +130,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmhhVHV5ZW5EdW5nXFZpZXdzXE5URFxBZGRCYWlUdXllbkR1bmcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/NhaTuyenDung/Views/NTD/DanhSachLoaiTaiKhoan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmhhVHV5ZW5EdW5nXFZpZXdzXE5URFxEYW5oU2FjaExvYWlUYWlLaG9hbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/NhaTuyenDung/Views/NTD/DeleteBTD.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmhhVHV5ZW5EdW5nXFZpZXdzXE5URFxEZWxldGVCVEQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/NhaTuyenDung/Views/NTD/DetailsBaiTuyenDung.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmhhVHV5ZW5EdW5nXFZpZXdzXE5URFxEZXRhaWxzQmFpVHV5ZW5EdW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/NhaTuyenDung/Views/NTD/DetailsGoiTK.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmhhVHV5ZW5EdW5nXFZpZXdzXE5URFxEZXRhaWxzR29pVEsuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/NhaTuyenDung/Views/NTD/DetailsHocVan.cshtml]
@@ -170,6 +178,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmhhVHV5ZW5EdW5nXFZpZXdzXE5URFxMaXN0QmFpVHV5ZW5EdW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/NhaTuyenDung/Views/NTD/NangCapTaiKhoan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmhhVHV5ZW5EdW5nXFZpZXdzXE5URFxOYW5nQ2FwVGFpS2hvYW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/NhaTuyenDung/Views/NTD/Test.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmhhVHV5ZW5EdW5nXFZpZXdzXE5URFxUZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -180,6 +192,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/NhaTuyenDung/Views/NTD/UpdateProfileNTD.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmhhVHV5ZW5EdW5nXFZpZXdzXE5URFxVcGRhdGVQcm9maWxlTlRELmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/NhaTuyenDung/Views/NTD/XacNhanDangKy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmhhVHV5ZW5EdW5nXFZpZXdzXE5URFxYYWNOaGFuRGFuZ0t5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/NhaTuyenDung/Views/_ViewImports.cshtml]
@@ -234,6 +250,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVW5nVmllblxWaWV3c1xVVlxMaXN0QmFpVHV5ZW5EdW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/UngVien/Views/UV/ListSave.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVW5nVmllblxWaWV3c1xVVlxMaXN0U2F2ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/UngVien/Views/UV/ListUngTuyen.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVW5nVmllblxWaWV3c1xVVlxMaXN0VW5nVHV5ZW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/UngVien/Views/UV/TimKiem.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVW5nVmllblxWaWV3c1xVVlxUaW1LaWVtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -248,6 +272,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/UngVien/Views/UV/UpdateProfileUV.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVW5nVmllblxWaWV3c1xVVlxVcGRhdGVQcm9maWxlVVYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/UngVien/Views/UV/_JobList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVW5nVmllblxWaWV3c1xVVlxfSm9iTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/UngVien/Views/_ViewImports.cshtml]

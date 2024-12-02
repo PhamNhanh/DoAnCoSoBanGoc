@@ -1,0 +1,140 @@
+﻿@model List<WEBTimViec.Models.LoaiTaiKhoan>
+
+@{
+    ViewData["Title"] = "Danh Sách Loại Tài Khoản";
+    var find_company = (WEBTimViec.Models.ApplicationUser)ViewData["FindCompany"];
+}
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        h2 {
+            margin-top: 100px; /* Tăng khoảng cách với lề trên */
+            font-size: 32px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .info-box {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+            .info-box span {
+                font-size: 16px;
+            }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Khoảng cách giữa các thẻ */
+            justify-content: space-between;
+        }
+
+        .card {
+            flex: 0 0 18%; /* Mỗi card chiếm 18% chiều rộng, giúp có 5 card trong một dòng */
+            box-sizing: border-box;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+        .card-header {
+            font-size: 10px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .card-body {
+            margin-bottom: 15px;
+        }
+
+        .card-footer {
+            text-align: center;
+        }
+
+        .alert-message {
+            margin-top: 20px;
+            color: red;
+            font-weight: bold;
+        }
+
+        .btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .card-body p {
+            font-size: 12px; /* Thay đổi kích thước chữ */
+            line-height: 1.4; /* Tăng khoảng cách giữa các dòng */
+        }
+
+    </style>
+</head>
+
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+
+    <div class="info-box">
+        <span>Loại tài khoản của bạn: @ViewData["LoaiTaiKhoan"]</span>
+    </div>
+
+    @if (TempData["UpgradeMessage"] != null)
+    {
+        <div class="alert alert-warning alert-message">
+            <span>@TempData["UpgradeMessage"]</span>
+        </div>
+    }
+
+    <div class="card-container">
+        @foreach (var item in Model)
+        {
+            <div class="card">
+                <div class="card-header">
+                    <h5>@item.tenLoaiTaiKhoan</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Số bài tuyển dụng:</strong> @item.soBaiTuyenDung</p>
+                    <p><strong>Giá:</strong> @item.gia vnd</p>
+                    <p><strong>Số ngày sử dụng:</strong> @item.soNgayDung</p>
+                </div>
+                <div class="card-footer">
+                    @if (item.loaiTaiKhoanId == find_company.loaiTaiKhoanId)
+                    {
+                        <span class="badge badge-secondary" style="color: green;">Đang sử dụng gói này</span>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("XacNhanDangKy", "NTD", new { loaiTaiKhoanId = item.loaiTaiKhoanId })" class="btn btn-primary">Đăng Ký</a>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    function getRandomColor() {
+        // Mảng chứa các màu đã cho
+        var colors = ["#CCFFFF", "#FFCCCC", "#FAFAD2", "#FAEBD7", "#FFFACD", "#E0EEE0", "#E6E6FA", "#EEE0E5", "#B2DFEE"];
+        // Chọn ngẫu nhiên một màu từ mảng
+        var randomIndex = Math.floor(Math.random() * colors.length);
+        return colors[randomIndex];
+    }
+
+    window.onload = function () {
+        // Lấy tất cả các thẻ card và áp dụng màu ngẫu nhiên cho mỗi thẻ
+        var cards = document.querySelectorAll('.card');
+        cards.forEach(function (card) {
+            card.style.backgroundColor = getRandomColor();
+        });
+    }
+</script>

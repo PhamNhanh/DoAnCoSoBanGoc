@@ -4,131 +4,150 @@
 }
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> JobPlus </title>
-    <meta name="description" content="">
+    <title>JobPlus - Cập nhật Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/css/main.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
 
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+        .container {
+            margin-top: 30px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-    <!-- CSS here -->
-    <link rel="stylesheet" href="~/css/main.css">
-    <link rel="stylesheet" href="~/css/normalize.min.css">
-    <link rel="stylesheet" href="~/css/font-awesome.min.css">
-    <link rel="stylesheet" href="~/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="~/css/flaticon.css">
-    <link rel="stylesheet" href="~/css/price_rangs.css">
-    <link rel="stylesheet" href="~/css/slicknav.css">
-    <link rel="stylesheet" href="~/css/animate.min.css">
-    <link rel="stylesheet" href="~/css/magnific-popup.css">
-    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="~/css/themify-icons.css">
-    <link rel="stylesheet" href="~/css/slick.css">
-    <link rel="stylesheet" href="~/css/nice-select.css">
-    <link rel="stylesheet" href="~/css/style.css">
-    <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
+        h1.tieude {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-control {
+            font-size: 16px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .custom-background {
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            font-size: 18px;
+        }
+
+        #previewImage {
+            max-width: 200px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 <body>
-    <button class=" styled-button">
-        <a style="color: black;" href="@Url.Action("IndexProfileNTD", "NTD")"> <<< </a>
-    </button>
-    <h1 class="tieude">Cập nhật thông tin Profile</h1>
-    <div class="ha1">
-        <div class="khung2">
-            <form asp-action="UpdateProfileNTD" method="post" enctype="multipart/form-data" class="ha1">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="Id" />
-                <div class="mautrong">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h3 style="font-family: 'Times New Roman'" class="header">Thông tin nhà tuyển dụng</h3>
-                    </div>
-                    <div class="info-section">
-                        <div class="info-item1">
-                            <label asp-for="NhaTuyenDung_name" style="font-family: 'Times New Roman'; font-size: 20px" class="control-label">Tên công ty</label>
-                            <input asp-for="NhaTuyenDung_name" style="font-family: 'Times New Roman'; font-size: 18px" class="form-control custom-background" value="@Model.NhaTuyenDung_name" />
-                            <span asp-validation-for="NhaTuyenDung_name" class="text-danger"></span>
-                        </div>
-                        <div class="info-item1">
-                            <label asp-for="SDTNhaTuyenDung" style="font-family: 'Times New Roman'; font-size: 20px" class="control-label">Số điện thoại công ty</label>
-                            <input asp-for="SDTNhaTuyenDung" type="tel" style="font-family: 'Times New Roman'; font-size: 18px" class="form-control custom-background" />
-                            <span asp-validation-for="SDTNhaTuyenDung" class="text-danger"></span>
-                        </div>
+    <div class="container">
+        <button class="btn btn-light mb-3">
+            <a href="@Url.Action("IndexProfileNTD", "NTD")" style="text-decoration: none; color: black;"><<< Trở về</a>
+        </button>
 
+        <h1 class="tieude">Cập nhật thông tin Profile</h1>
 
-                    </div>
-                    <div class="info-section">
-                        <div class="info-item1">
-                            <label asp-for="Website" style="font-family: 'Times New Roman'; font-size: 20px" class="control-label">Website</label>
-                            <input asp-for="Website" style="font-family: 'Times New Roman'; font-size: 18px" class="form-control custom-background" />
-                            <span asp-validation-for="Website" class="text-danger"></span>
-                        </div>
-                        <div class="info-item1">
-                            <label asp-for="FullName" style="font-family: 'Times New Roman'; font-size: 20px" class="control-label">Tên cá nhân</label>
-                            <input asp-for="FullName" style="font-family: 'Times New Roman'; font-size: 18px" class="form-control custom-background" />
-                            <span asp-validation-for="FullName" class="text-danger"></span>
-                        </div>
-                        <div class="info-item1">
-                            <label asp-for="DiaChi" style="font-family: 'Times New Roman'; font-size: 20px">Địa điểm công ty</label>
-                            <input asp-for="DiaChi" style="font-family: 'Times New Roman'; font-size: 18px" class="form-control custom-background" />
-                            <span asp-validation-for="DiaChi" class="text-danger"></span>
-                        </div>
-                        <div class="info-item1">
-                            <label for="image_url">Logo công ty</label>
-                            <input type="file" id="image_url" name="image_url" class="form-control custom-background" accept="image/*" style="display: none;" />
-                            <img src="@Model.image_url" class="info-item" alt="Logo công ty" style="max-width:200px; cursor: pointer;" id="previewImage" />
-                            <span asp-validation-for="image_url" class="info-item"></span>
-                        </div>
+        <form asp-action="UpdateProfileNTD" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
 
-                    </div>
+            <div class="mb-3">
+                <label asp-for="NhaTuyenDung_name">Tên công ty</label>
+                <input asp-for="NhaTuyenDung_name" class="form-control" value="@Model.NhaTuyenDung_name" />
+                <span asp-validation-for="NhaTuyenDung_name" class="text-danger"></span>
+            </div>
 
-                    <div class="info-item1">
-                        <label asp-for="GioiThieuNhaTuyenDung" style="font-family: 'Times New Roman'; font-size: 20px" class="control-label">Giới thiệu về công ty</label>
-                        <textarea asp-for="GioiThieuNhaTuyenDung" class="form-control custom-background" style="font-family: 'Times New Roman'; height: 200px; font-size: 18px"></textarea>
-                        <span asp-validation-for="GioiThieuNhaTuyenDung" class="text-danger"></span>
-                    </div>
-                    <div class="edit-link">
-                        <button type="submit" class="btn btn-primary">Lưu</button>
-                    </div>
-                </div>
-                        
-            </form>
-        </div>
+            <div class="mb-3">
+                <label asp-for="SDTNhaTuyenDung">Số điện thoại công ty</label>
+                <input asp-for="SDTNhaTuyenDung" type="tel" class="form-control" />
+                <span asp-validation-for="SDTNhaTuyenDung" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Website">Website</label>
+                <input asp-for="Website" class="form-control" />
+                <span asp-validation-for="Website" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="FullName">Tên cá nhân</label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="DiaChi">Địa chỉ công ty</label>
+                <input asp-for="DiaChi" class="form-control" />
+                <span asp-validation-for="DiaChi" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="image_url">Logo công ty</label>
+                <input type="file" id="image_url" name="image_url" class="form-control" accept="image/*" style="display: none;" />
+                <img src="@Model.image_url" id="previewImage" alt="Logo công ty" />
+                <span asp-validation-for="image_url" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="GioiThieuNhaTuyenDung">Giới thiệu về công ty</label>
+                <textarea asp-for="GioiThieuNhaTuyenDung" class="form-control" style="height: 150px;"></textarea>
+                <span asp-validation-for="GioiThieuNhaTuyenDung" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Lưu</button>
+        </form>
     </div>
-    </body>
-<script>
-    document.getElementById("SDTNhaTuyenDung").addEventListener("input", function (event) {
-        let value = event.target.value;
-        let newValue = "";
-        for (let i = 0; i < value.length; i++) {
-            if (!isNaN(parseInt(value[i]))) {
-                newValue += value[i];
-            }
 
-        }
-        event.target.value = newValue;
-    });
-</script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var imageUrlInput = document.getElementById('image_url');
-            var previewImage = document.getElementById('previewImage');
+        // Xử lý thay đổi ảnh
+        document.getElementById("previewImage").addEventListener("click", function () {
+            document.getElementById("image_url").click();
+        });
 
-            previewImage.addEventListener('click', function () {
-                imageUrlInput.click();
-            });
-
-            imageUrlInput.addEventListener('change', function (event) {
-                var reader = new FileReader();
+        document.getElementById("image_url").addEventListener("change", function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
                 reader.onload = function (e) {
-                    previewImage.src = e.target.result;
-                }
-                reader.readAsDataURL(event.target.files[0]);
-            });
+                    document.getElementById("previewImage").src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Xử lý nhập SDT chỉ chứa số
+        document.querySelector("input[asp-for='SDTNhaTuyenDung']").addEventListener("input", function () {
+            this.value = this.value.replace(/\D/g, "");
         });
     </script>
-}
+</body>
+</html>

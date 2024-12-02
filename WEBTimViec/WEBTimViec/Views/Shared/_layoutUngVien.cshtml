@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -17,23 +16,52 @@
 
     <!-- Main CSS File -->
     <link href="~/assets/css/main.css" rel="stylesheet">
-</head>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>JobPlus</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Vendor CSS Files -->
-    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="~/assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <style>
+        footer {
+            background-color: #34495e; /* Màu nền xanh đậm */
+            padding: 50px 0;
+            margin-top: 50px;
+        }
 
-    <!-- Main CSS File -->
-    <link href="~/assets/css/main.css" rel="stylesheet">
+            footer .footer-container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            footer h4 {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 20px;
+                color: white;
+            }
+
+            footer ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+                footer ul li {
+                    margin-bottom: 10px;
+                }
+
+                    footer ul li a {
+                        text-decoration: none;
+                        color: #ecf0f1; /* Màu chữ sáng */
+                    }
+
+                        footer ul li a:hover {
+                            color: #3498db; /* Màu chữ khi hover */
+                        }
+
+            footer .footer-bottom {
+                text-align: center;
+                padding-top: 20px;
+                border-top: 1px solid #2c3e50;
+                margin-top: 30px;
+                color: white;
+            }
+    </style>
 </head>
 
 <body>
@@ -41,7 +69,7 @@
         <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
             <a href="#" class="logo d-flex align-items-center me-auto">
-                <img src="~?images/Logo.jpg" alt="">
+                <h1 class="sitename">JobPlus</h1>
             </a>
 
             <nav id="navmenu" class="navmenu">
@@ -68,32 +96,34 @@
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
 
-
         </div>
     </header>
 
     @RenderBody()
 
     <footer>
-        <div class="container">
+        <div class="footer-container">
             <div class="row">
-                <div class="col-lg-4">
+                <!-- Chúng tôi -->
+                <div class="col-md-4">
                     <h4>Chúng Tôi</h4>
-                    <p>Đây là trang web do 2 sinh viên lớp 21DTHF2 của trường đại học Hutech thực hiện</p>
+                    <p style="color: white;">Đây là trang web do 2 sinh viên lớp 21DTHF2 của trường đại học Hutech thực hiện</p>
                 </div>
-                <div class="col-lg-4">
+                <!-- Thông tin liên hệ -->
+                <div class="col-md-4">
                     <h4>Thông Tin Liên Hệ</h4>
                     <ul>
-                        <li>Địa chỉ: Thủ Đức Campus, Xa lộ Hà Nội, tp.Thủ Đức.</li>
+                        <li style="color: white;">Địa chỉ: Thủ Đức Campus, Xa lộ Hà Nội, tp.Thủ Đức.</li>
                         <li><a href="#">Điện thoại: 0833634655</a></li>
                         <li><a href="mailto:nhanhtvt111@gmail.com">Email: nhanhtvt111@gmail.com</a></li>
                         <li><a href="https://www.facebook.com/messages/t/nhanh1412">Facebook: Phạm Nhanh</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-4">
-                    <h4>Thông tin đồ án cơ sở</h4>
+                <!-- Thông tin đồ án -->
+                <div class="col-md-4">
+                    <h4>Thông Tin Đồ Án</h4>
                     <ul>
-                        <li><a href="#">Giảng viên hướng dẫn: ThS.Nguyễn Văn Danh</a></li>
+                        <li><a href="#">Giảng viên hướng dẫn: ThS. Nguyễn Văn Danh</a></li>
                         <li><a href="#">Sinh viên thực hiện:</a></li>
                         <li><a href="#">1. Phạm Hoa Nhanh</a></li>
                         <li><a href="#">2. Nguyễn Đình Chương</a></li>
@@ -101,12 +131,9 @@
                 </div>
             </div>
         </div>
-        <div class="container mt-4">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>ĐỒ ÁN CƠ SỞ | Hệ Thống Thông Tin | Website tìm việc nhóm 16</p>
-                </div>
-            </div>
+
+        <div class="footer-bottom">
+            <p>ĐỒ ÁN CƠ SỞ | Hệ Thống Thông Tin | Website tìm việc nhóm 16</p>
         </div>
     </footer>
 

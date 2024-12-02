@@ -3,77 +3,217 @@
 @{
     ViewData["Title"] = "Chi tiết bài tuyển dụng công việc:";
 }
+
 <!DOCTYPE html>
 <html lang="vi">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> JobPlus </title>
-    <meta name="description" content="">
+    <title>JobPlus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-
-    <!-- CSS here -->
-    <link rel="stylesheet" href="~/css/main.css">
-    <link rel="stylesheet" href="~/css/normalize.min.css">
-    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <!-- CSS -->
     <link rel="stylesheet" href="~/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="~/css/flaticon.css">
-    <link rel="stylesheet" href="~/css/price_rangs.css">
-    <link rel="stylesheet" href="~/css/slicknav.css">
-    <link rel="stylesheet" href="~/css/animate.min.css">
-    <link rel="stylesheet" href="~/css/magnific-popup.css">
-    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="~/css/themify-icons.css">
-    <link rel="stylesheet" href="~/css/slick.css">
-    <link rel="stylesheet" href="~/css/nice-select.css">
     <link rel="stylesheet" href="~/css/style.css">
-    <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
+    <style>
+        /* Cấu trúc chung */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1100px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* Cột trái: Chi tiết bài tuyển dụng */
+        .left {
+            flex: 3;
+            padding: 30px;
+            border-right: 1px solid #e0e0e0;
+        }
+
+        .tieude {
+            font-size: 26px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .khungchu1 {
+            margin-top: 20px;
+        }
+
+        .styled-button {
+            display: block;
+            margin: 30px auto;
+            padding: 12px 25px;
+            background-color: #1877f2;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            text-align: center;
+            width: 160px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+            .styled-button:hover {
+                background-color: #0056b3;
+            }
+
+        /* Trò chơi đoán số */
+        .game-container {
+            text-align: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        .game-input {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            width: 100px;
+        }
+
+        .game-button {
+            padding: 12px 25px;
+            background-color: #28a745;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .game-button:hover {
+                background-color: #218838;
+            }
+
+        .game-message {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .title-center {
+            text-align: center; /* Căn giữa */
+            font-weight: bold; /* In đậm */
+            color: #1877f2; /* Màu chữ */
+            background-color: #f0f0f0; /* Nền màu xám */
+            padding: 10px; /* Thêm một chút khoảng cách xung quanh chữ */
+            border-radius: 5px; /* Bo góc nền */
+        }
+    </style>
 </head>
+
 <body>
-    <button class=" styled-button">
-        <a style="color: black;" href="@Url.Action("ListBaiTuyenDung", "NTD")"> <<< </a>
-    </button>
-    <div class="khung" >
-        <h3 class="tieude">@ViewData["Title"]</h3>
+    <a class="styled-button" href="@Url.Action("ListBaiTuyenDung", "NTD")">Quay lại</a>
+
+    <div class="container">
+        <!-- Cột trái: Chi tiết bài tuyển dụng -->
+        <div class="left">
+@*             <h3 class="tieude">@ViewData["Title"]</h3> *@
             <div class="khungchu1">
-            <h3 class="card-text">@Model.TenCongViec</h3>
-@*                 <p class="card-text"><strong>Tên công ty:</strong> @Model.applicationUser.FullName</p> *@
-                <p class="card-text"><strong>Mô tả công việc:</strong> @Model.MoTaCongViec</p>
-                <p class="card-text"><strong>Yêu cầu kỹ năng:</strong> @Model.YeuCauKyNang</p>
-                <p class="card-text"><strong>Phúc lợi:</strong> @Model.PhucLoi</p>
-                <p class="card-text"><strong>Lương:</strong> @Model.Luong_min - @Model.Luong_max triệu đồng</p>
-                <p class="card-text"><strong>Loại công việc:</strong> @Model.KieuCongViec</p>
-                <p class="card-text"><strong>Hạn nộp hồ sơ:</strong> @Model.ThoiGianHetHan</p>
-                <p class="card-text"><strong>Thành phố:</strong> @ViewData["TenTP"]</p>
-                <p class="card-text">
+                <h3 class="card-text title-center">@Model.TenCongViec</h3>
+                <p><strong>Mô tả công việc:</strong> @Model.MoTaCongViec</p>
+                <p><strong>Yêu cầu kỹ năng:</strong> @Model.YeuCauKyNang</p>
+                <p><strong>Phúc lợi:</strong> @Model.PhucLoi</p>
+                <p><strong>Lương:</strong> @Model.Luong_min - @Model.Luong_max triệu đồng</p>
+                <p><strong>Loại công việc:</strong> @Model.KieuCongViec</p>
+                <p><strong>Hạn nộp hồ sơ:</strong> @Model.ThoiGianHetHan</p>
+                <p><strong>Thành phố:</strong> @ViewData["TenTP"]</p>
+                <p>
                     <strong>Chuyên ngành:</strong>
                     @if (ViewBag.ChuyenNganhs != null)
                     {
                         @string.Join(", ", ViewBag.ChuyenNganhs)
                     }
                 </p>
-                <p class="card-text">
+                <p>
                     <strong>Vị trí công việc:</strong>
                     @if (ViewBag.ViTriCongViecs != null)
                     {
                         @string.Join(", ", ViewBag.ViTriCongViecs)
                     }
                 </p>
-                <p class="card-text">
+                <p>
                     <strong>Kỹ năng mềm:</strong>
                     @if (ViewBag.KyNangMems != null)
                     {
                         @string.Join(", ", ViewBag.KyNangMems)
                     }
                 </p>
-
             </div>
-    </div>
-</body>
-</html>
+        </div>
 
+        <!-- Cột phải: Trò chơi đoán số (Phụ) -->
+        <div class="right" style="flex: 1; padding: 30px; background-color: #f4f4f9;">
+            <div class="game-container">
+                <h3>Trò chơi đoán số</h3>
+                <p class="game-message" id="gameMessage">Hãy nhập một số từ 1 đến 100 để đoán số bí mật!</p>
+                <input type="number" id="userGuess" class="game-input" min="1" max="100" placeholder="Nhập số" />
+                <button class="game-button" onclick="guessNumber()">Đoán</button>
+                <p class="game-message" id="attemptsMessage">Bạn còn 10 lượt để đoán.</p>
+                <!-- Nút Reload -->
+                <button class="game-button" onclick="reloadGame()">Reload trò chơi</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Trò chơi đoán số
+        let secretNumber = Math.floor(Math.random() * 100) + 1;
+        let attemptsLeft = 10;
+
+        function guessNumber() {
+            let userGuess = parseInt(document.getElementById('userGuess').value);
+            let message = document.getElementById('gameMessage');
+            let attemptsMessage = document.getElementById('attemptsMessage');
+
+            if (userGuess < 1 || userGuess > 100 || isNaN(userGuess)) {
+                message.textContent = "Vui lòng nhập một số hợp lệ từ 1 đến 100.";
+                return;
+            }
+
+            if (userGuess === secretNumber) {
+                message.textContent = "Chúc mừng! Bạn đã đoán đúng số!";
+                attemptsMessage.textContent = "";
+            } else {
+                attemptsLeft--;
+                if (attemptsLeft <= 0) {
+                    message.textContent = "Hết lượt! Số bí mật là " + secretNumber + ".";
+                    attemptsMessage.textContent = "";
+                } else {
+                    message.textContent = userGuess < secretNumber ? "Số bạn nhập quá thấp. Cố gắng nữa!" : "Số bạn nhập quá cao. Cố gắng nữa!";
+                    attemptsMessage.textContent = "Bạn còn " + attemptsLeft + " lượt để đoán.";
+                }
+            }
+        }
+
+        // Hàm reload trò chơi
+        function reloadGame() {
+            // Reset lại trò chơi
+            secretNumber = Math.floor(Math.random() * 100) + 1;
+            attemptsLeft = 10;
+
+            // Cập nhật lại các phần tử hiển thị
+            document.getElementById('gameMessage').textContent = "Hãy nhập một số từ 1 đến 100 để đoán số bí mật!";
+            document.getElementById('attemptsMessage').textContent = "Bạn còn 10 lượt để đoán.";
+            document.getElementById('userGuess').value = ""; // Reset ô nhập liệu
+        }
+    </script>
+
+</body>
+
+</html>

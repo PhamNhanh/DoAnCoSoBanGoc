@@ -1,0 +1,44 @@
+﻿@* @model WEBTimViec.Models.NangCapTaiKhoanViewModel
+
+@{
+    ViewData["Title"] = "Nâng Cấp Tài Khoản";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="NangCapTaiKhoan" method="post">
+    <div class="form-group">
+        <label for="SelectedLoaiTaiKhoanID">Chọn loại tài khoản mới:</label>
+        <select asp-for="SelectedLoaiTaiKhoanID" class="form-control" id="SelectedLoaiTaiKhoanID">
+            <option value="">Chọn loại tài khoản</option>
+            @foreach (var item in Model.LoaiTaiKhoanList)
+            {
+                <option value="@item.loaiTaiKhoanId" @(item.loaiTaiKhoanId == Model.CurrentLoaiTaiKhoanID ? "selected" : "")>
+                    @item.tenLoaiTaiKhoan
+                </option>
+            }
+        </select>
+
+        <span asp-validation-for="SelectedLoaiTaiKhoanID" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Nâng Cấp</button>
+    </div>
+</form>
+
+<!-- Hiển thị thông báo thành công hoặc lỗi -->
+@if (ViewData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @ViewData["SuccessMessage"]
+    </div>
+}
+
+@if (ViewData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @ViewData["ErrorMessage"]
+    </div>
+}
+ *@

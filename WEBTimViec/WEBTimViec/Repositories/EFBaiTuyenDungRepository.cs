@@ -115,5 +115,20 @@ namespace WEBTimViec.Repositories
 
             return count;
         }
+        public async Task<IEnumerable<BaiTuyenDung>> GetBaiTuyenDungByChuyenNganhAsync(int? chuyenNganhId)
+        {
+            // Lọc các bài tuyển dụng có chuyên ngành thuộc ChuyenNganhId đã cho
+            var baiTuyenDungList = await _context.baiTuyenDungs
+                .Where(b => b.baiTuyenDung_ChuyenNganhs
+                    .Any(btdc => btdc.ChuyenNganhid == chuyenNganhId) && b.TrangThai == true)
+                .Include(b => b.thanhPho)
+                .Include(b => b.kinhNghiem)
+                .Include(b => b.chuyenNganh)
+                .Include(b => b.applicationUser)
+                .ToListAsync();
+
+            return baiTuyenDungList;
+        }
+
     }
 }

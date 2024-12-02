@@ -12,8 +12,8 @@ using WEBTimViec.Data;
 namespace WEBTimViec.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241113050739_ThemNhomChuyenNganh2")]
-    partial class ThemNhomChuyenNganh2
+    [Migration("20241128115119_2811")]
+    partial class _2811
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -502,6 +502,33 @@ namespace WEBTimViec.Migrations
                     b.ToTable("nhomChuyenNganhs");
                 });
 
+            modelBuilder.Entity("WEBTimViec.Models.SavedJob", b =>
+                {
+                    b.Property<int>("SavedJobId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SavedJobId"));
+
+                    b.Property<int>("BaiTuyenDungId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("SavedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("SavedJobId");
+
+                    b.HasIndex("BaiTuyenDungId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("saveJobs");
+                });
+
             modelBuilder.Entity("WEBTimViec.Models.ThanhPho", b =>
                 {
                     b.Property<int>("ThanhPho_id")
@@ -553,9 +580,6 @@ namespace WEBTimViec.Migrations
 
                     b.Property<DateTime?>("ThoiGianUngTuyen")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("ThuGioiThieu")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TrangThai")
                         .HasColumnType("nvarchar(max)");
@@ -765,6 +789,25 @@ namespace WEBTimViec.Migrations
                     b.Navigation("chuyenNganhs");
 
                     b.Navigation("truongDaiHoc");
+                });
+
+            modelBuilder.Entity("WEBTimViec.Models.SavedJob", b =>
+                {
+                    b.HasOne("WEBTimViec.Models.BaiTuyenDung", "BaiTuyenDung")
+                        .WithMany()
+                        .HasForeignKey("BaiTuyenDungId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WEBTimViec.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BaiTuyenDung");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("WEBTimViec.Models.UngTuyen", b =>

@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> JobPlus </title>
+    <title>JobPlus</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,68 +25,54 @@
 </head>
 
 <body>
-    <div class="khung container">
+    <div class="container-fluid p-0">
         <!-- Slider Section -->
-        <div class="slider-area">
-            <div class="slider-active">
-                <div class="single-slider slider-height d-flex align-items-center">
-                    <div class="container1">
-                        <div class="row">
-                            <img class="hero__image media col-12" src="~/images/elements/g1.jpg" alt="" style="width: 100%; height: auto;">
-                            <div class="col-xl-6 col-lg-9 col-md-10">
-                                <div class="hero__caption">
-                                    <h1>Bạn có công việc</h1>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-3 col-md-2">
-                                <div class="hero__caption">
-                                    <h1>Chúng tôi có nhân lực</h1>
-                                </div>
-                            </div>
-                        </div>
+        <div id="heroSlider" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="~/images/elements/g1.jpg" class="d-block w-100 img-fluid" alt="Banner">
+                    <div class="carousel-caption d-flex flex-column justify-content-center align-items-center text-center">
+                        <h1 class="text-uppercase fw-bold text-light" style="font-size: 5rem; text-shadow: 3px 3px 6px #000;">
+                            Bạn có năng lực
+                        </h1>
+                        <h2 class="text-light fw-semibold mt-3" style="font-size: 3rem; text-shadow: 3px 3px 6px #000;">
+                            Chúng tôi có công việc
+                        </h2>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Featured Majors Section -->
-        <div class="our-services section-pad-t30 mt-5">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-tittle text-center">
-                        <span>QUYẾT ĐỊNH TƯƠNG LAI CỦA BẠN</span>
-                        <h2>Chuyên ngành nổi bật</h2>
-                    </div>
+        <section class="our-services py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <span class="text-uppercase text-secondary">QUYẾT ĐỊNH TƯƠNG LAI CỦA BẠN</span>
+                    <h2 class="fw-bold">Chuyên ngành nổi bật</h2>
                 </div>
-            </div>
-            <div class="row d-flex justify-content-center">
-                @foreach (var major in Model.Majors)
-                {
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4">
-                        <div class="single-services text-center">
-                            <div class="services-cap">
-                                <h5><a href="#">@major.ChuyenNganhName</a></h5>
-                                <span>(@major.JobCount)</span>
+                <div class="row g-4">
+                    @foreach (var major in Model.Majors)
+                    {
+                        <div class="col-xl-3 col-lg-4 col-md-6">
+                            <div class="card text-center shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title"><a href="#" class="text-decoration-none">@major.ChuyenNganhName</a></h5>
+                                    <p class="text-muted">(@major.JobCount)</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                }
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="browse-btn2 text-center mt-50">
-                        <a href="@Url.Action("ListBaiTuyenDung", "NTD")" class="border-btn2">Tất cả bài tuyển dụng</a>
-                    </div>
+                    }
+                </div>
+                <div class="text-center mt-4">
+                    <a href="@Url.Action("ListBaiTuyenDung", "NTD")" class="btn btn-outline-primary">Tất cả bài tuyển dụng</a>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Job Search Section -->
-        <div class="card mt-5">
-            <div class="card-body">
-                <div class="section-tittle text-center">
-                    <span>Tìm kiếm công việc bạn ưa thích</span>
-                </div>
+        <section class="job-search py-5">
+            <div class="container">
+                <h2 class="fw-bold text-center mb-5">Tìm kiếm công việc bạn ưa thích</h2>
                 <form action="@Url.Action("TimKiem", "NTD")" method="get">
                     <div class="row g-2 align-items-end">
                         <div class="col-md-4">
@@ -98,8 +84,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label asp-for="ThanhPhoId" class="control-label font-weight-bold">Địa điểm công ty</label>
-                                <select asp-for="ThanhPhoId" class="form-control">
+                                <label for="ThanhPhoId" class="control-label font-weight-bold">Địa điểm công ty</label>
+                                <select name="ThanhPhoId" class="form-control">
                                     <option value="">-- Chọn tỉnh - Thành phố --</option>
                                     @foreach (var thanhPho in Model.ThanhPhos)
                                     {
@@ -111,8 +97,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label asp-for="chuyenNganhId" class="control-label font-weight-bold">Chuyên ngành yêu cầu</label>
-                                <select asp-for="chuyenNganhId" class="form-control">
+                                <label for="chuyenNganhId" class="control-label font-weight-bold">Chuyên ngành yêu cầu</label>
+                                <select name="chuyenNganhId" class="form-control">
                                     <option value="">-- Chọn chuyên ngành --</option>
                                     @foreach (var chuyenNganh in Model.ChuyenNganhs)
                                     {
@@ -128,23 +114,21 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </section>
 
         <!-- Job Listings Section -->
-        <div class="card mt-5">
-            <div class="card-body">
-                <div class="section-tittle text-center">
-                    <span>Bài tuyển dụng phù hợp</span>
-                </div>
-                <div class="row">
+        <section class="job-listings py-5">
+            <div class="container">
+                <h2 class="fw-bold text-center mb-5">Bài tuyển dụng phù hợp</h2>
+                <div class="row g-4">
                     @foreach (var baiTuyenDung in Model.BaiTuyenDungs)
                     {
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
+                        <div class="col-md-4">
+                            <div class="card shadow-sm">
                                 <div class="card-body">
                                     <h5 class="card-title text-center" style="font-size: 1.5rem; font-style: italic;">@baiTuyenDung.TenCongViec</h5>
                                     <p class="card-text"><strong>Công ty: </strong>@baiTuyenDung.applicationUser.NhaTuyenDung_name</p>
-                                    <p class="card-text"><strong>Yêu cầu kỹ năng: </strong>@baiTuyenDung.YeuCauKyNang</p>
+@*                                     <p class="card-text"><strong>Yêu cầu kỹ năng: </strong>@baiTuyenDung.YeuCauKyNang</p> *@
                                     <p class="card-text"><strong>Thành phố làm việc: </strong>@baiTuyenDung.thanhPho.ThanhPho_name</p>
                                     <p class="card-text"><strong>Lương: </strong>@baiTuyenDung.Luong_min - @baiTuyenDung.Luong_max triệu đồng</p>
                                     <p class="card-text"><strong>Loại công việc: </strong>@baiTuyenDung.KieuCongViec</p>
@@ -158,9 +142,9 @@
                     }
                 </div>
             </div>
-        </div>
+        </section>
     </div>
-    
+
     <!-- Include necessary JS files -->
     <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="~/assets/vendor/aos/aos.js"></script>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bdihHl2N0r0xGT1FFc+ZFaHUnajKSSlc5HURouP/Xhs=",
+  "Hash": "iixLbDItUD/6+ZMOW7VYfMFNFyv1HrUbJADEByWIMcw=",
   "Source": "WEBTimViec",
   "BasePath": "_content/WEBTimViec",
   "Mode": "Default",
@@ -2656,6 +2656,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\filecv\\37c2736b-2986-4749-926a-7f1b5cd6b1c5.pdf"
+    },
+    {
+      "Identity": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\filecv\\3ec39400-d37a-4d49-89c1-4f8b7cef25fa.pdf",
+      "SourceId": "WEBTimViec",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\",
+      "BasePath": "_content/WEBTimViec",
+      "RelativePath": "filecv/3ec39400-d37a-4d49-89c1-4f8b7cef25fa.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\filecv\\3ec39400-d37a-4d49-89c1-4f8b7cef25fa.pdf"
     },
     {
       "Identity": "C:\\DoAnCoSo\\Github\\DoAnCoSoBanGoc\\WEBTimViec\\WEBTimViec\\wwwroot\\filecv\\47a9be04-3b34-41ce-b669-50dad1ac365d.jpg",

@@ -31,9 +31,15 @@ namespace WEBTimViec.Models
         public string? SDTNhaTuyenDung { get; set; }
         public string? Website { get; set; }
         public DateTime? ThoiGianTao { get; set; }
+        public DateTime? ThoiGianLoaiTK  { get; set; }
         public DateTime? ThoiGianCapNhat { get; set; }
         public List<UngTuyen>? UngTuyens { get; set; }
         public List<BaiTuyenDung> BaiTuyenDungs { get; set; }
+        public int? loaiTaiKhoanId { get; set; }
+        public LoaiTaiKhoan? loaiTaiKhoan { get; set; }
+        /*      public List<TaiKhoan_LoaiTaiKhoan>? TaiKhoan_LoaiTaiKhoans { get; set; }*/
+        /*        public int? listSaveId { get; set; }
+                public SavedJob? saveJobs { get; set; }*/
 
     }
 }

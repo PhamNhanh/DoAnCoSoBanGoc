@@ -1,0 +1,30 @@
+﻿@model List<BaiTuyenDung>
+
+@foreach (var baiTuyenDung in Model)
+{
+    <div class="col-md-4 job-item">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-center highlight-container">
+                    <!-- Logo công ty -->
+                    @* <img src="~/images/logos/@baiTuyenDung.applicationUser.image_url" alt="Logo" class="rounded-circle" style="width: 50px; height: 50px;"> *@
+                    <div class="ms-3">
+                        <h5 class="card-title highlight-text fw-bold">@baiTuyenDung.TenCongViec</h5>
+                        <p class="text-muted highlight-text fst-italic company-name">@baiTuyenDung.applicationUser.NhaTuyenDung_name</p>
+                    </div>
+                </div>
+                <p><strong>Thành phố:</strong> @baiTuyenDung.thanhPho.ThanhPho_name</p>
+                <p><strong>Lương:</strong> @baiTuyenDung.Luong_min - @baiTuyenDung.Luong_max triệu đồng</p>
+                <p><strong>Loại công việc:</strong> @baiTuyenDung.KieuCongViec</p>
+                <p><strong>Hạn nộp:</strong> @baiTuyenDung.ThoiGianHetHan</p>
+                <!-- Nút Ứng tuyển -->
+                <a href="@Url.Action("DetailsBaiTuyenDung", new { id = baiTuyenDung.BaiTuyenDung_id })" class="btn btn-outline-primary w-100">Ứng tuyển</a>
+                <!-- Nút Lưu -->
+                <form method="post" action="@Url.Action("SaveJob", "UV", new { baiTuyenDungId = baiTuyenDung.BaiTuyenDung_id })">
+                    <input type="hidden" name="baiTuyenDungId" value="@baiTuyenDung.BaiTuyenDung_id" />
+                    <button type="submit" class="btn btn-outline-success w-100 mt-2">Lưu</button>
+                </form>
+            </div>
+        </div>
+    </div>
+}

@@ -3,61 +3,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Các thẻ meta, title và các link CSS -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết các bài ứng tuyển</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .button-container {
+            margin-top: 100px;
+        }
+
+        .btn-back {
+            color: #000000; /* Màu chữ */
+            text-decoration: none; /* Bỏ gạch chân */
+            font-size: 16px; /* Kích thước chữ */
+            font-weight: normal; /* Không đậm */
+            transition: color 0.3s ease; /* Hiệu ứng khi hover */
+        }
+
+            .btn-back:hover {
+                color: #0056b3; /* Màu khi hover */
+            }
+        .khung4 {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .tieude {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .styled-button {
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+            .styled-button a {
+                text-decoration: none;
+                color: #007bff;
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+                .styled-button a:hover {
+                    color: #0056b3;
+                }
+
+        .table th, .table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .form-control {
+            margin-bottom: 10px;
+        }
+
+        .btn-primary, .btn-success {
+            padding: 8px 20px;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <button class="styled-button">
-        <a style="color: black;" href="@Url.Action("DSUngTuyen", "NTD")"> <<< </a>
+
+    <!-- Nút quay lại -->
+    <!-- Nút quay lại -->
+    <button class="btn btn-outline-primary">
+        <a href="@Url.Action("DSUngTuyen", "NTD")" style=" margin-top: 100px;">
+            <i class="fas fa-arrow-left"></i> Quay lại
+        </a>
     </button>
+
+    <!-- Chi tiết các bài ứng tuyển -->
     <div class="khung4">
         <h1 class="tieude">Chi tiết các bài ứng tuyển</h1>
 
         @if (Model == null || !Model.Any())
         {
-            <p>Không có ứng viên nào ứng tuyển</p>
+            <p class="text-center">Không có ứng viên nào ứng tuyển</p>
         }
         else
         {
-            <table class="table table-striped">
+            <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
+                        <th>STT</th>
                         <th>Mã ứng tuyển</th>
                         <th>Tên ứng viên</th>
                         <th>Email ứng viên</th>
                         <th>Thời gian ứng tuyển</th>
-                        <th>Thư giới thiệu</th>
+@*                         <th>Thư giới thiệu</th> *@
                         <th>CV</th>
                         <th>Phản hồi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var ungtuyen in Model)
+                    @foreach (var ungtuyen in Model.Select((value, index) => new { value, index }))
                     {
                         <tr>
-                            <td style="font-size: 20px;color:black">@ungtuyen.UngTuyen_id</td>
-                            <td style="font-size: 20px;color:black">@ungtuyen.TenUngVien</td>
-                            <td style="font-size: 20px;color:black">@ungtuyen.EmailUV</td>
-                            <td style="font-size: 20px;color:black">@ungtuyen.ThoiGianUngTuyen</td>
-                            <td style="font-size: 20px;color:black">@ungtuyen.ThuGioiThieu</td>
-                            <td style="font-size: 20px; color: black">
-                                <a href="@ungtuyen.url_CV" target="_blank" style="font-size: 20px; color: black">Xem CV</a>
+                            <td>@(ungtuyen.index + 1)</td>
+                            <td>@ungtuyen.value.UngTuyen_id</td>
+                            <td>@ungtuyen.value.TenUngVien</td>
+                            <td>@ungtuyen.value.EmailUV</td>
+                            <td>@ungtuyen.value.ThoiGianUngTuyen</td>
+@*                             <td>@ungtuyen.value.ThuGioiThieu</td> *@
+                            <td>
+                                <a href="@ungtuyen.value.url_CV" target="_blank" class="btn btn-link">Xem CV</a>
                             </td>
                             <td>
                                 <form class="feedback-form">
-                                    <input type="hidden" name="UngTuyen_id" value="@ungtuyen.UngTuyen_id" />
-                                    <input type="hidden" name="BaiTuyenDung_id" value="@ungtuyen.BaiTuyenDungid" />
-                                    @if (ungtuyen.TrangThai == null)
+                                    <input type="hidden" name="UngTuyen_id" value="@ungtuyen.value.UngTuyen_id" />
+                                    <input type="hidden" name="BaiTuyenDung_id" value="@ungtuyen.value.BaiTuyenDungid" />
+                                    @if (ungtuyen.value.TrangThai == null)
                                     {
-                                        <input type="text" class="form-control" name="TrangThai" placeholder="Nhập phản hồi" value="@ungtuyen.TrangThai" />
+                                        <input type="text" class="form-control" name="TrangThai" placeholder="Nhập phản hồi" value="@ungtuyen.value.TrangThai" />
                                         <button type="submit" class="btn btn-primary mt-2">Gửi phản hồi</button>
                                     }
                                     else
                                     {
-                                        <input type="text" class="form-control" name="TrangThai" placeholder="Nhập phản hồi" value="@ungtuyen.TrangThai" style="background-color: #54ec82; color: black;" />
-                                        <button type="submit" class="btn btn-success mt-2">Gửi lại phản hồi</button>
+                                        @* Kiểm tra nếu trạng thái có chữ "Chưa" hoặc "Không" thì nền màu đỏ, ngược lại màu xanh *@
+                                        @if (ungtuyen.value.TrangThai.Contains("chưa") || ungtuyen.value.TrangThai.Contains("Không") || ungtuyen.value.TrangThai.Contains("không") || ungtuyen.value.TrangThai.Contains("Chưa"))
+                                        {
+                                            <input type="text" class="form-control" name="TrangThai" value="@ungtuyen.value.TrangThai" style="background-color: #f8d7da; color: black;" />
+                                            <button type="submit" class="btn btn-danger mt-2">Gửi lại phản hồi</button>
+                                        }
+                                        else
+                                        {
+                                            <input type="text" class="form-control" name="TrangThai" value="@ungtuyen.value.TrangThai" style="background-color: #54ec82; color: black;" />
+                                            <button type="submit" class="btn btn-success mt-2">Gửi lại phản hồi</button>
+                                        }
                                     }
                                 </form>
                             </td>
+
                         </tr>
                     }
                 </tbody>
@@ -78,7 +188,6 @@
                     data: $form.serialize(),
                     success: function (response) {
                         alert('Phản hồi đã được gửi thành công.');
-                        // Load lại trang sau khi gửi phản hồi thành công
                         window.location.reload();
                     },
                     error: function (xhr, status, error) {

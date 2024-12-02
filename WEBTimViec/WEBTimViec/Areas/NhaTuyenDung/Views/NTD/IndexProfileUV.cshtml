@@ -2,10 +2,11 @@
 @{
     ViewData["Title"] = "Thông tin ứng viên";
 }
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> JobPlus </title>
+    <title>JobPlus - Thông tin ứng viên</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -30,23 +31,26 @@
     <link rel="stylesheet" href="~/css/style.css">
     <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
 </head>
+
 <body>
-    <button class=" styled-button">
-        <a style="color: black;" href="@Url.Action("DSUngVien", "NTD")"> <<< </a>
-    </button>
-    
-    <div class="khung">
+    <!-- Nút quay lại -->
+    <div class="container mt-4">
+        <a href="@Url.Action("DSUngVien", "NTD")" class="btn btn-primary">&lt;&lt;&lt; Quay lại danh sách</a>
+    </div>
+
+    <div class="container mt-5">
         <div class="row">
-            <div class="col-md-3 border-right">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    <img class="rounded-circle mt-5" width="150px" src="@Model.image_url">
-                    <span style="font-family: 'Times New Roman'" class="font-weight-bold"><h4>@Model.FullName</h4></span>
-                    <span class="text-black-50">@Model.Email</span>
-                </div>
+            <!-- Cột bên trái: Hình ảnh và thông tin cơ bản -->
+            <div class="col-md-3 text-center border-right">
+                <img class="rounded-circle mb-4" width="150px" src="@Model.image_url" alt="Hình ảnh ứng viên">
+                <h4 class="font-weight-bold">@Model.FullName</h4>
+                <p class="text-muted">@Model.Email</p>
             </div>
-            <!-- Cột chứa thông tin bên phải -->
+
+            <!-- Cột bên phải: Thông tin chi tiết ứng viên -->
             <div class="col-md-9">
-                <div class="khungchu2">
+                <div class="card p-4">
+                    <h5 class="mb-4"><strong>Thông tin cá nhân</strong></h5>
                     <p><strong>Tên ứng viên:</strong> @Model.FullName</p>
                     <p><strong>Email:</strong> @Model.Email</p>
                     <p><strong>Số điện thoại:</strong> @Model.SDT_UngVien</p>

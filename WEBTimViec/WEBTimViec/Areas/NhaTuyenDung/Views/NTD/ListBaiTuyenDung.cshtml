@@ -6,77 +6,190 @@
 
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> JobPlus </title>
-    <meta name="description" content="">
+    <title>Danh sách bài tuyển dụng - JobPlus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-
-    <!-- CSS here -->
-    <link rel="stylesheet" href="~/css/main.css">
-    <link rel="stylesheet" href="~/css/normalize.min.css">
-    <link rel="stylesheet" href="~/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="~/css/flaticon.css">
-    <link rel="stylesheet" href="~/css/price_rangs.css">
-    <link rel="stylesheet" href="~/css/slicknav.css">
-    <link rel="stylesheet" href="~/css/animate.min.css">
-    <link rel="stylesheet" href="~/css/magnific-popup.css">
     <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="~/css/themify-icons.css">
-    <link rel="stylesheet" href="~/css/slick.css">
-    <link rel="stylesheet" href="~/css/nice-select.css">
     <link rel="stylesheet" href="~/css/style.css">
-    <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
-</head>
-<body>
-    <div class="button-container">
-        <button class="styled-button">
-            <a style="color: black;" href="@Url.Action("Index", "NTD")"> <<< </a>
-        </button>
-        <button class="styled-button">
-            <a style="color: black;" href="@Url.Action("AddBaiTuyenDung", "NTD")"> Thêm bài tuyển dụng mới </a>
-        </button>
-    </div>
-    <div class="khung2">
-        <div>
-            <h3 class="tieude"> Các chiến dịch tuyển dụng của công ty </h3>
-        </div>
-        @if (Model.Any())
-        {
-            var firstItem = Model.First();
-            <a href="@Url.Action("IndexProfileNTD", "NTD")" >
-                <img src="@firstItem.applicationUser.image_url" title="Nhấn vào đây để xem thông tin" alt="Logo công ty" class="company-logo1">
-            </a>
-        }
-        <div class="row">
-            @foreach (var item in Model)
-            {
-                <div class="col-md-4">
-                    <div class="card2">
-                        <div class="card-body">
-                            @*
-                        <p>@item.applicationUser.FullName</p> *@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-                            <h3 class="card-title overflow-ellipsis">@item.TenCongViec</h3>
-                            <p class="card-text overflow-ellipsis"><strong>Công ty: </strong>@item.applicationUser.NhaTuyenDung_name</p>
-                            <p class="card-text overflow-ellipsis"><strong>Yêu cầu kỹ năng:</strong> @item.YeuCauKyNang</p>
-                            <p class="card-text overflow-ellipsis"><strong>Thành phố làm việc:</strong> @item.thanhPho.ThanhPho_name</p>
-                            <p class="card-text overflow-ellipsis"><strong>Lương:</strong> @item.Luong_min - @item.Luong_max triệu đồng</p>
-                            <p class="card-text overflow-ellipsis"><strong>Loại công việc:</strong> @item.KieuCongViec</p>
-                            <p class="card-text overflow-ellipsis"><strong>Hạn nộp hồ sơ:</strong> @item.ThoiGianHetHan</p>
-                            <a href="@Url.Action("DetailsBaiTuyenDung", new { id = item.BaiTuyenDung_id })" class="border-btn2">Chi tiết</a>
-                            <a href="@Url.Action("DeleteBTD", new { id = item.BaiTuyenDung_id })" class="border-btn2">Xóa</a>
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .btn-back {
+            color: #000000; /* Màu chữ */
+            text-decoration: none; /* Bỏ gạch chân */
+            font-size: 16px; /* Kích thước chữ */
+            font-weight: normal; /* Không đậm */
+            transition: color 0.3s ease; /* Hiệu ứng khi hover */
+            margin-top: 20px; /* Khoảng cách từ lề trên */
+        }
+
+            .btn-back i {
+                margin-right: 8px; /* Khoảng cách giữa icon và chữ */
+            }
+
+        .button-container {
+            margin-top: 100px;
+        }
+
+        .styled-button a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            margin: 0 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+            .styled-button a:hover {
+                background-color: #0056b3;
+            }
+
+        .khung2 {
+            background: #EEE9E9;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px 30px;
+            margin-bottom: 30px;
+        }
+
+        .tieude {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .company-logo1 {
+            display: block;
+            margin: 0 auto 15px auto;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .card2 {
+            border: 2px solid #d3d3d3;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+            overflow: hidden;
+        }
+
+            .card2:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+            background-color: #f0f0f0;
+            padding: 10px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .card-text {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 8px;
+            text-overflow: ellipsis;
+        }
+
+        .ellipsis {
+            white-space: nowrap; /* Ngừng xuống dòng */
+            overflow: hidden; /* Ẩn phần vượt quá chiều rộng */
+            text-overflow: ellipsis; /* Thêm dấu ba chấm (...) */
+        }
+        .border-btn2 {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 14px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid #007bff;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+
+            .border-btn2:hover {
+                background-color: #007bff;
+                color: #fff;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Nút điều hướng -->
+        <div class="button-container">
+                <a href="@Url.Action("Index", "NTD")" class="btn-back">
+                    <i class="fas fa-arrow-left"></i> Quay lại
+                </a>
+        </div>
+
+        <!-- Danh sách bài tuyển dụng -->
+        <div class="khung2">
+            <h3 class="tieude">Các chiến dịch tuyển dụng của công ty</h3>
+            @if (Model.Any())
+            {
+                var firstItem = Model.First();
+                <a href="@Url.Action("IndexProfileNTD", "NTD")">
+                    <img src="@firstItem.applicationUser.image_url" alt="Logo công ty" class="company-logo1" title="Nhấn vào đây để xem thông tin">
+                </a>
+            }
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-3">
+                        <div class="card2">
+                            <div class="card-body">
+                                <h3 class="card-title">@item.TenCongViec</h3>
+                                <p class="card-text ellipsis"><strong>Kỹ năng:</strong> @item.YeuCauKyNang</p>
+                                <p class="card-text"><strong>Thành phố:</strong> @item.thanhPho.ThanhPho_name</p>
+                                <p class="card-text"><strong>Lương:</strong> @item.Luong_min - @item.Luong_max triệu đồng</p>
+                                <p class="card-text"><strong>Loại công việc:</strong> @item.KieuCongViec</p>
+                                <p class="card-text">
+                                    <strong>Hạn nộp hồ sơ:</strong> @(item.ThoiGianHetHan?.ToShortDateString() ?? "Không xác định")
+                                </p>
+                                <div class="button-group">
+                                    <a href="@Url.Action("DetailsBaiTuyenDung", new { id = item.BaiTuyenDung_id })" class="border-btn2">Chi tiết</a>
+                                    <a href="@Url.Action("DeleteBTD", new { id = item.BaiTuyenDung_id })" class="border-btn2">Xóa</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                }
+
+                <!-- Thêm nút "Thêm bài tuyển dụng" ở cuối -->
+                <div class="col-md-12 text-center mt-3">
+                    <a href="@Url.Action("AddBaiTuyenDung", "NTD")" class="border-btn2">+ Thêm bài tuyển dụng</a>
                 </div>
-            }
+            </div>
         </div>
     </div>
 </body>
+
 </html>

@@ -1,47 +1,159 @@
 ﻿@model WEBTimViec.Models.HocVan
-
 @{
     ViewData["Title"] = "Thêm học vấn";
     Layout = "~/Views/Shared/_LayoutUngVien.cshtml";
 }
 
-<div class="khung">
-    <h4>Thêm học vấn</h4>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>JobPlus</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="~/assets/css/main.css" rel="stylesheet">
+</head>
+
+<div class="container bg-light shadow-lg p-4 mt-5 mb-5 rounded" style="background-color: #FDF5E6; margin-top: 150px;">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <button class="btn btn-outline-dark" style="margin-bottom: 40px; margin-right: 20px; white-space: nowrap;">
+            <a href="@Url.Action("Index", "UV")" style="text-decoration: none; color: inherit;">&laquo; Quay lại</a>
+        </button>
+        <h2 style="font-family: 'Times New Roman'; font-weight: bold; color: #2c3e50; text-align: center;">
+            Thêm học vấn
+        </h2>
+    </div>
+
     <form asp-area="UngVien" asp-controller="UV" asp-action="AddEducation" method="post">
-        <div class="card-body d-flex">
-            <i class="fas fa-school school-icon fa-3x mr-3" style="margin-right:10px"></i> <!-- Icon trường học từ Font Awesome -->
-            <div>
-                <h5 class="school-name">
-                    <label asp-for="TruongDaiHocid" class="control-label">Học vấn</label>
-                    <select asp-for="TruongDaiHocid" asp-items="ViewBag.TruongDaiHoc" class="form-control">
-                        <option value="">-- Chọn Trường Đại Học / Cao Đẳng --</option>
-                    </select>
-                    <span asp-validation-for="TruongDaiHocid" class="text-danger"></span>
-                </h5>
-                <h5 class="school-name">
-                    <label asp-for="chuyenNganhId" class="control-label">Học vấn</label>
-                    <select asp-for="chuyenNganhId" asp-items="ViewBag.ChuyenNganh" class="form-control">
-                        <option value="">-- Chuyên ngành --</option>
-                    </select>
-                    <span asp-validation-for="chuyenNganhId" class="text-danger"></span>
-                </h5>
-                <div>
-                    <label asp-for="GPA" class="control-label">GPA</label>
-                    <input asp-for="GPA" class="form-control" type="number" min="0" max="4" step="0.01" />
-                    <span asp-validation-for="GPA" class="text-danger"></span>
+        <div class="card card-custom">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <i class="fas fa-school school-icon fa-3x mb-3"></i> <!-- Icon trường học từ Font Awesome -->
+                    <div class="form-group">
+                        <label asp-for="TruongDaiHocid" class="control-label" style="font-family: 'Times New Roman'; font-size: 18px;">Trường Đại Học / Cao Đẳng</label>
+                        <select asp-for="TruongDaiHocid" asp-items="ViewBag.TruongDaiHoc" class="form-control custom-select">
+                            <option value="">-- Chọn Trường --</option>
+                        </select>
+                        <span asp-validation-for="TruongDaiHocid" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="chuyenNganhId" class="control-label" style="font-family: 'Times New Roman'; font-size: 18px;">Chuyên ngành</label>
+                        <select asp-for="chuyenNganhId" asp-items="ViewBag.ChuyenNganh" class="form-control custom-select">
+                            <option value="">-- Chọn Chuyên Ngành --</option>
+                        </select>
+                        <span asp-validation-for="chuyenNganhId" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="GPA" class="control-label" style="font-family: 'Times New Roman'; font-size: 18px;">GPA</label>
+                        <input asp-for="GPA" class="form-control" type="number" min="0" max="4" step="0.01" placeholder="Nhập GPA" />
+                        <span asp-validation-for="GPA" class="text-danger"></span>
+                    </div>
                 </div>
 
-                <div>
-                    <label asp-for="NgayBatDau" class="control-label">Bắt đầu</label>
-                    <input asp-for="NgayBatDau" class="form-control datepicker" asp-format="{0:dd/MM/yy}" />
-                    <label asp-for="NgayTotNghiep" class="control-label">Kết thúc</label>
-                    <input asp-for="NgayTotNghiep" class="form-control datepicker" asp-format="{0:dd/MM/yy}" />
-                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <label asp-for="NgayBatDau" class="control-label" style="font-family: 'Times New Roman'; font-size: 18px;">Bắt đầu</label>
+                        <input asp-for="NgayBatDau" class="form-control datepicker" asp-format="{0:dd/MM/yy}" />
+                        <span asp-validation-for="NgayBatDau" class="text-danger"></span>
+                    </div>
 
+                    <div class="form-group">
+                        <label asp-for="NgayTotNghiep" class="control-label" style="font-family: 'Times New Roman'; font-size: 18px;">Kết thúc</label>
+                        <input asp-for="NgayTotNghiep" class="form-control datepicker" asp-format="{0:dd/MM/yy}" />
+                        <span asp-validation-for="NgayTotNghiep" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
+
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary btn-lg px-5" style="background-color: #27ae60; border-color: #27ae60;">Thêm học vấn</button>
             </div>
-        <div class="form-group">
-            <input type="submit" value="Thêm học vấn" class="btn btn-primary" />
         </div>
     </form>
 </div>
+
+<!-- Thêm CSS tùy chỉnh -->
+<style>
+    .card-custom {
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ddd;
+    }
+
+    .school-icon {
+        color: #007bff;
+        margin-right: 10px;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .form-control {
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        padding: 0.8rem;
+        font-size: 16px;
+        background-color: #f9f9f9;
+    }
+
+    .custom-select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        padding: 10px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+    }
+
+        .form-control:focus, .custom-select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            background-color: #fff;
+        }
+
+    .btn-primary {
+        background-color: #27ae60;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+        .btn-primary:hover {
+            background-color: #2ecc71;
+        }
+
+        .btn-primary:focus {
+            box-shadow: 0 0 10px rgba(39, 174, 96, 0.5);
+        }
+
+    .text-center {
+        text-align: center;
+    }
+</style>
+
+<!-- Thêm script cho datepicker nếu cần -->
+<script>
+    $(document).ready(function () {
+        $(".datepicker").datepicker({
+            format: "dd/mm/yyyy",
+            autoclose: true
+        });
+    });
+</script>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable< WEBTimViec.Models.BaiTuyenDung>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>JobPlus</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet">
+</head>
+<button class="styled-button">
+    <a style="color: black;" href="@Url.Action("Index", "UV")"> <<< </a>
+</button>
+
+<body>
+    <div class="khung3">
+        <h1 class="tieude">Danh sách công việc</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Tên công việc</th>
+                    <th>Lương</th>
+                    <th>Hạn nộp</th>
+                    <th>Thêm vào danh sách lưu</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var job in Model)
+                {
+                    <tr>
+                        <td>@job.TenCongViec</td>
+                        <td>@job.Luong_min - @job.Luong_max triệu đồng</td>
+                        <td>@job.ThoiGianHetHan</td>
+                        <td>
+                            <form method="post" action="@Url.Action("SaveJob", "UV")">
+                                <input type="hidden" name="jobId" value="@job.BaiTuyenDung_id" />
+                                <button type="submit" class="btn btn-primary">Lưu công việc</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

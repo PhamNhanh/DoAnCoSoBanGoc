@@ -1,15 +1,17 @@
 ﻿@model ViewModel
 
 @{
-    ViewData["Title"] = "Trang chủ  ";
+    ViewData["Title"] = "Trang chủ";
     Layout = "~/Views/Shared/_layoutUngVien.cshtml";
 }
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>JobPlus</title>
-    <meta name="description" content="">
+    <title>JobPlus - Tìm việc làm</title>
+    <meta name="description" content="Trang web tìm kiếm việc làm chuyên nghiệp">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Vendor CSS Files -->
@@ -21,148 +23,173 @@
 
     <!-- Main CSS File -->
     <link href="~/assets/css/main.css" rel="stylesheet">
+    <style>
+        .company-name {
+            font-size: 0.8rem; /* Giảm kích thước chữ xuống */
+        }
+    </style>
 </head>
 <body>
-
-        <div>
-
-            <div class="slider-area ">
-                <div class="slider-active">
-
-                    <div class="single-slider slider-height d-flex align-items-center">
-
-                        <div class="container1">
-                            <div class="row">
-                                <img class="hero__image media" src="~/images/elements/g1.jpg" alt="" style="width: 100%; height: auto;">
-                                <div class="col-xl-6 col-lg-9 col-md-10">
-                                    <div class="hero__caption">
-                                        <h1>Bạn có năng lực</h1>
-
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-3 col-md-2">
-                                    <div class="hero__caption">
-                                        <h1> Chúng tôi có công việc</h1>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <div class="container-fluid p-0">
+        <!-- Slider Area -->
+        <div id="heroSlider" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="~/images/elements/g1.jpg" class="d-block w-100 img-fluid" alt="Banner">
+                    <div class="carousel-caption d-flex flex-column justify-content-center align-items-center text-center">
+                        <h1 class="text-uppercase fw-bold text-light"
+                            style="font-size: 5rem; text-shadow: 3px 3px 6px #000;">
+                            Bạn có năng lực
+                        </h1>
+                        <h2 class="text-light fw-semibold mt-3"
+                            style="font-size: 3rem; text-shadow: 3px 3px 6px #000;">
+                            Chúng tôi có công việc
+                        </h2>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="khung">
-            <div class="our-services section-pad-t30">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-tittle text-center">
-                            <span>QUYẾT ĐỊNH TƯƠNG LAI CỦA BẠN</span>
-                            <h2>Chuyên ngành nổi bật</h2>
-                        </div>
-                    </div>
+
+
+
+        <!-- Chuyên ngành nổi bật -->
+        <section class="our-services py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <span class="text-uppercase text-secondary">QUYẾT ĐỊNH TƯƠNG LAI CỦA BẠN</span>
+                    <h2 class="fw-bold">Chuyên ngành nổi bật</h2>
                 </div>
-                <div class="row d-flex justify-content-center">
+                <div class="row g-4">
                     @foreach (var major in Model.Majors)
                     {
-                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-services text-center mb-30">
-                                <div class="services-ion">
-@*                                     <span class="flaticon-tour"></span>  *@
-                                </div>
-                                <div class="services-cap">
-                                    <h5><a href="#">@major.ChuyenNganhName</a></h5>
-                                    <span>(@major.JobCount)</span>
+                        <div class="col-xl-3 col-lg-4 col-md-6">
+                            <div class="card text-center shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title"><a href="#" class="text-decoration-none">@major.ChuyenNganhName</a></h5>
+                                    <p class="text-muted">(@major.JobCount)</p>
                                 </div>
                             </div>
                         </div>
                     }
                 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="browse-btn2 text-center mt-50">
-                            <a href="@Url.Action("ListBaiTuyenDung", "UV")" class="border-btn2">Tất cả bài tuyển dụng</a>
-                        </div>
-                    </div>
+                <div class="text-center mt-4">
+                    <a href="@Url.Action("ListBaiTuyenDung", "UV")" class="btn btn-outline-primary">Tất cả bài tuyển dụng</a>
                 </div>
             </div>
-        </div>
-    <div class="card">
-        <div class="khung">
-            <div>
-                <div class="card">
-                    <div class="col-lg-12">
-                        <div class="section-tittle text-center">
-                            <span>Tìm kiếm công việc bạn ưa thích</span>
+        </section>
+
+        <!-- Tìm kiếm công việc -->
+        <section class="search-job py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold">Tìm kiếm công việc bạn ưa thích</h2>
+                </div>
+                <form action="@Url.Action("TimKiem", "UV")" method="get">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label for="JobName" class="form-label fw-bold">Tên công việc</label>
+                            <input type="text" name="JobName" class="form-control" placeholder="Tên công việc" value="@Model.JobName">
+                            <span asp-validation-for="JobName" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="ThanhPhoId" class="form-label fw-bold">Địa điểm công ty</label>
+                            <select asp-for="ThanhPhoId" class="form-select">
+                                <option value="">-- Chọn tỉnh - Thành phố --</option>
+                                @foreach (var thanhPho in Model.ThanhPhos)
+                                {
+                                    <option value="@thanhPho.ThanhPho_id">@thanhPho.ThanhPho_name</option>
+                                }
+                            </select>
+                            <span asp-validation-for="ThanhPhoId" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="chuyenNganhId" class="form-label fw-bold">Chuyên ngành yêu cầu</label>
+                            <select asp-for="chuyenNganhId" class="form-select">
+                                <option value="">-- Chọn chuyên ngành --</option>
+                                @foreach (var chuyenNganh in Model.ChuyenNganhs)
+                                {
+                                    <option value="@chuyenNganh.ChuyenNganh_id">@chuyenNganh.ChuyenNganh_name</option>
+                                }
+                            </select>
+                            <span asp-validation-for="chuyenNganhId" class="text-danger"></span>
                         </div>
                     </div>
-                        <form action="@Url.Action("TimKiem", "UV")" method="get">
-                            <div class="row g-2 align-items-end">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="JobName" class="control-label" style="font-weight: bold;">Tên công việc</label>
-                                        <input type="text" name="JobName" class="form-control" placeholder="Tên công việc" style="height: calc(2.25rem + 2px); border: 1px solid #ccc; padding: 0.375rem 0.75rem; border-radius: 4px;" value="@Model.JobName" />
-                                        <span asp-validation-for="JobName" class="text-danger"></span>
-                                    </div>
-                                </div>
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-dark">Tìm kiếm</button>
+                    </div>
+                </form>
+            </div>
+        </section>
 
-                                <div class="col-md-3" style="padding-right: 10px;">
-                                    <div class="form-group">
-                                        <label asp-for="ThanhPhoId" class="control-label" style="font-weight: bold;">Địa điểm công ty</label>
-                                        <select asp-for="ThanhPhoId" class="form-control">
-                                            <option value="">-- Chọn tỉnh - Thành phố --</option>
-                                            @foreach (var thanhPho in Model.ThanhPhos)
-                                            {
-                                                <option value="@thanhPho.ThanhPho_id">@thanhPho.ThanhPho_name</option>
-                                            }
-                                        </select>
-                                        <span asp-validation-for="ThanhPhoId" class="text-danger"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-3" style="padding-right: 10px;">
-                                    <div class="form-group">
-                                        <label asp-for="chuyenNganhId" class="control-label" style="font-weight: bold;">Chuyên ngành yêu cầu</label>
-                                        <select asp-for="chuyenNganhId" class="form-control">
-                                            <option value="">-- Chọn chuyên ngành --</option>
-                                            @foreach (var chuyenNganh in Model.ChuyenNganhs)
-                                            {
-                                                <option value="@chuyenNganh.ChuyenNganh_id">@chuyenNganh.ChuyenNganh_name</option>
-                                            }
-                                        </select>
-                                        <span asp-validation-for="chuyenNganhId" class="text-danger"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-auto">
-                                    <button type="submit" class="btn btn-dark border-0">Tìm kiếm</button>
-                                </div>
-                            </div>
-                        </form>
+        <!-- Danh sách bài tuyển dụng -->
+        <section class="job-listing py-5">
+            <div class="container">
+                <h2 class="fw-bold text-center mb-5">Bài tuyển dụng phù hợp</h2>
+                <div class="row g-4">
+                    @foreach (var baiTuyenDung in Model.BaiTuyenDung)
+                    {
+                        <div class="col-md-4">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center justify-content-center highlight-container">
+                                        <!-- Logo công ty -->
+                                       @*  <img src="~/images/logos/@baiTuyenDung.applicationUser.image_url" alt="Logo" class="rounded-circle" style="width: 50px; height: 50px;"> *@
+                                        <div class="ms-3">
+                                            <h5 class="card-title highlight-text fw-bold">@baiTuyenDung.TenCongViec</h5>
+                                            <p class="text-muted highlight-text fst-italic company-name">@baiTuyenDung.applicationUser.NhaTuyenDung_name</p>
 
-                        <div class="col-lg-12">
-                            <h5 class="tieude">
-                                Bài tuyển dụng phù hợp
-                            </h5>
-                        </div>
-                        <div class="row">
-                            @foreach (var baiTuyenDung in Model.BaiTuyenDung)
-                            {
-                                <div class="col-md-4">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h3 class="card-title overflow-ellipsis">@baiTuyenDung.TenCongViec</h3>
-                                            <p class="card-text overflow-ellipsis"><strong>Công ty: </strong>@baiTuyenDung.applicationUser.NhaTuyenDung_name</p>
-                                            <p class="card-text overflow-ellipsis"><strong>Thành phố làm việc:</strong> @baiTuyenDung.thanhPho.ThanhPho_name</p>
-                                            <p class="card-text overflow-ellipsis"><strong>Lương:</strong> @baiTuyenDung.Luong_min - @baiTuyenDung.Luong_max triệu đồng</p>
-                                            <p class="card-text overflow-ellipsis"><strong>Loại công việc:</strong> @baiTuyenDung.KieuCongViec</p>
-                                            <p class="card-text overflow-ellipsis"><strong>Hạn nộp hồ sơ:</strong> @baiTuyenDung.ThoiGianHetHan</p>
-                                            <a href="@Url.Action("DetailsBaiTuyenDung", new { id = baiTuyenDung.BaiTuyenDung_id })" class="border-btn2">Chi tiết</a>
                                         </div>
                                     </div>
+                                    <p><strong>Thành phố:</strong> @baiTuyenDung.thanhPho.ThanhPho_name</p>
+                                    <p><strong>Lương:</strong> @baiTuyenDung.Luong_min - @baiTuyenDung.Luong_max triệu đồng</p>
+                                    <p><strong>Loại công việc:</strong> @baiTuyenDung.KieuCongViec</p>
+                                    <p><strong>Hạn nộp:</strong> @baiTuyenDung.ThoiGianHetHan</p>
+                                    <!-- Nút Ứng tuyển -->
+                                    <a href="@Url.Action("DetailsBaiTuyenDung", new { id = baiTuyenDung.BaiTuyenDung_id })" class="btn btn-outline-primary w-100">Ứng tuyển</a>
+                                    <!-- Nút Lưu -->
+                                    <form method="post" action="@Url.Action("SaveJob", "UV", new { baiTuyenDungId = baiTuyenDung.BaiTuyenDung_id })">
+                                        <input type="hidden" name="baiTuyenDungId" value="@baiTuyenDung.BaiTuyenDung_id" />
+                                        <button type="submit" class="btn btn-outline-success w-100 mt-2">Lưu</button>
+                                    </form>
                                 </div>
-                            }
+                            </div>
                         </div>
-
+                    }
+                </div>
+                <!-- Nút xem thêm -->
+                <div class="text-center mt-4">
+                    <button id="loadMoreBtn" class="btn btn-outline-primary" onclick="loadMoreJobs()">Xem thêm</button>
                 </div>
             </div>
-        </div>
+        </section>
+
+
+
     </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var page = 1; // Dùng để theo dõi số trang hiện tại
+
+        function loadMoreJobs() {
+            page++; // Tăng số trang lên mỗi lần nhấn nút
+
+            // Gửi yêu cầu Ajax để lấy thêm bài tuyển dụng
+            $.ajax({
+                url: '@Url.Action("LoadMoreJobs", "UV")', // Action để tải thêm dữ liệu
+                data: { page: page },
+                type: 'GET',
+                success: function (data) {
+                    // Thêm dữ liệu vào danh sách bài tuyển dụng
+                    $("#job-list").append(data);
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error loading jobs:", error);
+                }
+            });
+        }
+    </script>
+
 </body>
+</html>

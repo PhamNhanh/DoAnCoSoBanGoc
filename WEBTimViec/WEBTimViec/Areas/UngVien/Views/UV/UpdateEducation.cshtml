@@ -1,7 +1,8 @@
 ﻿@model WEBTimViec.Models.HocVan
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Sửa học vấn";
 }
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -19,48 +20,59 @@
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet">
 </head>
-<button class=" styled-button">
+
+<button class="styled-button">
     <a href="@Url.Action("IndexHocVan", "UV", new { id = Model.applicationUserId })" style="color: black;"> <<< </a>
 </button>
-<div class="col-sm-6 mb-3">
-    <h1>Sửa học vấn</h1>
-    <form asp-action="UpdateEducation" method="post" enctype="multipart/form-data">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input type="hidden" asp-for="HocVan_id" />
-            <div>
-            <h5 class="school-name">
-                <label asp-for="TruongDaiHocid" class="control-label">Trường đại học</label>
-                <select asp-for="TruongDaiHocid" asp-items="ViewBag.Universities" class="form-control">
-                    <option value="">-- Chọn Trường Đại Học / Cao Đẳng --</option>
-                </select>
-                <span asp-validation-for="TruongDaiHocid" class="text-danger"></span>
-            </h5>
-            <h5 class="school-name">
-                <label asp-for="chuyenNganhId" class="control-label">Chuyên ngành</label>
-                <select asp-for="chuyenNganhId" asp-items="ViewBag.Majors" class="form-control">
-                    <option value="">-- Chọn Chuyên ngành --</option>
-                </select>
-                <span asp-validation-for="chuyenNganhId" class="text-danger"></span>
-            </h5>
-            <div class="info-item1">
-                <label asp-for="GPA" class="control-label">Điểm trung bình</label>
-                <input asp-for="GPA" class="form-control" />
-                <span asp-validation-for="GPA" class="text-danger"></span>
-            </div>
-            <div class="info-item1">
-                <label asp-for="NgayBatDau" class="control-label">Ngày bắt đầu</label>
-                <input type="date" asp-for="NgayBatDau" class="form-control" />
-                <span asp-validation-for="NgayBatDau" class="text-danger"></span>
-            </div>
-            <div class="info-item1">
-                <label asp-for="NgayTotNghiep" class="control-label">Ngày tốt nghiệp</label>
-                <input type="date" asp-for="NgayTotNghiep" class="form-control" />
-                <span asp-validation-for="NgayTotNghiep" class="text-danger"></span>
-            </div>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-center mb-4">Sửa thông tin học vấn</h2>
+            <form asp-action="UpdateEducation" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <!-- Ẩn HocVan_id -->
+                <input type="hidden" asp-for="HocVan_id" />
 
                 <div class="form-group">
-                    <input type="submit" value="Update" class="btn btn-primary" />
+                    <label asp-for="TruongDaiHocid" class="control-label">Trường đại học</label>
+                    <select asp-for="TruongDaiHocid" asp-items="ViewBag.Universities" class="form-control">
+                        <option value="">-- Chọn Trường Đại Học / Cao Đẳng --</option>
+                    </select>
+                    <span asp-validation-for="TruongDaiHocid" class="text-danger"></span>
                 </div>
-            </div>
-    </form>
+
+                <div class="form-group">
+                    <label asp-for="chuyenNganhId" class="control-label">Chuyên ngành</label>
+                    <select asp-for="chuyenNganhId" asp-items="ViewBag.Majors" class="form-control">
+                        <option value="">-- Chọn Chuyên ngành --</option>
+                    </select>
+                    <span asp-validation-for="chuyenNganhId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="GPA" class="control-label">Điểm trung bình</label>
+                    <input asp-for="GPA" class="form-control" />
+                    <span asp-validation-for="GPA" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="NgayBatDau" class="control-label">Ngày bắt đầu</label>
+                    <input type="date" asp-for="NgayBatDau" class="form-control" />
+                    <span asp-validation-for="NgayBatDau" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="NgayTotNghiep" class="control-label">Ngày tốt nghiệp</label>
+                    <input type="date" asp-for="NgayTotNghiep" class="form-control" />
+                    <span asp-validation-for="NgayTotNghiep" class="text-danger"></span>
+                </div>
+
+                <div class="form-group text-center mt-4">
+                    <input type="submit" value="Cập nhật" class="btn btn-success btn-lg" />
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
