@@ -24,8 +24,80 @@
 
     <!-- Main CSS File -->
     <link href="~/assets/css/main.css" rel="stylesheet">
+    <style>
+        header.header {
+            background-color: #34495e; /* Màu nền của footer */
+            color: #ffffff; /* Màu chữ phù hợp với màu nền */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Tùy chọn: thêm bóng mờ để tạo chiều sâu */
+        }
+
+            header.header a {
+                color: #ffffff; /* Đảm bảo các liên kết trong header có màu chữ nổi bật */
+            }
+
+            header.header .navmenu ul li a:hover {
+                color: #ffc107; /* Thêm màu sắc khi hover nếu cần */
+            }
+
+        .btn-getstarted {
+            background-color: #ffc107; /* Nền nút đăng nhập/đăng ký nổi bật */
+            color: #343a40; /* Màu chữ nút */
+            border-radius: 25px; /* Làm bo góc nút */
+            padding: 10px 20px; /* Tăng kích thước nút */
+            transition: all 0.3s ease; /* Hiệu ứng mượt mà khi hover */
+        }
+
+            .btn-getstarted:hover {
+                background-color: #ffffff; /* Màu nền khi hover */
+                color: #343a40; /* Màu chữ khi hover */
+            }
+
+        footer {
+            background-color: #34495e; /* Màu xanh đậm cho nền */
+            padding: 50px 0;
+            margin-top: 50px;
+        }
+
+            footer .footer-container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            footer h4 {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 20px;
+                color: white; /* Màu chữ của tiêu đề h4 */
+            }
+
+            footer ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+                footer ul li {
+                    margin-bottom: 10px;
+                }
+
+                    footer ul li a {
+                        text-decoration: none;
+                        color: #ecf0f1; /* Màu chữ liên kết sáng, phù hợp với màu nền tối */
+                    }
+
+                        footer ul li a:hover {
+                            color: #3498db; /* Màu liên kết khi hover */
+                        }
+
+            footer .footer-bottom {
+                text-align: center;
+                padding-top: 20px;
+                border-top: 1px solid #2c3e50; /* Màu sắc cho viền trên */
+                margin-top: 30px;
+                color: white; /* Màu chữ ở footer dưới cùng */
+            }
+
+    </style>
 </head>
-    
 
     <body class="index-page">
 
@@ -43,7 +115,6 @@
 @*                         <li><a href="#services">Services</a></li>
                         <li><a href="#portfolio">Portfolio</a></li> *@
                         <li><a href="#team">Team</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
                         <li class="dropdown">
                             <a href="#"><span>Nổi bật</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                             <ul>
@@ -74,69 +145,44 @@
     @RenderBody()
 
     <footer>
-        <div>
-            <div >
-                <div>
-                    <div>
-                        <div>
-                            <div>
-                                <div>
-                                    <h4>Chúng Tôi</h4>
-                                    <div >
-                                        <p>Đây là trang web do 2 sinh viên lớp 21DTHF2 của trường đại học Hutech thực hiện </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div >
-                        <div>
-                            <div>
-                                <h4>Thông Tin Liên Hệ</h4>
-                                <ul>
-                                    <li>
-                                        <p>Địa chỉ: Thủ Đức Campus, Xa lộ Hà Nội, tp.Thủ Đức.</p>
-                                    </li>
-                                    <li><a href="#">Điện thoại: 0833634655</a></li>
-                                    <li><a href="mailto:nhanhtvt111@gmail.com">Email: nhanhtvt111@gmail.com</a></li>
-                                    <li><a href="https://www.facebook.com/messages/t/nhanh1412">Facebook: Phạm Nhanh</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div >
-                        <div >
-                            <div class="footer-tittle">
-                                <h4>Thông tin đồ án cơ sở</h4>
-                                <ul>
-                                    <li><a href="#">Giảng viên hướng dẫn: ThS.Nguyễn Văn Danh</a></li>
-                                    <li><a href="#">Sinh viên thực hiện:</a></li>
-                                    <li><a href="#">1. Phạm Hoa Nhanh</a></li>
-                                    <li><a href="#">2. Nguyễn Đình Chương</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-                </div>
-        <div >
-            <div >
-                <div >
-                    <div >
-                        <div >
-                            <div >
-                                <p>
-                                   ĐỒ ÁN CƠ SỞ | Hệ Thống Thông Tin | Website tìm việc nhóm 16
-                                </p>
-                            </div>
-                        </div>
+        <div class="footer-container">
+            <div class="row">
+                <!-- Chúng tôi -->
+                <div class="col-md-4">
+                    <h4>Chúng Tôi</h4>
+                    <p style="color: white;">Đây là trang web do 2 sinh viên lớp 21DTHF2 của trường đại học Hutech thực hiện.</p>
 
-                    </div>
                 </div>
+
+                <!-- Thông tin liên hệ -->
+                <div class="col-md-4">
+                    <h4>Thông Tin Liên Hệ</h4>
+                    <ul>
+                        <li><p style="color: white;">Địa chỉ: Thủ Đức Campus, Xa lộ Hà Nội, tp.Thủ Đức.</p></li>
+                        <li><a href="#">Điện thoại: 0833634655</a></li>
+                        <li><a href="mailto:nhanhtvt111@gmail.com">Email: nhanhtvt111@gmail.com</a></li>
+                        <li><a href="https://www.facebook.com/messages/t/nhanh1412">Facebook: Phạm Nhanh</a></li>
+                    </ul>
+                </div>
+
+                <!-- Thông tin đồ án -->
+                <div class="col-md-4">
+                    <h4>Thông tin đồ án cơ sở</h4>
+                    <ul>
+                        <li><a href="#">Giảng viên hướng dẫn: ThS. Nguyễn Văn Danh</a></li>
+                        <li><a href="#">Sinh viên thực hiện:</a></li>
+                        <li><a href="#">1. Phạm Hoa Nhanh</a></li>
+                        <li><a href="#">2. Nguyễn Đình Chương</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>ĐỒ ÁN CƠ SỞ | Hệ Thống Thông Tin | Website tìm việc nhóm 16</p>
             </div>
         </div>
     </footer>
+
     <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="~/assets/vendor/php-email-form/validate.js"></script>
     <script src="~/assets/vendor/aos/aos.js"></script>

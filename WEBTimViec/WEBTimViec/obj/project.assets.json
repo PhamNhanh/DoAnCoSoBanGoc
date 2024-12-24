@@ -2245,6 +2245,35 @@
           "lib/netstandard2.0/NuGet.Versioning.dll": {}
         }
       },
+      "PagedList/1.17.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/PagedList.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/PagedList.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "PagedList.Mvc/4.5.0": {
+        "type": "package",
+        "dependencies": {
+          "PagedList": "1.17.0"
+        },
+        "compile": {
+          "lib/net40/PagedList.Mvc.dll": {
+            "related": ".XML"
+          }
+        },
+        "runtime": {
+          "lib/net40/PagedList.Mvc.dll": {
+            "related": ".XML"
+          }
+        }
+      },
       "SQLitePCLRaw.bundle_e_sqlite3/2.1.6": {
         "type": "package",
         "dependencies": {
@@ -3090,7 +3119,7 @@
           }
         }
       },
-      "X.PagedList/9.1.2": {
+      "X.PagedList/10.5.7": {
         "type": "package",
         "compile": {
           "lib/net8.0/X.PagedList.dll": {}
@@ -3099,10 +3128,10 @@
           "lib/net8.0/X.PagedList.dll": {}
         }
       },
-      "X.PagedList.Mvc.Core/9.1.2": {
+      "X.PagedList.Mvc.Core/10.5.7": {
         "type": "package",
         "dependencies": {
-          "X.PagedList": "9.1.2"
+          "X.PagedList": "10.5.7"
         },
         "compile": {
           "lib/net8.0/X.PagedList.Mvc.Core.dll": {}
@@ -7004,6 +7033,33 @@
         "nuget.versioning.nuspec"
       ]
     },
+    "PagedList/1.17.0": {
+      "sha512": "Ou6F3WKXh49hOo0TxWM+SkIGuKllYPuPPvnSYOlQ1sTrtuEyuDUhYbSJd5Sdb06i/sWUJZTjiUecEs3Ht/Hx3g==",
+      "type": "package",
+      "path": "pagedlist/1.17.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/PagedList.dll",
+        "lib/net40/PagedList.xml",
+        "pagedlist.1.17.0.nupkg.sha512",
+        "pagedlist.nuspec"
+      ]
+    },
+    "PagedList.Mvc/4.5.0": {
+      "sha512": "D0M4qW2g4a9cwG8ozIKUnJheCrm5GpFTceqUl63AXWaAVnTgk+TysZYUOGMsBRuzid8aF+/E8b0bXM6+90jiEw==",
+      "type": "package",
+      "path": "pagedlist.mvc/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Content/PagedList.css",
+        "lib/net40/PagedList.Mvc.XML",
+        "lib/net40/PagedList.Mvc.dll",
+        "pagedlist.mvc.4.5.0.nupkg.sha512",
+        "pagedlist.mvc.nuspec"
+      ]
+    },
     "SQLitePCLRaw.bundle_e_sqlite3/2.1.6": {
       "sha512": "BmAf6XWt4TqtowmiWe4/5rRot6GerAeklmOPfviOvwLoF5WwgxcJHAxZtySuyW9r9w+HLILnm8VfJFLCUJYW8A==",
       "type": "package",
@@ -8475,35 +8531,40 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "X.PagedList/9.1.2": {
-      "sha512": "qePK/lt+Y8PeQM9E/DkWY/AIyxDVEMX0XFCU5CfLP1+Y9SUThFyaY8/QgldOg9uOJLvse1i3oAQDJOrhb3usdw==",
+    "X.PagedList/10.5.7": {
+      "sha512": "Nevli+eaR3wMeb6pSNa+ApsddA9bw6Pl7wuX7B2nFj0v184RV/FtFRUckgNAaogGcmEiLXcsQX3ox0y164DnHg==",
       "type": "package",
-      "path": "x.pagedlist/9.1.2",
+      "path": "x.pagedlist/10.5.7",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "LICENSE.md",
         "README.md",
-        "icon.png",
+        "lib/net481/X.PagedList.dll",
         "lib/net6.0/X.PagedList.dll",
+        "lib/net7.0/X.PagedList.dll",
         "lib/net8.0/X.PagedList.dll",
         "lib/netstandard2.0/X.PagedList.dll",
         "lib/netstandard2.1/X.PagedList.dll",
-        "x.pagedlist.9.1.2.nupkg.sha512",
+        "x-pagedlist.png",
+        "x.pagedlist.10.5.7.nupkg.sha512",
         "x.pagedlist.nuspec"
       ]
     },
-    "X.PagedList.Mvc.Core/9.1.2": {
-      "sha512": "+g8fJgXXVhl17BzVv8bGAkWooul23REeGNIJ4jUlA1Iqbw8Yq0OFMx/mGvjjEhIBNwDrjdhJKXGt7N7jejZWcQ==",
+    "X.PagedList.Mvc.Core/10.5.7": {
+      "sha512": "YuQEz9Y2AC8oaYk6yBISRxSpKuUEYLwoDpjimump8O+v4B2vZcigWQ6nEYE9blwmKLV0xGLy0S2zlbicvKCyPg==",
       "type": "package",
-      "path": "x.pagedlist.mvc.core/9.1.2",
+      "path": "x.pagedlist.mvc.core/10.5.7",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "LICENSE.md",
         "README.md",
-        "icon.png",
         "lib/net6.0/X.PagedList.Mvc.Core.dll",
+        "lib/net7.0/X.PagedList.Mvc.Core.dll",
         "lib/net8.0/X.PagedList.Mvc.Core.dll",
-        "x.pagedlist.mvc.core.9.1.2.nupkg.sha512",
+        "x-pagedlist.png",
+        "x.pagedlist.mvc.core.10.5.7.nupkg.sha512",
         "x.pagedlist.mvc.core.nuspec"
       ]
     }
@@ -8519,8 +8580,8 @@
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.4",
       "Microsoft.Identity.Client >= 4.61.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.7",
-      "X.PagedList >= 9.1.2",
-      "X.PagedList.Mvc.Core >= 9.1.2"
+      "PagedList.Mvc >= 4.5.0",
+      "X.PagedList.Mvc.Core >= 10.5.7"
     ]
   },
   "packageFolders": {
@@ -8606,13 +8667,13 @@
             "target": "Package",
             "version": "[8.0.7, )"
           },
-          "X.PagedList": {
+          "PagedList.Mvc": {
             "target": "Package",
-            "version": "[9.1.2, )"
+            "version": "[4.5.0, )"
           },
           "X.PagedList.Mvc.Core": {
             "target": "Package",
-            "version": "[9.1.2, )"
+            "version": "[10.5.7, )"
           }
         },
         "imports": [
@@ -8645,6 +8706,26 @@
       "warningLevel": 1,
       "message": "Package 'Microsoft.Identity.Client' 4.61.0 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-m5vv-6r4h-3vj9",
       "libraryId": "Microsoft.Identity.Client",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'PagedList 1.17.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "PagedList",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'PagedList.Mvc 4.5.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "PagedList.Mvc",
       "targetGraphs": [
         "net8.0"
       ]

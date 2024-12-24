@@ -1,77 +1,180 @@
-﻿@model WEBTimViec.Models.BaiTuyenDung
-
-@{
-    ViewData["Title"] = "Chi tiết bài tuyển dụng  ";
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> JobPlus </title>
+    <title>JobPlus</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <!-- Thêm CSS của Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 
-    <!-- CSS here -->
-    <link rel="stylesheet" href="~/css/main.css">
-    <link rel="stylesheet" href="~/css/normalize.min.css">
-    <link rel="stylesheet" href="~/css/font-awesome.min.css">
-    <link rel="stylesheet" href="~/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="~/css/flaticon.css">
-    <link rel="stylesheet" href="~/css/price_rangs.css">
-    <link rel="stylesheet" href="~/css/slicknav.css">
-    <link rel="stylesheet" href="~/css/animate.min.css">
-    <link rel="stylesheet" href="~/css/magnific-popup.css">
-    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="~/css/themify-icons.css">
-    <link rel="stylesheet" href="~/css/slick.css">
-    <link rel="stylesheet" href="~/css/nice-select.css">
+    <!-- CSS của bạn -->
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/style.css">
-    <link rel="stylesheet" href="~/css/NhaTuyenDung.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            color: #1c1e21;
+        }
+
+        .container {
+            margin-top: 120px;
+        }
+
+        /* Thẻ để hiển thị bản đồ */
+        #map {
+            height: 500px; /* Điều chỉnh chiều cao của bản đồ */
+            width: 100%; /* Chiều rộng của bản đồ */
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .card-header {
+            background-color: #CDC0B0;
+            color: white;
+            padding: 15px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .tieude {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .card-title {
+            font-size: 22px;
+            color: #1877f2;
+            font-weight: bold;
+        }
+
+        .card-text {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .btn-primary {
+            background-color: #1877f2;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            color: white;
+        }
+
+            .btn-primary:hover {
+                background-color: #165cab;
+            }
+
+        .text-center {
+            margin-top: 20px;
+        }
+
+        .highlight-text {
+            font-weight: bold; /* In đậm */
+            background-color: yellow; /* Highlight với màu nền vàng */
+            padding: 0 5px; /* Thêm một chút khoảng cách xung quanh chữ */
+            border-radius: 3px; /* Thêm bo góc cho hiệu ứng đẹp mắt */
+            font-size: 24px;
+        }
+
+    </style>
 </head>
 <body>
-    <div class="khung">
-        <h1 class="tieude">@ViewData["Title"]</h1>
-        <div class="khungchu1">
-            <h3 class="card-title">@Model.TenCongViec</h3>
-            @*             <p class="card-text"><strong>Công ty: </strong>@Model.applicationUser.NhaTuyenDung_name</p> *@
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <!-- Bản đồ Google Maps bên trái -->
+            <div class="col-md-4">
+                <div id="map"></div> <!-- Phần tử hiển thị bản đồ -->
+            </div>
 
-            @*                 <p class="card-text"><strong>Tên công ty:</strong> @Model.applicationUser.FullName</p> *@
-            <p class="card-text"><strong>Mô tả công việc:</strong> @Model.MoTaCongViec</p>
-            <p class="card-text"><strong>Yêu cầu kỹ năng:</strong> @Model.YeuCauKyNang</p>
-            <p class="card-text"><strong>Phúc lợi:</strong> @Model.PhucLoi</p>
-            <p class="card-text"><strong>Lương:</strong> @Model.Luong_min - @Model.Luong_max triệu đồng</p>
-            <p class="card-text"><strong>Loại công việc:</strong> @Model.KieuCongViec</p>
-            <p class="card-text"><strong>Hạn nộp hồ sơ:</strong> @Model.ThoiGianHetHan</p>
-            <p class="card-text"><strong>Thành phố:</strong> @ViewData["TenTP"]</p>
-            <p class="card-text">
-                <strong>Chuyên ngành:</strong>
-                @if (ViewBag.ChuyenNganhs != null)
-                {
-                    @string.Join(", ", ViewBag.ChuyenNganhs)
-                }
-            </p>
-            <p class="card-text">
-                <strong>Vị trí công việc:</strong>
-                @if (ViewBag.ViTriCongViecs != null)
-                {
-                    @string.Join(", ", ViewBag.ViTriCongViecs)
-                }
-            </p>
-            <p class="card-text">
-                <strong>Kỹ năng mềm:</strong>
-                @if (ViewBag.KyNangMems != null)
-                {
-                    @string.Join(", ", ViewBag.KyNangMems)
-                }
-            </p>
-            <a href="https://localhost:7103/Identity/Account/Login" class="btn btn-primary">Ứng tuyển</a>
+            <!-- Card nội dung bài tuyển dụng bên phải -->
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h1 class="tieude">@ViewData["Title"]</h1>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title text-center">@Model.TenCongViec</h3>
+                        <div class="d-flex align-items-center">
+                            <img src="@Model.applicationUser.image_url" alt="Công ty" class="img-fluid rounded-circle" style="width: 80px; height: 80px; object-fit: cover;">
+                            <!-- Tên công ty -->
+                            <p class="card-text mb-0 mr-3">
+                                <strong class="highlight-text">@Model.applicationUser.NhaTuyenDung_name</strong>
+                            </p>
+
+                           
+                        </div>
+
+                        <p class="card-text"><strong>Mô tả công việc:</strong> @Model.MoTaCongViec</p>
+                        <p class="card-text"><strong>Yêu cầu kỹ năng:</strong> @Model.YeuCauKyNang</p>
+                        <p class="card-text"><strong>Phúc lợi:</strong> @Model.PhucLoi</p>
+                        <p class="card-text"><strong>Lương:</strong> @Model.Luong_min - @Model.Luong_max triệu đồng</p>
+                        <p class="card-text"><strong>Loại công việc:</strong> @Model.KieuCongViec</p>
+                        <p class="card-text"><strong>Hạn nộp hồ sơ:</strong> @Model.ThoiGianHetHan</p>
+                        <p class="card-text"><strong>Thành phố:</strong> @ViewData["TenTP"]</p>
+
+                        <p class="card-text">
+                            <strong>Chuyên ngành:</strong>
+                            @if (ViewBag.ChuyenNganhs != null)
+                            {
+                                @string.Join(", ", ViewBag.ChuyenNganhs)
+                            }
+                        </p>
+                        <p class="card-text">
+                            <strong>Vị trí công việc:</strong>
+                            @if (ViewBag.ViTriCongViecs != null)
+                            {
+                                @string.Join(", ", ViewBag.ViTriCongViecs)
+                            }
+                        </p>
+                        <p class="card-text">
+                            <strong>Kỹ năng mềm:</strong>
+                            @if (ViewBag.KyNangMems != null)
+                            {
+                                @string.Join(", ", ViewBag.KyNangMems)
+                            }
+                        </p>
+
+                        <div class="text-center">
+                            <a href="@Url.Action("Login", "Account", new { area = "Identity"})" class="btn btn-primary">Ứng tuyển</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <!-- Thêm script của Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        // Khởi tạo bản đồ Leaflet
+        var map = L.map('map').setView([14.0583, 108.2772], 6);  // Tọa độ trung tâm Việt Nam
+
+        // Thêm lớp bản đồ OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Thêm marker
+        var lat = @ViewBag.ViDo; // Vĩ độ
+        var lon = @ViewBag.KinhDo; // Kinh độ
+
+        L.marker([lat, lon]).addTo(map)
+            .bindPopup('Vị trí bài tuyển dụng')
+            .openPopup();
+    </script>
 </body>
 </html>
-

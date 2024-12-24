@@ -570,6 +570,12 @@ namespace WEBTimViec.Migrations
                     b.Property<string>("ThanhPho_name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("kinhDo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("viDo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ThanhPho_id");
 
                     b.ToTable("thanhPhos");
@@ -584,6 +590,9 @@ namespace WEBTimViec.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TruongDaiHoc_id"));
 
                     b.Property<string>("TruongDaiHoc_name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("url_logo")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TruongDaiHoc_id");

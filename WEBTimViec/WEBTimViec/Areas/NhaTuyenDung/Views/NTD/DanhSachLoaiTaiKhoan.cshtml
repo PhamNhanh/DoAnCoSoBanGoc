@@ -1,7 +1,7 @@
 ﻿@model List<WEBTimViec.Models.LoaiTaiKhoan>
 
 @{
-    ViewData["Title"] = "Danh Sách Loại Tài Khoản";
+    ViewData["Title"] = "Danh Sách Các Gói Tài Khoản";
     var find_company = (WEBTimViec.Models.ApplicationUser)ViewData["FindCompany"];
 }
 
@@ -113,9 +113,13 @@
                     }
                     else
                     {
-                        <a href="@Url.Action("XacNhanDangKy", "NTD", new { loaiTaiKhoanId = item.loaiTaiKhoanId })" class="btn btn-primary">Đăng Ký</a>
+                        <form method="post" action="@Url.Action("CreatePaymentUrlVnpay", "Payment", new { area = "NhaTuyenDung" })">
+                            <input type="hidden" name="loaiTaiKhoanId" value="@item.loaiTaiKhoanId" />
+                            <button type="submit" class="btn btn-primary">Đăng Ký</button>
+                        </form>
                     }
                 </div>
+
             </div>
         }
     </div>

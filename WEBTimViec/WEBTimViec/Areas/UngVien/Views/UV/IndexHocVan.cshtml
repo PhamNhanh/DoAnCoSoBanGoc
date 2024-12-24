@@ -96,6 +96,22 @@
             margin-top: 15px;
         }
 
+        .rounded-circle {
+            border-radius: 50%; /* Tạo hình tròn */
+            width: 40px; /* Chiều rộng logo */
+            height: 40px; /* Chiều cao logo */
+            object-fit: cover; /* Cắt ảnh vừa khung tròn */
+        }
+
+        .d-flex {
+            display: flex; /* Sử dụng Flexbox */
+            align-items: center; /* Căn giữa theo chiều dọc */
+        }
+
+        .me-2 {
+            margin-right: 8px; /* Tạo khoảng cách giữa logo và tên trường */
+        }
+
     </style>
 </head>
 
@@ -112,17 +128,18 @@
                     <div class="card-body">
                         <h5 class="card-title">Thông tin học vấn</h5>
                         <div class="row">
-                            <div class="col-md-6">
-                                <label class="labels">Điểm trung bình hệ 4</label>
-                                <div class="form-control">@hocVan.GPA</div>
+                            <div class="form-control d-flex align-items-center">
+                                <img src="@hocVan.truongDaiHoc.url_logo" alt="Logo" class="rounded-circle me-2">
+                                <span>@hocVan.truongDaiHoc.TruongDaiHoc_name</span>
                             </div>
-                            <div class="col-md-6">
-                                <label class="labels">Trường đại học</label>
-                                <div class="form-control">@hocVan.truongDaiHoc.TruongDaiHoc_name</div>
-                            </div>
+
                             <div class="col-md-6">
                                 <label class="labels">Chuyên ngành</label>
                                 <div class="form-control">@hocVan.chuyenNganhs.ChuyenNganh_name</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="labels">Điểm trung bình hệ 4</label>
+                                <div class="form-control">@hocVan.GPA</div>
                             </div>
                             <div class="col-md-6">
                                 <label class="labels">Ngày nhập học</label>

@@ -1,19 +1,19 @@
 ﻿@model ViewModel
+@using X.PagedList.Mvc.Core
 
 @{
     ViewData["Title"] = "Trang chủ";
-    Layout = "~/Views/Shared/_layoutUngVien.cshtml";
 }
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>JobPlus - Tìm việc làm</title>
-    <meta name="description" content="Trang web tìm kiếm việc làm chuyên nghiệp">
+    <title>JobPlus</title>
+    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="manifest" href="~/site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="~/assets/img/favicon.ico">
     <!-- Vendor CSS Files -->
     <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -23,173 +23,503 @@
 
     <!-- Main CSS File -->
     <link href="~/assets/css/main.css" rel="stylesheet">
+    <link href="~/css/Index.css" rel="stylesheet">
     <style>
-        .company-name {
-            font-size: 0.8rem; /* Giảm kích thước chữ xuống */
+        /* Mục testimonial cơ bản */
+        .testimonial-item {
+            transition: all 0.3s ease-in-out;
+            transform: scale(1);
+            background-color: #f8f9fa; /* Màu nền sáng nhẹ */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: #333; /* Màu chữ */
+            font-family: 'Roboto', sans-serif; /* Font chữ hiện đại */
         }
+
+            /* Khi item ở giữa */
+            .testimonial-item.active-card {
+                transform: scale(1.2); /* Zoom in */
+                background-color: #ffc107; /* Màu vàng nổi bật */
+                color: #212529; /* Màu chữ đậm */
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Hiệu ứng bóng mạnh hơn */
+            }
+
+            /* Hình ảnh người dùng */
+            .testimonial-item img {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                margin-bottom: 15px;
+                border: 3px solid #007bff; /* Viền xanh dương */
+            }
+
+            /* Khi item ở giữa: đổi viền ảnh */
+            .testimonial-item.active-card img {
+                border-color: #dc3545; /* Màu đỏ nổi bật */
+            }
+
+            /* Tiêu đề người dùng */
+            .testimonial-item h5 {
+                margin: 10px 0 5px;
+                font-size: 18px;
+                color: #007bff;
+            }
+
+            /* Chữ nhỏ hơn */
+            .testimonial-item small {
+                font-size: 14px;
+                color: #6c757d; /* Màu xám nhẹ */
+            }
+
+            /* Icon quote */
+            .testimonial-item i {
+                color: #007bff;
+            }
+
+            /* Cải tiến khi hover (không phải active-card) */
+            .testimonial-item:hover {
+                transform: scale(1.05);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            }
+
+        /* Hiệu ứng chuyển động cho carousel */
+        .owl-carousel .owl-item {
+            transition: all 0.5s ease-in-out;
+        }
+
+        .text-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .custom-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px; /* Tạo kiểu nút tròn */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+            .custom-btn:hover {
+                background-color: #0056b3;
+                transform: scale(1.1); /* Hiệu ứng phóng to khi hover */
+            }
+
+            .custom-btn:active {
+                transform: scale(1); /* Đảm bảo nút trở về trạng thái ban đầu khi click */
+            }
+
+        .card {
+            height: 200px;
+            width: 100%; /* Giữ chiều rộng đầy đủ */
+            display: flex;
+            flex-direction: row;
+            position: relative; /* Thêm để phần overlay và text-content hoạt động đúng */
+            overflow: hidden;
+        }
+
+            .card img {
+                max-height: 100%; /* Đảm bảo ảnh không vượt quá chiều cao */
+                object-fit: cover;
+            }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1; /* Đảm bảo overlay nằm trên hình ảnh */
+        }
+
+        .text-content {
+            position: absolute; /* Đặt vào vị trí chính xác */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            padding: 10px;
+            height: 100%;
+            width: 100%;
+            opacity: 0; /* Đảm bảo ban đầu ẩn */
+            transition: opacity 0.3s;
+            z-index: 2; /* Đảm bảo nội dung hiển thị trên overlay */
+        }
+
+        .card:hover .overlay {
+            opacity: 1; /* Khi hover, overlay sẽ hiển thị */
+        }
+
+        .card:hover .text-content {
+            opacity: 1; /* Khi hover, text content sẽ hiển thị */
+        }
+
+        }
+
     </style>
 </head>
+
 <body>
-    <div class="container-fluid p-0">
-        <!-- Slider Area -->
-        <div id="heroSlider" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="~/images/elements/g1.jpg" class="d-block w-100 img-fluid" alt="Banner">
-                    <div class="carousel-caption d-flex flex-column justify-content-center align-items-center text-center">
-                        <h1 class="text-uppercase fw-bold text-light"
-                            style="font-size: 5rem; text-shadow: 3px 3px 6px #000;">
-                            Bạn có năng lực
-                        </h1>
-                        <h2 class="text-light fw-semibold mt-3"
-                            style="font-size: 3rem; text-shadow: 3px 3px 6px #000;">
-                            Chúng tôi có công việc
-                        </h2>
+    <div class="box-search-Job_item">
+        <form method="get" action="@Url.Action("TimKiem", "UV")">
+            <div class="box-search-job_item--free-text">
+                <div class="box-search-job_item--free-text-input item-search">
+                    <i class="fa-regular fa-magnifying-glass"></i>
+                    <input class="form-control ui-autocomplete-input"
+                           name="JobName"
+                           placeholder="Vị trí ứng tuyển"
+                           id="keyword"
+                           autocomplete="off">
+                </div>
+                <button class="btn btn-topcv btn-search-job" type="submit">Tìm kiếm</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="container">
+        <!-- Cột trái -->
+        <div class="left2">
+            <h4>Cách chọn công ty phù hợp</h4>
+
+            <p>
+                ◇ Tìm hiểu về giá trị và văn hóa công ty: Trước khi quyết định gia nhập, bạn cần tìm hiểu về các giá trị, sứ mệnh và văn hóa của công ty để đảm bảo rằng nó phù hợp với quan điểm và lối sống của bạn.
+            </p>
+            <p>
+                ◇ Đánh giá môi trường làm việc: Xem xét các yếu tố như chế độ đãi ngộ, cơ hội phát triển nghề nghiệp và môi trường làm việc để xác định xem công ty có thực sự đáp ứng nhu cầu của bạn không.
+            </p>
+            <p>
+                ◇ Kiểm tra đánh giá của nhân viên hiện tại và cũ: Tìm hiểu từ những người đã và đang làm việc tại công ty về trải nghiệm của họ, qua đó có cái nhìn khách quan hơn về công ty.
+            </p>
+            <p>
+                ◇ Cơ hội thăng tiến và phát triển nghề nghiệp: Đánh giá các cơ hội thăng tiến và chương trình đào tạo mà công ty cung cấp để đảm bảo rằng công ty giúp bạn phát triển và tiến bộ trong sự nghiệp.
+            </p>
+        </div>
+
+
+        <!-- Cột phải -->
+        <div class="right20">
+            <div class="job-images" style="position: relative; display: inline-block;">
+                <a href="@Url.Action("ListBaiTuyenDung", "UV", new { area = "UngVien"})">
+                    <img src="~/images/LogoJobPlus.jpg" alt="Bài tuyển dụng" class="img-fluid mb-3" />
+                    <div class="hover-text">Ấn vào để thêm bài tuyển dụng</div>
+                </a>
+            </div>
+            <div class="job-images-zoom">
+                <a href="@Url.Action("IndexProfoleUV", "UV", new { area = "UngVien"})">
+                    <img src="~/images/NangCapTK.png" alt="Nâng cấp tài khoản" class="zoom-image" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container1">
+        <button class="btn-go-to-applicants">
+            <a href="@Url.Action("DSNhaTuyenDung", "UV", new { area = "UngVien" })">
+                <span class="btn-text">Danh sách nhà tuyển dụng</span>
+                <span class="hover-text">Ấn vào đây ngay!!</span>
+            </a>
+        </button>
+    </div>
+
+    <div class="container2">
+        <div class="left30">
+            <section class="featured-majors">
+                <div class="section-header text-center mb-4">
+                    <h2 class="title">Chuyên ngành nổi bật</h2>
+                </div>
+                <div class="majors-list d-flex flex-wrap justify-content-center">
+                    @foreach (var major in Model.Majors)
+                    {
+                        <div class="major-item text-center m-3">
+                            <h5 class="major-name">
+                                <a href="@Url.Action("ListBaiTuyenDung", "UV")" class="text-decoration-none text-dark">@major.ChuyenNganhName</a>
+                            </h5>
+                            <p class="job-count">(@major.JobCount) việc làm</p>
+                        </div>
+                    }
+                </div>
+                <div class="text-center mt-4">
+                    Xem tất cả bài tuyển dụng<a href="@Url.Action("ListBaiTuyenDung", "UV")" class="btn btn-link">Tại Đây</a>
+                </div>
+            </section>
+        </div>
+        <div class="job-images1">
+            <div class="cardxoay">
+                <div class="cardxoay-front">
+                    <img src="~/images/center1.png" alt="Bài tuyển dụng">
+                </div>
+                <div class="cardxoay-back">
+                    <h4>Lợi ích của việc bạn có CV ứng tuyển tốt</h4>
+
+                    <p>■ Tăng cường cơ hội tìm việc: CV là công cụ chính giúp bạn trình bày kỹ năng, kinh nghiệm và trình độ học vấn. Một CV được chuẩn bị tốt giúp bạn nổi bật trong mắt nhà tuyển dụng.</p>
+
+                    <p>■ Tạo ấn tượng đầu tiên mạnh mẽ: Nhà tuyển dụng thường chỉ dành một ít thời gian để đọc CV. Vì vậy, một CV rõ ràng, súc tích và thể hiện đúng năng lực có thể tạo ấn tượng tích cực ngay từ lần đầu tiên.</p>
+
+                    <p>■ Chứng minh kinh nghiệm và kỹ năng: CV giúp bạn thể hiện rõ ràng những thành tựu, kỹ năng và kinh nghiệm làm việc của mình, từ đó khẳng định bạn là ứng viên phù hợp cho công việc.</p>
+
+                    <p>■ Nâng cao khả năng thương lượng lương và phúc lợi: Một CV nổi bật không chỉ giúp bạn được tuyển dụng, mà còn có thể là cơ sở để thương lượng mức lương và các quyền lợi khi được tuyển dụng.</p>
+
+                    <p>■ Giúp bạn chuẩn bị cho các buổi phỏng vấn: CV là tài liệu cơ bản để bạn chuẩn bị cho phỏng vấn, giúp bạn nhớ lại những kỹ năng và kinh nghiệm cần thiết để trả lời câu hỏi của nhà tuyển dụng.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="leftGoiY">
+            <h1>Khám Phá Hơn 200 Triệu Cơ Hội Nghề Nghiệp Dành Cho Dân IT Toàn Cầu!</h1>
+            <p>Trong thị trường công nghệ hiện nay, ngành IT không ngừng phát triển và mở ra hàng triệu cơ hội nghề nghiệp đa dạng cho những ai đam mê sáng tạo và đổi mới. CareerViet cung cấp nền tảng giúp bạn kết nối với các nhà tuyển dụng hàng đầu trong lĩnh vực công nghệ thông tin, từ lập trình viên, kỹ sư phần mềm, chuyên viên an ninh mạng đến các chuyên gia dữ liệu. Hãy tạo dựng CV ấn tượng, cập nhật các kỹ năng mới và tham gia vào các khóa học nâng cao để không bị tụt lại phía sau trong một ngành nghề luôn thay đổi nhanh chóng. Việc tham gia các dự án thực tế, hackathon, và cộng đồng IT sẽ giúp bạn nâng cao kinh nghiệm, mở rộng mối quan hệ và gia tăng cơ hội việc làm. Đừng ngần ngại tham gia vào các chương trình tuyển dụng trực tuyến, hội thảo công nghệ, và tìm kiếm cơ hội phát triển nghề nghiệp trong môi trường IT hiện đại.</p>
+        </div>
+    </div>
+
+    <hr class="my-4"> <!-- Thanh ngang tách biệt -->
+
+    <h2 class="text-center mb-4" style="text-align: center;">Bài tuyển dụng phù hợp</h2>
+    <!-- Job Listings Section -->
+    <section class="job-listings py-5">
+        <div class="container">
+            <div class="row g-4">
+                @foreach (var baiTuyenDung in Model.BaiTuyenDungs)
+                {
+                    <div class="col-md-4">
+                        <!-- Chỉ sử dụng 1 cột chiếm toàn bộ chiều rộng -->
+                        <div class="card shadow-sm p-3 mb-3" style="height: 150px; width: 100%; display: flex; flex-direction: row; position: relative;" onclick="window.location.href='@Url.Action("DetailsBaiTuyenDung", new { id = baiTuyenDung.BaiTuyenDung_id }) '">
+                            <!-- Left: Image -->
+                            <div class="image-container" style="position: relative; width: 100%; height: 100%;">
+                                <img src="@baiTuyenDung.applicationUser.image_url" alt="Công ty" class="img-fluid rounded" style="width: 100%; height: 100%; object-fit: cover;">
+
+                                <!-- Overlay and text content -->
+                                <div class="overlay">
+                                    <div class="text-content">
+                                        <h5 class="fw-bold mb-2" style="font-size: 16px; height: 40px; overflow: hidden; margin-bottom: 5px; color: red; border: 2px solid white; padding: 5px; text-align: center; text-shadow: 0 0 5px white; display: flex; justify-content: center; align-items: center;">
+                                            @baiTuyenDung.TenCongViec
+                                        </h5>
+
+
+                                        <p style="font-size: 12px;"><strong>Công ty:</strong> @baiTuyenDung.applicationUser.NhaTuyenDung_name</p>
+                                        <p style="font-size: 12px;"><strong>Thành phố làm việc:</strong> @baiTuyenDung.thanhPho.ThanhPho_name</p>
+                                        <p style="font-size: 12px;"><strong>Lương:</strong> @baiTuyenDung.Luong_min - @baiTuyenDung.Luong_max triệu đồng</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+
+@*         <!-- Pagination Section -->
+        <div class="d-flex justify-content-center mt-4">
+            @if (Model.baiTuyenDungs != null && Model.baiTuyenDungs.Any())
+            {
+                for (int i = 1; i <= Model.PageCount; i++)
+                {
+                    <a href="@Url.Action("Index", new { page = i })" class="btn btn-link">
+                        @i
+                    </a>
+                }
+            }
+            else
+            {
+                <span>Không có dữ liệu để phân trang.</span>
+            }
+        </div> *@
+    </section>
+    </section>
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+
+        <h1 class="text-center mb-5">Phản hồi từ người dùng</h1>
+
+        <div class="container">
+
+            <div class="owl-carousel testimonial-carousel">
+                <div class="testimonial-item bg-light rounded p-4">
+                    <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                    <p>Website tìm việc này rất tiện lợi và dễ sử dụng. Tôi đã tìm thấy nhiều cơ hội việc làm phù hợp với kỹ năng của mình.</p>
+                    <div class="d-flex align-items-center">
+                        <img class="img-fluid flex-shrink-0 rounded" src="~/images/AnhNhanSu5.jpg" style="width: 50px; height: 50px;">
+                        <div class="ps-3">
+                            <h5 class="mb-1">Mr.Hiếu</h5>
+                            <small>Profession</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item bg-light rounded p-4">
+                    <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                    <p>Giao diện trực quan và thông tin việc làm chi tiết giúp tôi tiết kiệm thời gian trong việc tìm kiếm công việc phù hợp.</p>
+                    <div class="d-flex align-items-center">
+                        <img class="img-fluid flex-shrink-0 rounded" src="~/images/AnhNhanSu6.jpg" style="width: 50px; height: 50px;">
+                        <div class="ps-3">
+                            <h5 class="mb-1">Ms.Nhanh</h5>
+                            <small>Profession</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item bg-light rounded p-4 active-card">
+                    <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                    <p>Tôi đã giới thiệu trang web này cho nhiều người khác vì tôi thực sự tin tưởng vào chất lượng và hiệu quả của nó trong việc tìm kiếm việc làm.</p>
+                    <div class="d-flex align-items-center">
+                        <img class="img-fluid flex-shrink-0 rounded" src="~/images/AnhNhanSu4.jpg" style="width: 50px; height: 50px;">
+                        <div class="ps-3">
+                            <h5 class="mb-1">Mr.Trung</h5>
+                            <small>Profession</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item bg-light rounded p-4">
+                    <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                    <p>Tôi đã nhận được nhiều phản hồi tích cực từ nhà tuyển dụng sau khi nộp đơn qua trang web này. Đó là một công cụ hữu ích để tìm kiếm việc làm.</p>
+                    <div class="d-flex align-items-center">
+                        <img class="img-fluid flex-shrink-0 rounded" src="~/images/AnhNhanSu3.jpg" style="width: 50px; height: 50px;">
+                        <div class="ps-3">
+                            <h5 class="mb-1">Ms.Trang</h5>
+                            <small>Profession</small>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
-        <!-- Chuyên ngành nổi bật -->
-        <section class="our-services py-5">
-            <div class="container">
-                <div class="text-center mb-5">
-                    <span class="text-uppercase text-secondary">QUYẾT ĐỊNH TƯƠNG LAI CỦA BẠN</span>
-                    <h2 class="fw-bold">Chuyên ngành nổi bật</h2>
-                </div>
-                <div class="row g-4">
-                    @foreach (var major in Model.Majors)
-                    {
-                        <div class="col-xl-3 col-lg-4 col-md-6">
-                            <div class="card text-center shadow-sm">
-                                <div class="card-body">
-                                    <h5 class="card-title"><a href="#" class="text-decoration-none">@major.ChuyenNganhName</a></h5>
-                                    <p class="text-muted">(@major.JobCount)</p>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
-                <div class="text-center mt-4">
-                    <a href="@Url.Action("ListBaiTuyenDung", "UV")" class="btn btn-outline-primary">Tất cả bài tuyển dụng</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Tìm kiếm công việc -->
-        <section class="search-job py-5 bg-light">
-            <div class="container">
-                <div class="text-center mb-4">
-                    <h2 class="fw-bold">Tìm kiếm công việc bạn ưa thích</h2>
-                </div>
-                <form action="@Url.Action("TimKiem", "UV")" method="get">
-                    <div class="row g-3">
-                        <div class="col-md-4">
-                            <label for="JobName" class="form-label fw-bold">Tên công việc</label>
-                            <input type="text" name="JobName" class="form-control" placeholder="Tên công việc" value="@Model.JobName">
-                            <span asp-validation-for="JobName" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-4">
-                            <label asp-for="ThanhPhoId" class="form-label fw-bold">Địa điểm công ty</label>
-                            <select asp-for="ThanhPhoId" class="form-select">
-                                <option value="">-- Chọn tỉnh - Thành phố --</option>
-                                @foreach (var thanhPho in Model.ThanhPhos)
-                                {
-                                    <option value="@thanhPho.ThanhPho_id">@thanhPho.ThanhPho_name</option>
-                                }
-                            </select>
-                            <span asp-validation-for="ThanhPhoId" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-4">
-                            <label asp-for="chuyenNganhId" class="form-label fw-bold">Chuyên ngành yêu cầu</label>
-                            <select asp-for="chuyenNganhId" class="form-select">
-                                <option value="">-- Chọn chuyên ngành --</option>
-                                @foreach (var chuyenNganh in Model.ChuyenNganhs)
-                                {
-                                    <option value="@chuyenNganh.ChuyenNganh_id">@chuyenNganh.ChuyenNganh_name</option>
-                                }
-                            </select>
-                            <span asp-validation-for="chuyenNganhId" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="text-center mt-4">
-                        <button type="submit" class="btn btn-dark">Tìm kiếm</button>
-                    </div>
-                </form>
-            </div>
-        </section>
-
-        <!-- Danh sách bài tuyển dụng -->
-        <section class="job-listing py-5">
-            <div class="container">
-                <h2 class="fw-bold text-center mb-5">Bài tuyển dụng phù hợp</h2>
-                <div class="row g-4">
-                    @foreach (var baiTuyenDung in Model.BaiTuyenDung)
-                    {
-                        <div class="col-md-4">
-                            <div class="card shadow-sm">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center justify-content-center highlight-container">
-                                        <!-- Logo công ty -->
-                                       @*  <img src="~/images/logos/@baiTuyenDung.applicationUser.image_url" alt="Logo" class="rounded-circle" style="width: 50px; height: 50px;"> *@
-                                        <div class="ms-3">
-                                            <h5 class="card-title highlight-text fw-bold">@baiTuyenDung.TenCongViec</h5>
-                                            <p class="text-muted highlight-text fst-italic company-name">@baiTuyenDung.applicationUser.NhaTuyenDung_name</p>
-
-                                        </div>
-                                    </div>
-                                    <p><strong>Thành phố:</strong> @baiTuyenDung.thanhPho.ThanhPho_name</p>
-                                    <p><strong>Lương:</strong> @baiTuyenDung.Luong_min - @baiTuyenDung.Luong_max triệu đồng</p>
-                                    <p><strong>Loại công việc:</strong> @baiTuyenDung.KieuCongViec</p>
-                                    <p><strong>Hạn nộp:</strong> @baiTuyenDung.ThoiGianHetHan</p>
-                                    <!-- Nút Ứng tuyển -->
-                                    <a href="@Url.Action("DetailsBaiTuyenDung", new { id = baiTuyenDung.BaiTuyenDung_id })" class="btn btn-outline-primary w-100">Ứng tuyển</a>
-                                    <!-- Nút Lưu -->
-                                    <form method="post" action="@Url.Action("SaveJob", "UV", new { baiTuyenDungId = baiTuyenDung.BaiTuyenDung_id })">
-                                        <input type="hidden" name="baiTuyenDungId" value="@baiTuyenDung.BaiTuyenDung_id" />
-                                        <button type="submit" class="btn btn-outline-success w-100 mt-2">Lưu</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
-                <!-- Nút xem thêm -->
-                <div class="text-center mt-4">
-                    <button id="loadMoreBtn" class="btn btn-outline-primary" onclick="loadMoreJobs()">Xem thêm</button>
-                </div>
-            </div>
-        </section>
-
-
-
     </div>
 
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Testimonial End -->
     <script>
-        var page = 1; // Dùng để theo dõi số trang hiện tại
-
-        function loadMoreJobs() {
-            page++; // Tăng số trang lên mỗi lần nhấn nút
-
-            // Gửi yêu cầu Ajax để lấy thêm bài tuyển dụng
-            $.ajax({
-                url: '@Url.Action("LoadMoreJobs", "UV")', // Action để tải thêm dữ liệu
-                data: { page: page },
-                type: 'GET',
-                success: function (data) {
-                    // Thêm dữ liệu vào danh sách bài tuyển dụng
-                    $("#job-list").append(data);
-                },
-                error: function (xhr, status, error) {
-                    console.error("Error loading jobs:", error);
+        document.addEventListener("DOMContentLoaded", function () {
+            // Gọi endpoint để kiểm tra công việc trong giỏ hàng
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/User/JobCart/CheckCartItem", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        var cartItemIds = response.map(String); // Chuyển đổi các phần tử trong mảng thành chuỗi
+                        cartItemIds.forEach(function (jobId) {
+                            var heartIcon = document.getElementById("heartIcon_" + jobId);
+                            heartIcon.classList.add("active");
+                        });
+                    }
                 }
-            });
+            };
+            xhr.send();
+        });
+
+        function addToCart(jobId) {
+            var heartIcon = document.getElementById("heartIcon_" + jobId);
+            heartIcon.classList.toggle("active");
+
+            // Gọi endpoint để kiểm tra công việc trong giỏ hàng
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/User/JobCart/CheckCartItem", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        var cartItemIds = response.map(String); // Chuyển đổi các phần tử trong mảng thành chuỗi
+                        if (cartItemIds.includes(jobId.toString())) {
+                            heartIcon.classList.add("active");
+                        }
+                    }
+                }
+            };
+            xhr.send();
         }
     </script>
+    <script>
+        $(document).ready(function () {
+            $(".testimonial-carousel").owlCarousel({
+                items: 3,
+                loop: true,
+                center: true,
+                margin: 30,
+                nav: true,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                onTranslated: function () {
+                    // Xóa lớp 'active-card' khỏi tất cả các item
+                    $(".testimonial-item").removeClass("active-card");
+                    // Thêm lớp 'active-card' vào item ở giữa
+                    $(".owl-item.center .testimonial-item").addClass("active-card");
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Danh sách màu ngẫu nhiên
+            const colors = ["#FFFAF0", "#E0EEEE", "#E6E6FA", "#E0FFFF", "#FFC1C1", "#FFC0CB"];
 
+            // Lấy tất cả các thẻ testimonial-item
+            const testimonials = document.querySelectorAll(".testimonial-item");
+
+            testimonials.forEach((testimonial) => {
+                // Chọn màu ngẫu nhiên từ danh sách
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                // Áp dụng màu nền
+                testimonial.style.backgroundColor = randomColor;
+            });
+        });
+    </script>
+
+
+    <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.0.0-beta.4/libs/oversea/index.js"></script>
+    <script>
+        new CozeWebSDK.WebChatClient({
+            config: {
+                bot_id: '7444134224224976914',
+            },
+            componentProps: {
+                title: 'Coze',
+            },
+        });
+    </script>
+    <script>
+        function searchJob() {
+            const keyword = document.getElementById("search-job").value;
+
+            if (keyword.length < 3) {
+                // Chỉ tìm kiếm khi từ khóa dài hơn 2 ký tự
+                document.getElementById("job-results").innerHTML = "";
+                return;
+            }
+
+            fetch(`/UV/SearchJob?keyword=${encodeURIComponent(keyword)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const results = data.data;
+                        let html = "<ul>";
+                        results.forEach(job => {
+                            html += `<li>${job.TenCongViec} - ${job.ThanhPho}</li>`;
+                        });
+                        html += "</ul>";
+                        document.getElementById("job-results").innerHTML = html;
+                    } else {
+                        document.getElementById("job-results").innerHTML = "Không tìm thấy kết quả.";
+                    }
+                })
+                .catch(err => console.error("Error:", err));
+        }
+
+    </script>
+    <script>
+        let debounceTimeout;
+        function searchJob() {
+            clearTimeout(debounceTimeout);
+            debounceTimeout = setTimeout(() => {
+                // Gọi API sau 300ms nếu người dùng không gõ thêm
+            }, 300);
+        }
+
+    </script>
 </body>
-</html>
+

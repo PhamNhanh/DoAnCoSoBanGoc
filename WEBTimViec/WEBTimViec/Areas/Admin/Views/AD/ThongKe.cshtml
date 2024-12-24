@@ -1,9 +1,10 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> JobPlus </title>
+    <title>JobPlus</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -30,41 +31,81 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+    <!-- Custom CSS to enhance design -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+        }
+
+        .khung {
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 30px auto;
+            max-width: 1200px;
+        }
+
+        h2.tieude {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        canvas {
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .row {
+            margin-bottom: 40px;
+        }
+
+        .col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+            .col h2 {
+                text-align: center;
+                font-size: 28px;
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+
+            .col canvas {
+                margin-bottom: 20px;
+            }
+
+        .tieude {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
+
 <body>
     <div class="khung">
         <div class="row">
             <div class="col">
-                <div>
-                    <h2 class="tieude">
-                        Biểu đồ thống kê hệ thống
-                    </h2>
-                </div>
-                <div class="tieude"> 
-                    <canvas id="thongKeChart" width="1200" height="300"></canvas>
-                </div>
+                <h2 class="tieude">Biểu đồ thống kê hệ thống</h2>
+                <canvas id="thongKeChart" width="1200" height="300"></canvas>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <div>
-                    <h2 class="tieude">
-                        Biểu đồ nhà tuyển dụng với ứng viên
-                    </h2>
-                </div>
-                <div>
-                    <canvas id="donutChart" width="500" height="300"></canvas>
-                </div>
+                <h2 class="tieude">Biểu đồ nhà tuyển dụng với ứng viên</h2>
+                <canvas id="donutChart" width="500" height="300"></canvas>
             </div>
             <div class="col">
-                <div>
-                    <h2 class="tieude">
-                        Biểu đồ bài tuyển dụng và ứng tuyển
-                    </h2>
-                </div>
-                <div>
-                    <canvas id="donutChart1" width="500" height="300"></canvas>
-                </div>
+                <h2 class="tieude">Biểu đồ bài tuyển dụng và ứng tuyển</h2>
+                <canvas id="donutChart1" width="500" height="300"></canvas>
             </div>
         </div>
     </div>
@@ -80,25 +121,25 @@
                         label: 'Thống kê',
                         data: [@Model.slTaiKhoan, @Model.slUV, @Model.slNTD, @Model.slBTD, @Model.slUT],
                         backgroundColor: [
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 99, 132, 0.2)' // Màu cho cột mới (ví dụ: đỏ)
+                            'rgba(75, 192, 192, 0.7)',
+                            'rgba(54, 162, 235, 0.7)',
+                            'rgba(255, 206, 86, 0.7)',
+                            'rgba(153, 102, 255, 0.7)',
+                            'rgba(255, 99, 132, 0.7)'
                         ],
                         borderColor: [
                             'rgba(75, 192, 192, 1)',
                             'rgba(54, 162, 235, 1)',
                             'rgba(255, 206, 86, 1)',
                             'rgba(153, 102, 255, 1)',
-                            'rgba(255, 99, 132, 1)' // Màu cho cột mới (ví dụ: đỏ)
+                            'rgba(255, 99, 132, 1)'
                         ],
                         borderWidth: 1
                     }]
                 },
                 options: {
-                    responsive: false,
-                    maintainAspectRatio: false,
+                    responsive: true,
+                    maintainAspectRatio: true,
                     scales: {
                         y: {
                             beginAtZero: true
@@ -116,6 +157,7 @@
                 },
                 plugins: [ChartDataLabels]
             });
+
             var ctxDonut = document.getElementById('donutChart').getContext('2d');
             var donutChart = new Chart(ctxDonut, {
                 type: 'doughnut',
@@ -136,9 +178,9 @@
                     }]
                 },
                 options: {
-                    responsive: false,
-                    maintainAspectRatio: false,
-                    cutout: '0%', // Điều này tạo ra biểu đồ doughnut không có lỗ ở giữa
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    cutout: '0%',
                     plugins: {
                         legend: {
                             position: 'bottom',
@@ -148,7 +190,7 @@
                             text: 'Biểu đồ hình tròn số lượng nhà tuyển dụng và ứng viên',
                         }
                     },
-                    cutoutPercentage: 50 // Thu nhỏ kích thước của biểu đồ đi một nửa
+                    cutoutPercentage: 50
                 }
             });
 
@@ -172,9 +214,9 @@
                     }]
                 },
                 options: {
-                    responsive: false,
-                    maintainAspectRatio: false,
-                    cutout: '0%', // Điều này tạo ra biểu đồ doughnut không có lỗ ở giữa
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    cutout: '0%',
                     plugins: {
                         legend: {
                             position: 'bottom',
@@ -184,11 +226,12 @@
                             text: 'Biểu đồ hình tròn số lượng bài tuyển dụng và bài ứng tuyển',
                         }
                     },
-                    cutoutPercentage: 50 // Thu nhỏ kích thước của biểu đồ đi một nửa
+                    cutoutPercentage: 50
                 }
             });
         });
     </script>
 
 </body>
+
 </html>

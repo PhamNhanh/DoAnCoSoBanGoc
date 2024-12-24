@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using WEBTimViec.Data;
 using WEBTimViec.Models;
 using WEBTimViec.Repositories;
+using WEBTimViec.Services.VnPay;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,6 +40,8 @@ builder.Services.AddScoped<IHocVan, EFHocVanRepository>();
 builder.Services.AddScoped<ITruongDaiHoc, EFTruongDaiHocRepository>();
 builder.Services.AddScoped<ISaveJob, EFSaveJob>();
 builder.Services.AddScoped<ILoaiTaiKhoan, EFLoaiTaiKhoan>();
+//Connect VNPay API
+builder.Services.AddScoped<IVnPayService, VnPayService>();
 
 builder.Services.AddRazorPages();
 

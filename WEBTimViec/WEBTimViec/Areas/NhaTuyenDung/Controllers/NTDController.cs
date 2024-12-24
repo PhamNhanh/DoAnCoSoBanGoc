@@ -10,7 +10,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WEBTimViec.Data;
 using WEBTimViec.Models;
+using WEBTimViec.Models.VNPay;
 using WEBTimViec.Repositories;
+using WEBTimViec.Services.VnPay;
 
 namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
 {
@@ -31,6 +33,7 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
         private readonly IHocVan _hocVan;
         private readonly ITruongDaiHoc _truongDaiHoc;
         private readonly ILoaiTaiKhoan _loaiTaiKhoan;
+        private readonly IVnPayService _vnPayService;
         public NTDController(ApplicationDbContext context,
             IBaiTuyenDung baiTuyenDung,
             IChuyenNganh chuyenNganh,
@@ -43,7 +46,8 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             ITruongDaiHoc truongDaiHoc,
             IKyNangMem kyNangMem,
             IHocVan hocVan,
-            ILoaiTaiKhoan loaiTaiKhoan)
+            ILoaiTaiKhoan loaiTaiKhoan,
+            IVnPayService vnPayService)
         {
             _context = context;
             _baiTuyenDung = baiTuyenDung;
@@ -58,6 +62,7 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
             _kyNangMem = kyNangMem;
             _hocVan = hocVan;
             _loaiTaiKhoan = loaiTaiKhoan;
+            _vnPayService = vnPayService;
         }
 
         public async Task<IActionResult> Index()
@@ -95,6 +100,10 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
                         ChuyenNganhName = chuyenNganhItem.ChuyenNganh_name,
                         JobCount = count
                     });
+                    jobCountsByMajor = jobCountsByMajor
+      .OrderByDescending(m => m.JobCount)
+      .Take(2) // Giới hạn 4 chuyên ngành
+      .ToList();
                 }
             }
 
@@ -437,16 +446,40 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
         public async Task<IActionResult> IndexProfileNTD()
         {
             var find_company = await _userManager.GetUserAsync(User);
+
             if (find_company != null)
             {
+                // Tính phần trăm từng trường
+                int imagePercent = !string.IsNullOrEmpty(find_company.image_url) ? 10 : 0;
+                int namePercent = !string.IsNullOrEmpty(find_company.NhaTuyenDung_name) ? 10 : 0;
+                int phonePercent = !string.IsNullOrEmpty(find_company.SDTNhaTuyenDung) ? 20 : 0;
+                int websitePercent = !string.IsNullOrEmpty(find_company.Website) ? 20 : 0;
+                int fullNamePercent = !string.IsNullOrEmpty(find_company.FullName) ? 10 : 0;
+                int addressPercent = !string.IsNullOrEmpty(find_company.DiaChi) ? 20 : 0;
+                int descriptionPercent = !string.IsNullOrEmpty(find_company.GioiThieuNhaTuyenDung) ? 10 : 0;
+
+                // Tổng phần trăm hoàn thành
+                int completion = imagePercent + namePercent + phonePercent + websitePercent + fullNamePercent + addressPercent + descriptionPercent;
+
+                // Gán dữ liệu vào ViewData
+                ViewData["CompletionPercentage"] = completion;
+                ViewData["ImagePercent"] = imagePercent;
+                ViewData["NamePercent"] = namePercent;
+                ViewData["PhonePercent"] = phonePercent;
+                ViewData["WebsitePercent"] = websitePercent;
+                ViewData["FullNamePercent"] = fullNamePercent;
+                ViewData["AddressPercent"] = addressPercent;
+                ViewData["DescriptionPercent"] = descriptionPercent;
+
                 return View(find_company);
             }
             else
             {
                 return NotFound();
             }
-
         }
+
+
         public async Task<IActionResult> IndexProfileUV(string id)
         {
 
@@ -695,10 +728,6 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
 
 
 
-
-
-
-
         // Action để xác nhận đăng ký loại tài khoản
         public async Task<IActionResult> XacNhanDangKy(int loaiTaiKhoanId)
         {
@@ -778,6 +807,16 @@ namespace WEBTimViec.Areas.NhaTuyenDung.Controllers
 
             // Truyền dữ liệu loại tài khoản vào View
             return View(loaiTaiKhoan);
+        }
+
+        [HttpGet]
+        public IActionResult PaymentCallback()
+        {
+            // Xử lý kết quả thanh toán
+            var response = _vnPayService.PaymentExecute(Request.Query);
+
+
+            return RedirectToAction("Index");
         }
 
     }

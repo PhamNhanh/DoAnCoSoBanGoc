@@ -1,9 +1,5 @@
 ﻿@model ViewModel
 
-@{
-    ViewData["Title"] = "Trang chủ  ";
-}
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -11,81 +7,307 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="manifest" href="~/site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="~/assets/img/favicon.ico">
     <!-- Vendor CSS Files -->
     <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="~/assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 
     <!-- Main CSS File -->
-    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="~/assets/css/main.css" rel="stylesheet">
+    <link href="~/css/Index.css" rel="stylesheet">
+    <style>
+        /* Mục testimonial cơ bản */
+        .testimonial-item {
+            transition: all 0.3s ease-in-out;
+            transform: scale(1);
+            background-color: #f8f9fa; /* Màu nền sáng nhẹ */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: #333; /* Màu chữ */
+            font-family: 'Roboto', sans-serif; /* Font chữ hiện đại */
+        }
+
+            /* Khi item ở giữa */
+            .testimonial-item.active-card {
+                transform: scale(1.2); /* Zoom in */
+                background-color: #ffc107; /* Màu vàng nổi bật */
+                color: #212529; /* Màu chữ đậm */
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Hiệu ứng bóng mạnh hơn */
+            }
+
+            /* Hình ảnh người dùng */
+            .testimonial-item img {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                margin-bottom: 15px;
+                border: 3px solid #007bff; /* Viền xanh dương */
+            }
+
+            /* Khi item ở giữa: đổi viền ảnh */
+            .testimonial-item.active-card img {
+                border-color: #dc3545; /* Màu đỏ nổi bật */
+            }
+
+            /* Tiêu đề người dùng */
+            .testimonial-item h5 {
+                margin: 10px 0 5px;
+                font-size: 18px;
+                color: #007bff;
+            }
+
+            /* Chữ nhỏ hơn */
+            .testimonial-item small {
+                font-size: 14px;
+                color: #6c757d; /* Màu xám nhẹ */
+            }
+
+            /* Icon quote */
+            .testimonial-item i {
+                color: #007bff;
+            }
+
+            /* Cải tiến khi hover (không phải active-card) */
+            .testimonial-item:hover {
+                transform: scale(1.05);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            }
+
+        /* Hiệu ứng chuyển động cho carousel */
+        .owl-carousel .owl-item {
+            transition: all 0.5s ease-in-out;
+        }
+
+        .text-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .custom-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px; /* Tạo kiểu nút tròn */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+            .custom-btn:hover {
+                background-color: #0056b3;
+                transform: scale(1.1); /* Hiệu ứng phóng to khi hover */
+            }
+
+            .custom-btn:active {
+                transform: scale(1); /* Đảm bảo nút trở về trạng thái ban đầu khi click */
+            }
+
+        .card {
+            height: 200px;
+            width: 100%; /* Giữ chiều rộng đầy đủ */
+            display: flex;
+            flex-direction: row;
+            position: relative; /* Thêm để phần overlay và text-content hoạt động đúng */
+            overflow: hidden;
+        }
+
+            .card img {
+                max-height: 100%; /* Đảm bảo ảnh không vượt quá chiều cao */
+                object-fit: cover;
+            }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1; /* Đảm bảo overlay nằm trên hình ảnh */
+        }
+
+        .text-content {
+            position: absolute; /* Đặt vào vị trí chính xác */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            padding: 10px;
+            height: 100%;
+            width: 100%;
+            opacity: 0; /* Đảm bảo ban đầu ẩn */
+            transition: opacity 0.3s;
+            z-index: 2; /* Đảm bảo nội dung hiển thị trên overlay */
+        }
+
+        .card:hover .overlay {
+            opacity: 1; /* Khi hover, overlay sẽ hiển thị */
+        }
+
+        .card:hover .text-content {
+            opacity: 1; /* Khi hover, text content sẽ hiển thị */
+        }
+
+        }
+        /* Định dạng hình ảnh công ty */
+        .company-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #007bff; /* Viền xanh */
+        }
+
+        /* Tùy chỉnh nút xem chi tiết */
+        .custom-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px; /* Nút tròn */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+            text-align: center;
+        }
+
+            .custom-btn:hover {
+                background-color: #0056b3;
+                transform: scale(1.1); /* Hiệu ứng phóng to khi hover */
+            }
+
+            .custom-btn:active {
+                transform: scale(1); /* Trở lại kích thước ban đầu khi click */
+            }
+
+        /* Định dạng card tuyển dụng */
+        .shadow-sm {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .bg-white {
+            background-color: #fff;
+        }
+
+        .rounded {
+            border-radius: 10px;
+        }
+
+        .mb-1 {
+            margin-bottom: 0.25rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .me-3 {
+            margin-right: 1rem;
+        }
+    </style>
 </head>
 <body>
-    <div class="khung">
-        <h4 class="tieude"> Tìm kiếm công việc bạn ưa thích</h4>
-        <form action="@Url.Action("TimKiem", "UV")" method="get">
-            <div class="row g-2 align-items-end">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="JobName" class="control-label" style="font-weight: bold;">Tên công việc</label>
-                        <input type="text" name="JobName" class="form-control" placeholder="Tên công việc" style="height: calc(2.25rem + 2px); border: 1px solid #ccc; padding: 0.375rem 0.75rem; border-radius: 4px;" value="@Model.JobName" />
-@*                         <span asp-validation-for="JobName" class="text-danger"></span> *@
-                    </div>
-                </div>
 
-                <div class="col-md-3" style="padding-right: 10px;">
-                    <div class="form-group">
-                        <label asp-for="ThanhPhoId" class="control-label" style="font-weight: bold;">Địa điểm công ty</label>
-                        <select asp-for="ThanhPhoId" class="form-control">
-                            <option value="">-- Chọn tỉnh - Thành phố --</option>
-                            @foreach (var thanhPho in Model.ThanhPhos)
-                            {
-                                <option value="@thanhPho.ThanhPho_id">@thanhPho.ThanhPho_name</option>
-                            }
-                        </select>
-                        <span asp-validation-for="ThanhPhoId" class="text-danger"></span>
-                    </div>
+    <div class="container">
+        <!-- Cột trái -->
+        <div class="left2">
+            <h4>Cách tuyển chọn ứng viên phù hợp</h4>
+
+            <p>
+                ◇ Xác định yêu cầu công việc rõ ràng: Trước khi tuyển dụng, bạn cần xác định các yêu cầu về kỹ năng, kinh nghiệm, trình độ học vấn và phẩm chất cần có của ứng viên.
+            </p>
+            <p>
+                ◇ Sàng lọc hồ sơ ứng viên: Xem xét kỹ lưỡng các yếu tố như kinh nghiệm, trình độ học vấn, kỹ năng chuyên môn và tính cách của ứng viên để chọn ra những người phù hợp.
+            </p>
+            <p>
+                ◇ Phỏng vấn ứng viên: Phỏng vấn giúp bạn đánh giá thêm về kỹ năng giao tiếp, khả năng giải quyết vấn đề và cách ứng viên thể hiện bản thân trong các tình huống thực tế.
+            </p>
+            <p>
+                ◇ Kiểm tra kỹ năng và bài kiểm tra: Cho ứng viên tham gia các bài kiểm tra hoặc bài tập thực tế để đánh giá khả năng chuyên môn của họ...
+            </p>
+        </div>
+
+        <div class="job-images1">
+            <div class="cardxoay">
+                <div class="cardxoay-front">
+                    <img src="~/images/center1.png" alt="Bài tuyển dụng">
                 </div>
-                <div class="col-md-3" style="padding-right: 10px;">
-                    <div class="form-group">
-                        <label asp-for="chuyenNganhId" class="control-label" style="font-weight: bold;">Chuyên ngành yêu cầu</label>
-                        <select asp-for="chuyenNganhId" class="form-control">
-                            <option value="">-- Chọn chuyên ngành --</option>
-                            @foreach (var chuyenNganh in Model.ChuyenNganhs)
-                            {
-                                <option value="@chuyenNganh.ChuyenNganh_id">@chuyenNganh.ChuyenNganh_name</option>
-                            }
-                        </select>
-                        <span asp-validation-for="chuyenNganhId" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="col-md-auto">
-                    <button type="submit" class="btn btn-dark border-0">Tìm kiếm</button>
+                <div class="cardxoay-back">
+                    <h4>Lợi ích của việc bạn có CV ứng tuyển tốt</h4>
+
+                    <p>■ Tăng cường cơ hội tìm việc: CV là công cụ chính giúp bạn trình bày kỹ năng, kinh nghiệm và trình độ học vấn. Một CV được chuẩn bị tốt giúp bạn nổi bật trong mắt nhà tuyển dụng.</p>
+
+                    <p>■ Tạo ấn tượng đầu tiên mạnh mẽ: Nhà tuyển dụng thường chỉ dành một ít thời gian để đọc CV. Vì vậy, một CV rõ ràng, súc tích và thể hiện đúng năng lực có thể tạo ấn tượng tích cực ngay từ lần đầu tiên.</p>
+
+                    <p>■ Chứng minh kinh nghiệm và kỹ năng: CV giúp bạn thể hiện rõ ràng những thành tựu, kỹ năng và kinh nghiệm làm việc của mình, từ đó khẳng định bạn là ứng viên phù hợp cho công việc.</p>
+
+                    <p>■ Nâng cao khả năng thương lượng lương và phúc lợi: Một CV nổi bật không chỉ giúp bạn được tuyển dụng, mà còn có thể là cơ sở để thương lượng mức lương và các quyền lợi khi được tuyển dụng.</p>
+
+                    <p>■ Giúp bạn chuẩn bị cho các buổi phỏng vấn: CV là tài liệu cơ bản để bạn chuẩn bị cho phỏng vấn, giúp bạn nhớ lại những kỹ năng và kinh nghiệm cần thiết để trả lời câu hỏi của nhà tuyển dụng.</p>
+
                 </div>
             </div>
+        </div>
+
+    </div>
+    <div class="container">
+        <div class="leftGoiY">
+            <h1>Đón lấy thành công cùng +200 triệu ứng viên CareerViet toàn cầu!</h1>
+            <p>     Trong thị trường tuyển dụng ngày nay, việc sở hữu một CV ấn tượng là yếu tố quan trọng quyết định đến cơ hội nghề nghiệp của bạn. CareerViet cung cấp nền tảng giúp bạn tạo ra CV chuyên nghiệp với các tiêu chí chuẩn mực, phù hợp với yêu cầu của các nhà tuyển dụng hàng đầu. Cập nhật CV thường xuyên với các thành tựu mới nhất sẽ giúp bạn nổi bật hơn so với những ứng viên khác. Ngoài ra, việc chủ động tìm kiếm thông tin và xây dựng mối quan hệ với các nhà tuyển dụng thông qua các kênh như mạng xã hội, hội thảo nghề nghiệp, hay các nền tảng trực tuyến cũng là một yếu tố then chốt giúp bạn nắm bắt cơ hội tốt hơn. Điều này không chỉ giúp bạn tạo dựng được uy tín mà còn mở ra cánh cửa cho những cơ hội nghề nghiệp giá trị. Chính vì vậy, đừng bỏ lỡ bất kỳ cơ hội nào để nâng cao giá trị bản thân và chinh phục những mục tiêu nghề nghiệp của mình.</p>
+        </div>
+
+
+    </div>
+
+    <div class="box-search-Job_item">
+        <form method="get" action="@Url.Action("TimKiem", "UV ")">
+            <div class="box-search-job_item--free-text">
+                <div class="box-search-job_item--free-text-input item-search">
+                    <i class="fa-regular fa-magnifying-glass"></i>
+                    <input class="form-control ui-autocomplete-input"
+                           name="JobName"
+                           placeholder="Vị trí ứng tuyển"
+                           id="keyword"
+                           autocomplete="off">
+                </div>
+                <button class="btn btn-topcv btn-search-job" type="submit">Tìm kiếm</button>
+            </div>
         </form>
-        <h5 class="center-text spacing-top">Bài tuyển dụng phù hợp</h5>
+    </div>
+
+    <div class="mt-4">
         <div class="row">
             @foreach (var baiTuyenDung in Model.BaiTuyenDungs)
             {
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title overflow-ellipsis">@baiTuyenDung.TenCongViec</h3>
-                            <p class="card-text overflow-ellipsis"><strong>Thành phố làm việc:</strong> @baiTuyenDung.thanhPho.ThanhPho_name</p>
-                            <p class="card-text overflow-ellipsis">
-                                <strong>Chuyên ngành:</strong>
-                                @string.Join(", ", baiTuyenDung.baiTuyenDung_ChuyenNganhs.Select(bcn => bcn.chuyenNganh.ChuyenNganh_name))
-                            </p>
-                            <p class="card-text overflow-ellipsis"><strong>Lương:</strong> @baiTuyenDung.Luong_min - @baiTuyenDung.Luong_max triệu đồng</p>
-                            <p class="card-text overflow-ellipsis"><strong>Loại công việc:</strong> @baiTuyenDung.KieuCongViec</p>
-                            <p class="card-text overflow-ellipsis"><strong>Hạn nộp hồ sơ:</strong> @baiTuyenDung.ThoiGianHetHan</p>
-                            <a href="@Url.Action("DetailsBaiTuyenDung", new { id = baiTuyenDung.BaiTuyenDung_id })" class="btn btn-primary">Chi tiết</a>
+                <div class="col-md-6 mb-4">
+                    <div class="d-flex align-items-center p-3 shadow-sm rounded bg-white">
+                        <!-- Hình ảnh công ty -->
+                        <div class="me-3">
+                            <img src="@baiTuyenDung.applicationUser.image_url" alt="Công ty" class="img-fluid rounded" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <!-- Thông tin bài tuyển dụng -->
+                        <div>
+                            <h5 class="mb-2">@baiTuyenDung.TenCongViec</h5>
+                            <p class="mb-1"><strong>Yêu cầu kỹ năng:</strong> @baiTuyenDung.YeuCauKyNang</p>
+                            <p class="mb-1"><strong>Thành phố:</strong> @baiTuyenDung.thanhPho.ThanhPho_name</p>
+                            <p class="mb-1"><strong>Lương:</strong> @baiTuyenDung.Luong_min - @baiTuyenDung.Luong_max triệu đồng</p>
+                            <p class="mb-1"><strong>Hạn nộp hồ sơ:</strong> @baiTuyenDung.ThoiGianHetHan</p>
+                            <a href="@Url.Action("DetailsBaiTuyenDung", new { id = baiTuyenDung.BaiTuyenDung_id })" class="custom-btn mt-2">Xem Chi Tiết</a>
                         </div>
                     </div>
                 </div>
             }
         </div>
     </div>
+
+    </div>
+
 </body>

@@ -74,25 +74,49 @@ namespace WEBTimViec.Areas.UngVien.UngVien
             var chuyenNganh = await _chuyenNganh.GetAllAsync();
             var sortedChuyenNganh = chuyenNganh.OrderBy(cn => cn.ChuyenNganh_name).ToList();
 
-            // Lấy danh sách chuyên ngành của ứng viên hiện tại
-            var userChuyenNganhs = await _context.hocVans
-                .Where(uc => uc.applicationUserId == currentUser.Id)
-                .Select(uc => uc.chuyenNganhId)
+            // Lấy danh sách chuyên ngành học vấn của ứng viên
+            var userHocVans = await _context.hocVans
+                .Where(hv => hv.applicationUserId == currentUser.Id)
+                .Select(hv => hv.chuyenNganhId)
                 .ToListAsync();
+            // Lọc bài tuyển dụng có chuyên ngành thuộc chuyên ngành học vấn của ứng viên
+            var baiTuyenDungs = await _context.baiTuyenDungs
+                .Where(b => userHocVans.Contains(b.chuyenNganh.ChuyenNganh_id) && b.TrangThai == true)
+                .ToListAsync();
+            var userChuyenNganhs = await _context.chuyenNganhs
+                .Where(cn => userHocVans.Contains(cn.ChuyenNganh_id))
+                .ToListAsync();
+
+            // Thêm danh sách chuyên ngành học vấn vào ViewBag
+            ViewBag.UserChuyenNganhs = userChuyenNganhs;
 
             // Lấy danh sách bài tuyển dụng gợi ý theo chuyên ngành
             var suggestedJobs = new List<BaiTuyenDung>();
-            foreach (var chuyenNganhId in userChuyenNganhs)
+            foreach (var chuyenNganhId in userHocVans)
             {
                 var baiTuyenDungsByChuyenNganh = await _baiTuyenDung.GetBaiTuyenDungByChuyenNganhAsync(chuyenNganhId);
                 suggestedJobs.AddRange(baiTuyenDungsByChuyenNganh);
             }
-
-            // Lọc các bài tuyển dụng theo trạng thái và loại bỏ các bản sao
+/*
+            // Lọc các bài tuyển dụng theo trạng thái = true và loại bỏ các bản sao
             var baiTuyenDungs = suggestedJobs
-                .Where(b => b.TrangThai == true)
+                .Where(b => b.TrangThai == true)  // Chỉ lấy những bài tuyển dụng có trạng thái true
                 .Distinct()
-                .ToList();
+                .ToList();*/
+
+            // Cập nhật trạng thái của các bài tuyển dụng đã hết hạn
+            var currentDate = DateTime.Now;  // Thời gian hiện tại
+            var expiredJobs = await _context.baiTuyenDungs
+                .Where(b => b.ThoiGianHetHan < currentDate && b.TrangThai == true)
+                .ToListAsync();
+
+            foreach (var job in expiredJobs)
+            {
+                job.TrangThai = false;  // Cập nhật trạng thái thành false (hết hạn)
+            }
+
+            // Lưu các thay đổi vào cơ sở dữ liệu
+            await _context.SaveChangesAsync();
 
             // Lấy danh sách ứng viên
             var ungvien = await _userRepository.GetAllAsync();
@@ -115,8 +139,11 @@ namespace WEBTimViec.Areas.UngVien.UngVien
                 }
             }
 
-            // Sắp xếp các chuyên ngành theo số lượng bài tuyển dụng giảm dần
-            jobCountsByMajor = jobCountsByMajor.OrderByDescending(m => m.JobCount).ToList();
+            // Sắp xếp các chuyên ngành theo số lượng bài tuyển dụng giảm dần và giới hạn 2 chuyên ngành
+            jobCountsByMajor = jobCountsByMajor
+                .OrderByDescending(m => m.JobCount)
+                .Take(2)
+                .ToList();
 
             // Thêm danh sách bài tuyển dụng vào ViewBag
             ViewBag.BaiTuyenDung = baiTuyenDungs;
@@ -237,41 +264,50 @@ namespace WEBTimViec.Areas.UngVien.UngVien
             }
             return View(find_education);
         }
-        [HttpGet]
-        public async Task<IActionResult> TimKiem(ViewModel viewModel)
+        public async Task<IActionResult> TimKiem(string JobName, int? ThanhPhoId, string ThanhPhoName, string ChuyenNganhName)
         {
-            // Lấy danh sách thành phố và chuyên ngành từ cơ sở dữ liệu
-            var thanhPho = await _context.thanhPhos.OrderBy(tp => tp.ThanhPho_name).ToListAsync();
-            var chuyenNganh = await _context.chuyenNganhs.OrderBy(cn => cn.ChuyenNganh_name).ToListAsync();
-
-            // Gán danh sách đã sắp xếp vào ViewModel
-            viewModel.ThanhPhos = thanhPho;
-            viewModel.ChuyenNganhs = chuyenNganh;
+            // Khởi tạo ViewModel
+            var viewModel = new ViewModel
+            {
+                ThanhPhos = await _context.thanhPhos.ToListAsync(),
+                ChuyenNganhs = await _context.chuyenNganhs.ToListAsync()
+            };
 
             // Tạo query tìm kiếm bài tuyển dụng
             var query = _context.baiTuyenDungs
-                .Include(b => b.thanhPho) // Include related ThanhPho
-                .Include(b => b.baiTuyenDung_ChuyenNganhs) // Include the join table
-                .ThenInclude(bcn => bcn.chuyenNganh) // Include ChuyenNganh through the join table
+                .Where(b => b.TrangThai == true) // Chỉ lấy bài tuyển dụng có trạng thái = 1
+                .Include(b => b.applicationUser) // Bao gồm thông tin ApplicationUser
+                .Include(b => b.thanhPho)        // Bao gồm thông tin Thành Phố
+                .Include(b => b.chuyenNganh)    // Bao gồm thông tin Chuyên Ngành
                 .AsQueryable();
 
-            // Lọc kết quả theo trạng thái
-            query = query.Where(b => b.TrangThai == true);
-
-            // Tìm kiếm theo tên công việc
-            if (!string.IsNullOrEmpty(viewModel.JobName))
+            // Lọc theo tên công việc
+            if (!string.IsNullOrEmpty(JobName))
             {
-                query = query.Where(b => b.TenCongViec.Contains(viewModel.JobName));
+                query = query.Where(b => b.TenCongViec.Contains(JobName));
             }
 
-            // Nếu người dùng đã chọn thành phố
-            if (viewModel.ThanhPhoId != null)
+            // Lọc theo ID thành phố
+            if (ThanhPhoId.HasValue)
             {
-                // Lọc kết quả theo thành phố
-                query = query.Where(b => b.thanhPhoId == viewModel.ThanhPhoId);
+                query = query.Where(b => b.thanhPhoId == ThanhPhoId.Value);
             }
 
-            viewModel.BaiTuyenDungs = await query.ToListAsync();
+            // Lọc theo tên thành phố
+            if (!string.IsNullOrEmpty(ThanhPhoName))
+            {
+                query = query.Where(b => b.thanhPho.ThanhPho_name.Contains(ThanhPhoName));
+            }
+
+            // Lọc theo tên chuyên ngành
+            if (!string.IsNullOrEmpty(ThanhPhoName))
+            {
+                query = query.Where(b => b.chuyenNganh.ChuyenNganh_name.Contains(ChuyenNganhName));
+            }
+            // Thực thi query và truyền dữ liệu vào ViewModel
+            viewModel.BaiTuyenDungs = await query
+                .OrderByDescending(b => b.ThoiGianDangBai) // Sắp xếp theo thời gian đăng bài
+                .ToListAsync();
 
             return View(viewModel);
         }
@@ -343,49 +379,59 @@ namespace WEBTimViec.Areas.UngVien.UngVien
             await _hocVan.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
-
         public async Task<IActionResult> DetailsBaiTuyenDung(int id)
         {
+            // Lấy bài tuyển dụng kèm theo các thông tin liên quan
+            var baiTuyenDung = await _context.baiTuyenDungs
+                .Include(b => b.baiTuyenDung_ChuyenNganhs)
+                    .ThenInclude(bcn => bcn.chuyenNganh)
+                .Include(b => b.baiTuyenDung_ViTris)
+                    .ThenInclude(bv => bv.viTriCongViec)
+                .Include(b => b.baiTuyenDung_KyNangMems)
+                    .ThenInclude(bk => bk.kyNangMem)
+                .FirstOrDefaultAsync(b => b.BaiTuyenDung_id == id);
+
+            if (baiTuyenDung == null)
             {
-                var baiTuyenDung = _context.baiTuyenDungs
-            .Include(b => b.baiTuyenDung_ChuyenNganhs)
-                .ThenInclude(bcn => bcn.chuyenNganh)
-            .Include(b => b.baiTuyenDung_ViTris)
-                .ThenInclude(bv => bv.viTriCongViec)
-            .Include(b => b.baiTuyenDung_KyNangMems)
-                .ThenInclude(bk => bk.kyNangMem)
-            .FirstOrDefault(b => b.BaiTuyenDung_id == id);
-
-                if (baiTuyenDung == null)
-                {
-                    return NotFound();
-                }
-
-                ViewBag.TenTP = _context.thanhPhos
-                    .Where(tp => tp.ThanhPho_id == baiTuyenDung.thanhPhoId)
-                    .Select(tp => tp.ThanhPho_name)
-                    .FirstOrDefault();
-
-                // Lấy danh sách chuyên ngành dựa trên BaiTuyenDungId
-                ViewBag.ChuyenNganhs = baiTuyenDung.baiTuyenDung_ChuyenNganhs
-                    .Where(bcn => bcn.BaiTuyenDungid == id)
-                    .Select(bcn => bcn.chuyenNganh.ChuyenNganh_name)
-                    .ToList();
-
-                // Lấy danh sách vị trí công việc dựa trên BaiTuyenDungId
-                ViewBag.ViTriCongViecs = baiTuyenDung.baiTuyenDung_ViTris
-                    .Where(bv => bv.BaiTuyenDungid == id)
-                    .Select(bv => bv.viTriCongViec.ViTriCongViec_name)
-                    .ToList();
-
-                // Lấy danh sách kỹ năng mềm dựa trên BaiTuyenDungId
-                ViewBag.KyNangMems = baiTuyenDung.baiTuyenDung_KyNangMems
-                    .Where(bk => bk.BaiTuyenDungid == id)
-                    .Select(bk => bk.kyNangMem.KNMem_name)
-                    .ToList();
-
-                return View(baiTuyenDung);
+                return NotFound();
             }
+
+            // Lấy tên thành phố từ bảng ThanhPho dựa trên thanhPhoId
+            var thanhPho = await _context.thanhPhos
+                .Where(tp => tp.ThanhPho_id == baiTuyenDung.thanhPhoId)
+                .FirstOrDefaultAsync();
+
+            if (thanhPho != null)
+            {
+                // Truyền thông tin thành phố vào ViewBag
+                ViewBag.TenTP = thanhPho.ThanhPho_name;
+                ViewBag.KinhDo = thanhPho.kinhDo;
+                ViewBag.ViDo = thanhPho.viDo;
+            }
+            else
+            {
+                ViewBag.TenTP = "Thông tin thành phố không có sẵn"; // Trường hợp không tìm thấy thành phố
+            }
+
+            // Lấy danh sách chuyên ngành dựa trên BaiTuyenDungId
+            ViewBag.ChuyenNganhs = baiTuyenDung.baiTuyenDung_ChuyenNganhs
+                .Where(bcn => bcn.BaiTuyenDungid == id)
+                .Select(bcn => bcn.chuyenNganh.ChuyenNganh_name)
+                .ToList();
+
+            // Lấy danh sách vị trí công việc dựa trên BaiTuyenDungId
+            ViewBag.ViTriCongViecs = baiTuyenDung.baiTuyenDung_ViTris
+                .Where(bv => bv.BaiTuyenDungid == id)
+                .Select(bv => bv.viTriCongViec.ViTriCongViec_name)
+                .ToList();
+
+            // Lấy danh sách kỹ năng mềm dựa trên BaiTuyenDungId
+            ViewBag.KyNangMems = baiTuyenDung.baiTuyenDung_KyNangMems
+                .Where(bk => bk.BaiTuyenDungid == id)
+                .Select(bk => bk.kyNangMem.KNMem_name)
+                .ToList();
+
+            return View(baiTuyenDung);
         }
         public async Task<IActionResult> ListBaiTuyenDung()
         {
@@ -645,6 +691,25 @@ namespace WEBTimViec.Areas.UngVien.UngVien
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(ListUngTuyen)); // Chuyển hướng lại để hiển thị danh sách đã cập nhật
+        }
+        public async Task<IActionResult> DanhSachBaiTuyenDung(string nhaTuyenDungId)
+        {
+            // Lấy tất cả bài tuyển dụng
+            var baiTuyenDung = await _baiTuyenDung.GetAllAsync();
+
+            // Lấy thông tin nhà tuyển dụng
+            var danhSachNhaTuyenDung = await _userRepository.GetAllCompanyAsync();
+
+            // Lọc bài tuyển dụng theo nhaTuyenDungId và TrangThai = true
+            var baiTuyenDungCuaNhaTuyenDung = baiTuyenDung
+                .Where(bai => bai.ApplicationUserId == nhaTuyenDungId && bai.TrangThai == true)
+                .ToList();
+
+            // Đưa thông tin nhà tuyển dụng vào ViewBag để hiển thị thêm thông tin nếu cần
+            var nhaTuyenDung = danhSachNhaTuyenDung.FirstOrDefault(ntd => ntd.Id == nhaTuyenDungId);
+            ViewBag.NhaTuyenDung = nhaTuyenDung;
+
+            return View(baiTuyenDungCuaNhaTuyenDung);
         }
 
     }

@@ -1,0 +1,27 @@
+﻿@model WEBTimViec.Models.VNPay.PaymentInformationModel
+
+@{
+    ViewData["Title"] = "Thanh Toán VNPay";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="CreatePaymentUrlVnpay" method="post">
+    <div>
+        <label for="Amount">Số tiền:</label>
+        <input type="number" id="Amount" name="Amount" class="form-control" required />
+    </div>
+    <div>
+        <label for="OrderId">Mã đơn hàng:</label>
+        <input type="text" id="OrderId" name="OrderId" class="form-control" required />
+    </div>
+    <div>
+        <label for="OrderDescription">Mô tả đơn hàng:</label>
+        <textarea id="OrderDescription" name="OrderDescription" class="form-control" required></textarea>
+    </div>
+    <div>
+        <label for="ReturnUrl">URL trả về:</label>
+        <input type="url" id="ReturnUrl" name="ReturnUrl" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Thanh Toán</button>
+</form>

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using PagedList;
 namespace WEBTimViec.Models
 {
     public class ViewModel
@@ -35,7 +36,8 @@ namespace WEBTimViec.Models
         public string JobName { get; set; }
         public List<MajorViewModel> Majors { get; set; }
         public List<BaiTuyenDung>? BaiTuyenDung { get; set; }
-
-
+        public X.PagedList.IPagedList<BaiTuyenDung> baiTuyenDungs { get; set; }
+        public int TotalCount { get; set; }  // Tổng số bài tuyển dụng
+        public int PageCount { get; set; }   // Tổng số trang
     }
 }

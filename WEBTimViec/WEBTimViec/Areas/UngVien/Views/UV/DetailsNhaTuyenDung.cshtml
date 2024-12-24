@@ -1,12 +1,10 @@
-﻿@model WEBTimViec.Models.ApplicationUser
-
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html lang="vi">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>JobPlus</title>
-    <meta name="description" content="">
+    <meta name="description" content="Thông tin nhà tuyển dụng và cơ hội việc làm">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Vendor CSS Files -->
@@ -18,28 +16,93 @@
 
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet">
+
+    <!-- Custom Style -->
+    <style>
+        .tieude {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .khung {
+            margin: 1.5rem auto;
+            padding: 1.5rem;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .khungchu2 p {
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .button {
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+
+            .button:hover {
+                background-color: #0056b3;
+            }
+
+        img.rounded-circle {
+            border: 2px solid #ddd;
+        }
+    </style>
 </head>
-<p>
-    <a href="@Url.Action("DSNhaTuyenDung", "UV", new { area = "UngVien" })" class="button">Quay lại</a>
-</p>
 <body>
-    <h1 class="tieude">Thông tin nhà tuyển dụng</h1>
-    <div class="khung">
-        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-            <img class="rounded-circle mt-5" width="150px" src="@Model.image_url">
-        </div>
-    </div>
-    <div class ="khung">
-        <div class=" khungchu2">
-            <p><strong>Tên công ty:</strong> @Model.NhaTuyenDung_name</p>
-            <p><strong>Giới thiệu:</strong> @Model.GioiThieuNhaTuyenDung</p>
-            <p><strong>Địa chỉ:</strong> @Model.DiaChi</p>
-            <p><strong>Số điện thoại:</strong> @Model.SDTNhaTuyenDung</p>
-            <p><strong>Website:</strong> @Model.Website</p>
-            <p><strong>Thời gian tạo:</strong> @Model.ThoiGianTao</p>
-            <p><strong>Thời gian cập nhật:</strong> @Model.ThoiGianCapNhat</p>
+    <div class="container">
+        <p>
+            <a href="@Url.Action("DSNhaTuyenDung", "UV", new { area = "UngVien" })" class="button">Quay lại</a>
+        </p>
+
+        <h1 class="tieude">Thông tin nhà tuyển dụng</h1>
+
+        <div class="khung text-center">
+            <img class="rounded-circle mt-3 mb-3" width="150px" src="@Model.image_url" alt="Nhà tuyển dụng">
         </div>
 
+        <div class="khung">
+            <div class="khungchu2">
+                <p><strong>Tên công ty:</strong> @Model.NhaTuyenDung_name</p>
+                <p><strong>Giới thiệu:</strong> @Model.GioiThieuNhaTuyenDung</p>
+                <p><strong>Địa chỉ:</strong> @Model.DiaChi</p>
+                <p><strong>Số điện thoại:</strong> @Model.SDTNhaTuyenDung</p>
+                <p><strong>Website:</strong> <a href="@Model.Website" target="_blank">@Model.Website</a></p>
+                <p><strong>Thời gian tạo:</strong> @Model.ThoiGianTao</p>
+                <p><strong>Thời gian cập nhật:</strong> @Model.ThoiGianCapNhat</p>
+                <!-- Nút xem bài tuyển dụng -->
+                <a href="@Url.Action("DanhSachBaiTuyenDung", "UV", new { nhaTuyenDungId = Model.Id })"
+                   class="btn btn-primary mt-3">
+                    Xem bài tuyển dụng
+                </a>
+            </div>
+        </div>
+
+        <div class="khung">
+            <h2 class="tieude">10 cách gây ấn tượng với nhà tuyển dụng</h2>
+            <p>Nhà tuyển dụng thường đánh giá cao ứng viên tìm hiểu mọi thông tin doanh nghiệp, nêu rõ thế mạnh trong CV, đến phỏng vấn đúng giờ, tác phong chuyên nghiệp.</p>
+
+            <p>Bộ hồ sơ ứng tuyển (CV) là "chìa khóa" đầu tiên để doanh nghiệp hiểu ứng viên là ai, có kinh nghiệm, sở trường gì và có thể đóng góp gì cho đơn vị mình trong tương lai.</p>
+
+            <p>Khi hiểu rõ doanh nghiệp muốn gì, bạn có thể điều chỉnh đơn ứng tuyển phù hợp tiêu chí. Chuyên trang Jobcrystal cũng đồng tình với quan điểm của Robert Half, cho rằng ứng viên cần làm nổi bật thế mạnh bản thân ngay đầu CV.</p>
+
+            <p>Doanh nghiệp thường đánh giá cao những bộ hồ sơ đính kèm loạt chứng chỉ về tiếng Anh, khóa đào tạo liên quan, kỹ năng mềm hay bằng khen bất kỳ.</p>
+
+            <p>Trong thời gian đợi nhà tuyển dụng gọi phỏng vấn, ứng viên nên chuẩn bị sẵn sàng cho mọi tình huống, nghiên cứu câu hỏi tiềm năng và soạn sẵn câu trả lời.</p>
+        </div>
     </div>
+
+    <!-- Vendor JS Files -->
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/vendor/aos/aos.js"></script>
+    <script src="~/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/assets/vendor/swiper/swiper-bundle.min.js"></script>
 </body>
 </html>

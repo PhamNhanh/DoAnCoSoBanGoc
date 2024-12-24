@@ -198,6 +198,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmhhVHV5ZW5EdW5nXFZpZXdzXE5URFxYYWNOaGFuRGFuZ0t5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/NhaTuyenDung/Views/Payment/CreatePaymentUrlVnpay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmhhVHV5ZW5EdW5nXFZpZXdzXFBheW1lbnRcQ3JlYXRlUGF5bWVudFVybFZucGF5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/NhaTuyenDung/Views/Payment/PaymentCallbackVnpay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmhhVHV5ZW5EdW5nXFZpZXdzXFBheW1lbnRcUGF5bWVudENhbGxiYWNrVm5wYXkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/NhaTuyenDung/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmhhVHV5ZW5EdW5nXFZpZXdzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -208,6 +216,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/UngVien/Views/UV/AddEducation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVW5nVmllblxWaWV3c1xVVlxBZGRFZHVjYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/UngVien/Views/UV/DanhSachBaiTuyenDung.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVW5nVmllblxWaWV3c1xVVlxEYW5oU2FjaEJhaVR1eWVuRHVuZy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Areas/UngVien/Views/UV/DeleteEducation.cshtml]
@@ -296,6 +308,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Views/Home/IndexAll.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleEFsbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Views/Home/ListBaiTuyenDung.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMaXN0QmFpVHV5ZW5EdW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/DoAnCoSo/Github/DoAnCoSoBanGoc/WEBTimViec/WEBTimViec/Views/Home/TimKiem.cshtml]

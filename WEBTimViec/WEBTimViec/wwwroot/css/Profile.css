@@ -1,0 +1,214 @@
+﻿
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.ha1 {
+    padding: 20px 0;
+}
+
+.styled-button a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.styled-button {
+    background-color: #ffffff;
+    border: 1px solid #dcdcdc;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+    .styled-button:hover {
+        background-color: #eaeaea;
+        border-color: #cccccc;
+    }
+
+.tieude h3 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.khung {
+    background: #DCDCDC;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.d-flex.flex-column {
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    height: 100%; /* Chiều cao bằng khung cha */
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+    .d-flex.flex-column img {
+        border: 2px solid #e0e0e0;
+        border-radius: 50%; /* Làm tròn ảnh logo */
+        width: 150px; /* Kích thước ảnh */
+        height: 150px; /* Kích thước ảnh */
+        object-fit: cover; /* Đảm bảo ảnh không bị méo */
+    }
+
+
+    .d-flex.flex-column img {
+        border: 2px solid #e0e0e0;
+    }
+
+.info-section {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+    .info-item label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+.custom-background {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 5px;
+    color: #333;
+    font-size: 16px;
+}
+
+.info-item textarea {
+    width: 100%;
+    height: 80px;
+    resize: none;
+    border: none;
+}
+
+/*.edit-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+    .edit-link a:hover {
+        color: #0056b3;
+    }
+*/
+.tieude {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 28px; /* Kích thước font chữ */
+    color: #333; /* Màu chữ */
+}
+
+.text-center img {
+    max-width: 100%;
+    height: auto;
+}
+/* Cải tiến nút chỉnh sửa thông tin */
+.styled-button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #007bff; /* Màu nền xanh */
+    color: #ffffff; /* Màu chữ trắng */
+    border: 1px solid #0056b3; /* Viền màu xanh đậm */
+    border-radius: 8px; /* Bo góc */
+    text-decoration: none; /* Xóa gạch dưới */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động */
+}
+
+    .styled-button:hover {
+        background-color: #0056b3; /* Đổi nền khi hover */
+        border-color: #003f8a; /* Đổi màu viền */
+        transform: scale(1.1); /* Phóng to nhẹ khi hover */
+        color: #f0f0f0; /* Chữ sáng hơn khi hover */
+    }
+
+/* Căn chỉnh nút vào giữa nếu cần */
+.edit-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Khối chứa toàn bộ carousel */
+.carousel-container {
+    position: relative; /* Để định vị nút chuyển tiếp */
+    max-width: 600px; /* Độ rộng tối đa cho carousel */
+    margin: 0 auto; /* Căn giữa carousel */
+    overflow: hidden; /* Ẩn phần thừa của ảnh */
+    border-radius: 10px; /* Bo góc nếu cần */
+    background-color: #f8f9fa; /* Màu nền cho vùng ảnh */
+}
+
+/* Khối chứa các ảnh */
+.carousel-wrapper {
+    display: flex; /* Đặt ảnh nằm ngang */
+    transition: transform 0.5s ease-in-out; /* Hiệu ứng chuyển động mượt */
+    width: 100%; /* Chiếm 100% vùng hiển thị */
+}
+
+/* Ảnh trong carousel */
+.carousel-item {
+    min-width: 100%; /* Mỗi ảnh chiếm toàn bộ vùng hiển thị */
+    flex-shrink: 0; /* Ngăn không cho ảnh co lại */
+    display: flex; /* Đảm bảo ảnh nằm gọn trong container */
+    justify-content: center; /* Căn giữa ảnh theo chiều ngang */
+    align-items: center; /* Căn giữa ảnh theo chiều dọc */
+    overflow: hidden; /* Ẩn phần ảnh thừa */
+    position: relative;
+}
+
+    /* Ảnh */
+    .carousel-item img {
+        max-width: 100%; /* Đảm bảo ảnh không vượt quá vùng hiển thị */
+        height: auto; /* Giữ tỷ lệ ảnh */
+        object-fit: cover; /* Đảm bảo ảnh lấp đầy vùng mà không méo */
+    }
+
+/* Nút chuyển tiếp */
+.carousel-btn {
+    position: absolute; /* Đặt nút trên khung carousel */
+    top: 50%; /* Căn giữa theo chiều dọc */
+    transform: translateY(-50%); /* Căn chỉnh chính xác */
+    background-color: rgba(0, 0, 0, 0.5); /* Màu nền nút với độ trong suốt */
+    color: #fff; /* Màu chữ nút */
+    border: none; /* Loại bỏ viền */
+    padding: 10px 15px; /* Kích thước nút */
+    cursor: pointer; /* Thay đổi con trỏ khi di chuột qua */
+    z-index: 10; /* Đặt nút lên trên */
+    transition: background-color 0.3s ease; /* Hiệu ứng nút mượt */
+    border-radius: 5px; /* Bo góc nút */
+}
+
+/* Nút lùi */
+.prev-btn {
+    left: 10px; /* Căn trái */
+}
+
+/* Nút tiến */
+.next-btn {
+    right: 10px; /* Căn phải */
+}
+
+/* Hiệu ứng khi rê chuột qua nút */
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Tăng độ đậm màu */
+}

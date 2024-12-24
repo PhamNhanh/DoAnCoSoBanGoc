@@ -18,6 +18,33 @@
     <link href="~/assets/css/main.css" rel="stylesheet">
 
     <style>
+        header.header {
+            background-color: #34495e; /* Màu nền của footer */
+            color: #ffffff; /* Màu chữ phù hợp với màu nền */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Tùy chọn: thêm bóng mờ để tạo chiều sâu */
+        }
+
+            header.header a {
+                color: #ffffff; /* Đảm bảo các liên kết trong header có màu chữ nổi bật */
+            }
+
+            header.header .navmenu ul li a:hover {
+                color: #ffc107; /* Thêm màu sắc khi hover nếu cần */
+            }
+
+        .btn-getstarted {
+            background-color: #ffc107; /* Nền nút đăng nhập/đăng ký nổi bật */
+            color: #343a40; /* Màu chữ nút */
+            border-radius: 25px; /* Làm bo góc nút */
+            padding: 10px 20px; /* Tăng kích thước nút */
+            transition: all 0.3s ease; /* Hiệu ứng mượt mà khi hover */
+        }
+
+            .btn-getstarted:hover {
+                background-color: #ffffff; /* Màu nền khi hover */
+                color: #343a40; /* Màu chữ khi hover */
+            }
+
         footer {
             background-color: #34495e; /* Màu nền xanh đậm */
             padding: 50px 0;

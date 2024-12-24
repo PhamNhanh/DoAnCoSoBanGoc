@@ -7,19 +7,17 @@
 <html lang="vi">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>JobPlus</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Thêm CSS cho Leaflet -->
+    <!-- Thêm CSS của Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 
     <!-- CSS của bạn -->
     <link rel="stylesheet" href="~/assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/style.css">
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -93,7 +91,7 @@
 <body>
     <div class="container">
         <div class="row justify-content-center align-items-center">
-            <!-- Bản đồ Việt Nam bên trái -->
+            <!-- Bản đồ Google Maps bên trái -->
             <div class="col-md-4">
                 <div id="map"></div> <!-- Phần tử hiển thị bản đồ -->
             </div>
@@ -146,21 +144,41 @@
         </div>
     </div>
 
-    <!-- Script Leaflet và các script khác -->
+    <!-- Thêm script của Leaflet -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        // Khởi tạo bản đồ Việt Nam
-        var map = L.map('map').setView([14.0583, 108.2772], 6);  // Tọa độ trung tâm Việt Nam và zoom level
+        // Khởi tạo bản đồ Leaflet
+        var map = L.map('map').setView([14.0583, 108.2772], 6); // Tọa độ trung tâm Việt Nam
 
-        // Thêm lớp bản đồ (Tile Layer) sử dụng OpenStreetMap
+        // Thêm lớp bản đồ OpenStreetMap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Thêm marker vào bản đồ tại vị trí Hà Nội (ví dụ)
-        L.marker([21.0285, 105.8542]).addTo(map)
-            .bindPopup('Hà Nội')
-            .openPopup();
+        // Lấy tọa độ từ ViewBag
+        var lat = @ViewBag.ViDo; // Vĩ độ
+        var lon = @ViewBag.KinhDo; // Kinh độ
+
+        // Thêm marker
+        var marker = L.marker([lat, lon]).addTo(map);
+
+        // Sử dụng Nominatim API để lấy tên thành phố
+        var geocodeUrl = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
+
+        fetch(geocodeUrl)
+            .then(response => response.json())
+            .then(data => {
+                // Kiểm tra và lấy tên thành phố từ dữ liệu phản hồi
+                var city = data.address.city || data.address.town || data.address.village || "Không xác định";
+
+                // Gắn tên thành phố vào popup
+                marker.bindPopup(` ${city}`).openPopup();
+            })
+            .catch(error => {
+                console.error('Không thể lấy thông tin địa lý:', error);
+                marker.bindPopup('Không thể lấy tên thành phố').openPopup();
+            });
     </script>
+
 </body>
 </html>

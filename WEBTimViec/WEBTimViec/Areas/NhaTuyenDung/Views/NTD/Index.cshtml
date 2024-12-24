@@ -22,81 +22,134 @@
 
     <!-- Main CSS File -->
     <link href="~/assets/css/main.css" rel="stylesheet">
+    <link href="~/css/Index.css" rel="stylesheet">
+   
 </head>
 
 <body>
-    <div class="container-fluid p-0">
-        <!-- Slider Section -->
-        <div id="heroSlider" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="~/images/elements/g1.jpg" class="d-block w-100 img-fluid" alt="Banner">
-                    <div class="carousel-caption d-flex flex-column justify-content-center align-items-center text-center">
-                        <h1 class="text-uppercase fw-bold text-light" style="font-size: 5rem; text-shadow: 3px 3px 6px #000;">
-                            Bạn có năng lực
-                        </h1>
-                        <h2 class="text-light fw-semibold mt-3" style="font-size: 3rem; text-shadow: 3px 3px 6px #000;">
-                            Chúng tôi có công việc
-                        </h2>
-                    </div>
-                </div>
+    <div class="box-search-Job_item">
+        <div class="box-search-job_item--free-text">
+            <div class="box-search-job_item--free-text-input item-search">
+                <i class="fa-regular fa-magnifying-glass"></i>
+                <input class="form-control ui-autocomplete-input" placeholder="Vị trí ứng tuyển" id="keyword" autocomplete="off">
             </div>
+            <button class="btn btn-topcv btn-search-job" type="submit">Tìm kiếm</button>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <!-- Cột trái -->
+        <div class="left2">
+            <h4>Cách tuyển chọn ứng viên phù hợp</h4>
+
+            <p>
+                ◇ Xác định yêu cầu công việc rõ ràng: Trước khi tuyển dụng, bạn cần xác định các yêu cầu về kỹ năng, kinh nghiệm, trình độ học vấn và phẩm chất cần có của ứng viên.
+            </p>
+            <p>
+                ◇ Sàng lọc hồ sơ ứng viên: Xem xét kỹ lưỡng các yếu tố như kinh nghiệm, trình độ học vấn, kỹ năng chuyên môn và tính cách của ứng viên để chọn ra những người phù hợp.
+            </p>
+            <p>
+                ◇ Phỏng vấn ứng viên: Phỏng vấn giúp bạn đánh giá thêm về kỹ năng giao tiếp, khả năng giải quyết vấn đề và cách ứng viên thể hiện bản thân trong các tình huống thực tế.
+            </p>
+            <p>
+                ◇ Kiểm tra kỹ năng và bài kiểm tra: Cho ứng viên tham gia các bài kiểm tra hoặc bài tập thực tế để đánh giá khả năng chuyên môn của họ...
+            </p>
         </div>
 
-        <!-- Chuyên ngành nổi bật -->
-        <section class="our-services py-5">
-            <div class="container">
-                <div class="text-center mb-5">
-                    <span class="text-uppercase text-secondary">QUYẾT ĐỊNH TƯƠNG LAI CỦA BẠN</span>
-                    <h2 class="fw-bold">Chuyên ngành nổi bật</h2>
+        <!-- Cột phải -->
+        <div class="right20">
+            <div class="job-images" style="position: relative; display: inline-block;">
+                <a href="@Url.Action("ListBaiTuyenDung", "NTD", new { area = "NhaTuyenDung"})">
+                    <img src="~/images/LogoJobPlus.jpg" alt="Bài tuyển dụng" class="img-fluid mb-3" />
+                    <div class="hover-text">Ấn vào để thêm bài tuyển dụng</div>
+                </a>
+            </div>
+            <div class="job-images-zoom">
+                <a href="@Url.Action("DanhSachLoaiTaiKhoan", "NTD", new { area = "NhaTuyenDung"})">
+                    <img src="~/images/NangCapTK.png" alt="Nâng cấp tài khoản" class="zoom-image" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container1">
+        <button class="btn-go-to-applicants">
+            <a href="@Url.Action("DSUngVien", "NTD", new { area = "NhaTuyenDung" })">
+                <span class="btn-text">Danh sách ứng viên</span>
+                <span class="hover-text">Ấn vào đây ngay!!</span>
+            </a>
+        </button>
+    </div>
+
+
+    <div class="container2">
+        <div class="left30 ">
+            <section class="featured-majors">
+                <div class="section-header text-center mb-4">
+                    <span class="sub-title">QUYẾT ĐỊNH TƯƠNG LAI CỦA BẠN</span>
+                    <h2 class="title">Chuyên ngành nổi bật</h2>
                 </div>
-                <div class="row g-4">
+                <div class="majors-list d-flex flex-wrap justify-content-center">
                     @foreach (var major in Model.Majors)
                     {
-                        <div class="col-xl-3 col-lg-4 col-md-6">
-                            <div class="card text-center shadow-sm">
-                                <div class="card-body">
-                                    <h5 class="card-title"><a href="#" class="text-decoration-none">@major.ChuyenNganhName</a></h5>
-                                    <p class="text-muted">(@major.JobCount)</p>
-                                </div>
-                            </div>
+                        <div class="major-item text-center m-3">
+                            <h5 class="major-name">
+                                <a href="@Url.Action("ListBaiTuyenDung", "NTD")" class="text-decoration-none text-dark">@major.ChuyenNganhName</a>
+                            </h5>
+                            <p class="job-count">(@major.JobCount) việc làm</p>
                         </div>
                     }
                 </div>
                 <div class="text-center mt-4">
-                    <a href="@Url.Action("ListBaiTuyenDung", "NTD")" class="btn btn-outline-primary">Tất cả bài tuyển dụng</a>
+                    Xem tất cả bài tuyển dụng<a href="@Url.Action("ListBaiTuyenDung", "NTD")" class="btn btn-link">Tại Đây</a>
                 </div>
-            </div>
-        </section>
 
-        <!-- Danh sách ứng viên -->
-        <section class="job-listings py-5">
-            <div class="container">
-                <h2 class="fw-bold text-center mb-5">Các ứng viên phù hợp</h2>
-                <div class="row g-4">
-                    @foreach (var ungvien in Model.ApplicationUsers)
-                    {
-                        if (!string.IsNullOrEmpty(ungvien.FullName))
-                        {
-                            <div class="col-md-4">
-                                <div class="card shadow-sm">
-                                    <a href="@Url.Action("IndexProfileUV", "NTD", new { id = ungvien.Id })">
-                                        <img src="@ungvien.image_url" class="card-img-top" alt="@ungvien.FullName" style="height: 200px; object-fit: cover;">
-                                    </a>
-                                    <div class="card-body">
-                                        <h5 class="card-title text-center" style="font-size: 1.5rem; font-style: italic;">
-                                            <a href="@Url.Action("IndexProfileUV", "NTD", new { id = ungvien.Id })">@ungvien.FullName</a>
-                                        </h5>
-                                        <p class="text-center">@ungvien.SDT_UngVien</p>
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    }
+
+            </section>
+        </div>
+        <div class="job-images1">
+            <div class="cardxoay">
+                <div class="cardxoay-front">
+                    <img src="~/images/center1.png" alt="Bài tuyển dụng">
+                </div>
+                <div class="cardxoay-back">
+                    <h4>Lợi ích của việc bạn có CV ứng tuyển tốt</h4>
+
+                    <p>■ Tăng cường cơ hội tìm việc: CV là công cụ chính giúp bạn trình bày kỹ năng, kinh nghiệm và trình độ học vấn. Một CV được chuẩn bị tốt giúp bạn nổi bật trong mắt nhà tuyển dụng.</p>
+
+                    <p>■ Tạo ấn tượng đầu tiên mạnh mẽ: Nhà tuyển dụng thường chỉ dành một ít thời gian để đọc CV. Vì vậy, một CV rõ ràng, súc tích và thể hiện đúng năng lực có thể tạo ấn tượng tích cực ngay từ lần đầu tiên.</p>
+
+                    <p>■ Chứng minh kinh nghiệm và kỹ năng: CV giúp bạn thể hiện rõ ràng những thành tựu, kỹ năng và kinh nghiệm làm việc của mình, từ đó khẳng định bạn là ứng viên phù hợp cho công việc.</p>
+
+                    <p>■ Nâng cao khả năng thương lượng lương và phúc lợi: Một CV nổi bật không chỉ giúp bạn được tuyển dụng, mà còn có thể là cơ sở để thương lượng mức lương và các quyền lợi khi được tuyển dụng.</p>
+
+                    <p>■ Giúp bạn chuẩn bị cho các buổi phỏng vấn: CV là tài liệu cơ bản để bạn chuẩn bị cho phỏng vấn, giúp bạn nhớ lại những kỹ năng và kinh nghiệm cần thiết để trả lời câu hỏi của nhà tuyển dụng.</p>
+
                 </div>
             </div>
-        </section>
+        </div>
+
+    </div>
+    <div class="container">
+        <div class="leftGoiY">
+            <h1>Đón lấy thành công cùng +200 triệu ứng viên CareerViet toàn cầu!</h1>
+            <p>     Trong thị trường tuyển dụng ngày nay, việc sở hữu một CV ấn tượng là yếu tố quan trọng quyết định đến cơ hội nghề nghiệp của bạn. CareerViet cung cấp nền tảng giúp bạn tạo ra CV chuyên nghiệp với các tiêu chí chuẩn mực, phù hợp với yêu cầu của các nhà tuyển dụng hàng đầu. Cập nhật CV thường xuyên với các thành tựu mới nhất sẽ giúp bạn nổi bật hơn so với những ứng viên khác. Ngoài ra, việc chủ động tìm kiếm thông tin và xây dựng mối quan hệ với các nhà tuyển dụng thông qua các kênh như mạng xã hội, hội thảo nghề nghiệp, hay các nền tảng trực tuyến cũng là một yếu tố then chốt giúp bạn nắm bắt cơ hội tốt hơn. Điều này không chỉ giúp bạn tạo dựng được uy tín mà còn mở ra cánh cửa cho những cơ hội nghề nghiệp giá trị. Chính vì vậy, đừng bỏ lỡ bất kỳ cơ hội nào để nâng cao giá trị bản thân và chinh phục những mục tiêu nghề nghiệp của mình.</p>
+        </div>
 
 
     </div>
+
+
 </body>
+<script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.0.0-beta.4/libs/oversea/index.js"></script>
+<script>
+    new CozeWebSDK.WebChatClient({
+        config: {
+            bot_id: '7444134224224976914',
+        },
+        componentProps: {
+            title: 'Coze',
+        },
+    });
+</script>

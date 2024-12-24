@@ -1,20 +1,25 @@
 ﻿@model WEBTimViec.Models.ApplicationUser
+
 @{
     ViewData["Title"] = "Thông tin nhà tuyển dụng";
 }
+
 <!DOCTYPE html>
 <html lang="vi">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> JobPlus </title>
-    <meta name="description" content="">
+    <title>@ViewData["Title"] - JobPlus</title>
+    <meta name="description" content="Thông tin chi tiết về nhà tuyển dụng">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 
-    <link rel="manifest" href="~/site.webmanifest">
+    <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="~/assets/img/favicon.ico">
+
     <!-- Vendor CSS Files -->
     <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -23,186 +28,190 @@
     <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Main CSS File -->
-    <link href="~/assets/css/main.css" rel="stylesheet">
+    <link href="~/css/Profile.css" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
-        }
-
-        .ha1 {
-            padding: 20px 0;
-        }
-
-        .styled-button a {
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .styled-button {
-            background-color: #ffffff;
-            border: 1px solid #dcdcdc;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-            .styled-button:hover {
-                background-color: #eaeaea;
-                border-color: #cccccc;
-            }
-
-        .tieude h3 {
-            color: #333;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .khung {
-            background: #DCDCDC;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin-top: 20px;
-        }
-
-        .d-flex.flex-column {
-            display: flex;
-            justify-content: center; /* Căn giữa theo chiều ngang */
-            align-items: center; /* Căn giữa theo chiều dọc */
-            height: 100%; /* Chiều cao bằng khung cha */
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            padding: 15px;
-        }
-
-            .d-flex.flex-column img {
-                border: 2px solid #e0e0e0;
-                border-radius: 50%; /* Làm tròn ảnh logo */
-                width: 150px; /* Kích thước ảnh */
-                height: 150px; /* Kích thước ảnh */
-                object-fit: cover; /* Đảm bảo ảnh không bị méo */
-            }
-
-
-            .d-flex.flex-column img {
-                border: 2px solid #e0e0e0;
-            }
-
-        .info-section {
-            margin-top: 20px;
-            padding: 20px;
-        }
-
-        .info-item {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 15px;
-        }
-
-            .info-item label {
-                font-weight: bold;
-                margin-bottom: 5px;
-                color: #555;
-            }
-
-        .custom-background {
-            background-color: #f5f5f5;
-            padding: 10px;
-            border-radius: 5px;
-            color: #333;
-            font-size: 16px;
-        }
-
-        .info-item textarea {
-            width: 100%;
-            height: 80px;
-            resize: none;
-            border: none;
-        }
-
-        .edit-link a {
-            color: #007bff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-            .edit-link a:hover {
-                color: #0056b3;
-            }
-
-        .tieude {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: bold;
-            margin-top: 40px;
-            text-align: center;
-            font-size: 28px; /* Kích thước font chữ */
-            color: #333; /* Màu chữ */
-        }
-
-    </style>
-
-</head>
-<body>
-    <div class ="ha1">
-        <div class="container">
-            <button class=" styled-button">
-                <a style="color: black;" href="@Url.Action("Index", "NTD")"> <<< </a>
-            </button>
-            <div class="tieude">
-                <h3>Thông tin nhà tuyển dụng</h3>
-            </div>
-            <div class="khung">
-                <div class="col-md-3 border-right">
-                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                        <a href="@Url.Action("ListBaiTuyenDung", "NTD")">
-                            <img class="rounded-circle mt-5" title="Nhấn vào đây để xem bài tuyển dụng" width="150px" src="@Model.image_url">
-                        </a>
-
-                        <span style="font-family: 'Times New Roman'" class="font-weight-bold"><h4>@Model.NhaTuyenDung_name</h4></span>
-                        <span class="text-black-50">@Model.Email</span>
-                    </div>
-                </div>
-                <div>
-
-                    <div class="info-section">
-                        <div class="info-item">
-                            <label>Tên công ty</label>
-                            <div class="custom-background">@Model.NhaTuyenDung_name</div>
-                        </div>
-                        <div class="info-item">
-                            <label>SDT công ty</label>
-                            <div class="custom-background">@Model.SDTNhaTuyenDung</div>
-                        </div>
-                        <div class="info-item">
-                            <label>Website công ty</label>
-                            <div class="custom-background">@Model.Website</div>
-                        </div>
-                        <div class="info-item">
-                            <label>Tên cá nhân</label>
-                            <div class="custom-background">@Model.FullName</div>
-                        </div>
-                        <div class="info-item">
-                            <label>Địa điểm công ty</label>
-                            <div class="custom-background">
-                                @Model.DiaChi
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <label>Giới thiệu về công ty</label>
-                            <textarea readonly class="custom-background">@Model.GioiThieuNhaTuyenDung</textarea>
-                        </div>
-                    </div>
-                    <div class="edit-link">
-                        <a href="@Url.Action("UpdateProfileNTD", new { id = Model.Id })">Chỉnh sửa thông tin</a>
-                    </div>
-
-                </div>
-            </div>
         
+    </style>
+</head>
+
+<body>
+    <div class="ha1">
+        <div class="container">
+            <!-- Tiêu đề -->
+            <div class="tieude text-center my-4">
+                <h3>Thông tin nhà tuyển dụng</h3>
+                <p style="font-size: 16px; color: #666;">
+                    Hãy hoàn thiện hồ sơ của bạn để tăng độ uy tín và thu hút nhiều ứng viên hơn!
+                </p>
+            </div>
+
+            <!-- Hình ảnh trang trí trên đầu -->
+@*             <div class="text-center mb-4">
+                <img src="~/assets/img/profile-decoration.png" alt="Trang trí hồ sơ" style="max-width: 100%; height: auto;">
+            </div>
+ *@
+            <!-- Thanh tiến trình tổng phần trăm -->
+            <div class="progress mb-4" style="height: 25px;">
+                <div class="progress-bar" role="progressbar"
+                     style="width: @ViewData["CompletionPercentage"]%; background-color: #28a745;"
+                     aria-valuenow="@ViewData["CompletionPercentage"]"
+                     aria-valuemin="0"
+                     aria-valuemax="100">
+                    @ViewData["CompletionPercentage"]%
+                </div>
+            </div>
+
+            <!-- Khu vực thông tin nhà tuyển dụng -->
+            <div class="khung p-4 shadow-sm rounded">
+                <!-- Hình ảnh trang trí bên cạnh -->
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div>
+                        <p style="font-size: 18px; color: #555; font-style: italic;">
+                            Hãy kiểm tra từng phần thông tin bên dưới và cập nhật nếu cần thiết.
+                        </p>
+                    </div>
+@*                     <div>
+                        <img src="~/assets/img/side-decoration.png" alt="Trang trí bên cạnh" style="width: 100px;">
+                    </div> *@
+                </div>
+
+                <!-- 1. Ảnh logo -->
+                <div class="info-item mb-3">
+                    <label class="fw-bold">Ảnh logo (10%)</label>
+                    <div class="custom-background p-2 border rounded">
+                        @if (!string.IsNullOrEmpty(Model.image_url))
+                        {
+                            <img src="@Model.image_url" alt="Logo" width="100">
+                        }
+                        else
+                        {
+                            <p>Chưa cập nhật</p>
+                        }
+                    </div>
+                    <small class="text-muted">Hoàn thành: @ViewData["ImagePercent"]%</small>
+                </div>
+
+                <!-- 2. Tên công ty -->
+                <div class="info-item mb-3">
+                    <label class="fw-bold">Tên công ty (10%)</label>
+                    <div class="custom-background p-2 border rounded">
+                        @if (!string.IsNullOrEmpty(Model.NhaTuyenDung_name))
+                        {
+                            @Model.NhaTuyenDung_name
+                        }
+                        else
+                        {
+                            <p>Chưa cập nhật</p>
+                        }
+                    </div>
+                    <small class="text-muted">Hoàn thành: @ViewData["NamePercent"]%</small>
+                </div>
+
+                <!-- 3. Số điện thoại -->
+                <div class="info-item mb-3">
+                    <label class="fw-bold">Số điện thoại (20%)</label>
+                    <div class="custom-background p-2 border rounded">
+                        @if (!string.IsNullOrEmpty(Model.SDTNhaTuyenDung))
+                        {
+                            @Model.SDTNhaTuyenDung
+                        }
+                        else
+                        {
+                            <p>Chưa cập nhật</p>
+                        }
+                    </div>
+                    <small class="text-muted">Hoàn thành: @ViewData["PhonePercent"]%</small>
+                </div>
+
+                <!-- 4. Website -->
+                <div class="info-item mb-3">
+                    <label class="fw-bold">Website (20%)</label>
+                    <div class="custom-background p-2 border rounded">
+                        @if (!string.IsNullOrEmpty(Model.Website))
+                        {
+                            <a href="@Model.Website" target="_blank">@Model.Website</a>
+                        }
+                        else
+                        {
+                            <p>Chưa cập nhật</p>
+                        }
+                    </div>
+                    <small class="text-muted">Hoàn thành: @ViewData["WebsitePercent"]%</small>
+                </div>
+
+                <!-- 5. Tên đầy đủ người đại diện -->
+                <div class="info-item mb-3">
+                    <label class="fw-bold">Tên đầy đủ người đại diện (10%)</label>
+                    <div class="custom-background p-2 border rounded">
+                        @if (!string.IsNullOrEmpty(Model.FullName))
+                        {
+                            @Model.FullName
+                        }
+                        else
+                        {
+                            <p>Chưa cập nhật</p>
+                        }
+                    </div>
+                    <small class="text-muted">Hoàn thành: @ViewData["FullNamePercent"]%</small>
+                </div>
+
+                <!-- 6. Địa chỉ -->
+                <div class="info-item mb-3">
+                    <label class="fw-bold">Địa chỉ (20%)</label>
+                    <div class="custom-background p-2 border rounded">
+                        @if (!string.IsNullOrEmpty(Model.DiaChi))
+                        {
+                            @Model.DiaChi
+                        }
+                        else
+                        {
+                            <p>Chưa cập nhật</p>
+                        }
+                    </div>
+                    <small class="text-muted">Hoàn thành: @ViewData["AddressPercent"]%</small>
+                </div>
+
+                <!-- 7. Giới thiệu nhà tuyển dụng -->
+                <div class="info-item mb-3">
+                    <label class="fw-bold">Giới thiệu nhà tuyển dụng (10%)</label>
+                    <div class="custom-background p-2 border rounded">
+                        @if (!string.IsNullOrEmpty(Model.GioiThieuNhaTuyenDung))
+                        {
+                            @Model.GioiThieuNhaTuyenDung
+                        }
+                        else
+                        {
+                            <p>Chưa cập nhật</p>
+                        }
+                    </div>
+                    <small class="text-muted">Hoàn thành: @ViewData["DescriptionPercent"]%</small>
+                </div>
+
+                <!-- Hình ảnh trang trí dưới cùng -->
+@*                 <div class="text-center mt-4">
+                    <img src="~/assets/img/footer-decoration.png" alt="Trang trí cuối" style="max-width: 100%; height: auto;">
+                </div> *@
+
+                <!-- Nút chỉnh sửa thông tin -->
+                <div class="edit-link">
+                    <a href="@Url.Action("UpdateProfileNTD", new { id = Model.Id })" class="styled-button">
+                        <i class="bi bi-pencil-square"></i> Chỉnh sửa thông tin
+                    </a>
+                </div>
+
+
+            </div>
         </div>
     </div>
+
+    <!-- Vendor JS Files -->
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/vendor/aos/aos.js"></script>
+    <script src="~/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="~/js/main.js"></script>
 </body>
+
 </html>

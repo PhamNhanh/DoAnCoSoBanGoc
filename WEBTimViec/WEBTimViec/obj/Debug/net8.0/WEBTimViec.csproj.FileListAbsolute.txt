@@ -578,3 +578,5 @@ C:\DoAnCoSo\Github\DoAnCoSoBanGoc\WEBTimViec\WEBTimViec\bin\Debug\net8.0\X.Paged
 C:\DoAnCoSo\Github\DoAnCoSoBanGoc\WEBTimViec\WEBTimViec\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
 C:\DoAnCoSo\Github\DoAnCoSoBanGoc\WEBTimViec\WEBTimViec\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\DoAnCoSo\Github\DoAnCoSoBanGoc\WEBTimViec\WEBTimViec\bin\Debug\net8.0\System.Formats.Asn1.dll
+C:\DoAnCoSo\Github\DoAnCoSoBanGoc\WEBTimViec\WEBTimViec\bin\Debug\net8.0\PagedList.dll
+C:\DoAnCoSo\Github\DoAnCoSoBanGoc\WEBTimViec\WEBTimViec\bin\Debug\net8.0\PagedList.Mvc.dll

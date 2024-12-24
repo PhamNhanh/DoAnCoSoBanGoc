@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\css\NhaTuyenDung.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\UpProFile.css" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,8 +25,8 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Identity.Client" Version="4.61.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
-    <PackageReference Include="X.PagedList" Version="9.1.2" />
-    <PackageReference Include="X.PagedList.Mvc.Core" Version="9.1.2" />
+    <PackageReference Include="PagedList.Mvc" Version="4.5.0" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="10.5.7" />
   </ItemGroup>
 
   <ItemGroup>

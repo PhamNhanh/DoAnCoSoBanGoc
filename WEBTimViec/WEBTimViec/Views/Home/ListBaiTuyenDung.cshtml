@@ -1,0 +1,158 @@
+﻿@model IEnumerable<WEBTimViec.Models.BaiTuyenDung>
+
+@{
+    ViewData["Title"] = "Danh sách bài tuyển dụng";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>JobPlus</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+
+        .khung2 {
+            margin-top: 50px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tieude {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1877f2;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.2s;
+        }
+
+        .overflow-ellipsis {
+            white-space: nowrap; /* Ngăn không cho văn bản xuống dòng */
+            overflow: hidden; /* Cắt bớt phần văn bản vượt ra ngoài */
+            text-overflow: ellipsis; /* Thêm dấu ba chấm khi văn bản bị cắt */
+        }
+
+
+            .card:hover {
+                transform: translateY(-10px);
+            }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .card-text {
+            font-size: 14px;
+            color: #555;
+        }
+
+            .card-text strong {
+                color: #1877f2;
+            }
+
+        .card a {
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            background-color: #1877f2;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            text-align: center;
+        }
+
+            .card a:hover {
+                background-color: #165cab;
+            }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .col-md-4 {
+            flex: 1 1 calc(33% - 20px);
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+
+        .styled-button {
+            background-color: #1877f2;
+            border: none;
+            border-radius: 30px;
+            padding: 8px 16px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+            .styled-button a {
+                color: white;
+                text-decoration: none;
+            }
+    </style>
+</head>
+<body>
+    <button class="styled-button">
+        <a href="@Url.Action("Index", "UV")"> <<< </a>
+    </button>
+
+    <div class="khung2">
+        <div>
+            <h3 class="tieude">Các chiến dịch tuyển dụng của công ty</h3>
+        </div>
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">@item.TenCongViec</h3>
+                            <p class="card-text"><strong>Công ty:</strong> @item.applicationUser.NhaTuyenDung_name</p>
+                            <p class="card-text overflow-ellipsis"><strong>Yêu cầu kỹ năng:</strong> @item.YeuCauKyNang</p>
+                            <p class="card-text overflow-ellipsis"><strong>Thành phố làm việc:</strong> @item.thanhPho.ThanhPho_name</p>
+                            <p class="card-text"><strong>Lương:</strong> @item.Luong_min - @item.Luong_max triệu đồng</p>
+                            <p class="card-text"><strong>Loại công việc:</strong> @item.KieuCongViec</p>
+                            <p class="card-text"><strong>Hạn nộp hồ sơ:</strong> @item.ThoiGianHetHan</p>
+                            <a href="@Url.Action("DetailsBaiTuyenDung", new { id = item.BaiTuyenDung_id })" class="border-btn2">Chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
